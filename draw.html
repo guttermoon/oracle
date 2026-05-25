@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Draw your card — The Captain's Log Oracle</title>
+  <meta name="description" content="Pause, breathe, and draw a card from The Captain's Log Oracle.">
+  <meta property="og:title" content="The Captain's Log Oracle">
+  <meta property="og:description" content="Pause, breathe, and draw your card.">
+  <meta property="og:image" content="img/back.png">
+  <link rel="icon" href="img/back.svg">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <main class="wrap center">
+    <p class="kicker">The Captain's Log</p>
+    <h1>Draw your card</h1>
+    <p class="lede">Take a breath. When you feel ready, tap the card and let the sea answer.</p>
+
+    <div class="stage">
+      <button class="flip-card" id="flipCard" type="button" aria-label="Reveal your card">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><img src="img/back.svg" alt="Face-down oracle card"></div>
+          <div class="flip-face flip-back"><img id="cardImg" alt=""></div>
+        </div>
+      </button>
+    </div>
+    <p class="tap-hint" id="tapHint">Tap the card to reveal</p>
+
+    <section class="reading" id="reading" aria-live="polite">
+      <h2 class="card-name" id="cardName"></h2>
+      <p class="card-keywords" id="cardKeywords"></p>
+      <p class="teaser" id="teaser"></p>
+      <div class="meaning" id="meaning"></div>
+      <div class="reflection">
+        <p class="label">Sit with this</p>
+        <p id="reflection"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="drawAgain" type="button">Draw again</button>
+        <button class="btn ghost" id="shareBtn" type="button">Copy link</button>
+      </div>
+    </section>
+
+    <p class="foot">
+      <a href="index.html">Browse the full deck</a><br>
+      <span id="error" style="display:none">Couldn't load the deck — please refresh.</span>
+    </p>
+  </main>
+  <div class="toast" id="toast">Link copied</div>
+  <script src="assets/deck.js"></script>
+</body>
+</html>
