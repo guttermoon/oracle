@@ -25,7 +25,7 @@ module.exports = {
         sans: ['"Chivo"', "system-ui", "sans-serif"],
       },
       borderRadius: {
-        DEFAULT: "12px",
+        DEFAULT: "8px",
         card: "16px",
         pill: "999px",
       },
