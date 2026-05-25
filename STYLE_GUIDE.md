@@ -39,11 +39,11 @@ Scale:
 ## Buttons
 
 - **Primary** — lime `#a4e636` fill, navy `#1b1f3b` text, weight 700,
-  border-radius `12px`, padding `13px 28px`. Hover: lift 2px + slight brightness.
+  border-radius `8px`, padding `14px 30px`. Hover: lift 2px + slight brightness.
 - **Ghost / secondary** — transparent fill, lime border + lime text. Hover: 12%
   lime tint.
 
-Buttons are rounded **rectangles** (radius 12px), not full pills.
+Buttons are rounded **rectangles** (radius 8px), not full pills.
 
 ## Surfaces & cards
 
@@ -68,7 +68,7 @@ scattered around hero sections; hidden on small screens.
 
 | Token | Value |
 |-------|-------|
-| `--radius` | 12px (buttons, tiles) |
+| `--radius` | 8px (buttons, tiles) |
 | `--radius-card` | 16px (surface cards) |
 | `--radius-pill` | 999px |
 | `--shadow-card` | `0 18px 36px rgba(4,4,28,0.55)` |
