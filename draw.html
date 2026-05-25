@@ -3,26 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Draw your card — The Captain's Log Oracle</title>
-  <meta name="description" content="Pause, breathe, and draw a card from The Captain's Log Oracle.">
-  <meta property="og:title" content="The Captain's Log Oracle">
+  <title>Draw your card — The Sailor's Oracle</title>
+  <meta name="description" content="Pause, breathe, and draw a card from The Sailor's Oracle.">
+  <meta property="og:title" content="The Sailor's Oracle">
   <meta property="og:description" content="Pause, breathe, and draw your card.">
   <meta property="og:image" content="img/back.png">
-  <link rel="icon" href="img/back.png">
+  <link rel="icon" type="image/png" href="web-app-manifest-192x192.png">
+  <link rel="apple-touch-icon" href="web-app-manifest-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <main class="wrap center">
-    <p class="kicker">The Captain's Log</p>
+    <a class="brand" href="index.html"><img class="brand-logo brand-logo--sm" src="sb%20dark%20bg%20logo%20lockup%20horizontal.webp" alt="Starboard"></a>
     <h1>Draw your card</h1>
     <p class="lede">Take a breath. When you feel ready, tap the card and let the sea answer.</p>
 
     <div class="stage">
       <button class="flip-card" id="flipCard" type="button" aria-label="Reveal your card">
-        <div class="flip-inner">
-          <div class="flip-face flip-front"><img src="img/back.png" alt="Face-down oracle card"></div>
-          <div class="flip-face flip-back"><img id="cardImg" alt=""></div>
-        </div>
+        <img class="card-img" id="cardImg" src="img/back.png" alt="Face-down oracle card">
       </button>
     </div>
     <p class="tap-hint" id="tapHint">Tap the card to reveal</p>
