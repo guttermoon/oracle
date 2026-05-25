@@ -1,0 +1,200 @@
+{
+  "color": {
+    "background": {
+      "$type": "color",
+      "$value": "#f5e6cd",
+      "$description": "Primary page background, warm cream tone"
+    },
+    "surface": {
+      "$type": "color",
+      "$value": "#e5e7eb",
+      "$description": "Secondary surfaces and containers"
+    },
+    "accent-primary": {
+      "$type": "color",
+      "$value": "#a4e636",
+      "$description": "Progress bars, interactive elements, call-to-action highlights"
+    },
+    "accent-light": {
+      "$type": "color",
+      "$value": "#faf9d4",
+      "$description": "Subtle accent backgrounds and highlights"
+    },
+    "text-primary": {
+      "$type": "color",
+      "$value": "#1b1f3b",
+      "$description": "Primary text content, high contrast"
+    },
+    "text-secondary": {
+      "$type": "color",
+      "$value": "#2d3268",
+      "$description": "Secondary text, medium contrast"
+    },
+    "text-muted": {
+      "$type": "color",
+      "$value": "#4d5198",
+      "$description": "Muted text, lower contrast for supporting content"
+    },
+    "pure-black": {
+      "$type": "color",
+      "$value": "#000000",
+      "$description": "High contrast text, likely for logo or emphasis"
+    },
+    "pure-white": {
+      "$type": "color",
+      "$value": "#ffffff",
+      "$description": "Pure white for high contrast elements"
+    }
+  },
+  "typography": {
+    "body-base": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Chivo",
+        "fontSize": "16px",
+        "fontWeight": 400,
+        "lineHeight": "25.6px",
+        "letterSpacing": "normal"
+      },
+      "$description": "Primary body text, most common text style"
+    },
+    "body-small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Chivo",
+        "fontSize": "14px",
+        "fontWeight": 400,
+        "lineHeight": "20px",
+        "letterSpacing": "normal"
+      },
+      "$description": "Small body text, captions, secondary information"
+    },
+    "body-bold": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Chivo",
+        "fontSize": "16px",
+        "fontWeight": 700,
+        "lineHeight": "24px",
+        "letterSpacing": "0.4px"
+      },
+      "$description": "Bold body text, emphasis within paragraphs"
+    },
+    "heading-large": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Playfair",
+        "fontSize": "48px",
+        "fontWeight": 400,
+        "lineHeight": "48px",
+        "letterSpacing": "normal"
+      },
+      "$description": "Large headings, hero text, primary brand messaging"
+    },
+    "heading-medium": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Chivo",
+        "fontSize": "18px",
+        "fontWeight": 600,
+        "lineHeight": "28.8px",
+        "letterSpacing": "0.18px"
+      },
+      "$description": "Medium headings, section titles"
+    },
+    "heading-small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Playfair",
+        "fontSize": "20px",
+        "fontWeight": 400,
+        "lineHeight": "28px",
+        "letterSpacing": "normal"
+      },
+      "$description": "Small headings, card titles"
+    },
+    "label-small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "Chivo",
+        "fontSize": "9px",
+        "fontWeight": 700,
+        "lineHeight": "14.4px",
+        "letterSpacing": "0.9px"
+      },
+      "$description": "Small labels, tags, uppercase text"
+    }
+  },
+  "spacing": {
+    "xs": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "3xl": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "4xl": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "5xl": {
+      "$type": "dimension",
+      "$value": "64px"
+    },
+    "6xl": {
+      "$type": "dimension",
+      "$value": "80px"
+    },
+    "7xl": {
+      "$type": "dimension",
+      "$value": "96px"
+    },
+    "8xl": {
+      "$type": "dimension",
+      "$value": "128px"
+    }
+  },
+  "borderRadius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": "9999px"
+    }
+  }
+}
