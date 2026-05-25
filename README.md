@@ -1,4 +1,4 @@
-# The Captain's Log Oracle
+# The Sailor's Oracle
 
 A 16-card nautical oracle deck and a tiny static site that lets newsletter readers
 **pause, draw a card, and read its meaning**. Because email clients strip
