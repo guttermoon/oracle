@@ -44,10 +44,7 @@
       return i;
     }
 
-    function reveal(i) {
-      var c = cards[i];
-      current = i;
-      cardImg.src = c.image;
+    function showReading(c) {
       cardImg.alt = c.name;
       nameEl.textContent = c.name;
       kwEl.textContent = c.keywords;
@@ -59,22 +56,35 @@
         meaningEl.appendChild(el);
       });
       reflEl.textContent = c.reflection;
-      flip.classList.add("is-flipped");
       if (hint) hint.style.opacity = "0";
       requestAnimationFrame(function () { reading.classList.add("show"); });
       history.replaceState(null, "", "?card=" + c.slug);
       document.title = c.name + " — " + deckName;
     }
 
+    // Turn the single card edge-on (rotateY 90deg), swap the art while it's
+    // invisible, then turn back. No second face / backface-visibility, so the
+    // image can never render mirrored (the Safari flip bug).
+    function turnTo(src, after) {
+      if (reduceMotion) {
+        cardImg.src = src;
+        if (after) after();
+        return;
+      }
+      cardImg.classList.add("turning");
+      setTimeout(function () {
+        cardImg.src = src;
+        cardImg.classList.remove("turning");
+        if (after) after();
+      }, 280);
+    }
+
     function draw() {
       var next = pick();
-      var wasFlipped = flip.classList.contains("is-flipped");
-      var delay = (wasFlipped && !reduceMotion) ? 430 : 0;
-      if (wasFlipped) {
-        flip.classList.remove("is-flipped");
-        reading.classList.remove("show");
-      }
-      setTimeout(function () { reveal(next); }, delay);
+      current = next;
+      var c = cards[next];
+      reading.classList.remove("show");
+      turnTo(c.image, function () { showReading(c); });
     }
 
     flip.addEventListener("click", draw);
@@ -96,9 +106,10 @@
 
     var slug = param("card");
     if (slug && indexBySlug(slug) !== -1) {
-      var idx = indexBySlug(slug);
-      if (reduceMotion) { reveal(idx); }
-      else { setTimeout(function () { reveal(idx); }, 280); }
+      current = indexBySlug(slug);
+      var fc = cards[current];
+      if (reduceMotion) { cardImg.src = fc.image; showReading(fc); }
+      else { setTimeout(function () { turnTo(fc.image, function () { showReading(fc); }); }, 260); }
     } else if (hint) {
       hint.textContent = "Tap the card to reveal";
     }

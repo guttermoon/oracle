@@ -1,4 +1,4 @@
-# The Captain's Log Oracle — card meanings
+# The Sailor's Oracle — card meanings
 
 _Cleaned copy generated from `cards.json`. Edit the JSON, then re-run `python3 scripts/make_cards_md.py`._
 
