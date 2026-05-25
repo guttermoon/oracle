@@ -27,6 +27,7 @@
     var kwEl = qs("cardKeywords");
     var teaserEl = qs("teaser");
     var meaningEl = qs("meaning");
+    var reflEl = qs("reflection");
     var current = -1;
 
     cards.forEach(function (c) { var i = new Image(); i.src = c.image; });
@@ -54,6 +55,7 @@
         el.textContent = p;
         meaningEl.appendChild(el);
       });
+      if (reflEl) reflEl.textContent = c.reflection;
       if (hint) hint.style.opacity = "0";
       requestAnimationFrame(function () { reading.classList.add("show"); });
       history.replaceState(null, "", "?card=" + c.slug);

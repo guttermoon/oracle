@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=7">
+  <link rel="stylesheet" href="assets/style.css?v=8">
 </head>
 <body>
   <header class="nav">
@@ -21,30 +21,26 @@
   </header>
 
   <main class="hero">
-    <img class="motif motif--key" src="darkbg%20Key.webp" alt="" aria-hidden="true">
-    <img class="motif motif--crow" src="darkbg%20Crow.webp" alt="" aria-hidden="true">
-    <img class="motif motif--compass" src="darkbg%20Compass%20rose.webp" alt="" aria-hidden="true">
-    <img class="motif motif--anchor" src="darkbg%20Anchor%201.webp" alt="" aria-hidden="true">
-    <img class="motif motif--eye" src="darkbg%20Eye%201.webp" alt="" aria-hidden="true">
-    <img class="motif motif--shell" src="darkbg%20Shell.webp" alt="" aria-hidden="true">
-    <img class="motif motif--conch" src="darkbg%20Conch.webp" alt="" aria-hidden="true">
     <div class="hero-inner">
       <h1>The Sailor's Oracle</h1>
       <p class="lede">Sixteen cards drawn from sailor tattoo lore. Pause, pick the one that
         calls to you, and read what the sea has to say.</p>
       <div class="btn-row">
         <a class="btn" href="draw.html">Draw your card</a>
-        <a class="btn ghost" href="#deck">Browse the deck</a>
       </div>
     </div>
   </main>
 
   <section class="deck-section" id="deck">
     <div class="grid" id="grid"></div>
-    <p class="foot">
-      <span id="error" style="display:none">Couldn't load the deck — please refresh.</span>
-    </p>
+    <p class="load-error" id="error" style="display:none">Couldn't load the deck — please refresh.</p>
   </section>
-  <script src="assets/deck.js"></script>
+
+  <footer class="site-footer">
+    <img class="footer-mark" src="sb%20dark%20bg%20logomark.webp" alt="" aria-hidden="true">
+    <p class="footer-line">The Sailor's Oracle</p>
+    <p class="footer-fine">Part of Starboard</p>
+  </footer>
+  <script src="assets/deck.js?v=8"></script>
 </body>
 </html>
