@@ -35,6 +35,7 @@ MAPPING = {
 
 CARD_W = 900
 THUMB_W = 360
+BACK_W = 800  # img/back.png is built from back.png in the repo root
 
 
 def flatten(im):
@@ -60,6 +61,24 @@ def save_jpeg(im, path, quality):
     return os.path.getsize(path)
 
 
+def build_back():
+    """Optimize the deck back (root back.png -> img/back.png).
+
+    Quantized PNG keeps the line art and lettering crisp while staying small;
+    this single file is used by the web pages and the email blocks.
+    """
+    src = os.path.join(ROOT, "back.png")
+    if not os.path.exists(src):
+        print("back.png not found in repo root; skipping back")
+        return
+    im = resize_to_width(flatten(Image.open(src)), BACK_W)
+    im = im.quantize(colors=256, method=Image.FASTOCTREE)
+    out = os.path.join(ROOT, "img", "back.png")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, "PNG", optimize=True)
+    print(f"{'back':18s} png ={os.path.getsize(out)//1024:4d}KB")
+
+
 def main():
     missing = []
     total = 0
@@ -75,7 +94,8 @@ def main():
         t = save_jpeg(thumb, os.path.join(ROOT, "img", "thumbs", slug + ".jpg"), 80)
         total += c + t
         print(f"{slug:18s} card={c//1024:4d}KB thumb={t//1024:3d}KB")
-    print(f"\nTotal derivatives: {total/1024/1024:.2f} MB")
+    build_back()
+    print(f"\nTotal card derivatives: {total/1024/1024:.2f} MB")
     if missing:
         print("MISSING SOURCES:", ", ".join(missing))
 

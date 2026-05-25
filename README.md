@@ -14,7 +14,7 @@ the draw and reveal happen on the web page.
 | `draw.html` | Draw a random card (or `draw.html?card=<slug>` for a specific one). |
 | `assets/` | `style.css` + `deck.js` (vanilla, no dependencies). |
 | `img/cards/`, `img/thumbs/` | Web-optimized art (generated). |
-| `img/back.svg`, `img/back.png` | The card back (generated). |
+| `img/back.png` | The card back, optimized from `back.png` in the repo root (generated). |
 | `email/` | MailerLite guide + paste-in HTML blocks. |
 | `CARDS.md` | Human-readable copy, paste-ready for Notion (generated). |
 | `scripts/` | Build scripts (see below). |
@@ -29,8 +29,7 @@ on the free plan. The site is then live at `https://guttermoon.github.io/oracle/
 
 ```sh
 pip install Pillow
-python3 scripts/optimize_images.py   # rebuild img/cards + img/thumbs from root PNGs
-python3 scripts/make_back.py         # rebuild the card back (svg + png)
+python3 scripts/optimize_images.py   # rebuild img/cards, img/thumbs, and img/back.png
 python3 scripts/make_cards_md.py     # rebuild CARDS.md from cards.json
 ```
 
