@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Sailor's Oracle</title>
+  <title>The Sailor's Oracle — Starboard</title>
   <meta name="description" content="A 16-card nautical oracle deck. Draw a card or browse the full deck.">
   <meta property="og:title" content="The Sailor's Oracle">
   <meta property="og:description" content="Draw a card or browse the full deck.">
@@ -13,26 +13,40 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css?v=4">
 </head>
 <body>
-  <main class="wrap">
-    <div class="center">
-      <a class="brand" href="index.html"><img class="brand-logo" src="sb%20dark%20bg%20logo%20lockup%20horizontal.webp" alt="Starboard"></a>
+  <header class="nav">
+    <a class="nav-logo" href="index.html"><img src="sb%20dark%20bg%20logo%20lockup%20horizontal.webp" alt="Starboard"></a>
+  </header>
+
+  <main class="hero">
+    <img class="motif motif--key" src="darkbg%20Key.webp" alt="" aria-hidden="true">
+    <img class="motif motif--crow" src="darkbg%20Crow.webp" alt="" aria-hidden="true">
+    <img class="motif motif--compass" src="darkbg%20Compass%20rose.webp" alt="" aria-hidden="true">
+    <img class="motif motif--anchor" src="darkbg%20Anchor%201.webp" alt="" aria-hidden="true">
+    <img class="motif motif--eye" src="darkbg%20Eye%201.webp" alt="" aria-hidden="true">
+    <img class="motif motif--shell" src="darkbg%20Shell.webp" alt="" aria-hidden="true">
+    <img class="motif motif--conch" src="darkbg%20Conch.webp" alt="" aria-hidden="true">
+    <div class="hero-inner">
       <h1>The Sailor's Oracle</h1>
       <p class="lede">Sixteen cards drawn from sailor tattoo lore. Pause, pick the one that
         calls to you, and read what the sea has to say.</p>
       <div class="btn-row">
         <a class="btn" href="draw.html">Draw your card</a>
+        <a class="btn ghost" href="#deck">Browse the deck</a>
       </div>
     </div>
+  </main>
 
+  <section class="deck-section" id="deck">
+    <p class="deck-label">The deck</p>
+    <h2 class="deck-title">Sixteen cards</h2>
     <div class="grid" id="grid"></div>
-
     <p class="foot">
       <span id="error" style="display:none">Couldn't load the deck — please refresh.</span>
     </p>
-  </main>
+  </section>
   <script src="assets/deck.js"></script>
 </body>
 </html>
