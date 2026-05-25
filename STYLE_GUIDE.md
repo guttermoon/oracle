@@ -1,78 +1,85 @@
 # Starboard — Style Guide
 
-Design tokens and component rules for the Starboard brand, as used across the
-Sailor's Oracle micro-site. **Dark mode only.**
+The Starboard design system ("Warm Minimalist"), captured from the production
+site via design-extractor. Warm, approachable minimalism with a sophisticated
+edge: a cream canvas, deep-navy text, and a single electric-lime accent, with
+generous whitespace and soft elevation.
 
-Source of truth:
-- CSS custom properties — `assets/style.css` (`:root`)
-- Tailwind theme — `tailwind.config.js`
+> **Theme note.** The canonical palette below is the **light / cream** theme
+> (`background` is cream). The **Sailor's Oracle micro-site renders in dark mode**
+> (per request): it inverts the two primaries — deep navy becomes the page
+> background and cream becomes the text — while keeping lime as the accent. Both
+> are expressed from the same tokens (`assets/style.css :root`, `tailwind.config.js`).
 
 ## Color
 
 | Token | Hex | Role |
 |-------|-----|------|
-| Navy (background) | `#1b1f3b` | Page background; text on lime |
-| Navy deep | `#04041c` | Footer / deep shadow |
-| Surface | `#2d3268` | Cards / raised panels |
-| Periwinkle | `#4d5198` | Borders, muted accents |
-| Lime | `#a4e636` | Primary buttons, links, accents |
-| Lime deep | `#8fc91f` | Lime hover / pressed |
-| Cream | `#f5e6cd` | Primary text, headings, wordmark |
+| `background` | `#f5e6cd` | Warm cream — primary page background (light theme) |
+| `surface` | `#e5e7eb` | Soft gray — secondary surfaces / containers |
+| `accent-primary` | `#a4e636` | Electric lime — CTAs, interactive elements, progress |
+| `accent-light` | `#faf9d4` | Pale accent — subtle highlight backgrounds |
+| `text-primary` | `#1b1f3b` | Deep navy — primary text (and dark-theme background) |
+| `text-secondary` | `#2d3268` | Secondary text / medium contrast |
+| `text-muted` | `#4d5198` | Muted text / supporting content |
+| `pure-black` | `#000000` | High-contrast logo / emphasis |
+| `pure-white` | `#ffffff` | High-contrast white |
 
-Secondary text uses cream at reduced opacity: `rgba(245,230,205,0.78)` (muted),
-`rgba(245,230,205,0.6)` (soft).
-
-The page background is a **flat** `#1b1f3b` — no gradients.
+Reserve lime for key interactive elements — don't overuse it. Never use a
+pure-white page background; the warm cream is intentional.
 
 ## Typography
 
-- **Display / headings** — "Playfair Display", italic, weight 400. Hero
-  headline, card names, section titles.
-- **Body / UI** — "Chivo", weights 400 / 700.
+- **Headings:** Playfair Display (serif) — elegant, used sparingly.
+- **Body & labels:** Chivo (sans-serif).
 
-Scale:
-- Hero headline `clamp(42px, 9vw, 86px)`
-- Card name 32px · Section title 28px
-- Body / lede 16–18px
-- Eyebrow / labels 12px, uppercase, letter-spacing 0.3em, lime
+| Style | Font | Size / line-height | Weight | Tracking |
+|-------|------|--------------------|--------|----------|
+| heading-large | Playfair | 48 / 48 | 400 | — |
+| heading-small | Playfair | 20 / 28 | 400 | — |
+| heading-medium | Chivo | 18 / 28.8 | 600 | 0.18px |
+| body-base | Chivo | 16 / 25.6 | 400 | — |
+| body-bold | Chivo | 16 / 24 | 700 | 0.4px |
+| body-small | Chivo | 14 / 20 | 400 | — |
+| label-small | Chivo | 9 / 14.4 | 700 | 0.9px (uppercase) |
+
+400 for regular, 600–700 for emphasis; tracking grows as text shrinks.
+
+## Spacing (4px base)
+
+`2 · 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 80 · 96 · 128` px
+(tokens `--spacing-xs … --spacing-8xl`). Favor generous whitespace.
+
+## Border radius
+
+`sm 4 · md 8 · lg 12 · xl 16 · full 9999` px.
+**Interactive elements (buttons, inputs, tiles) use `lg` = 12px** consistently.
+Don't introduce off-scale values (e.g. 10px, 14px).
+
+## Elevation
+
+- Resting: `rgba(0,0,0,.4) 0 2px 8px -2px, rgba(0,0,0,.3) 0 1px 2px -1px`
+- Raised (large): `rgba(0,0,0,.5) 0 25px 50px -12px`
+
+Soft, moderate-blur shadows — gentle depth, never harsh.
 
 ## Buttons
 
-- **Primary** — lime `#a4e636` fill, navy `#1b1f3b` text, weight 700,
-  border-radius `8px`, padding `14px 30px`. Hover: lift 2px + slight brightness.
-- **Ghost / secondary** — transparent fill, lime border + lime text. Hover: 12%
-  lime tint.
+- **Primary** (`.button--primary`): lime `#a4e636` fill, deep-navy `#1b1f3b`
+  text, weight 700, **radius 12px**, generous padding.
+- **Ghost / secondary:** transparent fill, lime border + lime text.
 
-Buttons are rounded **rectangles** (radius 8px), not full pills.
+Rounded rectangles (12px) — not pills.
 
-## Surfaces & cards
+## Components & logo
 
-- Surface panels — `#2d3268`, border-radius `16px`.
-- Oracle card art / tiles — border-radius 10–14px, shadow
-  `0 18px 36px rgba(4,4,28,0.55)`, aspect ratio 600 × 776.
+- Brand logo: stylised "starboard" wordmark with a star flourish; light and dark
+  variants. Used small (~28px tall) in the nav, never oversized.
+- Favicon: official compass mark, dark on transparent.
+- Progress / interactive accents use lime with 12px corners.
 
-## Decorative motifs
+## Sources
 
-Cream line-art tattoo motifs (anchor, crow, compass rose, key, eye, shell,
-conch, …) on transparent backgrounds. Used sparingly as ambient decoration
-scattered around hero sections; hidden on small screens.
-
-## Logo & icon
-
-- **Wordmark lockup** (`sb dark bg logo lockup horizontal.webp`) — small, in the
-  top nav (~28px tall). Never oversized.
-- **Favicon** — official compass mark, dark on transparent
-  (`starboard offical icon dark.svg`).
-
-## Radius & shadow tokens
-
-| Token | Value |
-|-------|-------|
-| `--radius` | 8px (buttons, tiles) |
-| `--radius-card` | 16px (surface cards) |
-| `--radius-pill` | 999px |
-| `--shadow-card` | `0 18px 36px rgba(4,4,28,0.55)` |
-
-> The live extractor page (design-extractor.com) is behind a bot wall (HTTP 403)
-> and could not be fetched; these tokens come from the Starboard production
-> stylesheet.
+Tokens live in `assets/style.css` (`:root`) and `tailwind.config.js`. Captured
+from the design-extractor export (starboarddesign CSS / JSON / Tailwind v4
+`@theme` / DESIGN.md) for starboardmanifest.com.
