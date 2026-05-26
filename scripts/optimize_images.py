@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate web-optimized card art from the source PNGs.
 
-Source PNGs (1.3-2.2 MB each) live in the repo root. This writes two JPEG
+Source PNGs (1.3-2.2 MB each) live in art-source/. This writes two JPEG
 derivatives per card:
   img/cards/<slug>.jpg   ~900px wide  (the reveal view)
   img/thumbs/<slug>.jpg  ~360px wide  (the browse grid)
@@ -12,6 +12,7 @@ import os
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC = os.path.join(ROOT, "art-source")  # original card art and back.png
 
 # source filename -> slug (slugs must match cards.json)
 MAPPING = {
@@ -35,7 +36,7 @@ MAPPING = {
 
 CARD_W = 900
 THUMB_W = 360
-BACK_W = 800  # img/back.png is built from back.png in the repo root
+BACK_W = 800  # img/back.png is built from art-source/back.png
 
 
 def flatten(im):
@@ -67,9 +68,9 @@ def build_back():
     Quantized PNG keeps the line art and lettering crisp while staying small;
     this single file is used by the web pages and the email blocks.
     """
-    src = os.path.join(ROOT, "back.png")
+    src = os.path.join(SRC, "back.png")
     if not os.path.exists(src):
-        print("back.png not found in repo root; skipping back")
+        print("back.png not found in art-source/; skipping back")
         return
     im = resize_to_width(flatten(Image.open(src)), BACK_W)
     im = im.quantize(colors=256, method=Image.FASTOCTREE)
@@ -83,7 +84,7 @@ def main():
     missing = []
     total = 0
     for src, slug in MAPPING.items():
-        src_path = os.path.join(ROOT, src)
+        src_path = os.path.join(SRC, src)
         if not os.path.exists(src_path):
             missing.append(src)
             continue
