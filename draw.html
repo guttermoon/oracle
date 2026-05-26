@@ -13,14 +13,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=8">
+  <link rel="stylesheet" href="assets/style.css?v=9">
 </head>
 <body>
   <header class="nav">
-    <a class="nav-logo" href="index.html"><img src="sb%20dark%20bg%20logo%20lockup%20horizontal.webp" alt="Starboard"></a>
+    <a class="nav-logo" href="https://www.starboardmanifest.com/"><img src="sb%20dark%20bg%20logo%20lockup%20horizontal.webp" alt="Starboard"></a>
   </header>
 
   <main class="wrap center">
+    <h2 class="card-name" id="cardName"></h2>
+    <p class="card-keywords" id="cardKeywords"></p>
+
     <div class="stage">
       <button class="flip-card" id="flipCard" type="button" aria-label="Reveal your card">
         <img class="card-img" id="cardImg" src="img/back.png" alt="Face-down oracle card">
@@ -29,26 +32,21 @@
     <p class="tap-hint" id="tapHint">Tap the card to reveal</p>
 
     <section class="reading" id="reading" aria-live="polite">
-      <h2 class="card-name" id="cardName"></h2>
-      <p class="card-keywords" id="cardKeywords"></p>
       <p class="teaser" id="teaser"></p>
       <div class="meaning" id="meaning"></div>
       <p class="reflection-line" id="reflection"></p>
       <div class="btn-row">
         <button class="btn" id="drawAgain" type="button">Draw again</button>
-        <button class="btn ghost" id="shareBtn" type="button">Copy link</button>
       </div>
     </section>
-
   </main>
 
   <footer class="site-footer">
     <img class="footer-mark" src="sb%20dark%20bg%20logomark.webp" alt="" aria-hidden="true">
-    <p class="footer-line"><a href="index.html">Browse the full deck</a></p>
-    <p class="footer-fine">Part of Starboard</p>
+    <p class="footer-line"><a href="index.html">The Sailor's Oracle</a></p>
+    <p class="footer-fine"><a href="https://www.starboardmanifest.com/">Part of Starboard</a></p>
     <span id="error" class="load-error" style="display:none">Couldn't load the deck — please refresh.</span>
   </footer>
-  <div class="toast" id="toast">Link copied</div>
-  <script src="assets/deck.js?v=8"></script>
+  <script src="assets/deck.js?v=9"></script>
 </body>
 </html>
