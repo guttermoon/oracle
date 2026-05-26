@@ -21,7 +21,6 @@
     var deckName = data.deck || "Oracle";
     var flip = qs("flipCard");
     var cardImg = qs("cardImg");
-    var hint = qs("tapHint");
     var reading = qs("reading");
     var nameEl = qs("cardName");
     var kwEl = qs("cardKeywords");
@@ -56,7 +55,6 @@
         meaningEl.appendChild(el);
       });
       if (reflEl) reflEl.textContent = c.reflection;
-      if (hint) hint.style.opacity = "0";
       requestAnimationFrame(function () { reading.classList.add("show"); });
       history.replaceState(null, "", "?card=" + c.slug);
       document.title = c.name + " · " + deckName;
@@ -110,8 +108,6 @@
       var fc = cards[current];
       if (reduceMotion) { cardImg.src = fc.image; showReading(fc); }
       else { setTimeout(function () { turnTo(fc.image, function () { showReading(fc); }); }, 260); }
-    } else if (hint) {
-      hint.textContent = "Tap the card to reveal";
     }
   }
 
