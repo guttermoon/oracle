@@ -59,12 +59,12 @@
       if (hint) hint.style.opacity = "0";
       requestAnimationFrame(function () { reading.classList.add("show"); });
       history.replaceState(null, "", "?card=" + c.slug);
-      document.title = c.name + " — " + deckName;
+      document.title = c.name + " · " + deckName;
     }
 
-    // Turn the single card edge-on (rotateY 90deg), swap the art while it's
-    // invisible, then turn back. No second face / backface-visibility, so the
-    // image can never render mirrored (the Safari flip bug).
+    // Turn the card edge-on (rotateY 90deg), swap the art while it is hidden,
+    // then turn back. A single image with no second face keeps the art from
+    // flipping during the turn.
     function turnTo(src, after) {
       if (reduceMotion) {
         cardImg.src = src;
