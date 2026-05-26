@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 with open(os.path.join(ROOT, "cards.json")) as f:
     data = json.load(f)
 
-lines = [f"# {data['deck']} — card meanings", "",
+lines = [f"# {data['deck']}: card meanings", "",
          "_Cleaned copy generated from `cards.json`. Edit the JSON, then re-run "
          "`python3 scripts/make_cards_md.py`._", ""]
 for c in data["cards"]:
@@ -28,6 +28,6 @@ for c in data["cards"]:
     lines.append("---")
     lines.append("")
 
-with open(os.path.join(ROOT, "CARDS.md"), "w") as f:
+with open(os.path.join(ROOT, "design", "CARDS.md"), "w") as f:
     f.write("\n".join(lines).rstrip() + "\n")
-print("Wrote CARDS.md")
+print("Wrote design/CARDS.md")

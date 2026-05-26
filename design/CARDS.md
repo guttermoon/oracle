@@ -1,4 +1,4 @@
-# The Sailor's Oracle — card meanings
+# The Sailor's Oracle: card meanings
 
 _Cleaned copy generated from `cards.json`. Edit the JSON, then re-run `python3 scripts/make_cards_md.py`._
 
@@ -10,13 +10,13 @@ _Cleaned copy generated from `cards.json`. Edit the JSON, then re-run `python3 s
 
 **Meaning:**
 
-The Two Swallows card signals that what you have been waiting for is coming back to you — whether that's a place, a person, a feeling, or a version of your own life. It carries the old sailor's belief that swallows represent safe return from long voyages, so seeing this card is a gentle promise that you will find your way home, even if the journey has been long.
+The Two Swallows card signals that what you have been waiting for is coming back to you, whether that's a place, a person, a feeling, or a version of your own life. It carries the old sailor's belief that swallows represent safe return from long voyages, so seeing this card is a gentle promise that you will find your way home, even if the journey has been long.
 
 Swallows also speak of loyalty and companionship. Just as one swallow is a sign of movement, two suggests a mirrored journey: someone is following your path, or you are walking alongside someone who matters. This card asks you to notice who and what you are returning to, and whether that bond truly reflects your values and energy.
 
 Historically, sailors earned a swallow tattoo for every 5,000 nautical miles traveled, and a second swallow for 10,000, turning the birds into badges of experience and safe passage. As an oracle image, the Two Swallows remind you that your journey is being witnessed by deeper forces; your faithfulness to the path is being counted, and your return is already woven into the story.
 
-**Sit with this:** _What are you on your way back to — and is it still worth the voyage?_
+**Sit with this:** _What are you on your way back to, and is it still worth the voyage?_
 
 ---
 
@@ -86,7 +86,7 @@ The Hold Fast card appears when conditions are rough and you are being asked to 
 
 In manifestation terms, Hold Fast can signal the need to wait for a door to open, to keep a project alive, or to remain in a relationship that still has potential. It's a reminder that sometimes the most powerful act is to show up every day, even when nothing dramatic is happening. The card honors the unseen work of endurance.
 
-Historically, “Hold Fast” was a common sailor tattoo phrase often inked across the knuckles — a constant reminder to keep your grip on the rope or rigging in stormy seas. Sailors knew that losing your hold could mean losing your life. As an oracle image, Hold Fast reminds you to stay anchored to your truth, your boundaries, and your purpose, even when the waves are high.
+Historically, “Hold Fast” was a common sailor tattoo phrase often inked across the knuckles, a constant reminder to keep your grip on the rope or rigging in stormy seas. Sailors knew that losing your hold could mean losing your life. As an oracle image, Hold Fast reminds you to stay anchored to your truth, your boundaries, and your purpose, even when the waves are high.
 
 **Sit with this:** _What are you being asked to keep your grip on, just a little longer?_
 
@@ -124,7 +124,7 @@ In a reading, the Mermaid asks you to appreciate beauty and fantasy while stayin
 
 Historically, mermaid tattoos wove the sailor's longing for home, for love, and for the sea into one mythic figure. She was both a source of comfort and a warning of distraction. As an oracle symbol, the Mermaid encourages you to acknowledge your desires without losing your bearings, and to treat enchantment as a teacher rather than a trap.
 
-**Sit with this:** _What are you enchanted by — and are your eyes fully open to it?_
+**Sit with this:** _What are you enchanted by, and are your eyes fully open to it?_
 
 ---
 
@@ -172,7 +172,7 @@ Historically, skull tattoos among sailors and soldiers symbolized mortality, bra
 
 **Meaning:**
 
-The Golden Dragon card announces a powerful expansion — a leap into wider, wilder territory. It speaks of courage, personal power, and stepping into a role or identity that feels too big at first. This card is about claiming your full presence without apology.
+The Golden Dragon card announces a powerful expansion, a leap into wider, wilder territory. It speaks of courage, personal power, and stepping into a role or identity that feels too big at first. This card is about claiming your full presence without apology.
 
 In practical terms, the Golden Dragon can appear for travel, major life changes, spiritual awakenings, or creative projects that stretch your sense of self. It encourages you to move toward the edge of your comfort zone, trusting that your growth depends on that expansion.
 
@@ -226,11 +226,11 @@ Historically, the hula girl tattoo was a classic sailor motif representing the t
 
 **Meaning:**
 
-The Two Intertwined Hearts card represents a deep emotional bond — often romantic, but sometimes familial or soul-level. It speaks of interweaving, shared feeling, and the way two people's paths and energies become entangled. This card is about union that feels real and lasting.
+The Two Intertwined Hearts card represents a deep emotional bond, often romantic, but sometimes familial or soul-level. It speaks of interweaving, shared feeling, and the way two people's paths and energies become entangled. This card is about union that feels real and lasting.
 
 In a reading, the Two Intertwined Hearts can mark the moment when two people truly see each other, or when two parts of yourself finally align. It's a sign of intimacy, trust, and the merging of wants, fears, and dreams. The card invites you to nurture that connection with honesty and care.
 
-Historically, heart tattoos — especially paired hearts — were common among sailors and soldiers as symbols of love for a partner, family, or homeland. They carried the emotional weight of separation and the hope of reunion. As an oracle symbol, Two Intertwined Hearts remind you that love is both a feeling and a practice, and that real connection grows from daily acts of presence and devotion.
+Historically, heart tattoos, especially paired hearts, were common among sailors and soldiers as symbols of love for a partner, family, or homeland. They carried the emotional weight of separation and the hope of reunion. As an oracle symbol, Two Intertwined Hearts remind you that love is both a feeling and a practice, and that real connection grows from daily acts of presence and devotion.
 
 **Sit with this:** _Which bond is asking you to show up for it more fully?_
 
@@ -244,13 +244,13 @@ Historically, heart tattoos — especially paired hearts — were common among s
 
 **Meaning:**
 
-The Crossed Cannons card speaks of readiness rather than reaction. It represents being prepared, mentally armed, and emotionally braced for what is coming your way. This card appears when you are being called to stand in a state of calm alertness — not just to endure, but to act at the right moment.
+The Crossed Cannons card speaks of readiness rather than reaction. It represents being prepared, mentally armed, and emotionally braced for what is coming your way. This card appears when you are being called to stand in a state of calm alertness, not just to endure, but to act at the right moment.
 
 In practical terms, Crossed Cannons signals that you have done your inner work: you've planned, rehearsed, and aligned your boundaries. It's about the moment before the storm, when you know what you will do and where you will stand. The card asks you to trust your preparation and not rush in before the time is right.
 
 Historically, crossed-cannons tattoos were used by sailors and soldiers as symbols of military service and readiness for conflict. They embodied the idea of being armed and ready to defend rather than eager to fight. As an oracle symbol, Crossed Cannons remind you that true power lies in conscious readiness: you are acting from clarity, positioning, and purpose rather than from fear.
 
-**Sit with this:** _What are you preparing for — and are you more ready than you fear?_
+**Sit with this:** _What are you preparing for, and are you more ready than you fear?_
 
 ---
 
@@ -266,7 +266,7 @@ The Tiger card speaks of inner sovereignty and the kind of presence that does no
 
 In a reading, the Tiger invites you to step into your natural authority rather than imitate someone else's power. It's about charisma that is earned, not performed. This card appears when you are being called to lead, create, or move through life as the main character in your own story.
 
-Historically, tiger tattoos in traditional styles carry meanings of courage, protection, and the ability to reign over one's domain. Sailors and warriors wore tigers as symbols of respect and inner fire. As an oracle symbol, the Tiger reminds you that your power is less about aggression and more about showing up in your fullness — grounded, regal, and unafraid.
+Historically, tiger tattoos in traditional styles carry meanings of courage, protection, and the ability to reign over one's domain. Sailors and warriors wore tigers as symbols of respect and inner fire. As an oracle symbol, the Tiger reminds you that your power is less about aggression and more about showing up in your fullness, grounded, regal, and unafraid.
 
 **Sit with this:** _Where are you waiting for permission you could simply give yourself?_
 
@@ -284,8 +284,8 @@ The Parrot card represents voice, language, and the power of repetition. It spea
 
 In a reading, the Parrot can highlight gossip, repetition, or the need to amplify truths rather than echoes. It's a reminder that what you say and repeat becomes reality, and that your voice shapes your world. The card encourages you to choose your words with care.
 
-Historically, the saying that “a parrot tells a sailor's story” tied the bird to sea tales — sometimes exaggerated, sometimes revealing. In broader tattoo tradition, colorful birds like parrots symbolized personality, expression, and the stories we carry. As an oracle image, the Parrot asks you to listen to what you keep saying, to speak your truth, and to stop repeating what no longer serves you.
+Historically, the saying that “a parrot tells a sailor's story” tied the bird to sea tales, sometimes exaggerated, sometimes revealing. In broader tattoo tradition, colorful birds like parrots symbolized personality, expression, and the stories we carry. As an oracle image, the Parrot asks you to listen to what you keep saying, to speak your truth, and to stop repeating what no longer serves you.
 
-**Sit with this:** _What are you repeating — and is it a truth or just an echo?_
+**Sit with this:** _What are you repeating, and is it a truth or just an echo?_
 
 ---
