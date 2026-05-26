@@ -1,122 +1,297 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Style Guide · Starboard</title>
-  <meta name="description" content="The Starboard brand style guide: color, typography, buttons, spacing, and radius.">
+  <meta name="description" content="The Starboard design system: themes, type, buttons, pills, tabs, cards, and motion.">
   <link rel="icon" type="image/svg+xml" href="brand/starboard%20offical%20icon%20dark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Amita:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#1b1f3b; --surface:#2d3268; --cream:#f5e6cd; --lime:#a4e636;
-      --muted:rgba(245,230,205,.72); --soft:rgba(245,230,205,.5);
-      --serif:"Playfair Display",Georgia,serif; --sans:"Chivo",system-ui,sans-serif;
+    /* ---- Base tokens (from the Starboard app) ---- */
+    :root {
+      --font-family-primary: "Chivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --font-family-secondary: "Playfair Display", Georgia, serif;
+      --font-family-amita: "Amita", serif;
+      --font-family-chivo: "Chivo", sans-serif;
+      --font-family-playfair: "Playfair Display", serif;
+      --font-weight-regular: 400; --font-weight-medium: 500; --font-weight-bold: 700;
+      --line-height-base: 1.6;
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
+      --color-danger: #dc2626; --color-danger-hover: #b91c1c; --color-danger-subtle: rgba(220,38,38,.1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
-    .wrap{max-width:920px;margin:0 auto;padding:64px 24px 80px}
-    .sg-head{text-align:center;margin-bottom:56px}
-    .sg-head h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(34px,6vw,52px);margin:0 0 10px}
-    .sg-head p{color:var(--muted);max-width:62ch;margin:0 auto}
-    section{margin:0 0 52px}
-    h2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:26px;margin:0 0 4px}
-    .note{color:var(--soft);font-size:14px;margin:0 0 20px}
-    .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}
-    .sw{background:var(--surface);border-radius:12px;overflow:hidden}
-    .sw .chip{height:80px}
-    .sw .meta{padding:10px 12px}
-    .sw .name{font-weight:700;font-size:14px}
-    .sw .hex{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
-    .sw .role{color:var(--soft);font-size:12px;margin-top:3px}
-    .type-row{padding:14px 0;border-bottom:1px solid rgba(245,230,205,.1)}
-    .type-row .lab{color:var(--soft);font-size:11px;text-transform:uppercase;letter-spacing:.2em;margin-bottom:6px}
-    .btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:15px;padding:14px 30px;border-radius:12px;border:1.5px solid var(--lime);background:var(--lime);color:var(--bg);text-decoration:none}
-    .btn.ghost{background:transparent;color:var(--lime)}
-    .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-    .radii{display:flex;gap:20px;flex-wrap:wrap}
-    .radii .r{font-size:12px;color:var(--muted);text-align:center}
-    .radii .box{width:72px;height:72px;background:var(--surface);border:1.5px solid var(--lime);margin-bottom:8px}
-    .scale{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap}
-    .scale .s .bar{background:var(--lime);height:22px;border-radius:2px}
-    .scale .s span{display:block;color:var(--muted);font-size:11px;text-align:center;margin-top:6px}
-    footer{text-align:center;border-top:1px solid rgba(245,230,205,.12);padding-top:32px;color:var(--soft);font-size:14px}
-    footer a{color:var(--lime);text-decoration:none}
+
+    /* ---- Themes (real values from the app) ---- */
+    [data-theme="dark"] {
+      --bg-color:#1b1f3b; --text-color:#f5e6cd; --text-muted:rgba(245,230,205,.6); --text-subtle:rgba(245,230,205,.8);
+      --border-muted:rgba(245,230,205,.15); --border-subtle:rgba(245,230,205,.25); --border-medium:rgba(245,230,205,.4);
+      --button-bg:#a4e636; --button-text:#1b1f3b; --button-surface:#2d2d3a; --button-surface-hover:#8285b6;
+      --footer-bg:#04041c; --footer-text:#f5e6cd; --ticker-bg:#4d5198; --ticker-text:#faf9d4;
+      --card-border-highlighted:rgba(163,230,53,.5); --overlay-bg:#21264b; --card-bg-tint:rgba(245,230,205,.08);
+      --card-bg-glass:#2d3268; --modal-bg:#2d3268; --dock-pill-bg:#1b1f3b;
+      --tertiary-1:#4d5198; --tertiary-2:#04041c; --tertiary-3:#3b3341;
+      --glow-rgb:163,230,53; --accent-color:#a4e636; --accent-text:#a4e636;
+      --input-bg:rgba(0,0,0,.2); --input-bg-hover:rgba(0,0,0,.25); --input-bg-focus:rgba(0,0,0,.3);
+      --card-shadow:0 2px 8px -2px rgba(0,0,0,.4), 0 1px 2px -1px rgba(0,0,0,.3);
+      --card-shadow-hover:0 24px 48px -12px rgba(0,0,0,.55), 0 4px 12px -2px rgba(0,0,0,.4);
+    }
+    [data-theme="light"] {
+      --bg-color:#fefdf6; --text-color:#04041c; --text-muted:rgba(4,4,28,.6); --text-subtle:rgba(4,4,28,.8);
+      --border-muted:rgba(4,4,28,.1); --border-subtle:rgba(4,4,28,.2); --border-medium:rgba(4,4,28,.3);
+      --button-bg:#a3c132; --button-text:#04041c; --button-surface:#f5f4ed; --button-surface-hover:#ebe9de;
+      --footer-bg:#4d5198; --footer-text:#fefdf6; --ticker-bg:#4d5198; --ticker-text:#faf9d4;
+      --card-border-highlighted:rgba(4,4,28,.18); --overlay-bg:#ffffff; --card-bg-tint:rgba(4,4,28,.04);
+      --card-bg-glass:#ffffff; --modal-bg:#ffffff; --dock-pill-bg:#e8e6f0;
+      --tertiary-1:#faf9d4; --tertiary-2:#4d5198; --tertiary-3:#3b3341;
+      --glow-rgb:163,193,50; --accent-color:#a3c132; --accent-text:#5c7000;
+      --input-bg:rgba(163,193,50,.08); --input-bg-hover:rgba(163,193,50,.12); --input-bg-focus:rgba(163,193,50,.15);
+      --card-shadow:0 1px 3px 0 rgba(4,4,28,.08), 0 1px 2px -1px rgba(4,4,28,.05);
+      --card-shadow-hover:0 20px 40px -12px rgba(4,4,28,.2), 0 4px 10px -2px rgba(4,4,28,.08);
+    }
+    [data-theme="warm"] {
+      --bg-color:#f7f0db; --text-color:#6a4d44; --text-muted:rgba(106,77,68,.6); --text-subtle:rgba(106,77,68,.8);
+      --border-muted:rgba(106,77,68,.1); --border-subtle:rgba(106,77,68,.2); --border-medium:rgba(106,77,68,.3);
+      --button-bg:#4a5d45; --button-text:#f7f0db; --button-surface:#e9e0c5; --button-surface-hover:#d8cba8;
+      --footer-bg:#4a5d45; --footer-text:#f7f0db; --ticker-bg:#8f9e7a; --ticker-text:#faf9d4;
+      --card-border-highlighted:rgba(106,77,68,.25); --overlay-bg:#fff9eb; --card-bg-tint:rgba(106,77,68,.1);
+      --card-bg-glass:#fff9eb; --modal-bg:#fff9eb; --dock-pill-bg:#f0e8d6;
+      --tertiary-1:#8f9e7a; --tertiary-2:#d98a5f; --tertiary-3:#7b5e4f;
+      --glow-rgb:143,158,122; --accent-color:#8f9e7a; --accent-text:#445535;
+      --input-bg:rgba(106,77,68,.1); --input-bg-hover:rgba(106,77,68,.14); --input-bg-focus:rgba(106,77,68,.18);
+      --card-shadow:0 1px 3px 0 rgba(106,77,68,.1), 0 1px 2px -1px rgba(106,77,68,.06);
+      --card-shadow-hover:0 20px 40px -12px rgba(106,77,68,.25), 0 4px 10px -2px rgba(106,77,68,.1);
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg-color); color: var(--text-color); font-family: var(--font-family-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; transition: background .3s ease, color .3s ease; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 96px; }
+    a { color: var(--accent-text); }
+    h1, h2, h3 { font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; }
+
+    .head h1 { font-size: clamp(36px, 7vw, 56px); margin: 0 0 4px; }
+    .head .quote { font-family: var(--font-family-secondary); font-style: italic; color: var(--text-muted); margin: 0 0 10px; }
+    .head p { color: var(--text-subtle); max-width: 70ch; }
+    .section-label { display:inline-block; font-family: var(--font-family-chivo); font-size:.75rem; font-weight:900; letter-spacing:.3em; text-transform:uppercase; color: var(--accent-text); }
+
+    section { margin: 0 0 56px; }
+    h2.sec { font-size: 28px; margin: 6px 0 4px; }
+    .note { color: var(--text-muted); font-size: 14px; margin: 0 0 22px; }
+
+    /* toggle */
+    .toggle-row { display:flex; align-items:center; gap:12px; margin: 24px 0 40px; flex-wrap: wrap; }
+    .segmented-control { display:flex; background: var(--overlay-bg); border:1px solid var(--border-muted); border-radius:9999px; padding:.4rem; box-shadow: var(--card-shadow); }
+    .segmented-control button { border-radius:9999px; flex:1 1 0%; min-width:0; height:2.6rem; padding:0 1.4rem; font-family:var(--font-family-primary); font-weight:600; font-size:14px; color:var(--text-subtle); background:none; border:0; cursor:pointer; }
+    .segmented-control button[aria-pressed="true"] { background: var(--button-bg); color: var(--button-text); }
+
+    /* swatches */
+    .swatches { display:grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap:14px; }
+    .sw { border:1px solid var(--border-muted); border-radius:12px; overflow:hidden; background: var(--card-bg-glass); }
+    .sw .chip { height:64px; }
+    .sw .meta { padding:8px 10px; }
+    .sw .name { font-size:13px; font-weight:700; }
+    .sw .hex { font-size:12px; color: var(--text-muted); text-transform:uppercase; }
+
+    /* type */
+    .type-row { padding:12px 0; border-bottom:1px solid var(--border-muted); }
+    .type-row .lab { color:var(--text-muted); font-size:11px; text-transform:uppercase; letter-spacing:.16em; margin-bottom:6px; }
+
+    .row { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+    .stack { display:flex; flex-direction:column; gap:14px; }
+
+    /* ---- Button system (verbatim from the app) ---- */
+    .button { display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-family-primary); font-weight:500; border-radius:var(--radius-lg); gap:8px; cursor:pointer; border:1px solid transparent; white-space:nowrap; transition:all .2s ease; position:relative; }
+    .button--primary { background:var(--button-bg); color:var(--button-text); border:1px solid var(--button-bg); font-weight:600; letter-spacing:.01em; }
+    .button--primary:hover { transform:translateY(-2px); filter:brightness(1.05); box-shadow:0 4px 12px rgba(0,0,0,.1); }
+    .button--secondary { font-weight:600; background:transparent; color:var(--accent-text); border:1.5px solid color-mix(in srgb, var(--accent-color) 25%, transparent); }
+    .button--secondary:hover { background:color-mix(in srgb, var(--accent-color) 8%, transparent); transform:translateY(-2px); border-color:var(--accent-color); }
+    .button--tertiary { background:var(--button-surface); color:var(--text-color); border:1px solid var(--border-subtle); }
+    .button--tertiary:hover { border-color:var(--border-medium); background:var(--button-surface-hover); transform:translateY(-2px); }
+    .button--ghost { background:transparent; border:none; color:var(--text-subtle); }
+    .button--ghost:hover { color:var(--text-color); background:var(--button-surface); }
+    .button--danger { background:var(--color-danger); color:#fff; border:1px solid var(--color-danger); }
+    .button--danger:hover { background:var(--color-danger-hover); transform:translateY(-2px); }
+    .button--sm { font-size:.8125rem; padding:.5rem 1rem; }
+    .button--md { font-size:.95rem; padding:.75rem 1.5rem; }
+    .button--lg { font-size:1.125rem; padding:1rem 2rem; }
+    .button--pill { border-radius:9999px; }
+    .button--icon { border-radius:50%; flex-shrink:0; }
+    .button--icon-md { width:2.75rem; height:2.75rem; }
+    .button--icon-primary { background:var(--button-bg); color:var(--button-text); border:1px solid var(--border-muted); }
+    .button--icon-secondary { background:transparent; color:var(--accent-text); border:1.5px solid color-mix(in srgb, var(--accent-color) 25%, transparent); }
+
+    /* cards */
+    .card { position:relative; background:var(--card-bg-glass); border-radius:var(--radius-lg); padding:1.5rem; box-shadow:var(--card-shadow); border:1px solid var(--card-border-highlighted); transition:transform .3s ease, box-shadow .3s ease; }
+    .card:hover { transform:translateY(-4px); box-shadow:var(--card-shadow-hover); }
+    .card .card-title { font-family:var(--font-family-secondary); font-style:italic; font-size:1.25rem; margin:0 0 .25rem; }
+    .card .card-desc { color:var(--text-muted); font-size:.95rem; margin:0; }
+
+    /* inputs */
+    .form-label { display:flex; gap:.5rem; font-family:var(--font-family-chivo); font-size:.75rem; font-weight:900; text-transform:uppercase; letter-spacing:.2em; color:var(--accent-text); margin:0 0 .5rem; }
+    .input-field { background:var(--input-bg); border:1px solid var(--border-muted); color:var(--text-color); border-radius:.75rem; width:100%; padding:.75rem 1rem; font-size:.875rem; font-family:var(--font-family-primary); transition:all .3s cubic-bezier(.4,0,.2,1); }
+    .input-field::placeholder { color:var(--text-muted); opacity:.5; }
+    .input-field:focus { border-color:var(--button-bg); background:var(--input-bg-focus); box-shadow:0 0 0 4px rgba(var(--glow-rgb), .1); outline:none; }
+
+    /* ---- Motion demos ---- */
+    .motion-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:14px; }
+    .motion { border:1px solid var(--border-muted); border-radius:12px; padding:18px 10px; text-align:center; background:var(--card-bg-glass); overflow:hidden; }
+    .motion .dot { width:34px; height:34px; border-radius:8px; background:var(--button-bg); margin:6px auto 12px; }
+    .motion .lab { font-size:11px; color:var(--text-muted); font-family:ui-monospace, monospace; }
+    .m-float { animation: float 6s ease-in-out infinite; }
+    .m-fadeup { animation: fadeUp 1.6s var(--ease-out-expo) infinite alternate; }
+    .m-pulse { animation: pulse 2s ease-in-out infinite; }
+    .m-scalein { animation: scaleFloatInClean 1.8s ease-out infinite; }
+    .m-zoom { animation: zoom-in 1.6s ease-out infinite alternate; }
+    .m-rotate { animation: slow-rotate 6s linear infinite; border-radius:50%; }
+    .m-slidedown { animation: slideDown 1.4s ease-out infinite alternate; }
+    .m-sparkle { animation: sparkle 2s ease-in-out infinite; }
+    .m-shimmer { position:relative; background:linear-gradient(90deg, var(--button-surface) 25%, var(--button-surface-hover) 50%, var(--button-surface) 75%); background-size:200% 100%; animation:shimmer 1.5s infinite linear; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+    @keyframes fadeUp { 0%{opacity:0; transform:translateY(12px)} 100%{opacity:1; transform:translateY(0)} }
+    @keyframes pulse { 0%,100%{transform:scale(1); opacity:1} 50%{transform:scale(1.15); opacity:.7} }
+    @keyframes scaleFloatInClean { 0%{opacity:0; transform:scale(.6) translateY(-30px)} 60%{transform:scale(1.1) translateY(5px)} 100%{opacity:1; transform:scale(1) translateY(0)} }
+    @keyframes zoom-in { from{opacity:.4; transform:scale(1.1)} to{opacity:1; transform:scale(1)} }
+    @keyframes slow-rotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+    @keyframes slideDown { from{transform:translateY(-100%)} to{transform:translateY(0)} }
+    @keyframes sparkle { 0%{opacity:0; transform:scale(0) rotate(0)} 50%{opacity:.6; transform:scale(.8) rotate(90deg)} 100%{opacity:0; transform:scale(0) rotate(180deg)} }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    @media (prefers-reduced-motion: reduce) { .motion * { animation: none !important; } }
+
+    footer { text-align:center; border-top:1px solid var(--border-muted); padding-top:32px; color:var(--text-muted); font-size:14px; }
+    footer a { color: var(--accent-text); text-decoration:none; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="sg-head">
-      <h1>Starboard Style Guide</h1>
-      <p>Warm, approachable minimalism with a sophisticated edge: a cream canvas, deep-navy text, and a single electric-lime accent. The Sailor's Oracle renders this system in dark mode (navy background, cream text).</p>
+    <div class="head">
+      <p class="section-label">Productivity</p>
+      <h1>Starboard</h1>
+      <p class="quote">"Warm Minimalist"</p>
+      <p>A warm, minimalist design system: elegant serif headings, clean sans-serif body, a single bright accent per theme, generous whitespace, and soft elevation. Three themes share one set of semantic tokens. <a href="https://www.starboardmanifest.com/">starboardmanifest.com</a></p>
+    </div>
+
+    <div class="toggle-row">
+      <span class="section-label">Theme</span>
+      <div class="segmented-control" id="themeToggle">
+        <button data-theme="dark" aria-pressed="true">Dark</button>
+        <button data-theme="light" aria-pressed="false">Light</button>
+        <button data-theme="warm" aria-pressed="false">Warm</button>
+      </div>
+      <span class="note" style="margin:0">Switches the whole guide. Swatches below show each theme regardless.</span>
     </div>
 
     <section>
-      <h2>Color</h2>
-      <p class="note">Reserve lime for key interactive elements. Never use a pure-white page background.</p>
-      <div class="swatches">
-        <div class="sw"><div class="chip" style="background:#f5e6cd"></div><div class="meta"><div class="name">Warm Cream</div><div class="hex">#f5e6cd</div><div class="role">Page background (light); text on dark</div></div></div>
-        <div class="sw"><div class="chip" style="background:#e5e7eb"></div><div class="meta"><div class="name">Soft Gray</div><div class="hex">#e5e7eb</div><div class="role">Secondary surfaces</div></div></div>
-        <div class="sw"><div class="chip" style="background:#a4e636"></div><div class="meta"><div class="name">Electric Lime</div><div class="hex">#a4e636</div><div class="role">CTAs, accents, progress</div></div></div>
-        <div class="sw"><div class="chip" style="background:#faf9d4"></div><div class="meta"><div class="name">Accent Light</div><div class="hex">#faf9d4</div><div class="role">Subtle highlights</div></div></div>
-        <div class="sw"><div class="chip" style="background:#1b1f3b"></div><div class="meta"><div class="name">Deep Navy</div><div class="hex">#1b1f3b</div><div class="role">Primary text; dark background</div></div></div>
-        <div class="sw"><div class="chip" style="background:#2d3268"></div><div class="meta"><div class="name">Text Secondary</div><div class="hex">#2d3268</div><div class="role">Secondary text; raised panels</div></div></div>
-        <div class="sw"><div class="chip" style="background:#4d5198"></div><div class="meta"><div class="name">Text Muted</div><div class="hex">#4d5198</div><div class="role">Supporting content</div></div></div>
-        <div class="sw"><div class="chip" style="background:#000000"></div><div class="meta"><div class="name">Pure Black</div><div class="hex">#000000</div><div class="role">Logo, emphasis</div></div></div>
-        <div class="sw"><div class="chip" style="background:#ffffff"></div><div class="meta"><div class="name">Pure White</div><div class="hex">#ffffff</div><div class="role">High-contrast white</div></div></div>
+      <h2 class="sec">Color</h2>
+      <p class="note">One set of semantic tokens, mapped per theme. The accent shifts (lime in dark, olive-lime in light, sage in warm) and accent-text darkens for contrast.</p>
+
+      <p class="section-label">Dark</p>
+      <div class="swatches" style="margin:10px 0 26px">
+        <div class="sw"><div class="chip" style="background:#1b1f3b"></div><div class="meta"><div class="name">bg-color</div><div class="hex">#1b1f3b</div></div></div>
+        <div class="sw"><div class="chip" style="background:#f5e6cd"></div><div class="meta"><div class="name">text-color</div><div class="hex">#f5e6cd</div></div></div>
+        <div class="sw"><div class="chip" style="background:#a4e636"></div><div class="meta"><div class="name">accent / button</div><div class="hex">#a4e636</div></div></div>
+        <div class="sw"><div class="chip" style="background:#2d3268"></div><div class="meta"><div class="name">card / modal</div><div class="hex">#2d3268</div></div></div>
+        <div class="sw"><div class="chip" style="background:#4d5198"></div><div class="meta"><div class="name">tertiary-1</div><div class="hex">#4d5198</div></div></div>
+        <div class="sw"><div class="chip" style="background:#04041c"></div><div class="meta"><div class="name">footer / tertiary-2</div><div class="hex">#04041c</div></div></div>
+      </div>
+
+      <p class="section-label">Light</p>
+      <div class="swatches" style="margin:10px 0 26px">
+        <div class="sw"><div class="chip" style="background:#fefdf6"></div><div class="meta"><div class="name">bg-color</div><div class="hex">#fefdf6</div></div></div>
+        <div class="sw"><div class="chip" style="background:#04041c"></div><div class="meta"><div class="name">text-color</div><div class="hex">#04041c</div></div></div>
+        <div class="sw"><div class="chip" style="background:#a3c132"></div><div class="meta"><div class="name">button-bg</div><div class="hex">#a3c132</div></div></div>
+        <div class="sw"><div class="chip" style="background:#5c7000"></div><div class="meta"><div class="name">accent-text</div><div class="hex">#5c7000</div></div></div>
+        <div class="sw"><div class="chip" style="background:#ffffff"></div><div class="meta"><div class="name">card / modal</div><div class="hex">#ffffff</div></div></div>
+        <div class="sw"><div class="chip" style="background:#faf9d4"></div><div class="meta"><div class="name">tertiary-1</div><div class="hex">#faf9d4</div></div></div>
+        <div class="sw"><div class="chip" style="background:#4d5198"></div><div class="meta"><div class="name">footer / tertiary-2</div><div class="hex">#4d5198</div></div></div>
+      </div>
+
+      <p class="section-label">Warm</p>
+      <div class="swatches" style="margin:10px 0 0">
+        <div class="sw"><div class="chip" style="background:#f7f0db"></div><div class="meta"><div class="name">bg-color</div><div class="hex">#f7f0db</div></div></div>
+        <div class="sw"><div class="chip" style="background:#6a4d44"></div><div class="meta"><div class="name">text-color</div><div class="hex">#6a4d44</div></div></div>
+        <div class="sw"><div class="chip" style="background:#4a5d45"></div><div class="meta"><div class="name">button-bg</div><div class="hex">#4a5d45</div></div></div>
+        <div class="sw"><div class="chip" style="background:#8f9e7a"></div><div class="meta"><div class="name">accent / tertiary-1</div><div class="hex">#8f9e7a</div></div></div>
+        <div class="sw"><div class="chip" style="background:#fff9eb"></div><div class="meta"><div class="name">card / modal</div><div class="hex">#fff9eb</div></div></div>
+        <div class="sw"><div class="chip" style="background:#d98a5f"></div><div class="meta"><div class="name">tertiary-2</div><div class="hex">#d98a5f</div></div></div>
+        <div class="sw"><div class="chip" style="background:#445535"></div><div class="meta"><div class="name">accent-text</div><div class="hex">#445535</div></div></div>
       </div>
     </section>
 
     <section>
-      <h2>Typography</h2>
-      <p class="note">Playfair Display for headings, Chivo for body and labels.</p>
-      <div class="type-row"><div class="lab">Playfair · 48 · 400</div><div style="font-family:var(--serif);font-style:italic;font-size:48px;line-height:1.05">The Sailor's Oracle</div></div>
-      <div class="type-row"><div class="lab">Playfair · 20 · 400</div><div style="font-family:var(--serif);font-style:italic;font-size:20px">Card titles and small headings</div></div>
-      <div class="type-row"><div class="lab">Chivo · 18 · 600</div><div style="font-size:18px;font-weight:600">Section titles</div></div>
-      <div class="type-row"><div class="lab">Chivo · 16 · 400</div><div style="font-size:16px">Body text, the most common style, set at sixteen pixels with generous line height for easy reading.</div></div>
-      <div class="type-row"><div class="lab">Chivo · 16 · 700</div><div style="font-size:16px;font-weight:700">Bold body for emphasis</div></div>
-      <div class="type-row"><div class="lab">Chivo · 9 · 700 · uppercase</div><div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.09em">Labels and tags</div></div>
+      <h2 class="sec">Typography</h2>
+      <p class="note">Playfair Display (italic) for headings and brand; Chivo for body, labels, and UI. Amita and Space Grotesk are available as accent faces.</p>
+      <div class="type-row"><div class="lab">h1 · Playfair italic · 44 / 72px</div><div style="font-family:var(--font-family-secondary);font-style:italic;font-size:44px;line-height:1.1">The Sailor's Oracle</div></div>
+      <div class="type-row"><div class="lab">h2 · Playfair italic · 40 / 52px</div><div style="font-family:var(--font-family-secondary);font-style:italic;font-size:40px">Section heading</div></div>
+      <div class="type-row"><div class="lab">section-label · Chivo · 12px / 900 / 0.3em</div><div class="section-label">Your schedule</div></div>
+      <div class="type-row"><div class="lab">body · Chivo · 16px / 400</div><div style="font-size:16px">Primary body text with relaxed 1.6 line height for comfortable reading.</div></div>
+      <div class="type-row"><div class="lab">small · Chivo · 14px</div><div style="font-size:14px">Captions and secondary information.</div></div>
     </section>
 
     <section>
-      <h2>Buttons</h2>
-      <p class="note">Rounded rectangles at 12px. Lime fill for primary, lime outline for secondary.</p>
-      <div class="row">
-        <span class="btn">Draw your card</span>
-        <span class="btn ghost">Secondary</span>
+      <h2 class="sec">Buttons</h2>
+      <p class="note">One unified system. Variants: primary, secondary, tertiary, ghost, danger. Sizes sm / md / lg. Modifiers: pill, icon.</p>
+      <div class="stack">
+        <div class="row">
+          <button class="button button--primary button--md">Primary</button>
+          <button class="button button--secondary button--md">Secondary</button>
+          <button class="button button--tertiary button--md">Tertiary</button>
+          <button class="button button--ghost button--md">Ghost</button>
+          <button class="button button--danger button--md">Danger</button>
+        </div>
+        <div class="row">
+          <button class="button button--primary button--sm">Small</button>
+          <button class="button button--primary button--md">Medium</button>
+          <button class="button button--primary button--lg">Large</button>
+          <button class="button button--primary button--md button--pill">Pill</button>
+        </div>
+        <div class="row">
+          <button class="button button--icon button--icon-md button--icon-primary" aria-label="primary icon">+</button>
+          <button class="button button--icon button--icon-md button--icon-secondary" aria-label="secondary icon">+</button>
+        </div>
       </div>
     </section>
 
     <section>
-      <h2>Border radius</h2>
-      <p class="note">Interactive elements use 12px. Stick to the scale.</p>
-      <div class="radii">
-        <div class="r"><div class="box" style="border-radius:4px"></div>4px · sm</div>
-        <div class="r"><div class="box" style="border-radius:8px"></div>8px · md</div>
-        <div class="r"><div class="box" style="border-radius:12px"></div>12px · lg</div>
-        <div class="r"><div class="box" style="border-radius:16px"></div>16px · xl</div>
-        <div class="r"><div class="box" style="border-radius:9999px"></div>full</div>
+      <h2 class="sec">Pills &amp; tabs (segmented control)</h2>
+      <p class="note">The pill tab bar used for Templates / Catalog, Profile / Billing / Settings, and theme switching. Active segment uses the button fill; the container is a 64px pill.</p>
+      <div class="segmented-control" style="max-width:420px">
+        <button aria-pressed="true">Templates</button>
+        <button aria-pressed="false">Catalog</button>
       </div>
     </section>
 
     <section>
-      <h2>Spacing</h2>
-      <p class="note">A 4px base scale: 2, 4, 8, 12, 16, 24, 32, 48, 64, 80, 96, 128.</p>
-      <div class="scale">
-        <div class="s"><div class="bar" style="width:2px"></div><span>2</span></div>
-        <div class="s"><div class="bar" style="width:4px"></div><span>4</span></div>
-        <div class="s"><div class="bar" style="width:8px"></div><span>8</span></div>
-        <div class="s"><div class="bar" style="width:12px"></div><span>12</span></div>
-        <div class="s"><div class="bar" style="width:16px"></div><span>16</span></div>
-        <div class="s"><div class="bar" style="width:24px"></div><span>24</span></div>
-        <div class="s"><div class="bar" style="width:32px"></div><span>32</span></div>
-        <div class="s"><div class="bar" style="width:48px"></div><span>48</span></div>
-        <div class="s"><div class="bar" style="width:64px"></div><span>64</span></div>
-        <div class="s"><div class="bar" style="width:80px"></div><span>80</span></div>
-        <div class="s"><div class="bar" style="width:96px"></div><span>96</span></div>
-        <div class="s"><div class="bar" style="width:128px"></div><span>128</span></div>
+      <h2 class="sec">Cards</h2>
+      <p class="note">Shared elevation model: subtle resting shadow, lift on hover. Surface is card-bg-glass per theme.</p>
+      <div class="row" style="align-items:stretch">
+        <div class="card" style="max-width:280px"><p class="card-title">My Sovereignty</p><p class="card-desc">A living altar to self-sovereignty and wealth.</p></div>
+        <div class="card" style="max-width:280px"><p class="card-title">April</p><p class="card-desc">Created with love and intention.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">Inputs</h2>
+      <div style="max-width:360px">
+        <label class="form-label">Email address</label>
+        <input class="input-field" placeholder="you@example.com">
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">Motion</h2>
+      <p class="note">The animation library (looped here for preview). Easing is mostly <code>cubic-bezier(0.16, 1, 0.3, 1)</code>. All respect reduced-motion.</p>
+      <div class="motion-grid">
+        <div class="motion"><div class="dot m-float"></div><div class="lab">float</div></div>
+        <div class="motion"><div class="dot m-fadeup"></div><div class="lab">fadeUp / fadeInUp</div></div>
+        <div class="motion"><div class="dot m-pulse"></div><div class="lab">pulse</div></div>
+        <div class="motion"><div class="dot m-scalein"></div><div class="lab">scaleFloatIn</div></div>
+        <div class="motion"><div class="dot m-zoom"></div><div class="lab">zoom-in</div></div>
+        <div class="motion"><div class="dot m-rotate"></div><div class="lab">slow-rotate</div></div>
+        <div class="motion"><div class="dot m-slidedown"></div><div class="lab">slideDown</div></div>
+        <div class="motion"><div class="dot m-sparkle"></div><div class="lab">sparkle</div></div>
+        <div class="motion"><div class="dot m-shimmer"></div><div class="lab">shimmer</div></div>
       </div>
     </section>
 
@@ -124,5 +299,13 @@
       <a href="index.html">The Sailor's Oracle</a> · Part of <a href="https://www.starboardmanifest.com/">Starboard</a>
     </footer>
   </div>
+
+  <script>
+    document.getElementById("themeToggle").addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      document.documentElement.setAttribute("data-theme", b.dataset.theme);
+      this.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    });
+  </script>
 </body>
 </html>
