@@ -1,108 +1,185 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Style Guide · Starboard</title>
-  <meta name="description" content="The Starboard brand style guide: color, typography, buttons, spacing, and radius.">
+  <meta name="description" content="The Starboard brand style guide: color, typography, spacing, radius, elevation, and tokens.">
   <link rel="icon" type="image/svg+xml" href="brand/starboard%20offical%20icon%20dark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#1b1f3b; --surface:#2d3268; --cream:#f5e6cd; --lime:#a4e636;
-      --muted:rgba(245,230,205,.72); --soft:rgba(245,230,205,.5);
-      --serif:"Playfair Display",Georgia,serif; --sans:"Chivo",system-ui,sans-serif;
+    :root {
+      --accent: #a4e636; --accent-light: #faf9d4;
+      --serif: "Playfair Display", Georgia, serif; --sans: "Chivo", system-ui, sans-serif;
+      --radius: 12px;
     }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
-    .wrap{max-width:920px;margin:0 auto;padding:64px 24px 80px}
-    .sg-head{text-align:center;margin-bottom:56px}
-    .sg-head h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(34px,6vw,52px);margin:0 0 10px}
-    .sg-head p{color:var(--muted);max-width:62ch;margin:0 auto}
-    section{margin:0 0 52px}
-    h2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:26px;margin:0 0 4px}
-    .note{color:var(--soft);font-size:14px;margin:0 0 20px}
-    .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}
-    .sw{background:var(--surface);border-radius:12px;overflow:hidden}
-    .sw .chip{height:80px}
-    .sw .meta{padding:10px 12px}
-    .sw .name{font-weight:700;font-size:14px}
-    .sw .hex{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
-    .sw .role{color:var(--soft);font-size:12px;margin-top:3px}
-    .type-row{padding:14px 0;border-bottom:1px solid rgba(245,230,205,.1)}
-    .type-row .lab{color:var(--soft);font-size:11px;text-transform:uppercase;letter-spacing:.2em;margin-bottom:6px}
-    .btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:15px;padding:14px 30px;border-radius:12px;border:1.5px solid var(--lime);background:var(--lime);color:var(--bg);text-decoration:none}
-    .btn.ghost{background:transparent;color:var(--lime)}
-    .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-    .radii{display:flex;gap:20px;flex-wrap:wrap}
-    .radii .r{font-size:12px;color:var(--muted);text-align:center}
-    .radii .box{width:72px;height:72px;background:var(--surface);border:1.5px solid var(--lime);margin-bottom:8px}
-    .scale{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap}
-    .scale .s .bar{background:var(--lime);height:22px;border-radius:2px}
-    .scale .s span{display:block;color:var(--muted);font-size:11px;text-align:center;margin-top:6px}
-    footer{text-align:center;border-top:1px solid rgba(245,230,205,.12);padding-top:32px;color:var(--soft);font-size:14px}
-    footer a{color:var(--lime);text-decoration:none}
+    html[data-theme="dark"]  { --bg: #1b1f3b; --surface: #2d3268; --line: rgba(245,230,205,.14); --text: #f5e6cd; --text-2: rgba(245,230,205,.78); --muted: rgba(245,230,205,.55); }
+    html[data-theme="light"] { --bg: #f5e6cd; --surface: #ffffff;  --line: rgba(27,31,59,.12);   --text: #1b1f3b; --text-2: #2d3268;               --muted: #4d5198; }
+    html[data-theme="warm"]  { --bg: #f5e6cd; --surface: #ffffff;  --line: rgba(27,31,59,.12);   --text: #1b1f3b; --text-2: #2d3268;               --muted: #4d5198; }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; transition: background .25s ease, color .25s ease; }
+    .wrap { max-width: 940px; margin: 0 auto; padding: 48px 24px 96px; }
+    a { color: var(--accent); }
+
+    .head { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 28px; margin-bottom: 28px; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .18em; font-size: 11px; font-weight: 700; color: var(--muted); margin: 0 0 8px; }
+    .head h1 { font-family: var(--serif); font-weight: 600; font-size: 40px; margin: 0 0 2px; }
+    .head .tag-quote { font-family: var(--serif); font-style: italic; color: var(--text-2); margin: 0 0 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+    .tag { font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: color-mix(in srgb, var(--text) 10%, transparent); color: var(--text-2); }
+    .head p { color: var(--text-2); margin: 0 0 14px; max-width: 70ch; }
+    .head .site { font-size: 14px; }
+
+    /* theme toggle */
+    .toggle-row { display: flex; align-items: center; gap: 12px; margin: 0 0 36px; flex-wrap: wrap; }
+    .toggle-row .lbl { font-size: 13px; color: var(--muted); }
+    .toggle { display: inline-flex; background: color-mix(in srgb, var(--text) 8%, transparent); border-radius: 999px; padding: 5px; gap: 4px; }
+    .toggle button { font-family: var(--sans); font-size: 14px; font-weight: 700; color: var(--text-2); background: none; border: 0; padding: 8px 22px; border-radius: 999px; cursor: pointer; }
+    .toggle button[aria-pressed="true"] { background: var(--accent); color: #1b1f3b; }
+    .toggle button[disabled] { opacity: .5; cursor: not-allowed; }
+
+    section { margin: 0 0 52px; }
+    h2.sec { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 28px; margin: 0 0 4px; }
+    .note { color: var(--muted); font-size: 14px; margin: 0 0 22px; }
+
+    /* colors */
+    .theme-group { margin: 0 0 26px; }
+    .theme-group h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin: 0 0 14px; font-weight: 700; }
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 16px; }
+    .sw { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .sw .chip { height: 78px; }
+    .sw .meta { padding: 10px 12px; }
+    .sw .name { font-weight: 700; font-size: 14px; }
+    .sw .hex { color: var(--muted); font-size: 13px; text-transform: uppercase; }
+    .sw .role { color: var(--muted); font-size: 12px; margin-top: 4px; line-height: 1.4; }
+
+    /* type */
+    .type-row { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .type-row .lab { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .16em; margin-bottom: 6px; }
+
+    /* buttons */
+    .btn { display: inline-block; font-family: var(--sans); font-weight: 700; font-size: 15px; padding: 14px 30px; border-radius: 12px; border: 1.5px solid var(--accent); background: var(--accent); color: #1b1f3b; text-decoration: none; }
+    .btn.ghost { background: transparent; color: var(--accent); }
+    .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+    .radii { display: flex; gap: 20px; flex-wrap: wrap; }
+    .radii .r { font-size: 12px; color: var(--muted); text-align: center; }
+    .radii .box { width: 72px; height: 72px; background: var(--surface); border: 1.5px solid var(--accent); margin-bottom: 8px; }
+
+    .scale { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+    .scale .bar { background: var(--accent); height: 22px; border-radius: 2px; }
+    .scale .s span { display: block; color: var(--muted); font-size: 11px; text-align: center; margin-top: 6px; }
+
+    .elev { display: flex; gap: 24px; flex-wrap: wrap; }
+    .elev .card { width: 200px; background: var(--surface); border-radius: 12px; padding: 18px; font-size: 13px; color: var(--text-2); }
+    .elev .resting { box-shadow: rgba(0,0,0,.4) 0 2px 8px -2px, rgba(0,0,0,.3) 0 1px 2px -1px; }
+    .elev .raised { box-shadow: rgba(0,0,0,.5) 0 25px 50px -12px; }
+
+    .list { margin: 0; padding: 0; list-style: none; }
+    .list li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .list li b { color: var(--text); }
+    .dd { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .dd h3 { font-size: 14px; margin: 0 0 10px; }
+    .dd ul { margin: 0; padding-left: 18px; color: var(--text-2); }
+    .dd ul li { margin: 0 0 8px; }
+    @media (max-width: 640px) { .dd { grid-template-columns: 1fr; } }
+
+    /* code tabs */
+    .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+    .tabs button { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--muted); background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 14px; cursor: pointer; }
+    .tabs button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--accent); }
+    .panel { display: none; position: relative; }
+    .panel[data-active] { display: block; }
+    .panel .copy { position: absolute; top: 12px; right: 12px; font-family: var(--sans); font-size: 13px; font-weight: 700; color: var(--text); background: color-mix(in srgb, var(--text) 10%, transparent); border: 0; border-radius: 8px; padding: 7px 14px; cursor: pointer; }
+    pre { background: color-mix(in srgb, var(--text) 6%, transparent); border: 1px solid var(--line); border-radius: 12px; padding: 18px 18px 18px; overflow: auto; margin: 14px 0 0; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; line-height: 1.55; color: var(--text); white-space: pre; }
+
+    footer { text-align: center; border-top: 1px solid var(--line); padding-top: 32px; color: var(--muted); font-size: 14px; }
+    footer a { color: var(--accent); text-decoration: none; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="sg-head">
-      <h1>Starboard Style Guide</h1>
-      <p>Warm, approachable minimalism with a sophisticated edge: a cream canvas, deep-navy text, and a single electric-lime accent. The Sailor's Oracle renders this system in dark mode (navy background, cream text).</p>
+    <div class="head">
+      <p class="eyebrow">Productivity</p>
+      <h1>Starboard</h1>
+      <p class="tag-quote">"Warm Minimalist"</p>
+      <div class="tags"><span class="tag">minimalist</span><span class="tag">warm</span><span class="tag">elegant</span><span class="tag">serif-accent</span><span class="tag">loading-states</span></div>
+      <p>A warm, minimalist design system featuring a cream background with elegant serif typography for branding and clean sans-serif for body text. The design uses a bright lime accent color and emphasizes simplicity with generous whitespace and subtle shadows for depth.</p>
+      <p class="site"><a href="https://www.starboardmanifest.com/">starboardmanifest.com</a></p>
+    </div>
+
+    <div class="toggle-row">
+      <span class="lbl">Preview theme</span>
+      <div class="toggle" id="themeToggle">
+        <button data-theme="dark" aria-pressed="true">Dark</button>
+        <button data-theme="light" aria-pressed="false">Light</button>
+        <button data-theme="warm" aria-pressed="false" disabled title="Warm palette not provided yet">Warm</button>
+      </div>
     </div>
 
     <section>
-      <h2>Color</h2>
-      <p class="note">Reserve lime for key interactive elements. Never use a pure-white page background.</p>
-      <div class="swatches">
-        <div class="sw"><div class="chip" style="background:#f5e6cd"></div><div class="meta"><div class="name">Warm Cream</div><div class="hex">#f5e6cd</div><div class="role">Page background (light); text on dark</div></div></div>
-        <div class="sw"><div class="chip" style="background:#e5e7eb"></div><div class="meta"><div class="name">Soft Gray</div><div class="hex">#e5e7eb</div><div class="role">Secondary surfaces</div></div></div>
-        <div class="sw"><div class="chip" style="background:#a4e636"></div><div class="meta"><div class="name">Electric Lime</div><div class="hex">#a4e636</div><div class="role">CTAs, accents, progress</div></div></div>
-        <div class="sw"><div class="chip" style="background:#faf9d4"></div><div class="meta"><div class="name">Accent Light</div><div class="hex">#faf9d4</div><div class="role">Subtle highlights</div></div></div>
-        <div class="sw"><div class="chip" style="background:#1b1f3b"></div><div class="meta"><div class="name">Deep Navy</div><div class="hex">#1b1f3b</div><div class="role">Primary text; dark background</div></div></div>
-        <div class="sw"><div class="chip" style="background:#2d3268"></div><div class="meta"><div class="name">Text Secondary</div><div class="hex">#2d3268</div><div class="role">Secondary text; raised panels</div></div></div>
-        <div class="sw"><div class="chip" style="background:#4d5198"></div><div class="meta"><div class="name">Text Muted</div><div class="hex">#4d5198</div><div class="role">Supporting content</div></div></div>
-        <div class="sw"><div class="chip" style="background:#000000"></div><div class="meta"><div class="name">Pure Black</div><div class="hex">#000000</div><div class="role">Logo, emphasis</div></div></div>
-        <div class="sw"><div class="chip" style="background:#ffffff"></div><div class="meta"><div class="name">Pure White</div><div class="hex">#ffffff</div><div class="role">High-contrast white</div></div></div>
+      <h2 class="sec">Overview</h2>
+      <p class="note">Warm, approachable minimalism with a sophisticated edge. Calm and focused, low density, with generous whitespace and a single-column centered layout. Spacing follows a 4px base unit (common values 8, 12, 16, 24, 32).</p>
+    </section>
+
+    <section>
+      <h2 class="sec">Color</h2>
+      <p class="note">The same nine semantic tokens, mapped per theme. Reserve lime for key interactive elements; never use a pure-white page background in the light theme.</p>
+
+      <div class="theme-group">
+        <h3>Light theme</h3>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#f5e6cd"></div><div class="meta"><div class="name">background</div><div class="hex">#f5e6cd</div><div class="role">Warm cream page background</div></div></div>
+          <div class="sw"><div class="chip" style="background:#e5e7eb"></div><div class="meta"><div class="name">surface</div><div class="hex">#e5e7eb</div><div class="role">Soft gray surfaces, containers</div></div></div>
+          <div class="sw"><div class="chip" style="background:#a4e636"></div><div class="meta"><div class="name">accent-primary</div><div class="hex">#a4e636</div><div class="role">CTAs, interactive, progress</div></div></div>
+          <div class="sw"><div class="chip" style="background:#faf9d4"></div><div class="meta"><div class="name">accent-light</div><div class="hex">#faf9d4</div><div class="role">Subtle accent highlights</div></div></div>
+          <div class="sw"><div class="chip" style="background:#1b1f3b"></div><div class="meta"><div class="name">text-primary</div><div class="hex">#1b1f3b</div><div class="role">Deep navy, high contrast text</div></div></div>
+          <div class="sw"><div class="chip" style="background:#2d3268"></div><div class="meta"><div class="name">text-secondary</div><div class="hex">#2d3268</div><div class="role">Medium contrast text</div></div></div>
+          <div class="sw"><div class="chip" style="background:#4d5198"></div><div class="meta"><div class="name">text-muted</div><div class="hex">#4d5198</div><div class="role">Supporting content</div></div></div>
+          <div class="sw"><div class="chip" style="background:#000000"></div><div class="meta"><div class="name">pure-black</div><div class="hex">#000000</div><div class="role">Logo, emphasis</div></div></div>
+          <div class="sw"><div class="chip" style="background:#ffffff"></div><div class="meta"><div class="name">pure-white</div><div class="hex">#ffffff</div><div class="role">High-contrast white</div></div></div>
+        </div>
+      </div>
+
+      <div class="theme-group">
+        <h3>Dark theme (as used across the app and this oracle)</h3>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#1b1f3b"></div><div class="meta"><div class="name">background</div><div class="hex">#1b1f3b</div><div class="role">Deep navy page background</div></div></div>
+          <div class="sw"><div class="chip" style="background:#2d3268"></div><div class="meta"><div class="name">surface</div><div class="hex">#2d3268</div><div class="role">Raised panels and cards</div></div></div>
+          <div class="sw"><div class="chip" style="background:#a4e636"></div><div class="meta"><div class="name">accent-primary</div><div class="hex">#a4e636</div><div class="role">CTAs, interactive, progress</div></div></div>
+          <div class="sw"><div class="chip" style="background:#faf9d4"></div><div class="meta"><div class="name">accent-light</div><div class="hex">#faf9d4</div><div class="role">Subtle accent highlights</div></div></div>
+          <div class="sw"><div class="chip" style="background:#f5e6cd"></div><div class="meta"><div class="name">text-primary</div><div class="hex">#f5e6cd</div><div class="role">Warm cream, high contrast text</div></div></div>
+          <div class="sw"><div class="chip" style="background:#4d5198"></div><div class="meta"><div class="name">text-muted</div><div class="hex">#4d5198</div><div class="role">Periwinkle, supporting text</div></div></div>
+          <div class="sw"><div class="chip" style="background:#000000"></div><div class="meta"><div class="name">pure-black</div><div class="hex">#000000</div><div class="role">Deep shadow, footer</div></div></div>
+          <div class="sw"><div class="chip" style="background:#ffffff"></div><div class="meta"><div class="name">pure-white</div><div class="hex">#ffffff</div><div class="role">High-contrast white</div></div></div>
+        </div>
       </div>
     </section>
 
     <section>
-      <h2>Typography</h2>
-      <p class="note">Playfair Display for headings, Chivo for body and labels.</p>
-      <div class="type-row"><div class="lab">Playfair · 48 · 400</div><div style="font-family:var(--serif);font-style:italic;font-size:48px;line-height:1.05">The Sailor's Oracle</div></div>
-      <div class="type-row"><div class="lab">Playfair · 20 · 400</div><div style="font-family:var(--serif);font-style:italic;font-size:20px">Card titles and small headings</div></div>
-      <div class="type-row"><div class="lab">Chivo · 18 · 600</div><div style="font-size:18px;font-weight:600">Section titles</div></div>
-      <div class="type-row"><div class="lab">Chivo · 16 · 400</div><div style="font-size:16px">Body text, the most common style, set at sixteen pixels with generous line height for easy reading.</div></div>
-      <div class="type-row"><div class="lab">Chivo · 16 · 700</div><div style="font-size:16px;font-weight:700">Bold body for emphasis</div></div>
-      <div class="type-row"><div class="lab">Chivo · 9 · 700 · uppercase</div><div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.09em">Labels and tags</div></div>
+      <h2 class="sec">Typography</h2>
+      <p class="note">Playfair Display for headings and brand, Chivo for body and labels. Weights 400 regular, 600 to 700 emphasis; tracking grows as text shrinks.</p>
+      <div class="type-row"><div class="lab">heading-large · Playfair · 48 / 400</div><div style="font-family:var(--serif);font-style:italic;font-size:48px;line-height:1.05">The Sailor's Oracle</div></div>
+      <div class="type-row"><div class="lab">heading-small · Playfair · 20 / 400</div><div style="font-family:var(--serif);font-style:italic;font-size:20px">Card titles and small headings</div></div>
+      <div class="type-row"><div class="lab">heading-medium · Chivo · 18 / 600 · 0.18px</div><div style="font-size:18px;font-weight:600;letter-spacing:.18px">Section titles</div></div>
+      <div class="type-row"><div class="lab">body-base · Chivo · 16 / 400</div><div style="font-size:16px">Primary body text, the most common style, set at sixteen pixels with relaxed line height.</div></div>
+      <div class="type-row"><div class="lab">body-bold · Chivo · 16 / 700 · 0.4px</div><div style="font-size:16px;font-weight:700;letter-spacing:.4px">Bold body for emphasis</div></div>
+      <div class="type-row"><div class="lab">body-small · Chivo · 14 / 400</div><div style="font-size:14px">Small body text, captions, secondary information.</div></div>
+      <div class="type-row"><div class="lab">label-small · Chivo · 9 / 700 · 0.9px</div><div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.9px">Labels and tags</div></div>
     </section>
 
     <section>
-      <h2>Buttons</h2>
+      <h2 class="sec">Buttons</h2>
       <p class="note">Rounded rectangles at 12px. Lime fill for primary, lime outline for secondary.</p>
-      <div class="row">
-        <span class="btn">Draw your card</span>
-        <span class="btn ghost">Secondary</span>
-      </div>
+      <div class="row"><span class="btn">Get Started</span><span class="btn ghost">Secondary</span></div>
     </section>
 
     <section>
-      <h2>Border radius</h2>
-      <p class="note">Interactive elements use 12px. Stick to the scale.</p>
-      <div class="radii">
-        <div class="r"><div class="box" style="border-radius:4px"></div>4px · sm</div>
-        <div class="r"><div class="box" style="border-radius:8px"></div>8px · md</div>
-        <div class="r"><div class="box" style="border-radius:12px"></div>12px · lg</div>
-        <div class="r"><div class="box" style="border-radius:16px"></div>16px · xl</div>
-        <div class="r"><div class="box" style="border-radius:9999px"></div>full</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Spacing</h2>
+      <h2 class="sec">Spacing</h2>
       <p class="note">A 4px base scale: 2, 4, 8, 12, 16, 24, 32, 48, 64, 80, 96, 128.</p>
       <div class="scale">
         <div class="s"><div class="bar" style="width:2px"></div><span>2</span></div>
@@ -120,9 +197,262 @@
       </div>
     </section>
 
+    <section>
+      <h2 class="sec">Border radius</h2>
+      <p class="note">Interactive elements use 12px. Stick to the scale: 4, 8, 12, 16, full.</p>
+      <div class="radii">
+        <div class="r"><div class="box" style="border-radius:4px"></div>4px · sm</div>
+        <div class="r"><div class="box" style="border-radius:8px"></div>8px · md</div>
+        <div class="r"><div class="box" style="border-radius:12px"></div>12px · lg</div>
+        <div class="r"><div class="box" style="border-radius:16px"></div>16px · xl</div>
+        <div class="r"><div class="box" style="border-radius:9999px"></div>full</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">Elevation</h2>
+      <p class="note">Soft, moderate-blur shadows for gentle depth, never harsh.</p>
+      <div class="elev">
+        <div class="card resting">Resting<br>rgba(0,0,0,.4) 0 2px 8px -2px, rgba(0,0,0,.3) 0 1px 2px -1px</div>
+        <div class="card raised">Raised<br>rgba(0,0,0,.5) 0 25px 50px -12px</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">Components</h2>
+      <ul class="list">
+        <li><b>Loading screen</b> centered logo with a progress indicator and loading text on a warm background.</li>
+        <li><b>Progress bar</b> horizontal indicator in lime with rounded corners.</li>
+        <li><b>Brand logo</b> stylised "starboard" wordmark with a decorative star, in light and dark variants.</li>
+        <li><b>Loading states</b> animated progress indicators with descriptive text.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="sec">Do's and Don'ts</h2>
+      <div class="dd">
+        <div>
+          <h3 style="color:var(--accent)">Do</h3>
+          <ul>
+            <li>Use the warm cream background as the primary surface in the light theme.</li>
+            <li>Keep a 12px radius across interactive elements for cohesion.</li>
+            <li>Use Playfair Display sparingly for headlines and brand moments.</li>
+            <li>Maintain generous whitespace on the 4px base scale.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:var(--text-2)">Don't</h3>
+          <ul>
+            <li>Use a pure-white background as the primary light surface.</li>
+            <li>Mix off-scale radius values (stick to 4, 8, 12, 16).</li>
+            <li>Overuse lime; reserve it for key actions and progress.</li>
+            <li>Crowd elements; breathing room is the point.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">Tokens</h2>
+      <p class="note">The same system in four formats. Use the copy button to grab any one.</p>
+      <div class="tabs" id="tokenTabs">
+        <button aria-selected="true" data-panel="p-md">DESIGN.md</button>
+        <button aria-selected="false" data-panel="p-tw">Tailwind v4</button>
+        <button aria-selected="false" data-panel="p-css">CSS Variables</button>
+        <button aria-selected="false" data-panel="p-json">Design Tokens</button>
+      </div>
+
+      <div class="panel" id="p-md" data-active>
+        <button class="copy">Copy</button>
+        <pre><code># Starboard — "Warm Minimalist"
+
+## Overview
+Warm, approachable minimalism with a sophisticated edge. A cream background that
+is easier on the eyes than pure white. Calm and focused, low density, generous
+whitespace, single-column centered layout. Spacing uses a 4px base unit with
+common values at 8, 12, 16, 24, 32. Scale: 0.5, 1, 2, 3, 4, 6, 8, 12, 16, 20, 24, 32.
+
+## Colors (semantic tokens)
+- background  #f5e6cd  warm cream page background
+- surface     #e5e7eb  secondary surfaces and containers
+- accent-primary #a4e636  progress, interactive, call-to-action
+- accent-light   #faf9d4  subtle accent backgrounds
+- text-primary   #1b1f3b  primary text, high contrast
+- text-secondary #2d3268  secondary text, medium contrast
+- text-muted     #4d5198  supporting content
+- pure-black     #000000  logo / emphasis
+- pure-white     #ffffff  high-contrast white
+
+Light theme maps background to cream; the dark theme remaps background to deep
+navy (#1b1f3b) and text to cream (#f5e6cd) with the same lime accent.
+
+## Typography
+- Headline: Playfair Display (serif)
+- Body and labels: Chivo (sans-serif)
+- 400 regular, 600 to 700 emphasis; tracking grows as text shrinks (0.9px at 9px).
+- Large jump from body (16px) to headline (48px) for strong hierarchy.
+
+## Elevation
+- Resting: rgba(0,0,0,.4) 0 2px 8px -2px, rgba(0,0,0,.3) 0 1px 2px -1px
+- Raised:  rgba(0,0,0,.5) 0 25px 50px -12px
+
+## Do's and Don'ts
+- Do use the warm cream background as the primary light surface.
+- Don't use pure white as the primary light surface.
+- Do keep a 12px radius across interactive elements.
+- Don't mix off-scale radius values; stick to 4, 8, 12, 16.
+- Do use Playfair sparingly for headlines and brand.
+- Don't overuse lime; reserve it for key actions and progress.
+- Do keep generous whitespace on the 4px scale.
+- Don't crowd elements.</code></pre>
+      </div>
+
+      <div class="panel" id="p-tw">
+        <button class="copy">Copy</button>
+        <pre><code>@theme {
+  /* Colors */
+  --color-background: #f5e6cd;
+  --color-surface: #e5e7eb;
+  --color-accent-primary: #a4e636;
+  --color-accent-light: #faf9d4;
+  --color-text-primary: #1b1f3b;
+  --color-text-secondary: #2d3268;
+  --color-text-muted: #4d5198;
+  --color-pure-black: #000000;
+  --color-pure-white: #ffffff;
+
+  /* Spacing */
+  --spacing-xs: 2px;
+  --spacing-sm: 4px;
+  --spacing-md: 8px;
+  --spacing-lg: 12px;
+  --spacing-xl: 16px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 32px;
+  --spacing-4xl: 48px;
+  --spacing-5xl: 64px;
+  --spacing-6xl: 80px;
+  --spacing-7xl: 96px;
+  --spacing-8xl: 128px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Fonts */
+  --font-chivo: "Chivo", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}</code></pre>
+      </div>
+
+      <div class="panel" id="p-css">
+        <button class="copy">Copy</button>
+        <pre><code>:root {
+  /* Colors */
+  --color-background: #f5e6cd;
+  --color-surface: #e5e7eb;
+  --color-accent-primary: #a4e636;
+  --color-accent-light: #faf9d4;
+  --color-text-primary: #1b1f3b;
+  --color-text-secondary: #2d3268;
+  --color-text-muted: #4d5198;
+  --color-pure-black: #000000;
+  --color-pure-white: #ffffff;
+
+  /* Typography */
+  --font-body-base-family: Chivo;
+  --font-body-base-size: 16px;
+  --font-body-base-weight: 400;
+  --font-body-base-line-height: 25.6px;
+  --font-body-small-size: 14px;
+  --font-body-bold-weight: 700;
+  --font-body-bold-letter-spacing: 0.4px;
+  --font-heading-large-family: Playfair;
+  --font-heading-large-size: 48px;
+  --font-heading-large-line-height: 48px;
+  --font-heading-medium-size: 18px;
+  --font-heading-medium-weight: 600;
+  --font-heading-small-family: Playfair;
+  --font-heading-small-size: 20px;
+  --font-label-small-size: 9px;
+  --font-label-small-weight: 700;
+  --font-label-small-letter-spacing: 0.9px;
+
+  /* Spacing */
+  --spacing-xs: 2px;  --spacing-sm: 4px;   --spacing-md: 8px;   --spacing-lg: 12px;
+  --spacing-xl: 16px; --spacing-2xl: 24px; --spacing-3xl: 32px; --spacing-4xl: 48px;
+  --spacing-5xl: 64px; --spacing-6xl: 80px; --spacing-7xl: 96px; --spacing-8xl: 128px;
+
+  /* Border Radius */
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-full: 9999px;
+}</code></pre>
+      </div>
+
+      <div class="panel" id="p-json">
+        <button class="copy">Copy</button>
+        <pre><code>{
+  "color": {
+    "background":     { "$value": "#f5e6cd", "$description": "Primary page background, warm cream tone" },
+    "surface":        { "$value": "#e5e7eb", "$description": "Secondary surfaces and containers" },
+    "accent-primary": { "$value": "#a4e636", "$description": "Progress, interactive, call-to-action" },
+    "accent-light":   { "$value": "#faf9d4", "$description": "Subtle accent backgrounds" },
+    "text-primary":   { "$value": "#1b1f3b", "$description": "Primary text, high contrast" },
+    "text-secondary": { "$value": "#2d3268", "$description": "Secondary text, medium contrast" },
+    "text-muted":     { "$value": "#4d5198", "$description": "Supporting content" },
+    "pure-black":     { "$value": "#000000", "$description": "Logo, emphasis" },
+    "pure-white":     { "$value": "#ffffff", "$description": "High-contrast white" }
+  },
+  "typography": {
+    "heading-large":  { "fontFamily": "Playfair", "fontSize": "48px", "fontWeight": 400, "lineHeight": "48px" },
+    "heading-medium": { "fontFamily": "Chivo", "fontSize": "18px", "fontWeight": 600, "lineHeight": "28.8px", "letterSpacing": "0.18px" },
+    "heading-small":  { "fontFamily": "Playfair", "fontSize": "20px", "fontWeight": 400, "lineHeight": "28px" },
+    "body-base":      { "fontFamily": "Chivo", "fontSize": "16px", "fontWeight": 400, "lineHeight": "25.6px" },
+    "body-bold":      { "fontFamily": "Chivo", "fontSize": "16px", "fontWeight": 700, "lineHeight": "24px", "letterSpacing": "0.4px" },
+    "body-small":     { "fontFamily": "Chivo", "fontSize": "14px", "fontWeight": 400, "lineHeight": "20px" },
+    "label-small":    { "fontFamily": "Chivo", "fontSize": "9px", "fontWeight": 700, "lineHeight": "14.4px", "letterSpacing": "0.9px" }
+  },
+  "spacing": { "xs": "2px", "sm": "4px", "md": "8px", "lg": "12px", "xl": "16px", "2xl": "24px", "3xl": "32px", "4xl": "48px", "5xl": "64px", "6xl": "80px", "7xl": "96px", "8xl": "128px" },
+  "borderRadius": { "sm": "4px", "md": "8px", "lg": "12px", "xl": "16px", "full": "9999px" }
+}</code></pre>
+      </div>
+    </section>
+
     <footer>
       <a href="index.html">The Sailor's Oracle</a> · Part of <a href="https://www.starboardmanifest.com/">Starboard</a>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      document.getElementById("themeToggle").addEventListener("click", function (e) {
+        var b = e.target.closest("button");
+        if (!b || b.disabled) return;
+        root.setAttribute("data-theme", b.dataset.theme);
+        this.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      });
+
+      var tabs = document.getElementById("tokenTabs");
+      tabs.addEventListener("click", function (e) {
+        var b = e.target.closest("button");
+        if (!b) return;
+        tabs.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-selected", String(x === b)); });
+        document.querySelectorAll(".panel").forEach(function (p) { p.removeAttribute("data-active"); });
+        document.getElementById(b.dataset.panel).setAttribute("data-active", "");
+      });
+
+      document.querySelectorAll(".copy").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var code = btn.parentElement.querySelector("code").textContent;
+          navigator.clipboard.writeText(code).then(function () {
+            var t = btn.textContent; btn.textContent = "Copied"; setTimeout(function () { btn.textContent = t; }, 1200);
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
