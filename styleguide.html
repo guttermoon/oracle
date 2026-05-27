@@ -85,6 +85,9 @@
     .segmented-control { display:flex; background: var(--overlay-bg); border:1px solid var(--border-muted); border-radius:9999px; padding:.4rem; box-shadow: var(--card-shadow); }
     .segmented-control button { border-radius:9999px; flex:1 1 0%; min-width:0; height:2.6rem; padding:0 1.4rem; font-family:var(--font-family-primary); font-weight:600; font-size:14px; color:var(--text-subtle); background:none; border:0; cursor:pointer; }
     .segmented-control button[aria-pressed="true"] { background: var(--button-bg); color: var(--button-text); }
+    .theme-switch { display:inline-flex; align-items:center; gap:8px; border-radius:9999px; padding:4px; width:fit-content; background: rgba(0,0,0,.05); }
+    [data-theme="dark"] .theme-switch { background: rgba(255,255,255,.05); }
+    .ts-btn { padding:.5rem 1rem !important; font-size:11px !important; font-weight:700 !important; }
 
     /* swatches */
     .swatches { display:grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap:14px; }
@@ -166,7 +169,7 @@
 <body>
   <div class="wrap">
     <div class="head">
-      <p class="section-label">Productivity</p>
+      <p class="section-label">Style Guide</p>
       <h1>Starboard</h1>
       <p class="quote">"Warm Minimalist"</p>
       <p>A warm, minimalist design system: elegant serif headings, clean sans-serif body, a single bright accent per theme, generous whitespace, and soft elevation. Three themes share one set of semantic tokens. <a href="https://www.starboardmanifest.com/">starboardmanifest.com</a></p>
@@ -174,10 +177,10 @@
 
     <div class="toggle-row">
       <span class="section-label">Theme</span>
-      <div class="segmented-control" id="themeToggle">
-        <button data-theme="dark" aria-pressed="true">Dark</button>
-        <button data-theme="light" aria-pressed="false">Light</button>
-        <button data-theme="warm" aria-pressed="false">Warm</button>
+      <div class="theme-switch" id="themeToggle">
+        <button class="button button--primary button--sm button--pill ts-btn" data-theme="dark">Dark</button>
+        <button class="button button--ghost button--sm button--pill ts-btn" data-theme="light">Light</button>
+        <button class="button button--ghost button--sm button--pill ts-btn" data-theme="warm">Warm</button>
       </div>
       <span class="note" style="margin:0">Switches the whole guide. Swatches below show each theme regardless.</span>
     </div>
@@ -304,7 +307,11 @@
     document.getElementById("themeToggle").addEventListener("click", function (e) {
       var b = e.target.closest("button"); if (!b) return;
       document.documentElement.setAttribute("data-theme", b.dataset.theme);
-      this.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      this.querySelectorAll("button").forEach(function (x) {
+        var active = x === b;
+        x.classList.toggle("button--primary", active);
+        x.classList.toggle("button--ghost", !active);
+      });
     });
   </script>
 </body>
