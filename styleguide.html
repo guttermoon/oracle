@@ -177,9 +177,9 @@
     <div class="toggle-row">
       <span class="section-label">Theme mode</span>
       <div class="theme-switch" id="themeToggle">
-        <button class="button button--primary ts-btn" data-theme="dark">Dark</button>
-        <button class="button button--ghost ts-btn" data-theme="light">Light</button>
-        <button class="button button--ghost ts-btn" data-theme="warm">Warm</button>
+        <button class="button button--primary ts-btn" data-mode="dark">Dark</button>
+        <button class="button button--ghost ts-btn" data-mode="light">Light</button>
+        <button class="button button--ghost ts-btn" data-mode="warm">Warm</button>
       </div>
     </div>
     <p class="note">Switches the whole guide; the swatches below show every theme regardless.</p>
@@ -305,7 +305,7 @@
   <script>
     document.getElementById("themeToggle").addEventListener("click", function (e) {
       var b = e.target.closest("button"); if (!b) return;
-      document.documentElement.setAttribute("data-theme", b.dataset.theme);
+      document.documentElement.setAttribute("data-theme", b.dataset.mode);
       this.querySelectorAll("button").forEach(function (x) {
         var active = x === b;
         x.classList.toggle("button--primary", active);
