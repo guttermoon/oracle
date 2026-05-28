@@ -102,18 +102,18 @@ h1, h2, h3, h4, h5 {
 /* ====== Moon page atmosphere ====== */
 .moon-atmosphere {
   position: relative;
-  background: radial-gradient(ellipse 90% 90% at 50% 50%, #0D0A14 0%, #1A1428 100%);
-  color: #E8E0F0;
+  background: var(--card-bg);
+  color: var(--text-color);
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(201,168,76,0.15);
+  border: 1px solid var(--card-border);
   padding: 20px 16px 18px;
 }
 .moon-atmosphere::before {
   content: ""; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 20%, rgba(155,114,207,0.10) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 30% 70%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  background-image: url("../../assets/decorations/sb-star-pattern-1.png");
+  background-size: 120px 120px;
+  opacity: 0.05;
   pointer-events: none;
 }
 .moon-atmosphere > * { position: relative; z-index: 1; }

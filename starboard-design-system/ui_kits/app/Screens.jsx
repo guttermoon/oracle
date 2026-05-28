@@ -138,7 +138,7 @@ function NotificationsScreen() {
   );
 }
 
-/* ====================== Moon Ritual ====================== */
+/* ====================== Moon Phases ====================== */
 function MoonScreen() {
   return (
     <div style={{ padding: '20px 18px 24px' }}>
@@ -146,43 +146,43 @@ function MoonScreen() {
         <div style={{ textAlign: 'center', marginBottom: 14 }}>
           <div style={{
             fontFamily: 'var(--font-family-chivo)', fontSize: 10, letterSpacing: '0.35em',
-            color: '#C9A84C', textTransform: 'uppercase', marginBottom: 6,
+            color: 'var(--accent-color)', textTransform: 'uppercase', marginBottom: 6,
           }}>TODAY'S PHASE</div>
           <div
             aria-label="moon phase"
             style={{
               width: 130, height: 130, margin: '6px auto 18px',
               borderRadius: '50%',
-              background: 'radial-gradient(circle at 35% 35%, #E8E0F0 0%, #9B72CF 60%, #1A1428 100%)',
-              boxShadow: '0 0 40px rgba(155,114,207,0.30), inset -10px 0 30px rgba(13,10,20,0.55)',
+              background: 'radial-gradient(circle at 35% 35%, #F5E6CD 0%, #4D5198 60%, #04041C 100%)',
+              boxShadow: '0 0 40px rgba(77,81,152,0.35), inset -10px 0 30px rgba(4,4,28,0.55)',
             }}
           ></div>
           <div style={{
             fontFamily: '"Playfair Display", serif', fontStyle: 'italic',
-            fontSize: 22, color: '#E8E0F0', letterSpacing: '0.06em', marginBottom: 4,
+            fontSize: 22, color: 'var(--text-color)', letterSpacing: '0.06em', marginBottom: 4,
           }}>Waxing Gibbous</div>
           <div style={{
             fontFamily: 'var(--font-family-chivo)', fontStyle: 'italic',
-            fontSize: 11, letterSpacing: '0.15em', color: 'rgba(232,224,240,0.55)',
+            fontSize: 11, letterSpacing: '0.15em', color: 'var(--text-muted)',
           }}>78% illuminated · 27 Nov</div>
         </div>
 
         {/* Bento */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 8 }}>
-          <div style={{ padding: '12px 10px', borderRadius: 8, background: 'rgba(245,239,230,0.06)', border: '1px solid rgba(201,168,76,0.20)', textAlign: 'center' }}>
-            <div style={{ fontFamily: 'var(--font-family-chivo)', fontSize: 8, letterSpacing: '0.40em', textTransform: 'uppercase', color: 'rgba(232,224,240,0.55)', marginBottom: 4 }}>BEST FOR</div>
-            <div style={{ fontFamily: 'var(--font-family-secondary)', fontSize: 14, fontStyle: 'italic', color: '#E8E0F0' }}>Refinement · clarity</div>
+          <div style={{ padding: '12px 10px', borderRadius: 8, background: 'rgba(245,230,205,0.06)', border: '1px solid var(--card-border)', textAlign: 'center' }}>
+            <div style={{ fontFamily: 'var(--font-family-chivo)', fontSize: 8, letterSpacing: '0.40em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 4 }}>BEST FOR</div>
+            <div style={{ fontFamily: 'var(--font-family-secondary)', fontSize: 14, fontStyle: 'italic', color: 'var(--text-color)' }}>Refinement · clarity</div>
           </div>
-          <div style={{ padding: '12px 10px', borderRadius: 8, background: 'rgba(245,239,230,0.06)', border: '1px solid rgba(201,168,76,0.30)', textAlign: 'center', position: 'relative' }}>
-            <div style={{ fontFamily: 'var(--font-family-chivo)', fontSize: 8, letterSpacing: '0.40em', textTransform: 'uppercase', color: 'rgba(232,224,240,0.55)', marginBottom: 4 }}>AFFIRMATION</div>
-            <div style={{ fontFamily: 'var(--font-family-chivo)', fontSize: 12, fontStyle: 'italic', color: '#E8E0F0', lineHeight: 1.4 }}>What I tend grows into form.</div>
+          <div style={{ padding: '12px 10px', borderRadius: 8, background: 'rgba(245,230,205,0.06)', border: '1px solid var(--card-border)', textAlign: 'center', position: 'relative' }}>
+            <div style={{ fontFamily: 'var(--font-family-chivo)', fontSize: 8, letterSpacing: '0.40em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 4 }}>AFFIRMATION</div>
+            <div style={{ fontFamily: 'var(--font-family-chivo)', fontSize: 12, fontStyle: 'italic', color: 'var(--text-color)', lineHeight: 1.4 }}>What I tend grows into form.</div>
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
           {['Tidy desk', 'Re-read goals', 'Send the note'].map((r, i) => (
-            <div key={i} style={{ padding: '10px 8px', borderRadius: 8, background: 'rgba(245,239,230,0.06)', border: '1px solid rgba(201,168,76,0.20)', textAlign: 'center' }}>
-              <div style={{ fontFamily: 'var(--font-family-chivo)', fontSize: 7, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(232,224,240,0.55)', marginBottom: 4 }}>RITUAL {i + 1}</div>
-              <div style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontSize: 12, color: '#E8E0F0', lineHeight: 1.3 }}>{r}</div>
+            <div key={i} style={{ padding: '10px 8px', borderRadius: 8, background: 'rgba(245,230,205,0.06)', border: '1px solid var(--card-border)', textAlign: 'center' }}>
+              <div style={{ fontFamily: 'var(--font-family-chivo)', fontSize: 7, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 4 }}>RITUAL {i + 1}</div>
+              <div style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', fontSize: 12, color: 'var(--text-color)', lineHeight: 1.3 }}>{r}</div>
             </div>
           ))}
         </div>
