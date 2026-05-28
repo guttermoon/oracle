@@ -15,7 +15,7 @@ The authenticated Starboard app, recreated as a click-thru React mock. This is t
 2. **Board Detail** — single board with image grid, affirmation, play-montage button.
 3. **Library** — image library grid with filter tags.
 4. **Notifications** — list of scheduled reminders with time + affirmation text.
-5. **Moon Ritual** — the Celestial Grimoire surface, with phase orb, affirmation, and ritual bento tiles. Uses its own palette (amethyst + gold).
+5. **Moon Phases** — lunar phase, illumination, daily affirmation tuned to the cycle. Uses the brand theme palette (no jewel tones).
 6. **Account** — settings list (profile, subscription, theme).
 
 ## Notes & departures from production

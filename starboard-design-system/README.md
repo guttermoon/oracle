@@ -203,7 +203,7 @@ That's the full brand type set. Three families, no more.
 ### Backgrounds
 
 - **Aged-parchment texture** (`.bg-parchment-texture`) — vignette + corner foxing + SVG fractal noise, fixed-attached. This is the *default page background* in every theme. Don't replace it with a flat color.
-- **Atmospheric overlays** on the Moon page only: stars, particles, ink texture, amethyst radial gradients.
+- **Atmospheric overlays** on the Moon page: star tile patterns, particles, ink texture. Stay within the existing theme palette — do not introduce jewel tones, amethyst, or gold accents.
 - **Hero decorative imagery** — branded webp elements (anchor, compass rose, key, shell, crow, eye) placed absolutely around the hero with `opacity: 0.25–0.40`, scaled by mouse-position parallax.
 - **No** gradient buttons. **No** bluish-purple gradient backgrounds. **No** generic "vibe" gradients.
 
@@ -272,17 +272,24 @@ Used **sparingly** for nav and overlays, never for cards:
 
 ### Imagery vibe
 
-- **Warm, ink-illustrated, vintage maritime** — the decorative element set is hand-drawn line/fill art: anchors, compasses, crows, shells, lighthouses, fish, eyes, hearts, keys, suns.
-- Each element ships in three theme variants (dark, light, warm) and as both SVG and webp PNG. The `assets/elements/dark/` folder holds the cream-on-navy "dark" variant — use it on dark surfaces.
-- Elements always render at **partial opacity** (0.25–0.40) and float behind content, never as primary content.
-- No photography in the marketing site. The user's own photos populate vision boards inside the app.
-- The user-content surface ("vision board") shows real photos — these are warm, sun-flared, lifestyle-y. Treat them as user data, not brand asset.
+Starboard runs **three distinct illustration registers**. They are not interchangeable. Pick one per surface and stay there.
+
+| Register | Lives in | Use for | Treatment |
+|---|---|---|---|
+| **01 · Detailed inked** | `assets/elements/dark/` (22 WebPs) | App chrome, marketing decoration, parallax hero ornaments | Cream on navy, hand-drawn line/fill. Always partial opacity (0.20–0.40), layered *behind* content. Never the focal point. |
+| **02 · Pared-back board art** | `assets/board-art/` (18 PNGs) | **Vision boards** and **high-impact marketing** (App Store hero, Pinterest pins, hero billboards, print) | Bold black-and-cream silhouettes inside **art-nouveau frames**. Stand alone as the focal point. Standalone illustrations — do not layer behind text. |
+| **03 · Oracle muted** | `assets/oracle/` (16 PNGs + animated flash) | Blog post headers, newsletter heroes, editorial moments | Muted sailor-jerry tattoo flash, navy + faded red/orange accents. Diamond frames. Playful where the inked set is reverent. |
+
+The **pared-back board art** is the register most often misclassified. It is the work the Sailor sees inside their app, the work that ships on App Store screenshots, the work that goes on a t-shirt. It is the high-impact face of the brand. Reach for it whenever a single illustration needs to carry an entire surface.
+
+- **No photography in marketing.** The user's own photos populate vision boards inside the app.
+- The user-content surface ("vision board") shows real photos — warm, sun-flared, lifestyle-y. Treat them as user data, not brand asset.
 
 ---
 
 ## ICONOGRAPHY
 
-Two parallel icon systems, used for different jobs.
+Starboard's iconography has **two parallel UI icon systems**, plus the **three illustration registers** documented in *Visual Foundations · Imagery vibe* above.
 
 ### 1. UI icons — Lucide React
 
@@ -301,9 +308,9 @@ For interface chrome (nav, buttons, status), the app uses **[lucide-react](https
 
 Load from CDN: `https://unpkg.com/lucide@latest` (vanilla) or `https://cdn.jsdelivr.net/npm/lucide-react@0.563.0/dist/umd/lucide-react.production.min.js`.
 
-### 2. Brand decorative SVGs — `assets/elements/`
+### 2. Brand decorative SVGs — Register 01 (detailed inked)
 
-The product's signature visual identity. Hand-drawn, ink-illustration nautical & mystical motifs. These are **not interface icons** — they are decoration, hero ornamentation, and metaphor.
+The app's signature decoration set. Hand-drawn, ink-illustration nautical motifs. **Not interface icons** — they are decoration, hero ornamentation, metaphor.
 
 Each ships in 3 theme variants (dark / light / warm) and 2 formats (SVG / WebP). The dark-bg WebP variants are imported into `assets/elements/dark/`:
 
@@ -335,16 +342,31 @@ The Starboard logomark — a six-pointed compass-rose star inside an ornamental 
 
 Three palettes: **dark bg** (cream on navy), **light bg** (navy on white), **warm** (navy on parchment), and **green** — a cross-theme variant that reads on both light and dark surfaces. **Use the green lockup wherever you don't know the user's appearance mode** (HTML emails, App Store screenshots, social previews, third-party embeds, system splashes). Treat it as the *adaptive* lockup; pick a theme-specific lockup only when you know the surface.
 
-### Oracle illustrations — the blog & newsletter style
+### 3. Pared-back board art — Register 02
 
-A separate, muted illustration style for **blog posts, newsletter content, and Oracle-deck-style features** lives in [`assets/oracle/`](assets/oracle/). These are diamond-framed sailor-jerry-style tattoo flash illustrations — navy on cream, with muted red and orange accents (`#9B4A4A`, `#D98A5F`).
+For **vision boards** and **high-impact marketing**, Starboard uses a separate, bolder illustration register. Lives in `assets/board-art/`.
+
+These are tarot-style **art-nouveau-framed illustrations**, drawn in heavy black-and-cream silhouette with the occasional terra or sage colorway. Where the inked decorative set whispers, board art declares.
+
+The inventory: `crow`, `crow-king`, `crown`, `cruise`, `dollars`, `horseshoe`, `lighthouse`, `love-letter`, `lovebirds`, `magpie`, `orange-tree`, `stag`, `throne`, `cornucopia`, `frame-cream`, `frame-sage`, `frame-purple`, `frame-purple-alt`.
+
+Use board art when:
+- The illustration **is the content**, not the decoration. App Store screenshots. Pinterest pins. Print collateral. T-shirts. Hero billboards.
+- The surface needs a single image that can carry it alone.
+- The Sailor's own vision-board template is shown (default board covers).
+
+Don't layer board art behind text. Don't reduce its opacity. It is meant to be **looked at**, not slipped past.
+
+### 4. Oracle illustrations — Register 03 (muted blog & newsletter)
+
+A separate, muted illustration register for **blog posts, newsletter content, and Oracle-deck-style features** lives in [`assets/oracle/`](assets/oracle/). These are diamond-framed sailor-jerry-style tattoo flash illustrations — navy on cream, with muted red and orange accents (`#9B4A4A`, `#D98A5F`).
 
 Use the Oracle set when:
 - The surface is a **blog post header**, **newsletter hero**, or a **deck slide that wants editorial weight**.
-- You need a focal illustration, not a decoration. Oracle pieces stand alone; the dark-bg elements layer behind content.
-- The tone calls for a **slight smirk** — the Oracle illustrations have hula girls, sailor skulls, tigers, parrots, mermaids, daggers, *hold fast* knuckle tattoos. They're playful where the dark-bg elements are reverent.
+- You need a focal illustration in a softer key than board art — oracle is the slow read, board art is the billboard.
+- The tone calls for a **slight smirk** — the Oracle illustrations have hula girls, sailor skulls, tigers, parrots, mermaids, daggers, *hold fast* knuckle tattoos. They're playful where the inked register is reverent.
 
-Don't mix the two styles in one composition. Pick a register and stay there.
+**Don't mix registers in one composition.** Inked decoration with inked decoration. Board art with board art. Oracle with oracle. The whole system holds together because each register stays in its lane.
 
 The Oracle inventory includes: anchor, cannons, dagger, golden-dragon, hearts, hold-fast, hula-girl, mermaid, nautical-star, parrot, pig-and-rooster, shark, skull, swallows, tiger, turtle, plus an animated `oracle-flash` GIF/MP4 for prominent moments.
 

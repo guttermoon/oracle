@@ -520,18 +520,8 @@
       </div>
     </div>
 
-    <p class="eyebrow" style="margin-bottom:8px;margin-top:24px">Moon Ritual — Celestial Grimoire palette</p>
-    <p class="note" style="margin-bottom:12px">A fourth color register used exclusively on the Moon page. Amethyst + gold, independent of the three main themes. Do not mix with dark/light/warm.</p>
-    <div class="moon-palette">
-      <div class="moon-swatch"><div class="moon-chip" style="background:#1a1025"></div><div class="moon-meta"><div class="moon-nm">void</div><div class="moon-hx">#1a1025</div></div></div>
-      <div class="moon-swatch"><div class="moon-chip" style="background:#2d1b4e"></div><div class="moon-meta"><div class="moon-nm">amethyst-deep</div><div class="moon-hx">#2d1b4e</div></div></div>
-      <div class="moon-swatch"><div class="moon-chip" style="background:#4a2d7a"></div><div class="moon-meta"><div class="moon-nm">amethyst</div><div class="moon-hx">#4a2d7a</div></div></div>
-      <div class="moon-swatch"><div class="moon-chip" style="background:#7c5cc4"></div><div class="moon-meta"><div class="moon-nm">amethyst-mid</div><div class="moon-hx">#7c5cc4</div></div></div>
-      <div class="moon-swatch"><div class="moon-chip" style="background:#e8d5ff"></div><div class="moon-meta"><div class="moon-nm">amethyst-light</div><div class="moon-hx">#e8d5ff</div></div></div>
-      <div class="moon-swatch"><div class="moon-chip" style="background:#c9a84c"></div><div class="moon-meta"><div class="moon-nm">gold</div><div class="moon-hx">#c9a84c</div></div></div>
-      <div class="moon-swatch"><div class="moon-chip" style="background:#f5d76e"></div><div class="moon-meta"><div class="moon-nm">gold-bright</div><div class="moon-hx">#f5d76e</div></div></div>
-      <div class="moon-swatch"><div class="moon-chip" style="background:#fffbe6"></div><div class="moon-meta"><div class="moon-nm">moonlight</div><div class="moon-hx">#fffbe6</div></div></div>
-    </div>
+    <p class="eyebrow" style="margin-bottom:8px;margin-top:24px">Moon page</p>
+    <p class="note">The Moon (lunar phases) page uses atmospheric overlays — star tile patterns, particles, ink texture — but stays within the existing theme palette. Do not introduce jewel tones, amethyst, or gold accents. The moon orb itself is CSS-painted (no canvas script in the design system — use a placeholder SVG for static mocks).</p>
   </section>
 
   <hr class="divider">
@@ -895,13 +885,25 @@
 
   <hr class="divider">
 
-  <!-- ── Brand elements ─────────────────────────────────────────────────── -->
+  <!-- ── Illustration registers ───────────────────────────────────────── -->
   <section>
     <div class="sec-head">
-      <div class="eyebrow">Brand</div>
-      <h2 class="sec">Decorative elements</h2>
-      <p class="note">21 dark-bg WebP elements. Use as hero parallax, feature-card icons at 100×100 / opacity 80, footer bg, ornamental corners. Dark-bg variants work on all three themes.</p>
+      <div class="eyebrow">Brand · Imagery</div>
+      <h2 class="sec">Three illustration registers</h2>
+      <p class="note">Starboard runs three distinct illustration registers. They are not interchangeable. Pick one per surface and stay there. <strong>Don't mix registers in one composition.</strong> Inked decoration with inked decoration. Board art with board art. Oracle with oracle.</p>
     </div>
+
+    <table class="voice-table" style="margin-bottom:28px">
+      <thead><tr><th>#</th><th>Register</th><th>Lives in</th><th>Use for</th><th>Treatment</th></tr></thead>
+      <tbody>
+        <tr><td><strong>01</strong></td><td><strong>Detailed inked</strong></td><td><code>assets/elements/dark/</code></td><td>App chrome, marketing decoration, parallax hero ornaments</td><td>Cream on navy. Opacity 0.20–0.40, layered <em>behind</em> content. Never the focal point.</td></tr>
+        <tr><td><strong>02</strong></td><td><strong>Pared-back board art</strong></td><td><code>assets/board-art/</code></td><td>Vision boards, App Store hero, Pinterest pins, print, billboards</td><td>Bold black-and-cream silhouettes in art-nouveau frames. Standalone — full opacity, never behind text.</td></tr>
+        <tr><td><strong>03</strong></td><td><strong>Oracle muted</strong></td><td><code>assets/oracle/</code></td><td>Blog headers, newsletter heroes, editorial moments</td><td>Muted sailor-jerry flash. Navy + faded red/orange. Diamond frames. Playful where the inked set is reverent.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin-bottom:8px">Register 01 — Detailed inked · <code>assets/elements/dark/</code></p>
+    <p class="note" style="margin-bottom:12px">22 cream-on-navy hand-drawn WebPs. Always at partial opacity behind content. Dark-bg variants work universally across all three themes — don't hunt for light/warm variants. Canonical uses: hero parallax (4 large + 2 bg), feature triad icons (Heart · Lighthouse · Sun at 100×100 / opacity 80), footer Ship at opacity 10%, ornamental corner frames at 25%.</p>
     <div class="elements-grid">
       <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/anchor.webp" alt="anchor"><div class="el-cap">Anchor</div></div>
       <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/compass-rose.webp" alt="compass"><div class="el-cap">Compass</div></div>
@@ -925,42 +927,32 @@
       <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crown.webp" alt="crown"><div class="el-cap">Crown</div></div>
       <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/coins.webp" alt="coins"><div class="el-cap">Coins</div></div>
     </div>
-  </section>
 
-  <!-- ── Decorative elements: usage ───────────────────────────────────── -->
-  <section>
-    <div class="sec-head">
-      <div class="eyebrow">Brand</div>
-      <h2 class="sec">Decorative element usage</h2>
-      <p class="note">Dark-bg WebP variants are intentional — they work universally on all three themes. Don't hunt for light/warm variants unless you need them for isolated white surfaces.</p>
+    <p class="eyebrow" style="margin-top:32px;margin-bottom:8px">Register 02 — Pared-back board art · <code>assets/board-art/</code></p>
+    <p class="note" style="margin-bottom:12px">18 tarot-style art-nouveau-framed illustrations in bold black-and-cream silhouette with occasional terra or sage colorways. This is the high-impact face of the brand — App Store screenshots, Pinterest pins, vision-board templates, print, t-shirts. Where Register 01 whispers, board art declares. Do not reduce opacity. Do not layer behind text. It is meant to be looked at.</p>
+    <div class="elements-grid" style="grid-template-columns:repeat(auto-fill,minmax(90px,1fr))">
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/crow.png" alt="crow" style="opacity:1;width:80px;height:80px"><div class="el-cap">Crow</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/crow-king.png" alt="crow king" style="opacity:1;width:80px;height:80px"><div class="el-cap">Crow king</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/crown.png" alt="crown" style="opacity:1;width:80px;height:80px"><div class="el-cap">Crown</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/cruise.png" alt="cruise" style="opacity:1;width:80px;height:80px"><div class="el-cap">Cruise</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/dollars.png" alt="dollars" style="opacity:1;width:80px;height:80px"><div class="el-cap">Dollars</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/horseshoe.png" alt="horseshoe" style="opacity:1;width:80px;height:80px"><div class="el-cap">Horseshoe</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/lighthouse.png" alt="lighthouse" style="opacity:1;width:80px;height:80px"><div class="el-cap">Lighthouse</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/love-letter.png" alt="love letter" style="opacity:1;width:80px;height:80px"><div class="el-cap">Love letter</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/lovebirds.png" alt="lovebirds" style="opacity:1;width:80px;height:80px"><div class="el-cap">Lovebirds</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/magpie.png" alt="magpie" style="opacity:1;width:80px;height:80px"><div class="el-cap">Magpie</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/orange-tree.png" alt="orange tree" style="opacity:1;width:80px;height:80px"><div class="el-cap">Orange tree</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/stag.png" alt="stag" style="opacity:1;width:80px;height:80px"><div class="el-cap">Stag</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/throne.png" alt="throne" style="opacity:1;width:80px;height:80px"><div class="el-cap">Throne</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/cornucopia.png" alt="cornucopia" style="opacity:1;width:80px;height:80px"><div class="el-cap">Cornucopia</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/frame-cream.png" alt="frame cream" style="opacity:1;width:80px;height:80px"><div class="el-cap">Frame cream</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/frame-sage.png" alt="frame sage" style="opacity:1;width:80px;height:80px"><div class="el-cap">Frame sage</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/frame-purple.png" alt="frame purple" style="opacity:1;width:80px;height:80px"><div class="el-cap">Frame purple</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/frame-purple-alt.png" alt="frame purple alt" style="opacity:1;width:80px;height:80px"><div class="el-cap">Frame purple alt</div></div>
     </div>
-    <div class="philosophy-row">
-      <div class="philo-card">
-        <div class="philo-title">Hero parallax</div>
-        <p class="philo-body">4 large + 2 bg elements placed absolutely. Mouse-parallaxed ±20–40px. Featured triad: <strong>Heart · Lighthouse · Sun</strong>.</p>
-      </div>
-      <div class="philo-card">
-        <div class="philo-title">Feature card icons</div>
-        <p class="philo-body">Render at 100×100, <code>opacity-80</code>, <code>object-contain</code>. Heart, Lighthouse, Sun are the canonical feature triad icons.</p>
-      </div>
-      <div class="philo-card">
-        <div class="philo-title">Footer background</div>
-        <p class="philo-body">Single <strong>Ship</strong> element, centered, <code>opacity: 0.10</code>, behind footer content.</p>
-      </div>
-      <div class="philo-card">
-        <div class="philo-title">Ornamental corners</div>
-        <p class="philo-body"><code>OrnamentalFrame</code> wraps content in two large art-nouveau corner SVGs at 0.25 opacity. Scoped to cards that need editorial weight.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- ── Oracle illustrations ───────────────────────────────────────────── -->
-  <section>
-    <div class="sec-head">
-      <div class="eyebrow">Brand</div>
-      <h2 class="sec">Oracle illustrations</h2>
-      <p class="note">Muted sailor-jerry tattoo flash — navy on cream, muted red #9B4A4A / orange #D98A5F. For blog posts, newsletter, oracle-deck features. Playful where dark-bg elements are reverent — don't mix the two styles in one composition.</p>
-    </div>
+    <p class="eyebrow" style="margin-top:32px;margin-bottom:8px">Register 03 — Oracle muted · <code>assets/oracle/</code></p>
+    <p class="note" style="margin-bottom:12px">The visual style for blog posts, newsletter heroes, and editorial content — not just the oracle card images specifically. Diamond-framed sailor-jerry tattoo flash — navy on cream, muted red <code>#9B4A4A</code> / orange <code>#D98A5F</code>. Playful where Register 01 is reverent. Oracle is the slow read; board art is the billboard. Use when you need a focal illustration in a softer key.</p>
     <div class="oracle-grid">
       <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/anchor.png" alt="anchor"><div class="oracle-cap">Anchor</div></div>
       <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/swallows.png" alt="swallows"><div class="oracle-cap">Swallows</div></div>
@@ -981,12 +973,12 @@
     </div>
   </section>
 
-  <!-- ── Lucide iconography ────────────────────────────────────────────── -->
+  <!-- ── UI icons — Lucide ─────────────────────────────────────────────── -->
   <section>
     <div class="sec-head">
-      <div class="eyebrow">Brand</div>
+      <div class="eyebrow">Brand · Iconography</div>
       <h2 class="sec">UI icons — Lucide</h2>
-      <p class="note">Lucide React at <code>stroke-width: 2</code> (1.5px in compact toolbars). Loaded from CDN: <code>unpkg.com/lucide@0.563.0</code>. No emoji in customer-facing UI. Use Unicode <code>→</code> for inline link affordances.</p>
+      <p class="note">Interface chrome only — nav, buttons, status. Lucide React at <code>stroke-width: 2</code> (1.5px in compact toolbars). CDN: <code>unpkg.com/lucide@0.563.0</code>. No emoji in customer-facing UI. Unicode <code>→</code> for inline link affordances. ASCII chevrons in selects — never the literal <code>▼</code>.</p>
     </div>
     <div class="lucide-grid">
       <div class="lucide-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Image · Boards nav</span></div>
@@ -1068,7 +1060,7 @@
     <div class="sec-head">
       <div class="eyebrow">Foundation</div>
       <h2 class="sec">Background &amp; texture</h2>
-      <p class="note">The aged-parchment texture is the default page background in every theme — a fixed SVG fractal-noise layer overlaid on the theme bg-color. Atmospheric overlays (stars, ink, amethyst gradients) are Moon page only. No flat color replacements.</p>
+      <p class="note">The aged-parchment texture is the default page background in every theme — a fixed SVG fractal-noise layer overlaid on the theme bg-color. Atmospheric overlays (star tile patterns, particles, ink texture) are Moon page only, staying within the existing theme palette. No flat color replacements.</p>
     </div>
 
     <div class="texture-demo">
@@ -1180,7 +1172,7 @@
         <div class="surface-preview" style="background:#1a1025">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/><path d="M20 3v4M22 5h-4"/></svg>
         </div>
-        <div class="surface-meta"><p class="surface-title">Moon Ritual</p><p class="surface-desc">Celestial Grimoire — amethyst + gold palette. Phase orb, affirmation, ritual bento tiles.</p></div>
+        <div class="surface-meta"><p class="surface-title">Moon Phases</p><p class="surface-desc">Lunar phase, illumination, daily affirmation tuned to the cycle. Brand theme palette — no jewel tones.</p></div>
       </a>
       <a class="surface-card" href="starboard-design-system/ui_kits/app/index.html" target="_blank">
         <div class="surface-preview" style="background:#1B1F3B">
