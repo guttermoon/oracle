@@ -10,13 +10,7 @@
 - **Contact:** `captain@starboardmanifest.com`
 - **Site:** [starboardmanifest.com](https://starboardmanifest.com)
 
-This project is a faithful design-system extraction of the Starboard product, intended to drive **brand-aligned mocks, slides, and prototypes**. Everything here was lifted from the production codebase.
-
-## Sources used
-
-- **Codebase:** `guttermoon/sb` branch `1.27` (private) — Next.js + Tailwind + Capacitor. The README inside that repo dates the brand and design tokens; this design system is a derivative.
-- Specifically read: `app/globals.css` (the 97 KB single-source-of-truth for tokens & components), `app/layout.tsx` (font loading), `components/(common)/**`, `components/(features)/**`, `app/(marketing)/**`, `public/llms-full.txt`.
-- The reader can explore further at <https://github.com/guttermoon/sb> (access permitting) to build deeper mocks that mirror live behavior — especially `app/globals.css`, the `(features)/boards/` directory, and the `(features)/moon/` "Celestial Grimoire" surface, which has its own typography and atmosphere.
+This is the canonical design system for Starboard — everything needed to build brand-aligned interfaces, slides, and prototypes.
 
 ---
 
@@ -36,7 +30,6 @@ Both share one design token system, three swappable themes (**dark · light · w
 ```
 .
 ├── README.md                ← you are here
-├── SKILL.md                 ← Claude-Code-compatible skill manifest
 ├── colors_and_type.css      ← canonical CSS variables + type system
 ├── fonts/                   ← 3 brand TTF files (Playfair Display, Chivo, Reality Stone)
 ├── assets/
@@ -48,13 +41,12 @@ Both share one design token system, three swappable themes (**dark · light · w
 │   └── imagery/             ← banner, og-image, icon backgrounds, animation
 ├── reference/
 │   ├── nautical-vocabulary.md  ← phrases, idioms, ship anatomy, weather terms
-│   ├── founder-story.md     ← internal founder context
 │   └── llms-full.txt        ← Starboard's public llms.txt manifest
 ├── preview/                 ← Design System tab cards (30+ cards, registered)
 ├── ui_kits/
 │   ├── marketing/           ← homepage, hero, ticker, pricing, newsletter, footer
 │   └── app/                 ← vision boards, library, notifications, moon, account
-├── slides/                  ← 7-slide brand deck
+├── slides/                  ← brand deck slides
 ├── social/                  ← 22 social media templates (IG + Pinterest)
 ├── email/                   ← Letters from the Helm newsletter template
 └── app_store/               ← 6 App Store screenshot frames

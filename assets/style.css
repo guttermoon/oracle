@@ -1,8 +1,8 @@
 :root {
-  /* ===== Starboard design tokens (source: design-extractor, "Warm Minimalist") =====
+  /* ===== Starboard design tokens — "Warm Minimalist" =====
      Canonical palette is the light/cream theme. The Sailor's Oracle renders in
-     DARK mode, so the aliases at the end map text-primary (navy) -> page
-     background and background (cream) -> text. */
+     dark mode — aliases below map text-primary (navy) to page background
+     and background (cream) to text. */
 
   /* Color */
   --color-background: #f5e6cd;      /* warm cream, light-theme page bg */
