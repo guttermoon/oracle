@@ -432,7 +432,7 @@
     <div class="eyebrow">Style Guide</div>
     <h1>Starboard</h1>
     <p class="sub">"Mythic intelligence. Victorian navigational. Older than wellness."</p>
-    <p>Three swappable themes — dark, light, warm — share one set of semantic tokens. Playfair Display italic, always italic, for headings. Chivo for body and UI. Reality Stone for the wordmark only. One bright accent per theme, generous whitespace, soft elevation. <a href="https://www.starboardmanifest.com/" target="_blank">starboardmanifest.com</a></p>
+    <p>Three swappable themes (dark, light, warm) share one set of semantic tokens. Playfair Display italic, always italic, for headings. Chivo for body and UI. Reality Stone for the wordmark only. One bright accent per theme, generous whitespace, soft elevation. <a href="https://www.starboardmanifest.com/" target="_blank">starboardmanifest.com</a></p>
   </div>
 
   <!-- ── Color ─────────────────────────────────────────────────────────── -->
@@ -440,7 +440,7 @@
     <div class="sec-head">
       <div class="eyebrow">Foundation</div>
       <h2 class="sec">Color</h2>
-      <p class="note">Raw palette below. In components, always use role tokens (--bg-color, --accent-color, etc.) — they resolve correctly for every theme.</p>
+      <p class="note">Raw palette below. In components, always use role tokens (--bg-color, --accent-color, etc.), which resolve correctly for every theme.</p>
     </div>
 
     <p class="eyebrow" style="margin-bottom:8px">Navy family</p>
@@ -512,7 +512,7 @@
       </div>
       <div class="philo-card">
         <div class="philo-title">Glass &amp; blur — nav only</div>
-        <p class="philo-body">Blur (<code>backdrop-filter: blur(10px)</code>) is for nav and overlays only. Cards are opaque — <code>--card-bg-glass</code> is a solid color despite the legacy name. Modal backdrop is solid <code>rgba(0,0,0,.8)</code>, never blurred.</p>
+        <p class="philo-body">Blur (<code>backdrop-filter: blur(10px)</code>) is for nav and overlays only. Cards are opaque. <code>--card-bg-glass</code> is a solid color despite the legacy name. Modal backdrop is solid <code>rgba(0,0,0,.8)</code>, never blurred.</p>
       </div>
       <div class="philo-card">
         <div class="philo-title">No gradient anything</div>
@@ -521,7 +521,7 @@
     </div>
 
     <p class="eyebrow" style="margin-bottom:8px;margin-top:24px">Moon page</p>
-    <p class="note">The Moon (lunar phases) page uses atmospheric overlays — star tile patterns, particles, ink texture — but stays within the existing theme palette. Do not introduce jewel tones, amethyst, or gold accents. The moon orb itself is CSS-painted (no canvas script in the design system — use a placeholder SVG for static mocks).</p>
+    <p class="note">The Moon (lunar phases) page uses atmospheric overlays (star tile patterns, particles, ink texture) but stays within the existing theme palette. Do not introduce jewel tones, amethyst, or gold accents. The moon orb itself is CSS-painted. No canvas script in the design system. Use a placeholder SVG for static mocks.</p>
   </section>
 
   <hr class="divider">
@@ -531,7 +531,7 @@
     <div class="sec-head">
       <div class="eyebrow">Foundation</div>
       <h2 class="sec">Typography</h2>
-      <p class="note">Three brand fonts only. <strong>Playfair Display italic — always italic</strong>, never upright — for all headings and display. Letter-spacing 0.01–0.05em. Chivo for body and UI, weight 400 body / 600 eyebrows / 700 bold labels. Reality Stone for the wordmark lockup only. No Google Fonts dependency — all loaded from local TTF files.</p>
+      <p class="note">Three brand fonts only. <strong>Playfair Display italic, always italic</strong>, never upright, for all headings and display. Letter-spacing 0.01–0.05em. Chivo for body and UI, weight 400 body / 600 eyebrows / 700 bold labels. Reality Stone for the wordmark lockup only. No Google Fonts dependency. All loaded from local TTF files.</p>
     </div>
 
     <div style="margin-bottom:28px">
@@ -604,7 +604,7 @@
 
     <div style="margin-top:28px">
       <p class="eyebrow" style="margin-bottom:4px">Reality Stone · wordmark</p>
-      <p class="note" style="margin-bottom:8px">Logo wordmark font only. Use <code>var(--font-family-reality)</code> for typographic lockups, deck titles, badge text. Not available via Google Fonts — loaded from <code>starboard-design-system/fonts/Reality_Stone.ttf</code>.</p>
+      <p class="note" style="margin-bottom:8px">Logo wordmark font only. Use <code>var(--font-family-reality)</code> for typographic lockups, deck titles, badge text. Not available via Google Fonts. Loaded from <code>starboard-design-system/fonts/Reality_Stone.ttf</code>.</p>
       <div class="reality-specimen">Starboard</div>
     </div>
 
@@ -627,7 +627,7 @@
     <div class="sec-head">
       <div class="eyebrow">Brand</div>
       <h2 class="sec">Logo system</h2>
-      <p class="note">Six-pointed compass-rose star with ornamental border. Three themed palettes — each with five variants. Use the green version wherever the background could be either light or dark (email, HTML embeds).</p>
+      <p class="note">Six-pointed compass-rose star with ornamental border. Three themed palettes, each with five variants. Use the green version wherever the background could be either light or dark (email, HTML embeds).</p>
     </div>
 
     <p class="eyebrow" style="margin-bottom:10px">Dark — cream on navy</p>
@@ -658,7 +658,7 @@
     </div>
 
     <p class="eyebrow" style="margin-bottom:10px">Green — for email &amp; dual-mode contexts</p>
-    <p class="note" style="margin-bottom:12px">Use when the background could be either light or dark — email HTML, embedded iframes, App Store screenshots. Reads on all three themes.</p>
+    <p class="note" style="margin-bottom:12px">Use when the background could be either light or dark: email HTML, embedded iframes, App Store screenshots. Reads on all three themes.</p>
     <div class="logo-grid" style="grid-template-columns:repeat(3,1fr)">
       <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/green-lockup-horizontal.png" alt="green logo on dark"></div><div class="logo-cap">On dark</div></div>
       <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/green-lockup-horizontal.png" alt="green logo on light"></div><div class="logo-cap">On light</div></div>
@@ -673,7 +673,7 @@
     <div class="sec-head">
       <div class="eyebrow">Components</div>
       <h2 class="sec">Buttons</h2>
-      <p class="note">Variants: primary, secondary, tertiary, ghost, danger. Sizes: sm / default / lg. Modifiers: pill, icon. No gradient fills — solid accent bg only.</p>
+      <p class="note">Variants: primary, secondary, tertiary, ghost, danger. Sizes: sm / default / lg. Modifiers: pill, icon. No gradient fills, solid accent bg only.</p>
     </div>
     <div class="stack">
       <div class="row">
@@ -730,7 +730,7 @@
       </div>
       <div class="card hi" style="max-width:260px;flex:1">
         <p class="card-title">Health &amp; rest</p>
-        <p class="card-desc">A daily reminder lives here. Soft, consistent — the inner compass.</p>
+        <p class="card-desc">A daily reminder lives here. Soft, consistent, the inner compass.</p>
         <span class="badge">Highlighted</span>
       </div>
       <div class="card" style="max-width:260px;flex:1">
@@ -897,13 +897,13 @@
       <thead><tr><th>#</th><th>Register</th><th>Lives in</th><th>Use for</th><th>Treatment</th></tr></thead>
       <tbody>
         <tr><td><strong>01</strong></td><td><strong>Detailed inked</strong></td><td><code>assets/elements/dark/</code></td><td>App chrome, marketing decoration, parallax hero ornaments</td><td>Cream on navy. Opacity 0.20–0.40, layered <em>behind</em> content. Never the focal point.</td></tr>
-        <tr><td><strong>02</strong></td><td><strong>Pared-back board art</strong></td><td><code>assets/board-art/</code></td><td>Vision boards, App Store hero, Pinterest pins, print, billboards</td><td>Bold black-and-cream silhouettes in art-nouveau frames. Standalone — full opacity, never behind text.</td></tr>
+        <tr><td><strong>02</strong></td><td><strong>Pared-back board art</strong></td><td><code>assets/board-art/</code></td><td>Vision boards, App Store hero, Pinterest pins, print, billboards</td><td>Bold black-and-cream silhouettes in art-nouveau frames. Standalone. Full opacity, never behind text.</td></tr>
         <tr><td><strong>03</strong></td><td><strong>Oracle muted</strong></td><td><code>assets/oracle/</code></td><td>Blog headers, newsletter heroes, editorial moments</td><td>Muted sailor-jerry flash. Navy + faded red/orange. Diamond frames. Playful where the inked set is reverent.</td></tr>
       </tbody>
     </table>
 
     <p class="eyebrow" style="margin-bottom:8px">Register 01 — Detailed inked · <code>assets/elements/dark/</code></p>
-    <p class="note" style="margin-bottom:12px">22 cream-on-navy hand-drawn WebPs. Always at partial opacity behind content. Dark-bg variants work universally across all three themes — don't hunt for light/warm variants. Canonical uses: hero parallax (4 large + 2 bg), feature triad icons (Heart · Lighthouse · Sun at 100×100 / opacity 80), footer Ship at opacity 10%, ornamental corner frames at 25%.</p>
+    <p class="note" style="margin-bottom:12px">22 cream-on-navy hand-drawn WebPs. Always at partial opacity behind content. Dark-bg variants work universally across all three themes. Don't hunt for light/warm variants. Canonical uses: hero parallax (4 large + 2 bg), feature triad icons (Heart · Lighthouse · Sun at 100×100 / opacity 80), footer Ship at opacity 10%, ornamental corner frames at 25%.</p>
     <div class="elements-grid">
       <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/anchor.webp" alt="anchor"><div class="el-cap">Anchor</div></div>
       <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/compass-rose.webp" alt="compass"><div class="el-cap">Compass</div></div>
@@ -929,7 +929,7 @@
     </div>
 
     <p class="eyebrow" style="margin-top:32px;margin-bottom:8px">Register 02 — Pared-back board art · <code>assets/board-art/</code></p>
-    <p class="note" style="margin-bottom:12px">18 tarot-style art-nouveau-framed illustrations in bold black-and-cream silhouette with occasional terra or sage colorways. This is the high-impact face of the brand — App Store screenshots, Pinterest pins, vision-board templates, print, t-shirts. Where Register 01 whispers, board art declares. Do not reduce opacity. Do not layer behind text. It is meant to be looked at.</p>
+    <p class="note" style="margin-bottom:12px">18 tarot-style art-nouveau-framed illustrations in bold black-and-cream silhouette with occasional terra or sage colorways. This is the high-impact face of the brand: App Store screenshots, Pinterest pins, vision-board templates, print, t-shirts. Where Register 01 whispers, board art declares. Do not reduce opacity. Do not layer behind text. It is meant to be looked at.</p>
     <div class="elements-grid" style="grid-template-columns:repeat(auto-fill,minmax(90px,1fr))">
       <div class="el-slot"><img src="starboard-design-system/assets/board-art/crow.png" alt="crow" style="opacity:1;width:80px;height:80px"><div class="el-cap">Crow</div></div>
       <div class="el-slot"><img src="starboard-design-system/assets/board-art/crow-king.png" alt="crow king" style="opacity:1;width:80px;height:80px"><div class="el-cap">Crow king</div></div>
@@ -952,7 +952,13 @@
     </div>
 
     <p class="eyebrow" style="margin-top:32px;margin-bottom:8px">Register 03 — Oracle muted · <code>assets/oracle/</code></p>
-    <p class="note" style="margin-bottom:12px">The visual style for blog posts, newsletter heroes, and editorial content — not just the oracle card images specifically. Diamond-framed sailor-jerry tattoo flash — navy on cream, muted red <code>#9B4A4A</code> / orange <code>#D98A5F</code>. Playful where Register 01 is reverent. Oracle is the slow read; board art is the billboard. Use when you need a focal illustration in a softer key.</p>
+    <p class="note" style="margin-bottom:12px">The visual style for blog posts, newsletter heroes, and editorial content, not just the oracle card images specifically. Diamond-framed sailor-jerry tattoo flash, navy on cream, muted red <code>#9B4A4A</code> / orange <code>#D98A5F</code>. Playful where Register 01 is reverent. Oracle is the slow read; board art is the billboard. Use when you need a focal illustration in a softer key.</p>
+    <div class="swatches" style="margin-bottom:20px;max-width:480px">
+      <div class="sw"><div class="chip" style="background:#F5E6CD;border-bottom:1px solid #e0d4bc"></div><div class="meta"><div class="nm">Cream</div><div class="hx">#F5E6CD</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1B1F3B"></div><div class="meta"><div class="nm">Navy</div><div class="hx">#1B1F3B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#9B4A4A"></div><div class="meta"><div class="nm">Muted red</div><div class="hx">#9B4A4A</div></div></div>
+      <div class="sw"><div class="chip" style="background:#D98A5F"></div><div class="meta"><div class="nm">Orange</div><div class="hx">#D98A5F</div></div></div>
+    </div>
     <div class="oracle-grid">
       <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/anchor.png" alt="anchor"><div class="oracle-cap">Anchor</div></div>
       <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/swallows.png" alt="swallows"><div class="oracle-cap">Swallows</div></div>
@@ -978,7 +984,7 @@
     <div class="sec-head">
       <div class="eyebrow">Brand · Iconography</div>
       <h2 class="sec">UI icons — Lucide</h2>
-      <p class="note">Interface chrome only — nav, buttons, status. Lucide React at <code>stroke-width: 2</code> (1.5px in compact toolbars). CDN: <code>unpkg.com/lucide@0.563.0</code>. No emoji in customer-facing UI. Unicode <code>→</code> for inline link affordances. ASCII chevrons in selects — never the literal <code>▼</code>.</p>
+      <p class="note">Interface chrome only: nav, buttons, status. Lucide React at <code>stroke-width: 2</code> (1.5px in compact toolbars). CDN: <code>unpkg.com/lucide@0.563.0</code>. No emoji in customer-facing UI. Unicode <code>→</code> for inline link affordances. ASCII chevrons in selects, never the literal <code>▼</code>.</p>
     </div>
     <div class="lucide-grid">
       <div class="lucide-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Image · Boards nav</span></div>
@@ -1019,7 +1025,7 @@
     <div class="sec-head">
       <div class="eyebrow">Foundation</div>
       <h2 class="sec">Elevation &amp; shadows</h2>
-      <p class="note">Shadow values are tinted with the theme's text-color, not pure black. Cards lift on hover — never use pure drop-shadow.</p>
+      <p class="note">Shadow values are tinted with the theme's text-color, not pure black. Cards lift on hover. Never use pure drop-shadow.</p>
     </div>
     <div class="shadow-grid">
       <div class="shadow-demo" style="box-shadow:var(--card-shadow)"><div class="demo-label">Card · resting</div><div class="demo-var">--card-shadow</div></div>
@@ -1035,7 +1041,7 @@
     <div class="sec-head">
       <div class="eyebrow">Foundation</div>
       <h2 class="sec">Layout &amp; spacing</h2>
-      <p class="note">Container, gutters, and safe-area rules. All responsive — values shown are md+ (≥ 768px). Safe-area variables are published as CSS custom properties for component consumption.</p>
+      <p class="note">Container, gutters, and safe-area rules. All responsive. Values shown are md+ (≥ 768px). Safe-area variables are published as CSS custom properties for component consumption.</p>
     </div>
 
     <table class="layout-table">
@@ -1060,7 +1066,7 @@
     <div class="sec-head">
       <div class="eyebrow">Foundation</div>
       <h2 class="sec">Background &amp; texture</h2>
-      <p class="note">The aged-parchment texture is the default page background in every theme — a fixed SVG fractal-noise layer overlaid on the theme bg-color. Atmospheric overlays (star tile patterns, particles, ink texture) are Moon page only, staying within the existing theme palette. No flat color replacements.</p>
+      <p class="note">The aged-parchment texture is the default page background in every theme. A fixed SVG fractal-noise layer overlaid on the theme bg-color. Atmospheric overlays (star tile patterns, particles, ink texture) are Moon page only, staying within the existing theme palette. No flat color replacements.</p>
     </div>
 
     <div class="texture-demo">
@@ -1080,11 +1086,11 @@
       </div>
       <div class="philo-card">
         <div class="philo-title">Hero parallax</div>
-        <p class="philo-body">4 large elements + 2 background elements placed absolutely around the hero, shifted by mouse position (±20–40px). CSS only for reduced-motion fallback — elements simply sit statically.</p>
+        <p class="philo-body">4 large elements + 2 background elements placed absolutely around the hero, shifted by mouse position (±20–40px). CSS only for reduced-motion fallback, elements simply sit statically.</p>
       </div>
       <div class="philo-card">
         <div class="philo-title">No photography on brand surfaces</div>
-        <p class="philo-body">Marketing, onboarding, emails, and slides contain no photography. User-uploaded vision board photos are user data, not brand assets — treat them as warm, sun-flared lifestyle imagery.</p>
+        <p class="philo-body">Marketing, onboarding, emails, and slides contain no photography. User-uploaded vision board photos are user data, not brand assets. Treat them as warm, sun-flared lifestyle imagery.</p>
       </div>
     </div>
   </section>
@@ -1096,7 +1102,7 @@
     <div class="sec-head">
       <div class="eyebrow">Foundation</div>
       <h2 class="sec">Motion</h2>
-      <p class="note">Full system: three easing curves, four animation families, stagger-on-entry. All transitions respect <code>prefers-reduced-motion: reduce</code> — kill when set.</p>
+      <p class="note">Full system: three easing curves, four animation families, stagger-on-entry. All transitions respect <code>prefers-reduced-motion: reduce</code>. Kill when set.</p>
     </div>
 
     <div class="easing-grid">
@@ -1141,15 +1147,15 @@
     <div class="sec-head">
       <div class="eyebrow">Brand</div>
       <h2 class="sec">Voice &amp; vocabulary</h2>
-      <p class="note">Starboard is written by Megan Williams — the founder, the Captain. The audience is the Sailor. One nautical term per surface, not three. The blog at <a href="https://starboardmanifest.com/blog" target="_blank">starboardmanifest.com/blog</a> is the running tone-of-voice reference.</p>
+      <p class="note">Starboard is written by Megan Williams, founder and captain. The audience is the Sailor. One nautical term per surface, not three. The blog at <a href="https://starboardmanifest.com/blog" target="_blank">starboardmanifest.com/blog</a> is the running tone-of-voice reference.</p>
     </div>
 
     <p class="eyebrow" style="margin:20px 0 8px">Voice persona</p>
     <table class="voice-table">
       <thead><tr><th>Name</th><th>Role</th><th>Sign-off</th></tr></thead>
       <tbody>
-        <tr><td><strong>Megan</strong></td><td>Personal voice — blog posts, founder letters, long-form writing</td><td><em>— Megan</em></td></tr>
-        <tr><td><strong>The Captain</strong></td><td>Product voice — welcome emails, app onboarding, push notifications, marketing sign-offs</td><td><em>— The Captain</em></td></tr>
+        <tr><td><strong>Megan</strong></td><td>Personal voice: blog posts, founder letters, long-form writing</td><td><em>— Megan</em></td></tr>
+        <tr><td><strong>The Captain</strong></td><td>Product voice: welcome emails, app onboarding, push notifications, marketing sign-offs</td><td><em>— The Captain</em></td></tr>
         <tr><td><strong>Megan, Captain</strong></td><td>When personal and product voice both apply</td><td><em>— Megan, Captain</em></td></tr>
         <tr><td><strong>Sailor</strong></td><td>The audience. Capitalized when addressed directly. Open or close of long-form. Drop in chrome and button labels. Never "the user".</td><td><em>Welcome aboard, Sailor.</em></td></tr>
       </tbody>
@@ -1169,13 +1175,13 @@
     </table>
 
     <p class="eyebrow" style="margin:20px 0 8px">Brand vocabulary</p>
-    <p class="note" style="margin-bottom:10px">Brand-distinct terms Starboard owns. Brand voice first in the chrome — search-friendly vocabulary (<em>mood board, dream board, manifestation, meditation</em>) belongs in supporting copy, metadata, and SEO descriptions.</p>
+    <p class="note" style="margin-bottom:10px">Brand-distinct terms Starboard owns. Brand voice first in the chrome. Search-friendly vocabulary (<em>mood board, dream board, manifestation, meditation</em>) belongs in supporting copy, metadata, and SEO descriptions.</p>
     <table class="voice-table">
       <thead><tr><th>Term</th><th>When to use</th></tr></thead>
       <tbody>
         <tr><td><strong>Sailor</strong></td><td>The audience. Capitalized when addressed: <em>Welcome aboard, Sailor.</em></td></tr>
-        <tr><td><strong>the Captain</strong></td><td>The voice — sign-offs, push notifications, formal product speech</td></tr>
-        <tr><td><strong>Megan</strong></td><td>The personal voice — blog sign-offs and founder letters</td></tr>
+        <tr><td><strong>the Captain</strong></td><td>The voice: sign-offs, push notifications, formal product speech</td></tr>
+        <tr><td><strong>Megan</strong></td><td>The personal voice: blog sign-offs and founder letters</td></tr>
         <tr><td><strong>vision board</strong></td><td>Core noun, every surface</td></tr>
         <tr><td><strong>board</strong></td><td>Shorthand inside the app once a vision board is open</td></tr>
         <tr><td><strong>montage</strong></td><td>The looping video output</td></tr>
@@ -1191,7 +1197,7 @@
     </table>
 
     <p class="eyebrow" style="margin:20px 0 8px">Nautical vocabulary palette</p>
-    <p class="note" style="margin-bottom:10px">A resource pool — reach for a term whenever it lands naturally. Restraint matters: one nautical term per surface, not three.</p>
+    <p class="note" style="margin-bottom:10px">A resource pool. Reach for a term whenever it lands naturally. Restraint matters: one nautical term per surface, not three.</p>
     <div class="vocab-grid">
       <div class="vocab-chip">bearings</div>
       <div class="vocab-chip">chart</div>
@@ -1223,8 +1229,8 @@
     <table class="voice-table">
       <thead><tr><th>Rule</th><th>Example</th></tr></thead>
       <tbody>
-        <tr><td>No exclamation points — the brand does not shout</td><td></td></tr>
-        <tr><td>Commas and short sentences over em dashes</td><td><em>It had to be tended. That's Starboard.</em></td></tr>
+        <tr><td>No exclamation points</td><td></td></tr>
+        <tr><td>Commas and short sentences over em dashes. Em dashes feel editorial. Use commas, fragments, and the occasional colon-led tangent instead.</td><td><em>It had to be tended. That's Starboard.</em></td></tr>
         <tr><td>Sentence case everywhere; Title Case for chrome page titles</td><td><em>Vision Boards · Library · Moon Phases</em></td></tr>
         <tr><td>UPPERCASE wide-tracked for eyebrows, labels, badges</td><td><em>PLANS · ONBOARDING · 60%</em></td></tr>
         <tr><td>Numbers in copy: numerals</td><td><em>3 vision boards · 13 daily reminders</em></td></tr>
@@ -1252,7 +1258,7 @@
     </table>
 
     <p class="eyebrow" style="margin:28px 0 8px">Steeped in lore — long-form writing</p>
-    <p class="note" style="margin-bottom:12px">Blog, newsletter, social, and Instagram are <strong>edutainment</strong>. Every piece leaves the Sailor feeling enriched — a single surprising fact, told plainly, that opens into a wider story. <em>No Such Thing as a Fish</em> cadence: here is something interesting, and here is why it matters.</p>
+    <p class="note" style="margin-bottom:12px">Blog, newsletter, social, and Instagram are <strong>edutainment</strong>. Every piece leaves the Sailor feeling enriched. A single surprising fact, told plainly, that opens into a wider story. <em>No Such Thing as a Fish</em> cadence: here is something interesting, and here is why it matters.</p>
     <div class="lore-grid">
       <div class="lore-card">
         <div class="lore-title">Maritime history &amp; lore</div>
@@ -1260,11 +1266,11 @@
       </div>
       <div class="lore-card">
         <div class="lore-title">Mythology</div>
-        <p class="lore-body">Sea gods — Poseidon, Manannán mac Lir, the kelpie. Constellations and navigation (Cassiopeia, Orion's belt). Norse navigational mythology. Selkies. The Morrigan as crow.</p>
+        <p class="lore-body">Sea gods: Poseidon, Manannán mac Lir, the kelpie. Constellations and navigation (Cassiopeia, Orion's belt). Norse navigational mythology. Selkies. The Morrigan as crow.</p>
       </div>
       <div class="lore-card">
         <div class="lore-title">Science</div>
-        <p class="lore-body">Reticular activating system and why repetition rewires attention. Lunar tidal physics. Neuroplasticity and behaviour change. Celestial navigation — sextant geometry, why the North Star sits where it does.</p>
+        <p class="lore-body">Reticular activating system and why repetition rewires attention. Lunar tidal physics. Neuroplasticity and behaviour change. Celestial navigation: sextant geometry, why the North Star sits where it does.</p>
       </div>
       <div class="lore-card">
         <div class="lore-title">Botanical &amp; seasonal lore</div>
