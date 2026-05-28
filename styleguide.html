@@ -4,314 +4,934 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Style Guide · Starboard</title>
-  <meta name="description" content="The Starboard design system: themes, type, buttons, pills, tabs, cards, and motion.">
-  <link rel="icon" type="image/svg+xml" href="brand/starboard%20offical%20icon%20dark.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Amita:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="The Starboard design system: tokens, type, logos, components, motion, and brand voice.">
+  <link rel="icon" type="image/svg+xml" href="starboard-design-system/assets/logos/favicon.svg">
   <style>
-    /* ---- Base tokens (from the Starboard app) ---- */
-    :root {
-      --font-family-primary: "Chivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      --font-family-secondary: "Playfair Display", Georgia, serif;
-      --font-family-amita: "Amita", serif;
-      --font-family-chivo: "Chivo", sans-serif;
-      --font-family-playfair: "Playfair Display", serif;
-      --font-weight-regular: 400; --font-weight-medium: 500; --font-weight-bold: 700;
-      --line-height-base: 1.6;
-      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
-      --color-danger: #dc2626; --color-danger-hover: #b91c1c; --color-danger-subtle: rgba(220,38,38,.1);
-      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    /* ── Brand fonts (local) ───────────────────────────────────────────── */
+    @font-face {
+      font-family: "Playfair Display";
+      src: url("starboard-design-system/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: 400 900; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Playfair Display";
+      src: url("starboard-design-system/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: 400 900; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: "Chivo";
+      src: url("starboard-design-system/fonts/Chivo-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: 100 900; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Chivo";
+      src: url("starboard-design-system/fonts/Chivo-Italic-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: 100 900; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: "Reality Stone";
+      src: url("starboard-design-system/fonts/Reality_Stone.ttf") format("truetype");
+      font-weight: 400; font-style: normal; font-display: swap;
     }
 
-    /* ---- Themes (real values from the app) ---- */
+    /* ── Raw palette ───────────────────────────────────────────────────── */
+    :root {
+      --navy-950: #04041C; --navy-900: #1B1F3B; --navy-800: #21264B;
+      --navy-700: #2D3268; --navy-600: #4D5198; --navy-500: #8285B6;
+      --cream-500: #F5E6CD; --cream-200: #FAF9D4;
+      --paper-50: #FEFDF6; --warm-50: #F7F0DB; --warm-100: #FFF9EB;
+      --lime-bright: #A4E636; --lime-olive: #A3C132; --olive-deep: #5C7000;
+      --forest: #4A5D45; --sage: #8F9E7A; --sage-deep: #445535;
+      --umber: #6A4D44; --terra: #D98A5F;
+      --color-danger: #DC2626; --color-warning: #F59E0B; --color-success: #22C55E;
+
+      --font-family-primary:   "Chivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --font-family-secondary: "Playfair Display", Georgia, serif;
+      --font-family-chivo:     "Chivo", system-ui, sans-serif;
+      --font-family-playfair:  "Playfair Display", Georgia, serif;
+      --font-family-reality:   "Reality Stone", "Playfair Display", serif;
+
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-pill: 9999px;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
+    }
+
+    /* ── Theme tokens ──────────────────────────────────────────────────── */
     [data-theme="dark"] {
-      --bg-color:#1b1f3b; --text-color:#f5e6cd; --text-muted:rgba(245,230,205,.6); --text-subtle:rgba(245,230,205,.8);
-      --border-muted:rgba(245,230,205,.15); --border-subtle:rgba(245,230,205,.25); --border-medium:rgba(245,230,205,.4);
-      --button-bg:#a4e636; --button-text:#1b1f3b; --button-surface:#2d2d3a; --button-surface-hover:#8285b6;
-      --footer-bg:#04041c; --footer-text:#f5e6cd; --ticker-bg:#4d5198; --ticker-text:#faf9d4;
-      --card-border-highlighted:rgba(163,230,53,.5); --overlay-bg:#21264b; --card-bg-tint:rgba(245,230,205,.08);
-      --card-bg-glass:#2d3268; --modal-bg:#2d3268; --dock-pill-bg:#1b1f3b;
-      --tertiary-1:#4d5198; --tertiary-2:#04041c; --tertiary-3:#3b3341;
-      --glow-rgb:163,230,53; --accent-color:#a4e636; --accent-text:#a4e636;
-      --input-bg:rgba(0,0,0,.2); --input-bg-hover:rgba(0,0,0,.25); --input-bg-focus:rgba(0,0,0,.3);
-      --card-shadow:0 2px 8px -2px rgba(0,0,0,.4), 0 1px 2px -1px rgba(0,0,0,.3);
-      --card-shadow-hover:0 24px 48px -12px rgba(0,0,0,.55), 0 4px 12px -2px rgba(0,0,0,.4);
+      --bg-color: #1B1F3B; --text-color: #F5E6CD;
+      --text-muted: rgba(245,230,205,.6); --text-subtle: rgba(245,230,205,.8);
+      --border-muted: rgba(245,230,205,.15); --border-subtle: rgba(245,230,205,.25); --border-medium: rgba(245,230,205,.40);
+      --button-bg: #A4E636; --button-text: #1B1F3B;
+      --button-surface: #2D2D3A; --button-surface-hover: #8285B6;
+      --footer-bg: #04041C; --footer-text: #F5E6CD;
+      --ticker-bg: #4D5198; --ticker-text: #FAF9D4;
+      --card-bg-glass: #2D3268; --card-bg-tint: rgba(245,230,205,.08);
+      --card-border: rgba(245,230,205,.25); --card-border-highlighted: rgba(163,230,53,.50);
+      --modal-bg: #2D3268; --overlay-bg: #21264B;
+      --tertiary-1: #4D5198; --tertiary-2: #04041C; --tertiary-3: #3B3341;
+      --accent-color: #A4E636; --accent-text: #A4E636;
+      --input-bg: rgba(0,0,0,.20); --input-bg-hover: rgba(0,0,0,.25); --input-bg-focus: rgba(0,0,0,.30);
+      --card-shadow: 0 2px 8px -2px rgba(0,0,0,.4), 0 1px 2px -1px rgba(0,0,0,.3);
+      --card-shadow-hover: 0 24px 48px -12px rgba(0,0,0,.55), 0 4px 12px -2px rgba(0,0,0,.4);
+      --glow-rgb: 163,230,53;
     }
     [data-theme="light"] {
-      --bg-color:#fefdf6; --text-color:#04041c; --text-muted:rgba(4,4,28,.6); --text-subtle:rgba(4,4,28,.8);
-      --border-muted:rgba(4,4,28,.1); --border-subtle:rgba(4,4,28,.2); --border-medium:rgba(4,4,28,.3);
-      --button-bg:#a3c132; --button-text:#04041c; --button-surface:#f5f4ed; --button-surface-hover:#ebe9de;
-      --footer-bg:#4d5198; --footer-text:#fefdf6; --ticker-bg:#4d5198; --ticker-text:#faf9d4;
-      --card-border-highlighted:rgba(4,4,28,.18); --overlay-bg:#ffffff; --card-bg-tint:rgba(4,4,28,.04);
-      --card-bg-glass:#ffffff; --modal-bg:#ffffff; --dock-pill-bg:#e8e6f0;
-      --tertiary-1:#faf9d4; --tertiary-2:#4d5198; --tertiary-3:#3b3341;
-      --glow-rgb:163,193,50; --accent-color:#a3c132; --accent-text:#5c7000;
-      --input-bg:rgba(163,193,50,.08); --input-bg-hover:rgba(163,193,50,.12); --input-bg-focus:rgba(163,193,50,.15);
-      --card-shadow:0 1px 3px 0 rgba(4,4,28,.08), 0 1px 2px -1px rgba(4,4,28,.05);
-      --card-shadow-hover:0 20px 40px -12px rgba(4,4,28,.2), 0 4px 10px -2px rgba(4,4,28,.08);
+      --bg-color: #FEFDF6; --text-color: #04041C;
+      --text-muted: rgba(4,4,28,.6); --text-subtle: rgba(4,4,28,.8);
+      --border-muted: rgba(4,4,28,.10); --border-subtle: rgba(4,4,28,.20); --border-medium: rgba(4,4,28,.30);
+      --button-bg: #A3C132; --button-text: #04041C;
+      --button-surface: #F5F4ED; --button-surface-hover: #EBE9DE;
+      --footer-bg: #4D5198; --footer-text: #FEFDF6;
+      --ticker-bg: #4D5198; --ticker-text: #FAF9D4;
+      --card-bg-glass: #FFFFFF; --card-bg-tint: rgba(4,4,28,.04);
+      --card-border: rgba(4,4,28,.10); --card-border-highlighted: rgba(4,4,28,.18);
+      --modal-bg: #FFFFFF; --overlay-bg: #FFFFFF;
+      --tertiary-1: #FAF9D4; --tertiary-2: #4D5198;
+      --accent-color: #A3C132; --accent-text: #5C7000;
+      --input-bg: rgba(163,193,50,.08); --input-bg-hover: rgba(163,193,50,.12); --input-bg-focus: rgba(163,193,50,.15);
+      --card-shadow: 0 1px 3px 0 rgba(4,4,28,.08), 0 1px 2px -1px rgba(4,4,28,.05);
+      --card-shadow-hover: 0 20px 40px -12px rgba(4,4,28,.2), 0 4px 10px -2px rgba(4,4,28,.08);
+      --glow-rgb: 163,193,50;
     }
     [data-theme="warm"] {
-      --bg-color:#f7f0db; --text-color:#6a4d44; --text-muted:rgba(106,77,68,.6); --text-subtle:rgba(106,77,68,.8);
-      --border-muted:rgba(106,77,68,.1); --border-subtle:rgba(106,77,68,.2); --border-medium:rgba(106,77,68,.3);
-      --button-bg:#4a5d45; --button-text:#f7f0db; --button-surface:#e9e0c5; --button-surface-hover:#d8cba8;
-      --footer-bg:#4a5d45; --footer-text:#f7f0db; --ticker-bg:#8f9e7a; --ticker-text:#faf9d4;
-      --card-border-highlighted:rgba(106,77,68,.25); --overlay-bg:#fff9eb; --card-bg-tint:rgba(106,77,68,.1);
-      --card-bg-glass:#fff9eb; --modal-bg:#fff9eb; --dock-pill-bg:#f0e8d6;
-      --tertiary-1:#8f9e7a; --tertiary-2:#d98a5f; --tertiary-3:#7b5e4f;
-      --glow-rgb:143,158,122; --accent-color:#8f9e7a; --accent-text:#445535;
-      --input-bg:rgba(106,77,68,.1); --input-bg-hover:rgba(106,77,68,.14); --input-bg-focus:rgba(106,77,68,.18);
-      --card-shadow:0 1px 3px 0 rgba(106,77,68,.1), 0 1px 2px -1px rgba(106,77,68,.06);
-      --card-shadow-hover:0 20px 40px -12px rgba(106,77,68,.25), 0 4px 10px -2px rgba(106,77,68,.1);
+      --bg-color: #F7F0DB; --text-color: #6A4D44;
+      --text-muted: rgba(106,77,68,.6); --text-subtle: rgba(106,77,68,.8);
+      --border-muted: rgba(106,77,68,.10); --border-subtle: rgba(106,77,68,.20); --border-medium: rgba(106,77,68,.30);
+      --button-bg: #4A5D45; --button-text: #F7F0DB;
+      --button-surface: #E9E0C5; --button-surface-hover: #D8CBA8;
+      --footer-bg: #4A5D45; --footer-text: #F7F0DB;
+      --ticker-bg: #8F9E7A; --ticker-text: #FAF9D4;
+      --card-bg-glass: #FFF9EB; --card-bg-tint: rgba(106,77,68,.10);
+      --card-border: rgba(106,77,68,.15); --card-border-highlighted: rgba(106,77,68,.25);
+      --modal-bg: #FFF9EB; --overlay-bg: #FFF9EB;
+      --tertiary-1: #8F9E7A; --tertiary-2: #D98A5F; --tertiary-3: #7B5E4F;
+      --accent-color: #8F9E7A; --accent-text: #445535;
+      --input-bg: rgba(106,77,68,.10); --input-bg-hover: rgba(106,77,68,.14); --input-bg-focus: rgba(106,77,68,.18);
+      --card-shadow: 0 1px 3px 0 rgba(106,77,68,.10), 0 1px 2px -1px rgba(106,77,68,.06);
+      --card-shadow-hover: 0 20px 40px -12px rgba(106,77,68,.25), 0 4px 10px -2px rgba(106,77,68,.10);
+      --glow-rgb: 143,158,122;
     }
 
+    /* ── Base ──────────────────────────────────────────────────────────── */
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg-color); color: var(--text-color); font-family: var(--font-family-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; transition: background .3s ease, color .3s ease; }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 96px; }
+    body {
+      margin: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background .3s ease, color .3s ease;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 120px; }
     a { color: var(--accent-text); }
-    h1, h2, h3 { font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; }
+    h1,h2,h3,h4 { font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; line-height: 1.2; margin: 0; }
+    code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .8em; color: var(--text-muted); }
 
-    .head h1 { font-size: clamp(36px, 7vw, 56px); margin: 0 0 4px; }
-    .head .quote { font-family: var(--font-family-secondary); font-style: italic; color: var(--text-muted); margin: 0 0 10px; }
-    .head p { color: var(--text-subtle); max-width: 70ch; }
-    .section-label { display:inline-block; font-family: var(--font-family-chivo); font-size:.75rem; font-weight:900; letter-spacing:.3em; text-transform:uppercase; color: var(--accent-text); }
+    /* ── Layout helpers ────────────────────────────────────────────────── */
+    section { margin-bottom: 64px; }
+    .sec-head { margin-bottom: 20px; }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-family-chivo);
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--accent-text); margin-bottom: 4px;
+    }
+    h2.sec { font-size: 28px; margin: 0 0 4px; }
+    .note { color: var(--text-muted); font-size: 13.5px; margin: 0; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .stack { display: flex; flex-direction: column; gap: 14px; }
+    .divider { border: none; border-top: 1px solid var(--border-muted); margin: 0 0 48px; }
 
-    section { margin: 0 0 56px; }
-    h2.sec { font-size: 28px; margin: 6px 0 4px; }
-    .note { color: var(--text-muted); font-size: 14px; margin: 0 0 22px; }
+    /* ── Hero head ─────────────────────────────────────────────────────── */
+    .hero { margin-bottom: 56px; }
+    .hero h1 { font-size: clamp(40px, 8vw, 68px); margin: 0 0 6px; }
+    .hero .sub { font-family: var(--font-family-secondary); font-style: italic; color: var(--text-muted); font-size: 18px; margin: 0 0 12px; }
+    .hero p { color: var(--text-subtle); max-width: 68ch; margin: 0; }
 
-    /* toggle */
-    .toggle-row { display:flex; align-items:center; gap:14px; margin: 24px 0 8px; flex-wrap: wrap; }
-    .segmented-control { display:flex; background: var(--overlay-bg); border:1px solid var(--border-muted); border-radius:9999px; padding:.4rem; box-shadow: var(--card-shadow); }
-    .segmented-control button { border-radius:9999px; flex:1 1 0%; min-width:0; height:2.6rem; padding:0 1.4rem; font-family:var(--font-family-primary); font-weight:600; font-size:14px; color:var(--text-subtle); background:none; border:0; cursor:pointer; }
-    .segmented-control button[aria-pressed="true"] { background: var(--button-bg); color: var(--button-text); }
-    .theme-switch { display:inline-flex; align-items:center; gap:6px; border-radius:9999px; padding:5px; width:fit-content; background: color-mix(in srgb, var(--text-color) 8%, transparent); }
-    .ts-btn { border-radius:9999px !important; padding:.55rem 1.3rem !important; font-size:14px !important; font-weight:700 !important; }
+    /* ── Theme toggle ──────────────────────────────────────────────────── */
+    .theme-row { display: flex; align-items: center; gap: 14px; margin: 28px 0 0; flex-wrap: wrap; }
+    .theme-switch { display: inline-flex; align-items: center; gap: 4px; padding: 4px; border-radius: 9999px; background: color-mix(in srgb, var(--text-color) 8%, transparent); }
+    .ts-btn { border: none; cursor: pointer; border-radius: 9999px; padding: .5rem 1.2rem; font-family: var(--font-family-primary); font-size: 13px; font-weight: 700; transition: all .2s ease; }
+    .ts-btn[aria-pressed="true"] { background: var(--button-bg); color: var(--button-text); }
+    .ts-btn[aria-pressed="false"] { background: transparent; color: var(--text-subtle); }
 
-    /* swatches */
-    .swatches { display:grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap:14px; }
-    .sw { border:1px solid var(--border-muted); border-radius:12px; overflow:hidden; background: var(--card-bg-glass); }
-    .sw .chip { height:64px; }
-    .sw .meta { padding:8px 10px; }
-    .sw .name { font-size:13px; font-weight:700; }
-    .sw .hex { font-size:12px; color: var(--text-muted); text-transform:uppercase; }
+    /* ── Color swatches ────────────────────────────────────────────────── */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 12px; margin: 12px 0 28px; }
+    .sw { border: 1px solid var(--border-muted); border-radius: 10px; overflow: hidden; background: var(--card-bg-glass); }
+    .sw .chip { height: 56px; }
+    .sw .meta { padding: 7px 9px; }
+    .sw .nm { font-size: 12px; font-weight: 700; }
+    .sw .hx { font-family: ui-monospace, monospace; font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
 
-    /* type */
-    .type-row { padding:12px 0; border-bottom:1px solid var(--border-muted); }
-    .type-row .lab { color:var(--text-muted); font-size:11px; text-transform:uppercase; letter-spacing:.16em; margin-bottom:6px; }
+    /* ── Token table ───────────────────────────────────────────────────── */
+    .token-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 12px 0; }
+    .token-row { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 8px; background: var(--card-bg-tint); border: 1px solid var(--border-muted); }
+    .token-chip { width: 28px; height: 28px; border-radius: 5px; flex-shrink: 0; border: 1px solid var(--border-muted); }
+    .token-name { font-size: 11px; font-weight: 600; line-height: 1.3; }
+    .token-var { font-family: ui-monospace, monospace; font-size: 9.5px; color: var(--text-muted); }
 
-    .row { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
-    .stack { display:flex; flex-direction:column; gap:14px; }
+    /* ── Type ──────────────────────────────────────────────────────────── */
+    .type-row { padding: 10px 0; border-bottom: 1px solid var(--border-muted); display: grid; grid-template-columns: 100px 1fr 100px; align-items: baseline; gap: 12px; }
+    .type-row:last-child { border-bottom: none; }
+    .type-tag { font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: var(--text-muted); font-family: var(--font-family-chivo); }
+    .type-px { font-family: ui-monospace, monospace; font-size: 10px; color: var(--text-muted); text-align: right; }
 
-    /* ---- Button system (verbatim from the app) ---- */
-    .button { display:inline-flex; align-items:center; justify-content:center; font-family:var(--font-family-primary); font-weight:500; border-radius:var(--radius-lg); gap:8px; cursor:pointer; border:1px solid transparent; white-space:nowrap; transition:all .2s ease; position:relative; }
-    .button--primary { background:var(--button-bg); color:var(--button-text); border:1px solid var(--button-bg); font-weight:600; letter-spacing:.01em; }
-    .button--primary:hover { transform:translateY(-2px); filter:brightness(1.05); box-shadow:0 4px 12px rgba(0,0,0,.1); }
-    .button--secondary { font-weight:600; background:transparent; color:var(--accent-text); border:1.5px solid color-mix(in srgb, var(--accent-color) 25%, transparent); }
-    .button--secondary:hover { background:color-mix(in srgb, var(--accent-color) 8%, transparent); transform:translateY(-2px); border-color:var(--accent-color); }
-    .button--tertiary { background:var(--button-surface); color:var(--text-color); border:1px solid var(--border-subtle); }
-    .button--tertiary:hover { border-color:var(--border-medium); background:var(--button-surface-hover); transform:translateY(-2px); }
-    .button--ghost { background:transparent; border:none; color:var(--text-subtle); }
-    .button--ghost:hover { color:var(--text-color); background:var(--button-surface); }
-    .button--danger { background:var(--color-danger); color:#fff; border:1px solid var(--color-danger); }
-    .button--danger:hover { background:var(--color-danger-hover); transform:translateY(-2px); }
-    .button--sm { font-size:.8125rem; padding:.5rem 1rem; }
-    .button--md { font-size:.95rem; padding:.75rem 1.5rem; }
-    .button--lg { font-size:1.125rem; padding:1rem 2rem; }
-    .button--pill { border-radius:9999px; }
-    .button--icon { border-radius:50%; flex-shrink:0; }
-    .button--icon-md { width:2.75rem; height:2.75rem; }
-    .button--icon-primary { background:var(--button-bg); color:var(--button-text); border:1px solid var(--border-muted); }
-    .button--icon-secondary { background:transparent; color:var(--accent-text); border:1.5px solid color-mix(in srgb, var(--accent-color) 25%, transparent); }
+    /* ── Buttons ───────────────────────────────────────────────────────── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-family-primary); font-weight: 600; border-radius: var(--radius-md); gap: 8px; cursor: pointer; border: 1px solid transparent; white-space: nowrap; transition: all .2s var(--ease-out-expo); letter-spacing: .01em; font-size: .875rem; padding: .7rem 1.4rem; }
+    .btn-primary { background: var(--button-bg); color: var(--button-text); }
+    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+    .btn-secondary { background: transparent; color: var(--text-color); border-color: var(--border-medium); }
+    .btn-secondary:hover { background: var(--card-bg-tint); transform: translateY(-2px); }
+    .btn-tertiary { background: var(--card-bg-glass); color: var(--text-color); border-color: var(--card-border); }
+    .btn-tertiary:hover { border-color: var(--border-medium); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; border: none; color: var(--text-subtle); opacity: .8; }
+    .btn-ghost:hover { opacity: 1; background: var(--button-surface); }
+    .btn-danger { background: var(--color-danger); color: #fff; border-color: var(--color-danger); }
+    .btn-danger:hover { background: #b91c1c; transform: translateY(-2px); }
+    .btn-sm { font-size: .75rem; padding: .45rem .9rem; }
+    .btn-lg { font-size: 1rem; padding: .9rem 1.8rem; }
+    .btn-pill { border-radius: 9999px; }
+    .btn-icon { border-radius: 50%; width: 2.5rem; height: 2.5rem; padding: 0; flex-shrink: 0; }
 
-    /* cards */
-    .card { position:relative; background:var(--card-bg-glass); border-radius:var(--radius-lg); padding:1.5rem; box-shadow:var(--card-shadow); border:1px solid var(--card-border-highlighted); transition:transform .3s ease, box-shadow .3s ease; }
-    .card:hover { transform:translateY(-4px); box-shadow:var(--card-shadow-hover); }
-    .card .card-title { font-family:var(--font-family-secondary); font-style:italic; font-size:1.25rem; margin:0 0 .25rem; }
-    .card .card-desc { color:var(--text-muted); font-size:.95rem; margin:0; }
+    /* ── Cards ─────────────────────────────────────────────────────────── */
+    .card { position: relative; background: var(--card-bg-glass); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--card-shadow); border: 1px solid var(--card-border); transition: transform .3s ease, box-shadow .3s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
+    .card.hi { border-color: var(--card-border-highlighted); }
+    .card-title { font-family: var(--font-family-secondary); font-style: italic; font-size: 1.3rem; margin: 0 0 .3rem; }
+    .card-desc { color: var(--text-muted); font-size: .9rem; margin: 0 0 .75rem; }
+    .badge { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-family-chivo); font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-text); padding: 3px 8px; border-radius: 4px; background: color-mix(in srgb, var(--accent-color) 12%, transparent); border: 1px solid color-mix(in srgb, var(--accent-color) 30%, transparent); }
 
-    /* inputs */
-    .form-label { display:flex; gap:.5rem; font-family:var(--font-family-chivo); font-size:.75rem; font-weight:900; text-transform:uppercase; letter-spacing:.2em; color:var(--accent-text); margin:0 0 .5rem; }
-    .input-field { background:var(--input-bg); border:1px solid var(--border-muted); color:var(--text-color); border-radius:.75rem; width:100%; padding:.75rem 1rem; font-size:.875rem; font-family:var(--font-family-primary); transition:all .3s cubic-bezier(.4,0,.2,1); }
-    .input-field::placeholder { color:var(--text-muted); opacity:.5; }
-    .input-field:focus { border-color:var(--button-bg); background:var(--input-bg-focus); box-shadow:0 0 0 4px rgba(var(--glow-rgb), .1); outline:none; }
+    /* ── Inputs ────────────────────────────────────────────────────────── */
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field-lab { font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); }
+    .input { font-family: var(--font-family-primary); font-size: .875rem; padding: .75rem 1rem; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-muted); border-radius: var(--radius-md); outline: none; transition: all .25s ease; width: 100%; }
+    .input::placeholder { color: var(--text-muted); opacity: .5; }
+    .input:focus, .input.focused { border-color: var(--accent-color); background: var(--input-bg-focus); box-shadow: 0 0 0 3px rgba(var(--glow-rgb),.15); }
+    .otp { display: flex; gap: 8px; }
+    .otp-d { width: 38px; height: 46px; background: var(--input-bg); border: 2px solid var(--border-muted); color: var(--text-color); border-radius: 6px; font-family: var(--font-family-chivo); font-weight: 700; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+    .otp-d.active { border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(var(--glow-rgb),.15); }
 
-    /* ---- Motion demos ---- */
-    .motion-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:14px; }
-    .motion { border:1px solid var(--border-muted); border-radius:12px; padding:18px 10px; text-align:center; background:var(--card-bg-glass); overflow:hidden; }
-    .motion .dot { width:34px; height:34px; border-radius:8px; background:var(--button-bg); margin:6px auto 12px; }
-    .motion .lab { font-size:11px; color:var(--text-muted); font-family:ui-monospace, monospace; }
+    /* ── Segmented control ─────────────────────────────────────────────── */
+    .seg { display: flex; background: var(--overlay-bg); border: 1px solid var(--border-muted); border-radius: 9999px; padding: .35rem; box-shadow: var(--card-shadow); width: fit-content; }
+    .seg button { border-radius: 9999px; flex: 1 1 0%; min-width: 0; height: 2.4rem; padding: 0 1.3rem; font-family: var(--font-family-primary); font-weight: 600; font-size: 13.5px; color: var(--text-subtle); background: none; border: 0; cursor: pointer; transition: all .2s ease; }
+    .seg button[aria-pressed="true"] { background: var(--button-bg); color: var(--button-text); }
+
+    /* ── Ticker ────────────────────────────────────────────────────────── */
+    .ticker-wrap { background: var(--ticker-bg); color: var(--ticker-text); overflow: hidden; border-radius: 0; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 3rem, #000 calc(100% - 3rem), transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 3rem, #000 calc(100% - 3rem), transparent 100%); }
+    .ticker-track { display: flex; align-items: center; padding: 11px 0; animation: ticker 28s linear infinite; width: max-content; }
+    .ticker-item { font-family: var(--font-family-chivo); font-weight: 700; font-size: 13px; letter-spacing: .04em; padding: 0 22px; white-space: nowrap; }
+    .ticker-sep { width: 32px; height: 32px; flex-shrink: 0; margin: 0 10px; opacity: .9; display: inline-flex; align-items: center; }
+    .ticker-sep img { max-width: 100%; max-height: 100%; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── Bottom nav demo ───────────────────────────────────────────────── */
+    .nav-frame { width: 420px; max-width: 100%; border-radius: 20px; border: 1px solid var(--border-muted); overflow: hidden; background: var(--bg-color); }
+    .bottom-nav { background: var(--bg-color); border-top: 1px solid var(--border-muted); display: flex; align-items: stretch; height: 68px; padding: 4px 6px 6px; }
+    .nav-it { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: var(--text-muted); border-radius: 10px; cursor: pointer; min-width: 44px; }
+    .nav-it.active { color: var(--accent-color); background: color-mix(in srgb, var(--accent-color) 12%, transparent); }
+    .nav-it svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-it span { font-family: var(--font-family-chivo); font-size: 9.5px; font-weight: 500; }
+
+    /* ── Pricing ───────────────────────────────────────────────────────── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 16px; margin: 12px 0; }
+    .price-card { background: var(--card-bg-glass); border: 1px solid var(--card-border); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); padding: 24px 20px; display: flex; flex-direction: column; text-align: center; }
+    .price-card.hi { border-color: var(--card-border-highlighted); }
+    .price-tier { font-family: var(--font-family-chivo); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .price-amt { font-family: var(--font-family-secondary); font-style: italic; font-size: 40px; line-height: 1; }
+    .price-per { font-size: 11px; color: var(--text-muted); margin: 4px 0 14px; }
+    .price-list { list-style: none; padding: 0; margin: 0 0 16px; text-align: left; display: flex; flex-direction: column; gap: 7px; }
+    .price-list li { font-size: 12px; color: var(--text-subtle); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+    .price-list li svg { width: 12px; height: 12px; flex-shrink: 0; margin-top: 1px; color: var(--accent-color); stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Logo grid ─────────────────────────────────────────────────────── */
+    .logo-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 12px; align-items: end; }
+    .logo-slot { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .logo-slot img { max-width: 100%; max-height: 80px; object-fit: contain; }
+    .logo-cap { font-family: var(--font-family-chivo); font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+    .logo-bg { background: var(--bg-color); border: 1px solid var(--border-muted); border-radius: 10px; padding: 16px 12px; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 80px; }
+
+    /* ── Elements grid ─────────────────────────────────────────────────── */
+    .elements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px,1fr)); gap: 12px; margin: 12px 0; }
+    .el-slot { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .el-slot img { width: 64px; height: 64px; object-fit: contain; opacity: .85; }
+    .el-cap { font-family: var(--font-family-chivo); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+
+    /* ── Oracle illustrations ──────────────────────────────────────────── */
+    .oracle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px,1fr)); gap: 12px; margin: 12px 0; }
+    .oracle-slot { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .oracle-slot img { width: 72px; height: 72px; object-fit: contain; }
+    .oracle-cap { font-family: var(--font-family-chivo); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+
+    /* ── Radii + shadows ───────────────────────────────────────────────── */
+    .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 14px; margin: 12px 0; }
+    .radius-demo { background: var(--card-bg-glass); border: 1px solid var(--card-border); height: 88px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+    .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 18px; margin: 12px 0; }
+    .shadow-demo { background: var(--card-bg-glass); border: 1px solid var(--card-border); border-radius: 12px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+    .demo-label { font-family: var(--font-family-chivo); font-size: 11px; font-weight: 600; }
+    .demo-var { font-family: ui-monospace, monospace; font-size: 9.5px; color: var(--text-muted); }
+
+    /* ── Motion ────────────────────────────────────────────────────────── */
+    .motion-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 12px; }
+    .motion { border: 1px solid var(--border-muted); border-radius: 12px; padding: 18px 10px; text-align: center; background: var(--card-bg-glass); overflow: hidden; }
+    .motion .dot { width: 32px; height: 32px; border-radius: 8px; background: var(--button-bg); margin: 6px auto 10px; }
+    .motion .lab { font-size: 10px; color: var(--text-muted); font-family: ui-monospace, monospace; }
     .m-float { animation: float 6s ease-in-out infinite; }
     .m-fadeup { animation: fadeUp 1.6s var(--ease-out-expo) infinite alternate; }
     .m-pulse { animation: pulse 2s ease-in-out infinite; }
-    .m-scalein { animation: scaleFloatInClean 1.8s ease-out infinite; }
-    .m-zoom { animation: zoom-in 1.6s ease-out infinite alternate; }
-    .m-rotate { animation: slow-rotate 6s linear infinite; border-radius:50%; }
-    .m-slidedown { animation: slideDown 1.4s ease-out infinite alternate; }
+    .m-scalein { animation: scaleIn 1.8s ease-out infinite; }
+    .m-zoom { animation: zoomIn 1.6s ease-out infinite alternate; }
+    .m-rotate { animation: slowRotate 6s linear infinite; border-radius: 50%; }
     .m-sparkle { animation: sparkle 2s ease-in-out infinite; }
-    .m-shimmer { position:relative; background:linear-gradient(90deg, var(--button-surface) 25%, var(--button-surface-hover) 50%, var(--button-surface) 75%); background-size:200% 100%; animation:shimmer 1.5s infinite linear; }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
-    @keyframes fadeUp { 0%{opacity:0; transform:translateY(12px)} 100%{opacity:1; transform:translateY(0)} }
-    @keyframes pulse { 0%,100%{transform:scale(1); opacity:1} 50%{transform:scale(1.15); opacity:.7} }
-    @keyframes scaleFloatInClean { 0%{opacity:0; transform:scale(.6) translateY(-30px)} 60%{transform:scale(1.1) translateY(5px)} 100%{opacity:1; transform:scale(1) translateY(0)} }
-    @keyframes zoom-in { from{opacity:.4; transform:scale(1.1)} to{opacity:1; transform:scale(1)} }
-    @keyframes slow-rotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
-    @keyframes slideDown { from{transform:translateY(-100%)} to{transform:translateY(0)} }
-    @keyframes sparkle { 0%{opacity:0; transform:scale(0) rotate(0)} 50%{opacity:.6; transform:scale(.8) rotate(90deg)} 100%{opacity:0; transform:scale(0) rotate(180deg)} }
+    .m-shimmer { background: linear-gradient(90deg, var(--button-surface) 25%, var(--button-surface-hover) 50%, var(--button-surface) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite linear; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    @keyframes fadeUp { 0%{opacity:0;transform:translateY(12px)} 100%{opacity:1;transform:translateY(0)} }
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.15);opacity:.7} }
+    @keyframes scaleIn { 0%{opacity:0;transform:scale(.6) translateY(-24px)} 60%{transform:scale(1.08) translateY(4px)} 100%{opacity:1;transform:scale(1) translateY(0)} }
+    @keyframes zoomIn { from{opacity:.4;transform:scale(1.1)} to{opacity:1;transform:scale(1)} }
+    @keyframes slowRotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+    @keyframes sparkle { 0%{opacity:0;transform:scale(0) rotate(0)} 50%{opacity:.6;transform:scale(.8) rotate(90deg)} 100%{opacity:0;transform:scale(0) rotate(180deg)} }
     @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-    @media (prefers-reduced-motion: reduce) { .motion * { animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { .motion .dot { animation: none !important; } }
 
-    footer { text-align:center; border-top:1px solid var(--border-muted); padding-top:32px; color:var(--text-muted); font-size:14px; }
-    footer a { color: var(--accent-text); text-decoration:none; }
+    /* ── Voice section ─────────────────────────────────────────────────── */
+    .voice-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 12px 0; }
+    .voice-table th { text-align: left; font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); padding: 8px 12px; border-bottom: 1px solid var(--border-muted); }
+    .voice-table td { padding: 8px 12px; border-bottom: 1px solid var(--border-muted); vertical-align: top; line-height: 1.5; }
+    .voice-table tr:last-child td { border-bottom: none; }
+    .voice-yes { color: var(--accent-text); font-style: italic; }
+    .voice-no { color: var(--text-muted); text-decoration: line-through; }
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 8px; margin: 12px 0; }
+    .vocab-chip { padding: 6px 10px; border-radius: 6px; font-size: 12.5px; font-style: italic; font-family: var(--font-family-secondary); color: var(--text-color); background: var(--card-bg-tint); border: 1px solid var(--border-muted); }
+
+    /* ── Footer ────────────────────────────────────────────────────────── */
+    footer { text-align: center; border-top: 1px solid var(--border-muted); padding-top: 32px; color: var(--text-muted); font-size: 13px; }
+    footer a { color: var(--accent-text); text-decoration: none; }
+
+    /* ── Reality Stone specimen ────────────────────────────────────────── */
+    .reality-specimen { font-family: var(--font-family-reality); font-size: 48px; letter-spacing: .08em; line-height: 1.1; color: var(--text-color); margin: 8px 0; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="head">
-      <p class="section-label">Style Guide</p>
-      <h1>Starboard</h1>
-      <p class="quote">"Warm Minimalist"</p>
-      <p>A warm, minimalist design system: elegant serif headings, clean sans-serif body, a single bright accent per theme, generous whitespace, and soft elevation. Three themes share one set of semantic tokens. <a href="https://www.starboardmanifest.com/">starboardmanifest.com</a></p>
-    </div>
+<div class="wrap">
 
-    <div class="toggle-row">
-      <span class="section-label">Theme mode</span>
+  <!-- ── Hero ──────────────────────────────────────────────────────────── -->
+  <div class="hero">
+    <div class="eyebrow">Style Guide</div>
+    <h1>Starboard</h1>
+    <p class="sub">"Mythic intelligence. Victorian navigational. Older than wellness."</p>
+    <p>Three swappable themes — dark, light, warm — share one set of semantic tokens. Playfair Display italic for headings. Chivo for body and UI. Reality Stone for the wordmark. One bright accent per theme, generous whitespace, soft elevation. <a href="https://www.starboardmanifest.com/" target="_blank">starboardmanifest.com</a></p>
+
+    <div class="theme-row">
+      <span class="eyebrow" style="margin:0">Theme</span>
       <div class="theme-switch" id="themeToggle">
-        <button class="button button--primary ts-btn" data-mode="dark">Dark</button>
-        <button class="button button--ghost ts-btn" data-mode="light">Light</button>
-        <button class="button button--ghost ts-btn" data-mode="warm">Warm</button>
+        <button class="ts-btn" data-mode="dark" aria-pressed="true">Dark</button>
+        <button class="ts-btn" data-mode="light" aria-pressed="false">Light</button>
+        <button class="ts-btn" data-mode="warm" aria-pressed="false">Warm</button>
       </div>
     </div>
-    <p class="note">Switches the whole guide; the swatches below show every theme regardless.</p>
+  </div>
 
-    <section>
+  <!-- ── Color ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
       <h2 class="sec">Color</h2>
-      <p class="note">One set of semantic tokens, mapped per theme. The accent shifts (lime in dark, olive-lime in light, sage in warm) and accent-text darkens for contrast.</p>
+      <p class="note">Raw palette below. In components, always use role tokens (--bg-color, --accent-color, etc.) — they resolve correctly for every theme.</p>
+    </div>
 
-      <p class="section-label">Dark</p>
-      <div class="swatches" style="margin:10px 0 26px">
-        <div class="sw"><div class="chip" style="background:#1b1f3b"></div><div class="meta"><div class="name">bg-color</div><div class="hex">#1b1f3b</div></div></div>
-        <div class="sw"><div class="chip" style="background:#f5e6cd"></div><div class="meta"><div class="name">text-color</div><div class="hex">#f5e6cd</div></div></div>
-        <div class="sw"><div class="chip" style="background:#a4e636"></div><div class="meta"><div class="name">accent / button</div><div class="hex">#a4e636</div></div></div>
-        <div class="sw"><div class="chip" style="background:#2d3268"></div><div class="meta"><div class="name">card / modal</div><div class="hex">#2d3268</div></div></div>
-        <div class="sw"><div class="chip" style="background:#4d5198"></div><div class="meta"><div class="name">tertiary-1</div><div class="hex">#4d5198</div></div></div>
-        <div class="sw"><div class="chip" style="background:#04041c"></div><div class="meta"><div class="name">footer / tertiary-2</div><div class="hex">#04041c</div></div></div>
-      </div>
+    <p class="eyebrow" style="margin-bottom:8px">Navy family</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#04041C"></div><div class="meta"><div class="nm">navy-950</div><div class="hx">#04041C</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1B1F3B"></div><div class="meta"><div class="nm">navy-900</div><div class="hx">#1B1F3B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#21264B"></div><div class="meta"><div class="nm">navy-800</div><div class="hx">#21264B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2D3268"></div><div class="meta"><div class="nm">navy-700</div><div class="hx">#2D3268</div></div></div>
+      <div class="sw"><div class="chip" style="background:#4D5198"></div><div class="meta"><div class="nm">navy-600</div><div class="hx">#4D5198</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8285B6"></div><div class="meta"><div class="nm">navy-500</div><div class="hx">#8285B6</div></div></div>
+    </div>
 
-      <p class="section-label">Light</p>
-      <div class="swatches" style="margin:10px 0 26px">
-        <div class="sw"><div class="chip" style="background:#fefdf6"></div><div class="meta"><div class="name">bg-color</div><div class="hex">#fefdf6</div></div></div>
-        <div class="sw"><div class="chip" style="background:#04041c"></div><div class="meta"><div class="name">text-color</div><div class="hex">#04041c</div></div></div>
-        <div class="sw"><div class="chip" style="background:#a3c132"></div><div class="meta"><div class="name">button-bg</div><div class="hex">#a3c132</div></div></div>
-        <div class="sw"><div class="chip" style="background:#5c7000"></div><div class="meta"><div class="name">accent-text</div><div class="hex">#5c7000</div></div></div>
-        <div class="sw"><div class="chip" style="background:#ffffff"></div><div class="meta"><div class="name">card / modal</div><div class="hex">#ffffff</div></div></div>
-        <div class="sw"><div class="chip" style="background:#faf9d4"></div><div class="meta"><div class="name">tertiary-1</div><div class="hex">#faf9d4</div></div></div>
-        <div class="sw"><div class="chip" style="background:#4d5198"></div><div class="meta"><div class="name">footer / tertiary-2</div><div class="hex">#4d5198</div></div></div>
-      </div>
+    <p class="eyebrow" style="margin-bottom:8px">Cream &amp; parchment</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#F5E6CD;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">cream-500</div><div class="hx">#F5E6CD</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FAF9D4;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">cream-200</div><div class="hx">#FAF9D4</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FEFDF6;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">paper-50</div><div class="hx">#FEFDF6</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F7F0DB;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">warm-50</div><div class="hx">#F7F0DB</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFF9EB;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">warm-100</div><div class="hx">#FFF9EB</div></div></div>
+    </div>
 
-      <p class="section-label">Warm</p>
-      <div class="swatches" style="margin:10px 0 0">
-        <div class="sw"><div class="chip" style="background:#f7f0db"></div><div class="meta"><div class="name">bg-color</div><div class="hex">#f7f0db</div></div></div>
-        <div class="sw"><div class="chip" style="background:#6a4d44"></div><div class="meta"><div class="name">text-color</div><div class="hex">#6a4d44</div></div></div>
-        <div class="sw"><div class="chip" style="background:#4a5d45"></div><div class="meta"><div class="name">button-bg</div><div class="hex">#4a5d45</div></div></div>
-        <div class="sw"><div class="chip" style="background:#8f9e7a"></div><div class="meta"><div class="name">accent / tertiary-1</div><div class="hex">#8f9e7a</div></div></div>
-        <div class="sw"><div class="chip" style="background:#fff9eb"></div><div class="meta"><div class="name">card / modal</div><div class="hex">#fff9eb</div></div></div>
-        <div class="sw"><div class="chip" style="background:#d98a5f"></div><div class="meta"><div class="name">tertiary-2</div><div class="hex">#d98a5f</div></div></div>
-        <div class="sw"><div class="chip" style="background:#445535"></div><div class="meta"><div class="name">accent-text</div><div class="hex">#445535</div></div></div>
-      </div>
-    </section>
+    <p class="eyebrow" style="margin-bottom:8px">Accent — lime / olive / sage</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#A4E636"></div><div class="meta"><div class="nm">lime-bright</div><div class="hx">#A4E636 · dark</div></div></div>
+      <div class="sw"><div class="chip" style="background:#A3C132"></div><div class="meta"><div class="nm">lime-olive</div><div class="hx">#A3C132 · light</div></div></div>
+      <div class="sw"><div class="chip" style="background:#5C7000"></div><div class="meta"><div class="nm">olive-deep</div><div class="hx">#5C7000 · light text</div></div></div>
+      <div class="sw"><div class="chip" style="background:#4A5D45"></div><div class="meta"><div class="nm">forest</div><div class="hx">#4A5D45 · warm btn</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8F9E7A"></div><div class="meta"><div class="nm">sage</div><div class="hx">#8F9E7A · warm accent</div></div></div>
+      <div class="sw"><div class="chip" style="background:#445535"></div><div class="meta"><div class="nm">sage-deep</div><div class="hx">#445535 · warm text</div></div></div>
+    </div>
 
-    <section>
+    <p class="eyebrow" style="margin-bottom:8px">Earth &amp; terracotta</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#6A4D44"></div><div class="meta"><div class="nm">umber</div><div class="hx">#6A4D44 · warm fg</div></div></div>
+      <div class="sw"><div class="chip" style="background:#D98A5F"></div><div class="meta"><div class="nm">terra</div><div class="hx">#D98A5F · tertiary</div></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Semantic status · cross-theme</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#22C55E"></div><div class="meta"><div class="nm">success</div><div class="hx">#22C55E</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F59E0B"></div><div class="meta"><div class="nm">warning</div><div class="hx">#F59E0B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#DC2626"></div><div class="meta"><div class="nm">danger</div><div class="hx">#DC2626</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B91C1C"></div><div class="meta"><div class="nm">danger:hover</div><div class="hx">#B91C1C</div></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px;margin-top:20px">Current theme tokens</p>
+    <div class="token-grid">
+      <div class="token-row"><div class="token-chip" style="background:var(--bg-color)"></div><div><div class="token-name">bg-color</div><div class="token-var">--bg-color</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--text-color)"></div><div><div class="token-name">text-color</div><div class="token-var">--text-color</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--accent-color)"></div><div><div class="token-name">accent-color</div><div class="token-var">--accent-color</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--button-bg)"></div><div><div class="token-name">button-bg</div><div class="token-var">--button-bg</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--card-bg-glass)"></div><div><div class="token-name">card-bg-glass</div><div class="token-var">--card-bg-glass</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--overlay-bg)"></div><div><div class="token-name">overlay-bg</div><div class="token-var">--overlay-bg</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--ticker-bg)"></div><div><div class="token-name">ticker-bg</div><div class="token-var">--ticker-bg</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--footer-bg)"></div><div><div class="token-name">footer-bg</div><div class="token-var">--footer-bg</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--tertiary-1)"></div><div><div class="token-name">tertiary-1</div><div class="token-var">--tertiary-1</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--tertiary-2)"></div><div><div class="token-name">tertiary-2</div><div class="token-var">--tertiary-2</div></div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Typography ────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
       <h2 class="sec">Typography</h2>
-      <p class="note">Playfair Display (italic) for headings and brand; Chivo for body, labels, and UI. Amita and Space Grotesk are available as accent faces.</p>
-      <div class="type-row"><div class="lab">h1 · Playfair italic · 44 / 72px</div><div style="font-family:var(--font-family-secondary);font-style:italic;font-size:44px;line-height:1.1">The Sailor's Oracle</div></div>
-      <div class="type-row"><div class="lab">h2 · Playfair italic · 40 / 52px</div><div style="font-family:var(--font-family-secondary);font-style:italic;font-size:40px">Section heading</div></div>
-      <div class="type-row"><div class="lab">section-label · Chivo · 12px / 900 / 0.3em</div><div class="section-label">Your schedule</div></div>
-      <div class="type-row"><div class="lab">body · Chivo · 16px / 400</div><div style="font-size:16px">Primary body text with relaxed 1.6 line height for comfortable reading.</div></div>
-      <div class="type-row"><div class="lab">small · Chivo · 14px</div><div style="font-size:14px">Captions and secondary information.</div></div>
-    </section>
+      <p class="note">Playfair Display italic for all headings and display. Chivo for body, labels, UI. Reality Stone for the wordmark lockup only. Weights: 400 regular · 500 medium · 700 bold.</p>
+    </div>
 
-    <section>
-      <h2 class="sec">Buttons</h2>
-      <p class="note">One unified system. Variants: primary, secondary, tertiary, ghost, danger. Sizes sm / md / lg. Modifiers: pill, icon.</p>
-      <div class="stack">
-        <div class="row">
-          <button class="button button--primary button--md">Primary</button>
-          <button class="button button--secondary button--md">Secondary</button>
-          <button class="button button--tertiary button--md">Tertiary</button>
-          <button class="button button--ghost button--md">Ghost</button>
-          <button class="button button--danger button--md">Danger</button>
+    <div style="margin-bottom:28px">
+      <p class="eyebrow" style="margin-bottom:8px">Display · Playfair Display Italic</p>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-weight:400;font-size:clamp(36px,6vw,60px);line-height:1.05;letter-spacing:.01em">Set your course.</div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:4px">Type scale (desktop ≥ 768px)</p>
+    <div class="type-row">
+      <div class="type-tag">h1</div>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-size:40px;line-height:1.1">Letters from the Helm</div>
+      <div class="type-px">72 / 1.2</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">h2</div>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-size:30px;line-height:1.1">Choose your path</div>
+      <div class="type-px">52 / 1.2</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">h3</div>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-size:22px">Make Vision Boards</div>
+      <div class="type-px">31 / 1.2</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">h4</div>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-size:18px">Gather What Guides You</div>
+      <div class="type-px">25 / 1.3</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">large</div>
+      <div style="font-size:17px">Pick the plan that fits how you dream</div>
+      <div class="type-px">22 / 1.5</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">regular</div>
+      <div style="font-size:14px">We respect your inbox. Unsubscribe anytime.</div>
+      <div class="type-px">16 / 1.5</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">small</div>
+      <div style="font-size:12px;color:var(--text-muted)">Privacy Policy · Terms of Service · DMCA</div>
+      <div class="type-px">14 / 1.5</div>
+    </div>
+
+    <div style="margin-top:28px">
+      <p class="eyebrow" style="margin-bottom:8px">Eyebrows &amp; labels · Chivo 700 uppercase</p>
+      <div class="row" style="flex-wrap:wrap;align-items:flex-end;gap:18px">
+        <div>
+          <div style="font-family:var(--font-family-chivo);font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:13px;color:var(--text-color)">PLANS</div>
+          <code>13px · lg eyebrow</code>
         </div>
-        <div class="row">
-          <button class="button button--primary button--sm">Small</button>
-          <button class="button button--primary button--md">Medium</button>
-          <button class="button button--primary button--lg">Large</button>
-          <button class="button button--primary button--md button--pill">Pill</button>
+        <div>
+          <div style="font-family:var(--font-family-chivo);font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:10px;color:var(--text-color)">VISION BOARDS</div>
+          <code>10px · section label</code>
         </div>
-        <div class="row">
-          <button class="button button--icon button--icon-md button--icon-primary" aria-label="primary icon">+</button>
-          <button class="button button--icon button--icon-md button--icon-secondary" aria-label="secondary icon">+</button>
+        <div>
+          <div style="font-family:var(--font-family-chivo);font-weight:700;text-transform:uppercase;letter-spacing:.4em;font-size:8.5px;color:var(--text-muted)">AFFIRMATION</div>
+          <code>8.5px · micro</code>
+        </div>
+        <div>
+          <span style="font-family:var(--font-family-chivo);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-text);padding:4px 9px;border-radius:4px;background:color-mix(in srgb,var(--accent-color) 12%,transparent);border:1px solid color-mix(in srgb,var(--accent-color) 30%,transparent)">NEW</span>
+          <code style="display:block;margin-top:4px">accent label</code>
+        </div>
+        <div>
+          <span style="font-family:var(--font-family-chivo);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-color);padding:4px 8px;border-radius:4px;border:1px solid var(--border-medium);background:var(--card-bg-glass)">Library</span>
+          <code style="display:block;margin-top:4px">tooltip</code>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section>
-      <h2 class="sec">Pills &amp; tabs (segmented control)</h2>
-      <p class="note">The pill tab bar used for Templates / Catalog, Profile / Billing / Settings, and theme switching. Active segment uses the button fill; the container is a 64px pill.</p>
-      <div class="segmented-control" style="max-width:420px">
+    <div style="margin-top:28px">
+      <p class="eyebrow" style="margin-bottom:4px">Reality Stone · wordmark</p>
+      <p class="note" style="margin-bottom:8px">Logo wordmark font only. Use <code>var(--font-family-reality)</code> for typographic STARBOARD lockups, deck titles, badge text.</p>
+      <div class="reality-specimen">STARBOARD</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Logos ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand</div>
+      <h2 class="sec">Logo system</h2>
+      <p class="note">Six-pointed compass-rose star with ornamental border + "STARBOARD" beneath. Available in dark bg, light bg, warm, and green palette. Horizontal for nav/banners, vertical for splash moments, logomark for small contexts.</p>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:10px">Dark palette</p>
+    <div class="logo-grid" style="margin-bottom:24px">
+      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-lockup-horizontal.webp" alt="horizontal lockup"></div><div class="logo-cap">Horizontal</div></div>
+      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-lockup-vertical.webp" alt="vertical lockup"></div><div class="logo-cap">Vertical</div></div>
+      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-logomark.webp" alt="logomark"></div><div class="logo-cap">Logomark</div></div>
+      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-logomark-fancy.webp" alt="fancy logomark"></div><div class="logo-cap">Fancy</div></div>
+      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt="pattern tile"></div><div class="logo-cap">Pattern tile</div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:10px">Light palette</p>
+    <div class="logo-grid" style="margin-bottom:24px">
+      <div class="logo-slot"><div class="logo-bg" style="background:#FEFDF6"><img src="starboard-design-system/assets/logos/sb-light-lockup-horizontal.webp" alt="light horizontal"></div><div class="logo-cap">Horizontal</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#FEFDF6"><img src="starboard-design-system/assets/logos/sb-light-logomark.webp" alt="light logomark"></div><div class="logo-cap">Logomark</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#FEFDF6"><img src="starboard-design-system/assets/logos/sb-light-logomark-fancy.webp" alt="light fancy"></div><div class="logo-cap">Fancy</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#A4E636"><img src="starboard-design-system/assets/logos/sb-green-lockup-horizontal.svg" alt="green lockup"></div><div class="logo-cap">Green</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#A4E636"><img src="starboard-design-system/assets/logos/sb-icon-dark.svg" alt="icon dark"></div><div class="logo-cap">App icon</div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:10px">Warm palette</p>
+    <div class="row" style="flex-wrap:wrap">
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="starboard-design-system/assets/logos/sb-warm-lockup-horizontal.webp" alt="warm horizontal"></div><div class="logo-cap">Horizontal</div></div>
+      <div class="logo-slot" style="width:120px"><div class="logo-bg" style="background:#F7F0DB"><img src="starboard-design-system/assets/logos/sb-warm-logomark.webp" alt="warm logomark"></div><div class="logo-cap">Logomark</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Buttons ───────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Buttons</h2>
+      <p class="note">Variants: primary, secondary, tertiary, ghost, danger. Sizes: sm / default / lg. Modifiers: pill, icon. No gradient fills — solid accent bg only.</p>
+    </div>
+    <div class="stack">
+      <div class="row">
+        <button class="btn btn-primary">Start your journey</button>
+        <button class="btn btn-secondary">See how it works</button>
+        <button class="btn btn-tertiary">Tertiary</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-danger">Danger</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+        <button class="btn btn-primary btn-pill">Pill →</button>
+        <button class="btn btn-secondary btn-pill btn-sm">Pill ghost</button>
+        <button class="btn btn-primary btn-icon" aria-label="icon">→</button>
+        <button class="btn btn-secondary btn-icon" aria-label="icon sec">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Segmented control ──────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Segmented control (pill tabs)</h2>
+      <p class="note">Used for Templates / Catalog, Profile / Billing / Settings, and theme switching. Active fills with button-bg; container is a 9999px pill.</p>
+    </div>
+    <div class="stack">
+      <div class="seg">
         <button aria-pressed="true">Templates</button>
         <button aria-pressed="false">Catalog</button>
       </div>
-    </section>
+      <div class="seg">
+        <button aria-pressed="false">Profile</button>
+        <button aria-pressed="true">Billing</button>
+        <button aria-pressed="false">Settings</button>
+      </div>
+    </div>
+  </section>
 
-    <section>
+  <!-- ── Cards ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
       <h2 class="sec">Cards</h2>
-      <p class="note">Shared elevation model: subtle resting shadow, lift on hover. Surface is card-bg-glass per theme.</p>
-      <div class="row" style="align-items:stretch">
-        <div class="card" style="max-width:280px"><p class="card-title">My Sovereignty</p><p class="card-desc">A living altar to self-sovereignty and wealth.</p></div>
-        <div class="card" style="max-width:280px"><p class="card-title">April</p><p class="card-desc">Created with love and intention.</p></div>
+      <p class="note">Subtle resting shadow, lift on hover. Surface is --card-bg-glass per theme. Highlighted variant uses --card-border-highlighted.</p>
+    </div>
+    <div class="row" style="align-items:stretch">
+      <div class="card" style="max-width:260px;flex:1">
+        <p class="card-title">Career board</p>
+        <p class="card-desc">Roles, screenshots, and quotes that point toward the next chapter.</p>
+        <span class="badge">12 images</span>
       </div>
-    </section>
+      <div class="card hi" style="max-width:260px;flex:1">
+        <p class="card-title">Health &amp; rest</p>
+        <p class="card-desc">A daily reminder lives here. Soft, consistent — the inner compass.</p>
+        <span class="badge">Highlighted</span>
+      </div>
+      <div class="card" style="max-width:260px;flex:1">
+        <p class="card-title">My Sovereignty</p>
+        <p class="card-desc">A living altar to self-sovereignty and wealth.</p>
+        <span class="badge">7 images</span>
+      </div>
+    </div>
+  </section>
 
-    <section>
+  <!-- ── Inputs ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
       <h2 class="sec">Inputs</h2>
-      <div style="max-width:360px">
-        <label class="form-label">Email address</label>
-        <input class="input-field" placeholder="you@example.com">
+      <p class="note">Accent ring on focus. Consistent 8px radius. OTP style for passcode entry.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:600px">
+      <div class="field">
+        <div class="field-lab">Email</div>
+        <input class="input" placeholder="captain@starboardmanifest.com">
       </div>
-    </section>
+      <div class="field">
+        <div class="field-lab">Affirmation · focused</div>
+        <div class="input focused">My direction stays steady.</div>
+      </div>
+    </div>
+    <div class="field" style="margin-top:16px;max-width:300px">
+      <div class="field-lab">One-time passcode</div>
+      <div class="otp">
+        <div class="otp-d">7</div><div class="otp-d">3</div><div class="otp-d">2</div>
+        <div class="otp-d active">9</div><div class="otp-d"></div><div class="otp-d"></div>
+      </div>
+    </div>
+  </section>
 
-    <section>
+  <!-- ── Ticker ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Ticker banner</h2>
+      <p class="note">Linear marquee at 28s. Edge-fade mask. Logomark pattern as separator. Background is --ticker-bg, text is --ticker-text.</p>
+    </div>
+    <div class="ticker-wrap" style="border-radius:10px;overflow:hidden">
+      <div class="ticker-track">
+        <span class="ticker-item">Chart your vision</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Map new habits</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Image library</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Anchor your goals</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Video montages</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Daily affirmations</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <!-- duplicate for seamless loop -->
+        <span class="ticker-item">Chart your vision</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Map new habits</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Image library</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Anchor your goals</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Video montages</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Daily affirmations</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Bottom nav ─────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Mobile bottom navigation</h2>
+      <p class="note">Fixed 64px + safe-area in production. Hidden at md and up. Active tab fills with 12% accent tint. Lucide icons at stroke-width 2.</p>
+    </div>
+    <div class="nav-frame">
+      <div class="bottom-nav">
+        <div class="nav-it active">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          <span>Boards</span>
+        </div>
+        <div class="nav-it">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span>Library</span>
+        </div>
+        <div class="nav-it">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span>Alerts</span>
+        </div>
+        <div class="nav-it">
+          <svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg>
+          <span>Moon</span>
+        </div>
+        <div class="nav-it">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Sam</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Pricing cards</h2>
+      <p class="note">Annual plan (highlighted) is the recommended tier. Price uses Playfair italic for character. £23/year positioned as "Keep your compass true."</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Free</div>
+        <div class="price-amt">Free</div>
+        <div class="price-per">forever</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>3 boards</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>50 images</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Phone widgets</li>
+        </ul>
+        <button class="btn btn-tertiary" style="margin-top:auto;width:100%;justify-content:center">Get started</button>
+      </div>
+      <div class="price-card hi">
+        <div class="price-tier">Annual</div>
+        <div class="price-amt">£23</div>
+        <div class="price-per">per year</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>13 boards · 250 images</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Custom music</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Public sharing</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Cross-device sync</li>
+        </ul>
+        <button class="btn btn-primary" style="margin-top:auto;width:100%;justify-content:center">Get started</button>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Lifetime</div>
+        <div class="price-amt">£72</div>
+        <div class="price-per">one time</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Everything in Annual</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>No recurring fees</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>All future updates</li>
+        </ul>
+        <button class="btn btn-tertiary" style="margin-top:auto;width:100%;justify-content:center">Get started</button>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Brand elements ─────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand</div>
+      <h2 class="sec">Decorative elements</h2>
+      <p class="note">21 dark-bg WebP elements. Use as hero parallax, feature-card icons at 100×100 / opacity 80, footer bg, ornamental corners. Dark-bg variants work on all three themes.</p>
+    </div>
+    <div class="elements-grid">
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/anchor.webp" alt="anchor"><div class="el-cap">Anchor</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/compass-rose.webp" alt="compass"><div class="el-cap">Compass</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/lighthouse.webp" alt="lighthouse"><div class="el-cap">Lighthouse</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/ship.webp" alt="ship"><div class="el-cap">Ship</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/shell.webp" alt="shell"><div class="el-cap">Shell</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/conch.webp" alt="conch"><div class="el-cap">Conch</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/fish.webp" alt="fish"><div class="el-cap">Fish</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crow.webp" alt="crow"><div class="el-cap">Crow</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crow-sm.webp" alt="crow sm"><div class="el-cap">Crow sm</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crow-on-branch.webp" alt="crow on branch"><div class="el-cap">Branch</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crow-on-shell.webp" alt="crow on shell"><div class="el-cap">Crow + shell</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/swallows.webp" alt="swallows"><div class="el-cap">Swallows</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/snakes.webp" alt="snakes"><div class="el-cap">Snakes</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/hearts.webp" alt="hearts"><div class="el-cap">Hearts</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/heart.webp" alt="heart"><div class="el-cap">Heart</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/eye-1.webp" alt="eye 1"><div class="el-cap">Eye 1</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/eye-2.webp" alt="eye 2"><div class="el-cap">Eye 2</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/sun.webp" alt="sun"><div class="el-cap">Sun</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/key.webp" alt="key"><div class="el-cap">Key</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crown.webp" alt="crown"><div class="el-cap">Crown</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/coins.webp" alt="coins"><div class="el-cap">Coins</div></div>
+    </div>
+  </section>
+
+  <!-- ── Oracle illustrations ───────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand</div>
+      <h2 class="sec">Oracle illustrations</h2>
+      <p class="note">Muted sailor-jerry tattoo flash — navy on cream, muted red #9B4A4A / orange #D98A5F. Used in blog posts, newsletter, oracle-deck features. One GIF / MP4 animated flash.</p>
+    </div>
+    <div class="oracle-grid">
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/anchor.png" alt="anchor"><div class="oracle-cap">Anchor</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/swallows.png" alt="swallows"><div class="oracle-cap">Swallows</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/nautical-star.png" alt="star"><div class="oracle-cap">Star</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/hold-fast.png" alt="hold fast"><div class="oracle-cap">Hold fast</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/hearts.png" alt="hearts"><div class="oracle-cap">Hearts</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/skull.png" alt="skull"><div class="oracle-cap">Skull</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/dagger.png" alt="dagger"><div class="oracle-cap">Dagger</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/cannons.png" alt="cannons"><div class="oracle-cap">Cannons</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/hula-girl.png" alt="hula girl"><div class="oracle-cap">Hula girl</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/mermaid.png" alt="mermaid"><div class="oracle-cap">Mermaid</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/parrot.png" alt="parrot"><div class="oracle-cap">Parrot</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/shark.png" alt="shark"><div class="oracle-cap">Shark</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/turtle.png" alt="turtle"><div class="oracle-cap">Turtle</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/tiger.png" alt="tiger"><div class="oracle-cap">Tiger</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/golden-dragon.png" alt="dragon"><div class="oracle-cap">Dragon</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/pig-and-rooster.png" alt="pig and rooster"><div class="oracle-cap">Pig &amp; rooster</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Spacing ────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Corner radii</h2>
+      <p class="note">Starboard is soft-cornered but not pill-heavy. Pill modifier reserved for segmented controls and dock.</p>
+    </div>
+    <div class="radius-grid">
+      <div class="radius-demo" style="border-radius:4px"><div class="demo-label">sm · 4px</div><div class="demo-var">chips, micro badges</div></div>
+      <div class="radius-demo" style="border-radius:8px"><div class="demo-label">md · 8px</div><div class="demo-var">buttons, inputs</div></div>
+      <div class="radius-demo" style="border-radius:12px"><div class="demo-label">lg · 12px</div><div class="demo-var">cards, modals</div></div>
+      <div class="radius-demo" style="border-radius:9999px"><div class="demo-label">pill</div><div class="demo-var">segmented, dock</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Elevation &amp; shadows</h2>
+      <p class="note">Shadow values are tinted with the theme's text-color, not pure black. Cards lift on hover — never use pure drop-shadow.</p>
+    </div>
+    <div class="shadow-grid">
+      <div class="shadow-demo" style="box-shadow:var(--card-shadow)"><div class="demo-label">Card · resting</div><div class="demo-var">--card-shadow</div></div>
+      <div class="shadow-demo" style="box-shadow:var(--card-shadow-hover)"><div class="demo-label">Card · hover</div><div class="demo-var">--card-shadow-hover</div></div>
+      <div class="shadow-demo" style="box-shadow:0 25px 50px -12px rgba(0,0,0,.45)"><div class="demo-label">Modal</div><div class="demo-var">0 25px 50px −12px / .45</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Motion ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
       <h2 class="sec">Motion</h2>
-      <p class="note">The animation library (looped here for preview). Easing is mostly <code>cubic-bezier(0.16, 1, 0.3, 1)</code>. All respect reduced-motion.</p>
-      <div class="motion-grid">
-        <div class="motion"><div class="dot m-float"></div><div class="lab">float</div></div>
-        <div class="motion"><div class="dot m-fadeup"></div><div class="lab">fadeUp / fadeInUp</div></div>
-        <div class="motion"><div class="dot m-pulse"></div><div class="lab">pulse</div></div>
-        <div class="motion"><div class="dot m-scalein"></div><div class="lab">scaleFloatIn</div></div>
-        <div class="motion"><div class="dot m-zoom"></div><div class="lab">zoom-in</div></div>
-        <div class="motion"><div class="dot m-rotate"></div><div class="lab">slow-rotate</div></div>
-        <div class="motion"><div class="dot m-slidedown"></div><div class="lab">slideDown</div></div>
-        <div class="motion"><div class="dot m-sparkle"></div><div class="lab">sparkle</div></div>
-        <div class="motion"><div class="dot m-shimmer"></div><div class="lab">shimmer</div></div>
-      </div>
-    </section>
+      <p class="note">Primary easing: <code>cubic-bezier(0.16, 1, 0.3, 1)</code> (expo-out). Duration 600–1400ms. Entry: fade-in-up translateY(30px → 0). Float loop: 6–8s. Ticker: 30s linear. All respect prefers-reduced-motion.</p>
+    </div>
+    <div class="motion-grid">
+      <div class="motion"><div class="dot m-float"></div><div class="lab">float · 6s</div></div>
+      <div class="motion"><div class="dot m-fadeup"></div><div class="lab">fadeUp · expo</div></div>
+      <div class="motion"><div class="dot m-pulse"></div><div class="lab">pulse · 2s</div></div>
+      <div class="motion"><div class="dot m-scalein"></div><div class="lab">scaleIn · 1.8s</div></div>
+      <div class="motion"><div class="dot m-zoom"></div><div class="lab">zoom-in</div></div>
+      <div class="motion"><div class="dot m-rotate"></div><div class="lab">slow-rotate · 6s</div></div>
+      <div class="motion"><div class="dot m-sparkle"></div><div class="lab">sparkle · 2s</div></div>
+      <div class="motion"><div class="dot m-shimmer"></div><div class="lab">shimmer · 1.5s</div></div>
+    </div>
+  </section>
 
-    <footer>
-      <a href="index.html">The Sailor's Oracle</a> · Part of <a href="https://www.starboardmanifest.com/">Starboard</a>
-    </footer>
-  </div>
+  <hr class="divider">
 
-  <script>
-    document.getElementById("themeToggle").addEventListener("click", function (e) {
-      var b = e.target.closest("button"); if (!b) return;
-      document.documentElement.setAttribute("data-theme", b.dataset.mode);
-      this.querySelectorAll("button").forEach(function (x) {
-        var active = x === b;
-        x.classList.toggle("button--primary", active);
-        x.classList.toggle("button--ghost", !active);
+  <!-- ── Brand voice ────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand</div>
+      <h2 class="sec">Voice &amp; vocabulary</h2>
+      <p class="note">The Captain speaks with steady authority and long-range thinking. Not a priestess — an explorer. Dry honesty, first person. One nautical term per surface.</p>
+    </div>
+
+    <table class="voice-table">
+      <thead><tr><th>We are</th><th>We are not</th></tr></thead>
+      <tbody>
+        <tr><td class="voice-yes">Calm authority, long-range thinking</td><td class="voice-no">Hyped, motivational-poster energy</td></tr>
+        <tr><td class="voice-yes">Grounded confidence, precision over hype</td><td class="voice-no">Goddess, divine feminine, vibration</td></tr>
+        <tr><td class="voice-yes">Mythic but grounded — older than wellness</td><td class="voice-no">Abundance mindset, universe provides</td></tr>
+        <tr><td class="voice-yes">Way-finding, navigation, chart &amp; course</td><td class="voice-no">Wish-making, magic, manifesting</td></tr>
+        <tr><td class="voice-yes">Dry honesty, explorer not priestess</td><td class="voice-no">Spiritual bypassing, toxic positivity</td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Approved vocabulary</p>
+    <div class="vocab-grid">
+      <div class="vocab-chip">bearings</div>
+      <div class="vocab-chip">chart</div>
+      <div class="vocab-chip">course</div>
+      <div class="vocab-chip">compass</div>
+      <div class="vocab-chip">constellation</div>
+      <div class="vocab-chip">voyage</div>
+      <div class="vocab-chip">tide · current</div>
+      <div class="vocab-chip">horizon</div>
+      <div class="vocab-chip">north star</div>
+      <div class="vocab-chip">lanthorn</div>
+      <div class="vocab-chip">sextant</div>
+      <div class="vocab-chip">helm</div>
+      <div class="vocab-chip">anchor</div>
+      <div class="vocab-chip">set your course</div>
+      <div class="vocab-chip">steady as she goes</div>
+      <div class="vocab-chip">fair winds</div>
+      <div class="vocab-chip">even keel</div>
+      <div class="vocab-chip">hold fast</div>
+    </div>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Surface copy examples</p>
+    <table class="voice-table">
+      <thead><tr><th>Surface</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>Tagline</td><td><em>Set your course. · A compass for the mind. · Less wish-making. More way-finding.</em></td></tr>
+        <tr><td>Onboarding steps</td><td><em>Cast off · Get underway · Set bearings · Make fast</em></td></tr>
+        <tr><td>Success state</td><td><em>Anchors aweigh.</em></td></tr>
+        <tr><td>Empty state</td><td><em>Your library is high and dry.</em></td></tr>
+        <tr><td>Push notification</td><td><em>Fair winds, Sailor.</em></td></tr>
+        <tr><td>Email sign-off (personal)</td><td><em>Welcome aboard, Sailor. — Megan</em></td></tr>
+        <tr><td>Email sign-off (product)</td><td><em>Fair winds. — The Captain</em></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <a href="index.html">The Sailor's Oracle</a> · <a href="https://www.starboardmanifest.com/" target="_blank">Starboard</a> · captain@starboardmanifest.com
+  </footer>
+</div>
+
+<script>
+  var toggle = document.getElementById("themeToggle");
+  toggle.addEventListener("click", function(e) {
+    var btn = e.target.closest("button");
+    if (!btn) return;
+    var mode = btn.dataset.mode;
+    document.documentElement.setAttribute("data-theme", mode);
+    toggle.querySelectorAll("button").forEach(function(b) {
+      b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+    });
+  });
+
+  var segBtns = document.querySelectorAll(".seg button");
+  segBtns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      var parent = btn.closest(".seg");
+      parent.querySelectorAll("button").forEach(function(b) {
+        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
       });
     });
-  </script>
+  });
+</script>
 </body>
 </html>
