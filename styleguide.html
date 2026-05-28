@@ -304,6 +304,10 @@
     .voice-no { color: var(--text-muted); text-decoration: line-through; }
     .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 8px; margin: 12px 0; }
     .vocab-chip { padding: 6px 10px; border-radius: 6px; font-size: 12.5px; font-style: italic; font-family: var(--font-family-secondary); color: var(--text-color); background: var(--card-bg-tint); border: 1px solid var(--border-muted); }
+    .sample-lines { display: flex; flex-direction: column; gap: 14px; margin: 12px 0; }
+    .sample-block { padding: 12px 16px; background: var(--card-bg-tint); border-radius: var(--radius-md); border-left: 3px solid var(--accent-text); }
+    .sample-block .sample-label { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 6px; }
+    .sample-block blockquote { margin: 0; font-family: var(--font-family-secondary); font-style: italic; font-size: 14px; line-height: 1.6; color: var(--text-color); }
 
     /* ── Footer ────────────────────────────────────────────────────────── */
     footer { text-align: center; border-top: 1px solid var(--border-muted); padding-top: 32px; color: var(--text-muted); font-size: 13px; }
@@ -865,21 +869,57 @@
     <div class="sec-head">
       <div class="eyebrow">Brand</div>
       <h2 class="sec">Voice &amp; vocabulary</h2>
-      <p class="note">The Captain speaks with steady authority and long-range thinking. Not a priestess — an explorer. Dry honesty, first person. One nautical term per surface.</p>
+      <p class="note">Starboard is written by Megan Williams — the founder, the Captain. The audience is the Sailor. One nautical term per surface, not three. The blog at <a href="https://starboardmanifest.com/blog" target="_blank">starboardmanifest.com/blog</a> is the running tone-of-voice reference.</p>
     </div>
 
+    <p class="eyebrow" style="margin:20px 0 8px">Voice persona</p>
     <table class="voice-table">
-      <thead><tr><th>We are</th><th>We are not</th></tr></thead>
+      <thead><tr><th>Name</th><th>Role</th><th>Sign-off</th></tr></thead>
       <tbody>
-        <tr><td class="voice-yes">Calm authority, long-range thinking</td><td class="voice-no">Hyped, motivational-poster energy</td></tr>
-        <tr><td class="voice-yes">Grounded confidence, precision over hype</td><td class="voice-no">Goddess, divine feminine, vibration</td></tr>
-        <tr><td class="voice-yes">Mythic but grounded — older than wellness</td><td class="voice-no">Abundance mindset, universe provides</td></tr>
-        <tr><td class="voice-yes">Way-finding, navigation, chart &amp; course</td><td class="voice-no">Wish-making, magic, manifesting</td></tr>
-        <tr><td class="voice-yes">Dry honesty, explorer not priestess</td><td class="voice-no">Spiritual bypassing, toxic positivity</td></tr>
+        <tr><td><strong>Megan</strong></td><td>Personal voice — blog posts, founder letters, long-form writing</td><td><em>— Megan</em></td></tr>
+        <tr><td><strong>The Captain</strong></td><td>Product voice — welcome emails, app onboarding, push notifications, marketing sign-offs</td><td><em>— The Captain</em></td></tr>
+        <tr><td><strong>Megan, Captain</strong></td><td>When personal and product voice both apply</td><td><em>— Megan, Captain</em></td></tr>
+        <tr><td><strong>Sailor</strong></td><td>The audience. Capitalized when addressed directly. Open or close of long-form. Drop in chrome and button labels. Never "the user".</td><td><em>Welcome aboard, Sailor.</em></td></tr>
       </tbody>
     </table>
 
-    <p class="eyebrow" style="margin:20px 0 8px">Approved vocabulary</p>
+    <p class="eyebrow" style="margin:20px 0 8px">We are · We are not</p>
+    <table class="voice-table">
+      <thead><tr><th>We are</th><th>We are not</th></tr></thead>
+      <tbody>
+        <tr><td class="voice-yes">Steady authority — we guide, we don't hype</td><td class="voice-no">Hyped, motivational-poster energy</td></tr>
+        <tr><td class="voice-yes">Long-range thinking — charting courses, not chasing trends</td><td class="voice-no">Trend-chasing, reactive</td></tr>
+        <tr><td class="voice-yes">Grounded confidence — precision over performance</td><td class="voice-no">Goddess, divine feminine, vibration</td></tr>
+        <tr><td class="voice-yes">Mythic intelligence — older than wellness, Victorian navigational</td><td class="voice-no">Abundance mindset, universe provides</td></tr>
+        <tr><td class="voice-yes">Explorer, not priestess — universal, inclusive, not gendered or goddess-coded</td><td class="voice-no">Wish-making, magic, manifesting</td></tr>
+        <tr><td class="voice-yes">Dry honesty — first person, willing to admit what is and isn't working</td><td class="voice-no">Spiritual bypassing, toxic positivity</td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Brand vocabulary</p>
+    <p class="note" style="margin-bottom:10px">Brand-distinct terms Starboard owns. Brand voice first in the chrome — search-friendly vocabulary (<em>mood board, dream board, manifestation, meditation</em>) belongs in supporting copy, metadata, and SEO descriptions.</p>
+    <table class="voice-table">
+      <thead><tr><th>Term</th><th>When to use</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sailor</strong></td><td>The audience. Capitalized when addressed: <em>Welcome aboard, Sailor.</em></td></tr>
+        <tr><td><strong>the Captain</strong></td><td>The voice — sign-offs, push notifications, formal product speech</td></tr>
+        <tr><td><strong>Megan</strong></td><td>The personal voice — blog sign-offs and founder letters</td></tr>
+        <tr><td><strong>vision board</strong></td><td>Core noun, every surface</td></tr>
+        <tr><td><strong>board</strong></td><td>Shorthand inside the app once a vision board is open</td></tr>
+        <tr><td><strong>montage</strong></td><td>The looping video output</td></tr>
+        <tr><td><strong>affirmation</strong></td><td>The written intention attached to a reminder</td></tr>
+        <tr><td><strong>reminder</strong></td><td>Scheduled push or local notification</td></tr>
+        <tr><td><strong>lanthorn</strong></td><td>Central metaphor for the practice. Long-form only, not chrome.</td></tr>
+        <tr><td><strong>chart · course · bearings</strong></td><td>Navigation verbs for goals, intent, direction</td></tr>
+        <tr><td><strong>constellation · north star · horizon</strong></td><td>Celestial direction language</td></tr>
+        <tr><td><strong>anchor · helm · compass · sextant</strong></td><td>Grounding and instrument metaphors</td></tr>
+        <tr><td><strong>tide · current · voyage · landfall</strong></td><td>Passage metaphors for progress over time</td></tr>
+        <tr><td><strong>healing frequency</strong></td><td>The Solfeggio audio (396, 432, 528 Hz, etc.)</td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Nautical vocabulary palette</p>
+    <p class="note" style="margin-bottom:10px">A resource pool — reach for a term whenever it lands naturally. Restraint matters: one nautical term per surface, not three.</p>
     <div class="vocab-grid">
       <div class="vocab-chip">bearings</div>
       <div class="vocab-chip">chart</div>
@@ -899,17 +939,61 @@
       <div class="vocab-chip">fair winds</div>
       <div class="vocab-chip">even keel</div>
       <div class="vocab-chip">hold fast</div>
+      <div class="vocab-chip">dead in the water</div>
+      <div class="vocab-chip">high and dry</div>
+      <div class="vocab-chip">maiden voyage</div>
+      <div class="vocab-chip">doldrums</div>
+      <div class="vocab-chip">following seas</div>
+      <div class="vocab-chip">sea legs</div>
     </div>
 
-    <p class="eyebrow" style="margin:20px 0 8px">Surface copy examples</p>
+    <p class="eyebrow" style="margin:20px 0 8px">Punctuation &amp; style</p>
+    <table class="voice-table">
+      <thead><tr><th>Rule</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>No exclamation points — the brand does not shout</td><td></td></tr>
+        <tr><td>Commas and short sentences over em dashes</td><td><em>It had to be tended. That's Starboard.</em></td></tr>
+        <tr><td>Sentence case everywhere; Title Case for chrome page titles</td><td><em>Vision Boards · Library · Moon Phases</em></td></tr>
+        <tr><td>UPPERCASE wide-tracked for eyebrows, labels, badges</td><td><em>PLANS · ONBOARDING · 60%</em></td></tr>
+        <tr><td>Numbers in copy: numerals</td><td><em>3 vision boards · 13 daily reminders</em></td></tr>
+        <tr><td>Pricing: localized</td><td><em>£23/year · £72 one-time</em></td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Sample lines</p>
+    <div class="sample-lines">
+      <div class="sample-block">
+        <div class="sample-label">Long-form opening</div>
+        <blockquote>"I tried every vision board app I could find. One sent me notifications about finding love. The app had decided, without asking, what I should want."</blockquote>
+      </div>
+      <div class="sample-block">
+        <div class="sample-label">Mythic but grounded</div>
+        <blockquote>"During the age of sail, a lanthorn was a vital tool. It had to be tended. That's Starboard. The lanthorn you carry."</blockquote>
+      </div>
+      <div class="sample-block">
+        <div class="sample-label">Marketing headline</div>
+        <blockquote>Set your course. · Steady as she goes. · Your vision, on board. Your course, in sight.</blockquote>
+      </div>
+      <div class="sample-block">
+        <div class="sample-label">Sign-offs</div>
+        <blockquote>Welcome aboard, Sailor. — Megan<br>Fair winds. — The Captain</blockquote>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Surface copy</p>
     <table class="voice-table">
       <thead><tr><th>Surface</th><th>Copy</th></tr></thead>
       <tbody>
         <tr><td>Tagline</td><td><em>Your vision, on board. Your course, in sight.</em></td></tr>
+        <tr><td>CTA headline</td><td><em>Set Your Course</em></td></tr>
+        <tr><td>Marketing headlines</td><td><em>Set your course. · Steady as she goes. · Even keel.</em></td></tr>
         <tr><td>Onboarding steps</td><td><em>Cast off · Get underway · Set bearings · Make fast</em></td></tr>
-        <tr><td>Success state</td><td><em>Anchors aweigh.</em></td></tr>
-        <tr><td>Empty state</td><td><em>Your library is high and dry.</em></td></tr>
-        <tr><td>Push notification</td><td><em>Fair winds, Sailor.</em></td></tr>
+        <tr><td>Success state</td><td><em>Anchors aweigh. Your board is saved.</em></td></tr>
+        <tr><td>Error state</td><td><em>Dead in the water. Try again.</em></td></tr>
+        <tr><td>Empty state</td><td><em>Your library is high and dry. Add an image to begin.</em></td></tr>
+        <tr><td>Push notification</td><td><em>Fair winds, Sailor. Time to revisit your board.</em></td></tr>
+        <tr><td>Email subject lines</td><td><em>Letters from the Helm · The doldrums are temporary · Following seas this week</em></td></tr>
+        <tr><td>Slogan / merch</td><td><em>Hold fast. · Steady on. · Sea legs. · Even keel.</em></td></tr>
         <tr><td>Email sign-off (personal)</td><td><em>Welcome aboard, Sailor. — Megan</em></td></tr>
         <tr><td>Email sign-off (product)</td><td><em>Fair winds. — The Captain</em></td></tr>
       </tbody>
