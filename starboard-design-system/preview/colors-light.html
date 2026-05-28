@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html data-theme="light">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 18px 22px; width: 700px; height: 180px; gap: 12px; background: var(--bg-color); }
+  .row-s { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; flex: 1; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { flex: 1; border-radius: 8px; border: 1px solid rgba(4,4,28,0.10); min-height: 76px; }
+  .nm { font-family: var(--font-family-chivo); font-size: 10px; color: var(--text-color); }
+  .hx { font-family: ui-monospace, Menlo, monospace; font-size: 9.5px; color: var(--text-muted); text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <span class="label">Light theme</span>
+  <div class="row-s">
+    <div class="sw"><div class="chip" style="background:#FEFDF6"></div><div class="nm">bg</div><div class="hx">#FEFDF6</div></div>
+    <div class="sw"><div class="chip" style="background:#04041C"></div><div class="nm">text · ink</div><div class="hx">#04041C</div></div>
+    <div class="sw"><div class="chip" style="background:#A3C132"></div><div class="nm">accent · olive</div><div class="hx">#A3C132</div></div>
+    <div class="sw"><div class="chip" style="background:#4D5198"></div><div class="nm">footer / ticker</div><div class="hx">#4D5198</div></div>
+    <div class="sw"><div class="chip" style="background:#FFFFFF"></div><div class="nm">card</div><div class="hx">#FFFFFF</div></div>
+    <div class="sw"><div class="chip" style="background:#FAF9D4"></div><div class="nm">tertiary</div><div class="hx">#FAF9D4</div></div>
+  </div>
+</body>
+</html>

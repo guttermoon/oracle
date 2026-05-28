@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  body { padding: 20px 26px; width: 700px; height: 200px; gap: 12px; }
+  .frame {
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 22px;
+    border: 1px solid var(--border-muted);
+    overflow: hidden;
+    background: var(--bg-color);
+  }
+  .nav {
+    background: var(--bg-color);
+    border-top: 1px solid var(--border-muted);
+    display: flex; align-items: stretch;
+    height: 72px;
+    padding: 4px 6px 6px;
+  }
+  .it {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 4px;
+    color: var(--text-muted);
+    border-radius: 10px;
+    min-width: 44px;
+  }
+  .it.active { color: var(--accent-color); background: color-mix(in srgb, var(--accent-color) 12%, transparent); }
+  .it i, .it svg { width: 22px; height: 22px; }
+  .it span { font-family: var(--font-family-chivo); font-size: 10px; font-weight: 500; }
+</style>
+</head>
+<body>
+  <span class="label">Mobile bottom navigation · max-width 480 in production</span>
+  <div class="frame">
+    <div class="nav">
+      <div class="it active"><i data-lucide="image"></i><span>Boards</span></div>
+      <div class="it"><i data-lucide="library"></i><span>Library</span></div>
+      <div class="it"><i data-lucide="bell"></i><span>Alerts</span></div>
+      <div class="it"><i data-lucide="moon-star"></i><span>Moon</span></div>
+      <div class="it"><i data-lucide="user"></i><span>Sam</span></div>
+      <div class="it"><i data-lucide="moon"></i><span>Dark</span></div>
+    </div>
+  </div>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html data-theme="warm">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 18px 22px; width: 700px; height: 180px; gap: 12px; background: var(--bg-color); }
+  .row-s { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; flex: 1; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { flex: 1; border-radius: 8px; border: 1px solid rgba(106,77,68,0.18); min-height: 76px; }
+  .nm { font-family: var(--font-family-chivo); font-size: 10px; color: var(--text-color); }
+  .hx { font-family: ui-monospace, Menlo, monospace; font-size: 9.5px; color: var(--text-muted); text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <span class="label">Warm theme</span>
+  <div class="row-s">
+    <div class="sw"><div class="chip" style="background:#F7F0DB"></div><div class="nm">bg · parchment</div><div class="hx">#F7F0DB</div></div>
+    <div class="sw"><div class="chip" style="background:#6A4D44"></div><div class="nm">text · umber</div><div class="hx">#6A4D44</div></div>
+    <div class="sw"><div class="chip" style="background:#4A5D45"></div><div class="nm">accent · forest</div><div class="hx">#4A5D45</div></div>
+    <div class="sw"><div class="chip" style="background:#8F9E7A"></div><div class="nm">sage</div><div class="hx">#8F9E7A</div></div>
+    <div class="sw"><div class="chip" style="background:#D98A5F"></div><div class="nm">terra</div><div class="hx">#D98A5F</div></div>
+    <div class="sw"><div class="chip" style="background:#FFF9EB"></div><div class="nm">card</div><div class="hx">#FFF9EB</div></div>
+  </div>
+</body>
+</html>

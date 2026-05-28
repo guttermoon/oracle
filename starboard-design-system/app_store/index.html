@@ -1,0 +1,520 @@
+<!doctype html>
+<html data-theme="dark" lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Starboard — App Store Screenshots</title>
+<link rel="icon" href="../assets/logos/favicon.svg" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #04041C; min-height: 100vh; }
+  body {
+    background-color: #04041C;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(77,81,152,0.20) 0%, transparent 60%),
+      radial-gradient(circle at 0% 100%, rgba(0,0,0,0.4) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    padding: 80px 24px;
+    font-family: var(--font-family-primary);
+    color: #F5E6CD;
+  }
+  h1, h2, h3 { font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; margin: 0; line-height: 1.05; letter-spacing: 0.01em; }
+
+  .deck-header {
+    max-width: 1200px; margin: 0 auto 56px;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .deck-header img { height: 56px; }
+  .deck-header .meta {
+    font-family: var(--font-family-chivo); font-size: 13px;
+    letter-spacing: 0.30em; text-transform: uppercase; opacity: 0.55;
+  }
+
+  .strip {
+    display: flex; gap: 32px;
+    overflow-x: auto;
+    padding: 0 max(24px, calc((100vw - 1200px) / 2)) 80px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .strip::-webkit-scrollbar { height: 8px; }
+  .strip::-webkit-scrollbar-track { background: rgba(245,230,205,0.04); border-radius: 9999px; }
+  .strip::-webkit-scrollbar-thumb { background: rgba(245,230,205,0.20); border-radius: 9999px; }
+
+  /* Single screenshot frame — 600 × 1300 (App Store-ish proportions) */
+  .shot {
+    flex: 0 0 600px;
+    height: 1300px;
+    border-radius: 56px;
+    padding: 64px 48px 0;
+    position: relative;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex; flex-direction: column;
+    box-shadow: 0 24px 60px -16px rgba(0,0,0,0.6), 0 8px 24px -8px rgba(0,0,0,0.4);
+  }
+  /* The 6 backgrounds vary across the strip */
+  .shot.bg-navy   { background: radial-gradient(circle at 50% 0%, #2D3268 0%, #1B1F3B 60%, #04041C 100%); }
+  .shot.bg-warm   { background: radial-gradient(circle at 50% 0%, #F7F0DB 0%, #E9E0C5 100%); color: #6A4D44; }
+  .shot.bg-deep   { background: radial-gradient(circle at 50% 0%, #1A1428 0%, #04041C 100%); }
+  .shot.bg-sage   { background: radial-gradient(circle at 50% 0%, #8F9E7A 0%, #4A5D45 100%); }
+  .shot.bg-paper  { background: #FEFDF6; color: #04041C; }
+
+  .shot::after {
+    content: ''; position: absolute; inset: 0;
+    pointer-events: none;
+    background:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  .shot .copy {
+    text-align: center; position: relative; z-index: 1;
+    margin-bottom: 36px;
+  }
+  .shot .eyebrow {
+    font-family: var(--font-family-chivo); font-weight: 600;
+    font-size: 16px; letter-spacing: 0.30em; text-transform: uppercase;
+    opacity: 0.6; margin-bottom: 16px;
+  }
+  .shot .title {
+    font-size: 68px; line-height: 1.0;
+    text-wrap: balance; max-width: 480px; margin: 0 auto;
+  }
+  .shot .sub {
+    font-family: var(--font-family-chivo);
+    font-size: 22px; line-height: 1.4;
+    margin-top: 24px; opacity: 0.75;
+    max-width: 460px; margin-left: auto; margin-right: auto;
+  }
+  .shot.bg-warm .sub { opacity: 0.7; }
+  .shot.bg-paper .sub { opacity: 0.6; }
+
+  /* Phone frame */
+  .phone {
+    position: relative;
+    width: 420px; margin: 0 auto;
+    background: #000;
+    border-radius: 56px;
+    padding: 14px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 12px 24px rgba(0,0,0,0.4);
+    z-index: 1;
+    flex: 1;
+    overflow: hidden;
+  }
+  .phone .inner {
+    position: relative;
+    background: #1B1F3B;
+    border-radius: 44px;
+    overflow: hidden;
+    height: 100%;
+  }
+  .phone .notch {
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    width: 110px; height: 30px; background: #000; border-radius: 9999px;
+    z-index: 10;
+  }
+  .phone .statusbar {
+    position: absolute; top: 12px; left: 0; right: 0;
+    display: flex; justify-content: space-between;
+    padding: 0 32px;
+    color: #fff;
+    font-family: -apple-system, "SF Pro", system-ui;
+    font-size: 14px; font-weight: 600;
+    z-index: 9;
+  }
+
+  /* In-phone app screen wrappers (per shot) */
+  .app-screen {
+    position: absolute; inset: 0;
+    padding: 48px 18px 18px;
+    color: #F5E6CD;
+    font-family: var(--font-family-primary);
+    display: flex; flex-direction: column;
+  }
+
+  .eyebrow-app {
+    font-family: var(--font-family-chivo); font-weight: 600;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(245,230,205,0.55); margin-bottom: 6px;
+  }
+  .h-app {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 30px; color: #F5E6CD;
+  }
+
+  /* SHOT 1: Vision boards grid */
+  .boards-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin-top: 16px;
+  }
+  .board-card {
+    background: #2D3268; border: 1px solid rgba(245,230,205,0.15);
+    border-radius: 12px; padding: 10px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .board-cover {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+    aspect-ratio: 1.1;
+    border-radius: 8px; overflow: hidden;
+  }
+  .board-cover > div {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .board-cover img { width: 60%; height: 60%; opacity: 0.55; }
+  .board-card .name { font-family: var(--font-family-secondary); font-style: italic; font-size: 14px; color: #F5E6CD; }
+  .board-card .count { font-family: var(--font-family-chivo); font-size: 9px; color: rgba(245,230,205,0.55); }
+
+  /* SHOT 2: library tiles */
+  .lib-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px;
+    margin-top: 14px;
+  }
+  .lib-tile {
+    aspect-ratio: 1; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lib-tile img { width: 60%; height: 60%; opacity: 0.6; }
+
+  /* SHOT 3: notifications */
+  .notif-card {
+    background: #2D3268; border: 1px solid rgba(245,230,205,0.15);
+    border-radius: 12px; padding: 12px;
+    display: flex; gap: 12px; margin-top: 10px;
+  }
+  .notif-card .t {
+    min-width: 50px;
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 18px; color: #F5E6CD;
+  }
+  .notif-card .b { flex: 1; font-family: var(--font-family-chivo); font-size: 10.5px; line-height: 1.45; color: #F5E6CD; opacity: 0.8; }
+  .toggle {
+    width: 28px; height: 18px; background: #A4E636; border-radius: 9999px;
+    position: relative;
+  }
+  .toggle::after { content: ''; position: absolute; right: 2px; top: 2px; width: 14px; height: 14px; background: #1B1F3B; border-radius: 9999px; }
+  .toggle.off { background: rgba(245,230,205,0.25); }
+  .toggle.off::after { right: auto; left: 2px; }
+
+  /* SHOT 4: moon */
+  .moon-stage {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 0 8px;
+  }
+  .moon-stage .orb {
+    width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #E8E0F0 0%, #9B72CF 60%, #1A1428 100%);
+    box-shadow: 0 0 60px rgba(155,114,207,0.40);
+    margin-bottom: 28px;
+  }
+  .moon-stage .phase {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 26px; color: #F5E6CD; margin-bottom: 6px;
+  }
+  .moon-stage .ill {
+    font-family: var(--font-family-chivo); font-size: 12px;
+    letter-spacing: 0.15em; color: rgba(245,230,205,0.55);
+  }
+  .moon-stage .best {
+    margin-top: 28px; font-family: var(--font-family-chivo); font-size: 13px;
+    color: #F5E6CD; opacity: 0.85; max-width: 280px; line-height: 1.5;
+  }
+  .moon-stage .best-lab {
+    font-family: var(--font-family-chivo); font-size: 9px;
+    letter-spacing: 0.30em; text-transform: uppercase;
+    color: #C9A84C; margin-bottom: 8px;
+  }
+
+  /* SHOT 5: montage / board playback */
+  .play-stage {
+    flex: 1; display: flex; flex-direction: column; gap: 10px;
+    position: relative;
+  }
+  .play-stage .video {
+    flex: 1;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #4A5D45 0%, #D98A5F 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .play-stage .video img { width: 60%; height: 60%; object-fit: contain; opacity: 0.6; }
+  .play-stage .play-btn {
+    position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%);
+    width: 64px; height: 64px; border-radius: 9999px;
+    background: rgba(0,0,0,0.45); backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 24px;
+  }
+  .play-stage .scrubber {
+    position: absolute; bottom: 24px; left: 18px; right: 18px;
+    height: 4px; background: rgba(255,255,255,0.30); border-radius: 9999px;
+  }
+  .play-stage .scrubber::after { content: ''; display: block; width: 35%; height: 100%; background: #fff; border-radius: 9999px; }
+  .play-stage .affirm {
+    background: rgba(245,230,205,0.10); backdrop-filter: blur(10px);
+    border-radius: 14px; padding: 14px 16px;
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 14px; color: #F5E6CD; line-height: 1.4;
+    border: 1px solid rgba(245,230,205,0.20);
+  }
+
+  /* SHOT 6: pricing */
+  .price-stage {
+    flex: 1; display: flex; flex-direction: column; gap: 12px;
+    padding: 0 4px;
+  }
+  .price-tier {
+    background: #2D3268; border: 1px solid rgba(245,230,205,0.15);
+    border-radius: 14px; padding: 18px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .price-tier.hi { border-color: rgba(163,230,53,0.50); background: rgba(163,230,53,0.06); }
+  .price-tier .name { font-family: var(--font-family-chivo); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #F5E6CD; }
+  .price-tier .price { font-family: var(--font-family-secondary); font-style: italic; font-size: 38px; color: #F5E6CD; line-height: 1; }
+  .price-tier .per { font-family: var(--font-family-chivo); font-size: 11px; color: rgba(245,230,205,0.55); margin-bottom: 6px; }
+  .price-tier ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+  .price-tier li { font-family: var(--font-family-chivo); font-size: 11px; color: rgba(245,230,205,0.80); display: flex; gap: 8px; align-items: center; }
+  .price-tier li::before { content: '✓'; color: #A4E636; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="deck-header">
+  <img src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+  <span class="meta">APP STORE · 6 SCREENSHOTS · 1290 × 2796 (IPHONE 6.7&quot;)</span>
+</div>
+
+<div class="strip">
+
+  <!-- ====== SHOT 1 — Vision Boards ====== -->
+  <div class="shot bg-navy" data-screen-label="01 Set your course">
+    <div class="copy">
+      <div class="eyebrow">VISION BOARDS</div>
+      <h2 class="title">Set your course, Sailor.</h2>
+      <p class="sub">Build your vision boards. Set affirmations and reminders. Come back to them every day.</p>
+    </div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner">
+        <div class="app-screen">
+          <div class="eyebrow-app">YOUR FLEET</div>
+          <div class="h-app">Vision Boards</div>
+          <div class="boards-grid">
+            <div class="board-card">
+              <div class="board-cover" style="background: linear-gradient(135deg, #4D5198, #2D3268)">
+                <div><img src="../assets/elements/dark/compass-rose.webp" /></div>
+                <div><img src="../assets/elements/dark/lighthouse.webp" /></div>
+                <div><img src="../assets/elements/dark/key.webp" /></div>
+                <div><img src="../assets/elements/dark/ship.webp" /></div>
+              </div>
+              <div class="name">Career</div>
+              <div class="count">24 images</div>
+            </div>
+            <div class="board-card">
+              <div class="board-cover" style="background: linear-gradient(135deg, #D98A5F, #6A4D44)">
+                <div><img src="../assets/elements/dark/coins.webp" /></div>
+                <div><img src="../assets/elements/dark/crown.webp" /></div>
+                <div><img src="../assets/elements/dark/key.webp" /></div>
+                <div><img src="../assets/elements/dark/sun.webp" /></div>
+              </div>
+              <div class="name">Wealth</div>
+              <div class="count">18 images</div>
+            </div>
+            <div class="board-card">
+              <div class="board-cover" style="background: linear-gradient(135deg, #8F9E7A, #4A5D45)">
+                <div><img src="../assets/elements/dark/heart.webp" /></div>
+                <div><img src="../assets/elements/dark/sun.webp" /></div>
+                <div><img src="../assets/elements/dark/eye-1.webp" /></div>
+                <div><img src="../assets/elements/dark/shell.webp" /></div>
+              </div>
+              <div class="name">Health</div>
+              <div class="count">11 images</div>
+            </div>
+            <div class="board-card">
+              <div class="board-cover" style="background: linear-gradient(135deg, #04041C, #4D5198)">
+                <div><img src="../assets/elements/dark/compass-rose.webp" /></div>
+                <div><img src="../assets/elements/dark/anchor.webp" /></div>
+                <div><img src="../assets/elements/dark/ship.webp" /></div>
+                <div><img src="../assets/elements/dark/swallows.webp" /></div>
+              </div>
+              <div class="name">Travel</div>
+              <div class="count">32 images</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SHOT 2 — Library ====== -->
+  <div class="shot bg-warm" data-screen-label="02 Library">
+    <div class="copy">
+      <div class="eyebrow">LIBRARY</div>
+      <h2 class="title">Every image you've gathered.</h2>
+      <p class="sub">Upload in bulk. Crop fast. The board stays loaded.</p>
+    </div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner">
+        <div class="app-screen">
+          <div class="eyebrow-app">EVERYTHING YOU'VE SAVED</div>
+          <div class="h-app">Library</div>
+          <div class="lib-grid">
+            <div class="lib-tile" style="background: #4D5198"><img src="../assets/elements/dark/anchor.webp" /></div>
+            <div class="lib-tile" style="background: #D98A5F"><img src="../assets/elements/dark/sun.webp" /></div>
+            <div class="lib-tile" style="background: #2D3268"><img src="../assets/elements/dark/compass-rose.webp" /></div>
+            <div class="lib-tile" style="background: #4A5D45"><img src="../assets/elements/dark/heart.webp" /></div>
+            <div class="lib-tile" style="background: #04041C"><img src="../assets/elements/dark/ship.webp" /></div>
+            <div class="lib-tile" style="background: #8F9E7A"><img src="../assets/elements/dark/eye-1.webp" /></div>
+            <div class="lib-tile" style="background: #6A4D44"><img src="../assets/elements/dark/key.webp" /></div>
+            <div class="lib-tile" style="background: #2D3268"><img src="../assets/elements/dark/crow.webp" /></div>
+            <div class="lib-tile" style="background: #D98A5F"><img src="../assets/elements/dark/shell.webp" /></div>
+            <div class="lib-tile" style="background: #4D5198"><img src="../assets/elements/dark/lighthouse.webp" /></div>
+            <div class="lib-tile" style="background: #04041C"><img src="../assets/elements/dark/crown.webp" /></div>
+            <div class="lib-tile" style="background: #4A5D45"><img src="../assets/elements/dark/swallows.webp" /></div>
+            <div class="lib-tile" style="background: #6A4D44"><img src="../assets/elements/dark/hearts.webp" /></div>
+            <div class="lib-tile" style="background: #2D3268"><img src="../assets/elements/dark/coins.webp" /></div>
+            <div class="lib-tile" style="background: #8F9E7A"><img src="../assets/elements/dark/fish.webp" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SHOT 3 — Reminders ====== -->
+  <div class="shot bg-deep" data-screen-label="03 Reminders">
+    <div class="copy">
+      <div class="eyebrow">REMINDERS</div>
+      <h2 class="title">The board returns to you.</h2>
+      <p class="sub">Affirmations on a schedule. The lanthorn you carry, kept lit on purpose.</p>
+    </div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner">
+        <div class="app-screen">
+          <div class="eyebrow-app">RITUALS &amp; REMINDERS</div>
+          <div class="h-app">Notifications</div>
+          <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+            <div class="notif-card">
+              <div class="t">07:30</div>
+              <div class="b">The work I make today is the work I want to be making in five years.</div>
+              <div class="toggle"></div>
+            </div>
+            <div class="notif-card">
+              <div class="t">12:00</div>
+              <div class="b">My direction stays steady. I trust the slow build.</div>
+              <div class="toggle"></div>
+            </div>
+            <div class="notif-card">
+              <div class="t">18:00</div>
+              <div class="b">Tonight I rest. The work waits patiently for me.</div>
+              <div class="toggle off"></div>
+            </div>
+            <div class="notif-card">
+              <div class="t">22:30</div>
+              <div class="b">I close the day with my goals in view, not behind me.</div>
+              <div class="toggle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SHOT 4 — Moon ====== -->
+  <div class="shot bg-deep" data-screen-label="04 Moon">
+    <div class="copy">
+      <div class="eyebrow">LUNAR RITUAL</div>
+      <h2 class="title">Tides and phases, in view.</h2>
+      <p class="sub">Real-time lunar data with ritual guidance, free for every Sailor.</p>
+    </div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner" style="background: radial-gradient(circle at 50% 30%, #1A1428 0%, #04041C 100%);">
+        <div class="app-screen">
+          <div class="moon-stage">
+            <div class="orb"></div>
+            <div class="phase">Waxing Gibbous</div>
+            <div class="ill">78% ILLUMINATED · 27 NOV</div>
+            <div class="best-lab" style="margin-top: 28px;">BEST FOR</div>
+            <div class="best">Refinement and clarity. What you tend grows into form. Adjust, don't abandon.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SHOT 5 — Montage playback ====== -->
+  <div class="shot bg-sage" data-screen-label="05 Montages">
+    <div class="copy">
+      <div class="eyebrow">MONTAGES</div>
+      <h2 class="title">A board that moves.</h2>
+      <p class="sub">Looping montages with text, music, and healing-frequency audio included.</p>
+    </div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner">
+        <div class="app-screen">
+          <div class="eyebrow-app">CAREER</div>
+          <div class="h-app">Now playing</div>
+          <div class="play-stage" style="margin-top: 14px;">
+            <div class="video">
+              <img src="../assets/elements/dark/lighthouse.webp" />
+              <div class="play-btn">▶</div>
+              <div class="scrubber"></div>
+            </div>
+            <div class="affirm">
+              "The work I make today is the work I want to be making in five years. I move steady, not fast."
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SHOT 6 — Pricing ====== -->
+  <div class="shot bg-navy" data-screen-label="06 Pricing">
+    <div class="copy">
+      <div class="eyebrow">PLANS</div>
+      <h2 class="title">Free forever, or yours for life.</h2>
+      <p class="sub">£72 lifetime. Never expires, never goes on sale.</p>
+    </div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner">
+        <div class="app-screen">
+          <div class="eyebrow-app">PLANS</div>
+          <div class="h-app" style="margin-bottom: 14px;">Choose your path</div>
+          <div class="price-stage">
+            <div class="price-tier">
+              <div class="name">FREE</div>
+              <div class="price">Free</div>
+              <div class="per">forever</div>
+              <ul><li>3 boards · 50 images</li><li>Healing frequencies</li></ul>
+            </div>
+            <div class="price-tier hi">
+              <div class="name">ANNUAL</div>
+              <div class="price">£23</div>
+              <div class="per">per year</div>
+              <ul><li>13 boards · 250 images</li><li>Custom music · sharing</li></ul>
+            </div>
+            <div class="price-tier">
+              <div class="name">LIFETIME</div>
+              <div class="price">£72</div>
+              <div class="per">one time, no expiry</div>
+              <ul><li>Everything in Annual</li><li>All future updates</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

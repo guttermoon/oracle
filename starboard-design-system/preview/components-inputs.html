@@ -1,0 +1,65 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 22px 26px; width: 700px; height: 230px; gap: 14px; }
+  .row-i { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field-lab {
+    font-family: var(--font-family-chivo);
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  input, .input {
+    font-family: var(--font-family-chivo);
+    font-size: 14px;
+    padding: 13px 16px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-muted);
+    border-radius: 8px;
+    outline: none;
+  }
+  .input.focused {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 22%, transparent);
+    background: var(--input-bg-focus);
+  }
+  .otp { display: flex; gap: 8px; }
+  .otp .d {
+    width: 38px; height: 44px;
+    background: var(--input-bg);
+    border: 2px solid var(--border-muted);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-family: var(--font-family-chivo);
+    font-weight: 600; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .otp .d.f { border-color: var(--accent-color); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 22%, transparent); }
+</style>
+</head>
+<body>
+  <span class="label">Inputs · text · focused · OTP</span>
+  <div class="row-i">
+    <div class="field">
+      <div class="field-lab">Email</div>
+      <div class="input">captain@starboardmanifest.com</div>
+    </div>
+    <div class="field">
+      <div class="field-lab">Affirmation · focused</div>
+      <div class="input focused">My direction stays steady.</div>
+    </div>
+  </div>
+  <div class="field">
+    <div class="field-lab">One-time passcode</div>
+    <div class="otp">
+      <div class="d">7</div><div class="d">3</div><div class="d">2</div>
+      <div class="d f">9</div><div class="d"></div><div class="d"></div>
+    </div>
+  </div>
+</body>
+</html>

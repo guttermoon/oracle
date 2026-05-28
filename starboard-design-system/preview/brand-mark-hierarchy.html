@@ -1,0 +1,69 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html data-theme="light">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 0; width: 700px; height: 320px; background: var(--bg-color); flex-direction: row; }
+  .col {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px 14px;
+    gap: 10px;
+    position: relative;
+    border-right: 1px solid rgba(4,4,28,0.06);
+  }
+  .col:last-child { border-right: 0; }
+  .col.primary {
+    background: linear-gradient(180deg, #FEFDF6 0%, #F4EFE3 100%);
+    flex: 1.2;
+  }
+  .col.secondary {
+    background: #F7F0DB;
+  }
+  .head {
+    font-family: var(--font-family-chivo);
+    font-size: 9px; letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: rgba(4,4,28,0.5);
+  }
+  .col.secondary .head { color: rgba(106,77,68,0.55); }
+  .mark {
+    flex: 1;
+    width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 6px;
+  }
+  .mark img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .role {
+    font-family: var(--font-family-secondary);
+    font-style: italic; font-size: 22px;
+    color: #04041C;
+    line-height: 1;
+  }
+  .col.secondary .role { color: #6A4D44; }
+  .note {
+    font-family: var(--font-family-chivo);
+    font-size: 10.5px; color: rgba(4,4,28,0.55);
+    line-height: 1.45; text-align: center;
+    max-width: 220px;
+  }
+  .col.secondary .note { color: rgba(106,77,68,0.65); }
+</style>
+</head>
+<body>
+  <div class="col primary">
+    <span class="head">PRIMARY MARK</span>
+    <div class="mark"><img src="../assets/logos/sb-light-logomark-fancy.svg" alt="Starboard star" /></div>
+    <span class="role">The star.</span>
+    <p class="note">North star, compass rose, Bowie's <em>Blackstar</em>. The mark on every brand surface.</p>
+  </div>
+  <div class="col secondary">
+    <span class="head">SECONDARY MARK</span>
+    <div class="mark"><img src="../assets/logos/sb-ship-secondary.png" alt="Starboard ship" /></div>
+    <span class="role">The ship.</span>
+    <p class="note">Maiden voyage, the vessel. Used for editorial moments, never as a logomark.</p>
+  </div>
+</body>
+</html>

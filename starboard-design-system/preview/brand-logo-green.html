@@ -1,0 +1,47 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 0; width: 700px; height: 240px; gap: 0; flex-direction: row; }
+  .col {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px;
+    gap: 14px;
+    position: relative;
+  }
+  .col.dark  { background: #1B1F3B; }
+  .col.light { background: #FEFDF6; }
+  .col.warm  { background: #F7F0DB; }
+  .col img { width: 180px; height: auto; }
+  .col .cap {
+    font-family: var(--font-family-chivo);
+    font-size: 9px; letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.45);
+  }
+  .col.dark .cap { color: rgba(245,230,205,0.55); }
+  .head {
+    position: absolute; top: 10px; left: 14px; right: 14px;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+  <div class="col dark">
+    <img src="../assets/logos/sb-green-lockup-horizontal.png" alt="Starboard green lockup" />
+    <div class="cap">on dark</div>
+  </div>
+  <div class="col light">
+    <img src="../assets/logos/sb-green-lockup-horizontal.png" alt="Starboard green lockup" />
+    <div class="cap">on light</div>
+  </div>
+  <div class="col warm">
+    <img src="../assets/logos/sb-green-lockup-horizontal.png" alt="Starboard green lockup" />
+    <div class="cap">on warm</div>
+  </div>
+</body>
+</html>

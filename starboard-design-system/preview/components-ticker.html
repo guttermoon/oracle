@@ -1,0 +1,58 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 22px 0; width: 700px; height: 130px; gap: 10px; justify-content: center; background: var(--bg-color); }
+  .label { padding: 0 26px; }
+  .ticker {
+    background: var(--ticker-bg);
+    color: var(--ticker-text);
+    overflow: hidden;
+    border-top: 1px solid var(--ticker-bg);
+    border-bottom: 1px solid var(--ticker-bg);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 2.5rem, #000 calc(100% - 2.5rem), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 2.5rem, #000 calc(100% - 2.5rem), transparent 100%);
+  }
+  .track {
+    display: flex; align-items: center;
+    padding: 12px 0;
+    animation: ticker 30s linear infinite;
+    width: max-content;
+  }
+  .it {
+    font-family: var(--font-family-chivo);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    padding: 0 24px;
+    white-space: nowrap;
+  }
+  .sep { width: 38px; height: 38px; flex-shrink: 0; margin: 0 12px; opacity: 0.95; display: inline-flex; align-items: center; justify-content: center; }
+  .sep img { max-width: 100%; max-height: 100%; }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+</style>
+</head>
+<body>
+  <span class="label">Ticker banner · marquee 30s · pattern logomark as separator</span>
+  <div class="ticker">
+    <div class="track">
+      <span class="it">Chart your vision</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Map new habits</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Image library</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Anchor your goals</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Video montages</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Daily Affirmations</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <!-- duplicate for seamless loop -->
+      <span class="it">Chart your vision</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Map new habits</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Image library</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Anchor your goals</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Video montages</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+      <span class="it">Daily Affirmations</span><span class="sep"><img src="../assets/logos/sb-dark-logomark-pattern.webp" /></span>
+    </div>
+  </div>
+</body>
+</html>

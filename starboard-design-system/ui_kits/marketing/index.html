@@ -1,0 +1,73 @@
+<!doctype html>
+<html data-theme="dark" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Starboard — Marketing UI Kit</title>
+<link rel="icon" href="../../assets/logos/favicon.svg" />
+<link rel="stylesheet" href="marketing.css" />
+<style>
+  /* Sparkle anim is needed by SparkleEffect */
+  @keyframes sparkleAnim {
+    0%   { opacity: 0; transform: scale(0) rotate(0deg); }
+    50%  { opacity: 0.7; transform: scale(0.9) rotate(90deg); }
+    100% { opacity: 0; transform: scale(0) rotate(180deg); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  /* Account for fixed header */
+  main { padding-top: 64px; }
+</style>
+</head>
+<body>
+  <div id="app" data-screen-label="Marketing Home"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <script type="text/babel" src="Shared.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Hero.jsx"></script>
+  <script type="text/babel" src="TickerBanner.jsx"></script>
+  <script type="text/babel" src="ValueProp.jsx"></script>
+  <script type="text/babel" src="FeatureTriad.jsx"></script>
+  <script type="text/babel" src="PricingGrid.jsx"></script>
+  <script type="text/babel" src="Newsletter.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    function App() {
+      const [theme, setTheme] = useState('dark');
+
+      useEffect(() => {
+        document.documentElement.dataset.theme = theme;
+        // Recreate lucide icons whenever the tree updates
+        if (window.lucide) window.lucide.createIcons();
+      }, [theme]);
+
+      return (
+        <>
+          <Header theme={theme} active="home" />
+          <main>
+            <Hero theme={theme} />
+            <TickerBanner />
+            <ValueProp />
+            <FeatureTriad />
+            <PricingGrid />
+            <Newsletter />
+            <Footer theme={theme} onThemeChange={setTheme} />
+          </main>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+  </script>
+</body>
+</html>

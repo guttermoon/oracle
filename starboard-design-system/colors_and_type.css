@@ -1,0 +1,349 @@
+/* ============================================================================
+   STARBOARD — Color & Type Foundations
+   ============================================================================
+   Source-of-truth tokens lifted directly from app/globals.css in guttermoon/sb.
+   The product ships THREE themes: dark (default), light, and warm. Switch by
+   setting [data-theme="dark|light|warm"] on a root element.
+
+   Brand fonts (3 only) are loaded from local TTF files in fonts/:
+   - Playfair Display (italic + regular)
+   - Chivo (regular + italic)
+   - Reality Stone (the logo wordmark)
+
+   Vision-board user fonts (Amita, Space Grotesk, Cinzel, Cinzel Decorative,
+   Cormorant Garamond) are NOT brand fonts. They're optional faces the
+   Sailor can pick to style their own boards inside the app. The app loads
+   them on demand, separately from this stylesheet.
+   ============================================================================ */
+
+/* ---------- Brand fonts (local) ------------------------------------------- */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype-variations"),
+       url("fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype-variations"),
+       url("fonts/PlayfairDisplay-Italic.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Chivo";
+  src: url("fonts/Chivo-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Chivo";
+  src: url("fonts/Chivo-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Optional brand display — "Reality Stone" is the logo wordmark font.
+   It draws the letters of "STARBOARD" inside every lockup file. Surface it
+   typographically (deck title slides, badge text, anything that mimics the
+   lockup) via `var(--font-family-reality)`. */
+@font-face {
+  font-family: "Reality Stone";
+  src: url("fonts/Reality_Stone.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Vision-board user fonts -------------------------------------
+   These are NOT brand fonts. Listed here for documentation only.
+   Loaded by the app when a Sailor picks a non-brand face for their
+   board copy. Do not reach for them in brand surfaces (marketing,
+   newsletter, deck, email): Amita, Space Grotesk, Cinzel, Cormorant
+   Garamond, Cinzel Decorative.
+*/
+
+/* ---------- Brand palette (raw values) -------------------------------------
+   Reference the *swatches*, not the role tokens, only when you need to
+   stamp a value outside the theme system (e.g. a marketing screenshot,
+   a brand-locked surface). 99% of the time, prefer the role tokens below. */
+:root {
+  /* Navy family — primary surface for dark mode */
+  --navy-950:        #04041C;  /* deep night, footer, ticker text on light */
+  --navy-900:        #1B1F3B;  /* primary dark bg */
+  --navy-800:        #21264B;  /* dark overlay */
+  --navy-700:        #2D3268;  /* dark card surface */
+  --navy-600:        #4D5198;  /* ticker bg / accent purple */
+  --navy-500:        #8285B6;  /* button-surface hover dark */
+
+  /* Cream / parchment family — primary text on dark, surface on light */
+  --cream-500:       #F5E6CD;  /* dark-mode text & accents */
+  --cream-200:       #FAF9D4;  /* ticker text — pale lemon-cream */
+  --paper-50:        #FEFDF6;  /* light-mode background */
+  --parchment-100:   #F4EFE3;  /* aged paper / pre-hydration fallback */
+  --warm-50:         #F7F0DB;  /* warm-mode background */
+  --warm-100:        #FFF9EB;  /* warm overlay / card */
+  --warm-200:        #F0E8D6;  /* warm dock-pill */
+  --warm-300:        #E9E0C5;  /* warm button-surface */
+  --warm-400:        #D8CBA8;  /* warm button-surface hover */
+
+  /* Accent — lime/olive. Dark uses brighter lime; light/warm shift down */
+  --lime-bright:     #A4E636;  /* dark accent */
+  --lime-olive:      #A3C132;  /* light accent */
+  --olive-deep:      #5C7000;  /* light accent text (high contrast) */
+  --forest:          #4A5D45;  /* warm button bg */
+  --sage:            #8F9E7A;  /* warm accent / tertiary */
+  --sage-deep:       #445535;  /* warm accent text */
+
+  /* Earth — warm mode foreground & terracotta highlight */
+  --umber:           #6A4D44;  /* warm text */
+  --terra:           #D98A5F;  /* warm tertiary highlight */
+  --umber-deep:      #7B5E4F;  /* warm tertiary-3 */
+
+  /* Semantic status — same in every theme */
+  --color-danger:    #DC2626;
+  --color-warning:   #F59E0B;
+  --color-success:   #22C55E;
+
+  /* Type families */
+  --font-family-primary:   "Chivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-family-secondary: "Playfair Display", Georgia, serif;
+  --font-family-playfair:  "Playfair Display", Georgia, serif;
+  --font-family-chivo:     "Chivo", system-ui, sans-serif;
+  --font-family-reality:   "Reality Stone", "Playfair Display", serif;  /* logo wordmark font — use for any typographic STARBOARD lockup */
+
+  /* Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-bold:    700;
+
+  /* Type scale (mobile → desktop via @media in semantic block below) */
+  --text-size-xs:   0.75rem;   /* 12px */
+  --text-size-sm:   0.875rem;  /* 14px */
+  --text-size-md:   1rem;      /* 16px */
+  --text-size-lg:   1.25rem;   /* 20px */
+  --text-size-xl:   2rem;      /* 32px */
+  --text-size-xxl:  3rem;      /* 48px */
+
+  /* Radii — Starboard is largely soft-cornered but not pill-y */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+
+  /* Motion */
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
+  --ease-relume:     cubic-bezier(0.21, 0.47, 0.32, 0.98);
+}
+
+/* ============================================================================
+   THEME ROLE TOKENS
+   Use these everywhere. They swap with [data-theme="…"] so every component
+   reads role names ("text-color", "accent-color", "card-bg-glass") rather
+   than baking in palette values.
+   ============================================================================ */
+
+[data-theme="dark"] {
+  --bg-color:        #1B1F3B;
+  --text-color:      #F5E6CD;
+  --text-muted:      rgba(245, 230, 205, 0.6);
+  --text-subtle:     rgba(245, 230, 205, 0.8);
+  --border-color:    #F5E6CD;
+  --border-muted:    rgba(245, 230, 205, 0.15);
+  --border-subtle:   rgba(245, 230, 205, 0.25);
+  --border-medium:   rgba(245, 230, 205, 0.40);
+  --button-bg:       #A4E636;
+  --button-text:     #1B1F3B;
+  --button-surface:  #2D2D3A;
+  --button-surface-hover: #8285B6;
+  --footer-bg:       #04041C;
+  --footer-text:     #F5E6CD;
+  --ticker-bg:       #4D5198;
+  --ticker-text:     #FAF9D4;
+  --nav-bg:          #1B1F3B;
+  --card-bg-glass:   #2D3268;
+  --card-bg-tint:    rgba(245, 230, 205, 0.08);
+  --card-border:           rgba(245, 230, 205, 0.25);
+  --card-border-highlighted: rgba(163, 230, 53, 0.50);
+  --modal-bg:        #2D3268;
+  --overlay-bg:      #21264B;
+  --tertiary-1:      #4D5198;
+  --tertiary-2:      #04041C;
+  --tertiary-3:      #3B3341;
+  --accent-color:    #A4E636;
+  --accent-foreground: #1B1F3B;
+  --accent-text:     #A4E636;
+  --input-bg:        rgba(0, 0, 0, 0.20);
+  --input-bg-hover:  rgba(0, 0, 0, 0.25);
+  --input-bg-focus:  rgba(0, 0, 0, 0.30);
+  --card-shadow:        0 2px 8px -2px rgba(0,0,0,0.4),  0 1px 2px -1px rgba(0,0,0,0.3);
+  --card-shadow-hover:  0 24px 48px -12px rgba(0,0,0,0.55), 0 4px 12px -2px rgba(0,0,0,0.4);
+  --glow-rgb: 163, 230, 53;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg-color:        #FEFDF6;
+  --text-color:      #04041C;
+  --text-muted:      rgba(4, 4, 28, 0.6);
+  --text-subtle:     rgba(4, 4, 28, 0.8);
+  --border-color:    #04041C;
+  --border-muted:    rgba(4, 4, 28, 0.10);
+  --border-subtle:   rgba(4, 4, 28, 0.20);
+  --border-medium:   rgba(4, 4, 28, 0.30);
+  --button-bg:       #A3C132;
+  --button-text:     #04041C;
+  --button-surface:  #F5F4ED;
+  --button-surface-hover: #EBE9DE;
+  --footer-bg:       #4D5198;
+  --footer-text:     #FEFDF6;
+  --ticker-bg:       #4D5198;
+  --ticker-text:     #FAF9D4;
+  --nav-bg:          #FEFDF6;
+  --card-bg-glass:   #FFFFFF;
+  --card-bg-tint:    rgba(4, 4, 28, 0.04);
+  --card-border:           rgba(4, 4, 28, 0.10);
+  --card-border-highlighted: rgba(4, 4, 28, 0.18);
+  --modal-bg:        #FFFFFF;
+  --overlay-bg:      #FFFFFF;
+  --tertiary-1:      #FAF9D4;
+  --tertiary-2:      #4D5198;
+  --accent-color:    #A3C132;
+  --accent-foreground: #04041C;
+  --accent-text:     #5C7000;
+  --input-bg:        rgba(163, 193, 50, 0.08);
+  --input-bg-hover:  rgba(163, 193, 50, 0.12);
+  --input-bg-focus:  rgba(163, 193, 50, 0.15);
+  --card-shadow:        0 1px 3px 0 rgba(4,4,28,0.08), 0 1px 2px -1px rgba(4,4,28,0.05);
+  --card-shadow-hover:  0 20px 40px -12px rgba(4,4,28,0.2), 0 4px 10px -2px rgba(4,4,28,0.08);
+  --glow-rgb: 163, 193, 50;
+  color-scheme: light;
+}
+
+[data-theme="warm"] {
+  --bg-color:        #F7F0DB;
+  --text-color:      #6A4D44;
+  --text-muted:      rgba(106, 77, 68, 0.6);
+  --text-subtle:     rgba(106, 77, 68, 0.8);
+  --border-color:    #6A4D44;
+  --border-muted:    rgba(106, 77, 68, 0.10);
+  --border-subtle:   rgba(106, 77, 68, 0.20);
+  --border-medium:   rgba(106, 77, 68, 0.30);
+  --button-bg:       #4A5D45;
+  --button-text:     #F7F0DB;
+  --button-surface:  #E9E0C5;
+  --button-surface-hover: #D8CBA8;
+  --footer-bg:       #4A5D45;
+  --footer-text:     #F7F0DB;
+  --ticker-bg:       #8F9E7A;
+  --ticker-text:     #FAF9D4;
+  --nav-bg:          #F7F0DB;
+  --card-bg-glass:   #FFF9EB;
+  --card-bg-tint:    rgba(106, 77, 68, 0.10);
+  --card-border:           rgba(106, 77, 68, 0.15);
+  --card-border-highlighted: rgba(106, 77, 68, 0.25);
+  --modal-bg:        #FFF9EB;
+  --overlay-bg:      #FFF9EB;
+  --tertiary-1:      #8F9E7A;
+  --tertiary-2:      #D98A5F;
+  --tertiary-3:      #7B5E4F;
+  --accent-color:    #8F9E7A;
+  --accent-foreground: #F7F0DB;
+  --accent-text:     #445535;
+  --input-bg:        rgba(106, 77, 68, 0.10);
+  --input-bg-hover:  rgba(106, 77, 68, 0.14);
+  --input-bg-focus:  rgba(106, 77, 68, 0.18);
+  --card-shadow:        0 1px 3px 0 rgba(106,77,68,0.10), 0 1px 2px -1px rgba(106,77,68,0.06);
+  --card-shadow-hover:  0 20px 40px -12px rgba(106,77,68,0.25), 0 4px 10px -2px rgba(106,77,68,0.10);
+  --glow-rgb: 143, 158, 122;
+  color-scheme: light;
+}
+
+/* ============================================================================
+   SEMANTIC TYPOGRAPHY
+   Headings always use Playfair Display in italic — that's the brand voice.
+   Body is Chivo, regular. Same scale as the codebase, with a 768px breakpoint.
+   ============================================================================ */
+
+body {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-secondary);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 { font-size: 2.75rem; }                 /* 44px → 72px */
+h2 { font-size: 2.5rem;  }                 /* 40px → 52px */
+h3 { font-size: 1.4rem;  }                 /* 22px → 31px */
+h4 { font-size: 1.05rem; line-height: 1.3;}/* 17px → 25px */
+h5 { font-size: 1.25rem; line-height: 1.4;}/* 20px → 28px */
+h6 { font-size: 0.9rem;  line-height: 1.4;}/* 14px → 18px */
+
+@media (min-width: 768px) {
+  h1 { font-size: 4.5rem;  }
+  h2 { font-size: 3.25rem; }
+  h3 { font-size: 1.925rem;}
+  h4 { font-size: 1.575rem;}
+  h5 { font-size: 1.75rem; }
+  h6 { font-size: 1.1rem;  }
+}
+
+/* Section eyebrow — small Chivo uppercase, used above hero/section titles */
+.eyebrow {
+  font-family: var(--font-family-chivo);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+/* Body text sizes */
+.text-large { font-size: 1.375rem; line-height: 1.5; }
+.text-medium { font-size: 1.125rem; line-height: 1.5; }
+.text-regular { font-size: 1rem; line-height: 1.5; }
+.text-small { font-size: 0.875rem; line-height: 1.5; }
+.text-extra-small { font-size: 0.75rem; line-height: 1.5; }
+
+/* Display class for the marketing hero — same family, swashed feel */
+.font-display {
+  font-family: var(--font-family-secondary);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ============================================================================
+   AGED-PARCHMENT BACKGROUND — the brand's signature page texture
+   Apply to <body> or any full-page surface. Combines a vignette, four
+   corner foxing radials, and an SVG noise layer.
+   ============================================================================ */
+.bg-parchment-texture {
+  background-color: var(--bg-color);
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.05) 100%),
+    radial-gradient(circle at 0%   0%,   rgba(0,0,0,0.03) 0%, transparent 35%),
+    radial-gradient(circle at 100% 0%,   rgba(0,0,0,0.03) 0%, transparent 35%),
+    radial-gradient(circle at 100% 100%, rgba(0,0,0,0.03) 0%, transparent 35%),
+    radial-gradient(circle at 0%   100%, rgba(0,0,0,0.03) 0%, transparent 35%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-repeat: repeat;
+}

@@ -1,0 +1,487 @@
+<!doctype html>
+<html data-theme="dark" lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Starboard — Onboarding</title>
+<link rel="icon" href="../assets/logos/favicon.svg" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #14112A; min-height: 100vh; }
+  body {
+    padding: 60px 32px 100px;
+    font-family: var(--font-family-primary);
+    color: #F5E6CD;
+  }
+  h1, h2, h3 { font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; margin: 0; line-height: 1.05; letter-spacing: 0.01em; }
+
+  .deck-header {
+    max-width: 1400px; margin: 0 auto 48px;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .deck-header img { height: 48px; }
+  .deck-header .meta {
+    font-family: var(--font-family-chivo); font-size: 13px;
+    letter-spacing: 0.30em; text-transform: uppercase; opacity: 0.55;
+  }
+
+  .strip {
+    max-width: 1400px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  .step-wrap { display: flex; flex-direction: column; gap: 16px; }
+  .step-meta {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 0 2px;
+  }
+  .step-num {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 34px; color: #A4E636; line-height: 0.9;
+  }
+  .step-name {
+    font-family: var(--font-family-chivo); font-size: 12px;
+    letter-spacing: 0.30em; text-transform: uppercase;
+    color: rgba(245,230,205,0.65);
+  }
+  .step-desc {
+    font-family: var(--font-family-chivo); font-size: 13px;
+    color: rgba(245,230,205,0.55); line-height: 1.55;
+    padding: 0 2px;
+  }
+
+  /* Phone frame */
+  .phone {
+    aspect-ratio: 9 / 19.5;
+    background: #000;
+    border-radius: 44px;
+    padding: 10px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 12px 24px rgba(0,0,0,0.4);
+    overflow: hidden;
+    position: relative;
+  }
+  .phone .inner {
+    position: relative;
+    background: #04041C;
+    border-radius: 36px;
+    overflow: hidden;
+    height: 100%;
+  }
+  .phone .notch {
+    position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+    width: 90px; height: 26px; background: #000; border-radius: 9999px;
+    z-index: 10;
+  }
+  .phone .statusbar {
+    position: absolute; top: 10px; left: 0; right: 0;
+    display: flex; justify-content: space-between;
+    padding: 0 28px;
+    color: #fff;
+    font-family: -apple-system, "SF Pro", system-ui;
+    font-size: 12px; font-weight: 600;
+    z-index: 9;
+  }
+
+  /* Screen container */
+  .screen {
+    position: absolute; inset: 0;
+    padding: 50px 22px 24px;
+    display: flex; flex-direction: column;
+    color: #F5E6CD;
+    background-color: #04041C;
+    background-image: url('../assets/decorations/sb-star-pattern-1.png');
+    background-size: 200px auto; background-repeat: repeat;
+    background-blend-mode: screen;
+  }
+  .screen::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(4,4,28,0.96) 0%, rgba(4,4,28,0.85) 50%, rgba(4,4,28,0.96) 100%);
+    pointer-events: none;
+  }
+  .screen > * { position: relative; z-index: 1; }
+
+  /* Progress bar */
+  .progress {
+    display: flex; gap: 4px;
+    margin-bottom: 26px;
+  }
+  .progress .seg {
+    flex: 1; height: 3px; border-radius: 9999px;
+    background: rgba(245,230,205,0.15);
+  }
+  .progress .seg.on { background: #A4E636; }
+
+  /* Eyebrow */
+  .eyebrow {
+    font-family: var(--font-family-chivo); font-weight: 600;
+    font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: rgba(245,230,205,0.55);
+    margin-bottom: 14px;
+  }
+
+  /* Heading + body */
+  .h-screen {
+    font-family: var(--font-family-secondary); font-style: italic; font-weight: 400;
+    font-size: 30px; color: #F5E6CD; line-height: 1.0;
+    margin-bottom: 14px;
+    letter-spacing: 0.01em;
+  }
+  .body-text {
+    font-family: var(--font-family-chivo); font-size: 13px;
+    line-height: 1.55; color: rgba(245,230,205,0.65);
+  }
+
+  /* Hero ornament */
+  .ornament {
+    display: flex; align-items: center; justify-content: center;
+    padding: 12px 0 20px;
+  }
+  .ornament img {
+    max-width: 60%; max-height: 130px; object-fit: contain;
+    opacity: 0.85;
+  }
+
+  /* Buttons */
+  .actions { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+  .btn {
+    font-family: var(--font-family-chivo);
+    font-weight: 600; font-size: 13px;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    text-align: center;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: #A4E636; color: #1B1F3B;
+  }
+  .btn-ghost {
+    background: transparent; color: rgba(245,230,205,0.6);
+    border: 0;
+  }
+
+  /* Option cards (step 2 — chart your themes) */
+  .opt-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px; margin-top: 4px;
+    margin-bottom: 14px;
+  }
+  .opt {
+    background: rgba(245,230,205,0.04);
+    border: 1px solid rgba(245,230,205,0.12);
+    border-radius: 10px;
+    padding: 10px 8px;
+    display: flex; flex-direction: column; gap: 4px;
+    align-items: center; text-align: center;
+  }
+  .opt.on {
+    background: rgba(163,230,53,0.10);
+    border-color: rgba(163,230,53,0.40);
+  }
+  .opt .ic {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .opt .ic img { max-width: 100%; max-height: 100%; opacity: 0.8; }
+  .opt .nm {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 13px; color: #F5E6CD;
+  }
+  .opt .ct {
+    font-family: var(--font-family-chivo); font-size: 8.5px;
+    color: rgba(245,230,205,0.45);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+
+  /* Step 3 — set bearings (affirmation entry) */
+  .input-field {
+    background: rgba(245,230,205,0.06);
+    border: 1px solid rgba(245,230,205,0.18);
+    border-radius: 10px;
+    padding: 14px;
+    font-family: var(--font-family-secondary); font-style: italic;
+    color: #F5E6CD; font-size: 16px;
+    line-height: 1.35;
+    min-height: 100px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+  }
+  .input-field.focused {
+    border-color: #A4E636;
+  }
+  .suggestions {
+    display: flex; flex-direction: column; gap: 6px;
+    margin-bottom: 14px;
+  }
+  .sugg-label {
+    font-family: var(--font-family-chivo); font-size: 9px;
+    letter-spacing: 0.30em; text-transform: uppercase;
+    color: rgba(245,230,205,0.45);
+    margin-bottom: 4px;
+  }
+  .sugg {
+    font-family: var(--font-family-chivo); font-size: 11px;
+    color: rgba(245,230,205,0.70); line-height: 1.5;
+    padding: 8px 10px;
+    background: rgba(245,230,205,0.04);
+    border: 1px solid rgba(245,230,205,0.10);
+    border-radius: 8px;
+  }
+
+  /* Step 4 — make fast (schedule) */
+  .time-row {
+    display: flex; align-items: center;
+    padding: 12px;
+    background: rgba(245,230,205,0.04);
+    border: 1px solid rgba(245,230,205,0.10);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    gap: 12px;
+  }
+  .time-row .t {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 22px; color: #F5E6CD;
+  }
+  .time-row .l {
+    flex: 1;
+    font-family: var(--font-family-chivo); font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(245,230,205,0.55);
+  }
+  .toggle {
+    width: 30px; height: 18px; background: #A4E636;
+    border-radius: 9999px; position: relative; flex-shrink: 0;
+  }
+  .toggle::after {
+    content: ''; position: absolute; right: 2px; top: 2px;
+    width: 14px; height: 14px; background: #04041C;
+    border-radius: 9999px;
+  }
+  .toggle.off { background: rgba(245,230,205,0.2); }
+  .toggle.off::after { right: auto; left: 2px; }
+
+  .success-icon {
+    width: 100px; height: 100px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: rgba(163,230,53,0.15);
+    border: 1px solid rgba(163,230,53,0.40);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .success-icon img { width: 50%; height: 50%; filter: brightness(0) invert(1); opacity: 0.9; }
+</style>
+</head>
+<body>
+<div class="deck-header">
+  <img src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+  <span class="meta">ONBOARDING · 4 STEPS · CAST OFF → GET UNDERWAY → SET BEARINGS → MAKE FAST</span>
+</div>
+
+<div class="strip">
+
+  <!-- ========== STEP 1: CAST OFF ========== -->
+  <div class="step-wrap">
+    <div class="step-meta">
+      <span class="step-num">01</span>
+      <span class="step-name">CAST OFF</span>
+    </div>
+    <p class="step-desc">Welcome the new Sailor. Set the tone before any input is asked. One simple primary action: continue.</p>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner">
+        <div class="screen">
+          <div class="progress">
+            <div class="seg on"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
+          </div>
+          <div class="eyebrow">STEP ONE OF FOUR</div>
+          <div class="ornament">
+            <img src="../assets/decorations/sb-star-flourish.png" alt="" style="filter: brightness(0) invert(1) opacity(0.85)" />
+          </div>
+          <h2 class="h-screen">Welcome aboard, Sailor.</h2>
+          <p class="body-text" style="margin-bottom: 16px;">
+            You're at the helm. Over the next few steps you'll chart what matters, set a daily watch, and get your first board ready to return to.
+          </p>
+          <p class="body-text" style="font-style: italic; color: rgba(245,230,205,0.55);">
+            Steady on. This takes two minutes.
+          </p>
+          <div class="actions">
+            <button class="btn btn-primary">Cast off →</button>
+            <button class="btn btn-ghost">Sign in instead</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== STEP 2: GET UNDERWAY ========== -->
+  <div class="step-wrap">
+    <div class="step-meta">
+      <span class="step-num">02</span>
+      <span class="step-name">GET UNDERWAY</span>
+    </div>
+    <p class="step-desc">Pick the chapters you're sailing toward. Multi-select; uses the 8 official board categories from llms.txt.</p>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner">
+        <div class="screen">
+          <div class="progress">
+            <div class="seg on"></div><div class="seg on"></div><div class="seg"></div><div class="seg"></div>
+          </div>
+          <div class="eyebrow">STEP TWO OF FOUR</div>
+          <h2 class="h-screen">What are you<br/>charting toward?</h2>
+          <p class="body-text" style="margin-bottom: 14px;">Pick as many as you like. You can add more after.</p>
+          <div class="opt-grid">
+            <div class="opt on">
+              <div class="ic"><img src="../assets/elements/dark/lighthouse.webp" /></div>
+              <span class="nm">Career</span>
+              <span class="ct">3 SELECTED</span>
+            </div>
+            <div class="opt on">
+              <div class="ic"><img src="../assets/elements/dark/coins.webp" /></div>
+              <span class="nm">Wealth</span>
+            </div>
+            <div class="opt">
+              <div class="ic"><img src="../assets/elements/dark/heart.webp" /></div>
+              <span class="nm">Health</span>
+            </div>
+            <div class="opt on">
+              <div class="ic"><img src="../assets/elements/dark/anchor.webp" /></div>
+              <span class="nm">Home</span>
+            </div>
+            <div class="opt">
+              <div class="ic"><img src="../assets/elements/dark/eye-1.webp" /></div>
+              <span class="nm">Creativity</span>
+            </div>
+            <div class="opt">
+              <div class="ic"><img src="../assets/elements/dark/ship.webp" /></div>
+              <span class="nm">Travel</span>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary">Get underway →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== STEP 3: SET BEARINGS ========== -->
+  <div class="step-wrap">
+    <div class="step-meta">
+      <span class="step-num">03</span>
+      <span class="step-name">SET BEARINGS</span>
+    </div>
+    <p class="step-desc">First affirmation. Suggestions shown to lower the cold-start cost, but free entry is the primary action.</p>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner">
+        <div class="screen">
+          <div class="progress">
+            <div class="seg on"></div><div class="seg on"></div><div class="seg on"></div><div class="seg"></div>
+          </div>
+          <div class="eyebrow">STEP THREE OF FOUR</div>
+          <h2 class="h-screen">Set your bearings.</h2>
+          <p class="body-text" style="margin-bottom: 8px;">
+            Your first affirmation. The line you want the board to return to.
+          </p>
+          <div class="input-field focused">
+            I move steady, not fast.
+          </div>
+          <div class="suggestions">
+            <div class="sugg-label">OR PICK ONE</div>
+            <div class="sugg">The work I make today is the work I want to be making in five years.</div>
+            <div class="sugg">My direction stays steady. I trust the slow build.</div>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary">Set bearings →</button>
+            <button class="btn btn-ghost">Skip for now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== STEP 4: MAKE FAST ========== -->
+  <div class="step-wrap">
+    <div class="step-meta">
+      <span class="step-num">04</span>
+      <span class="step-name">MAKE FAST</span>
+    </div>
+    <p class="step-desc">Lock in the daily return. Three default watches, all on. Sailor can turn any off but the default is the practice working.</p>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:41</span><span>···</span></div>
+      <div class="inner">
+        <div class="screen">
+          <div class="progress">
+            <div class="seg on"></div><div class="seg on"></div><div class="seg on"></div><div class="seg on"></div>
+          </div>
+          <div class="eyebrow">STEP FOUR OF FOUR</div>
+          <h2 class="h-screen">Make fast.</h2>
+          <p class="body-text" style="margin-bottom: 16px;">
+            When should the board return to you? <em>Make fast</em> is sailor for "secure the line."
+          </p>
+          <div class="time-row">
+            <span class="t">07:30</span>
+            <span class="l">MORNING WATCH</span>
+            <span class="toggle"></span>
+          </div>
+          <div class="time-row">
+            <span class="t">12:00</span>
+            <span class="l">MIDDAY</span>
+            <span class="toggle"></span>
+          </div>
+          <div class="time-row">
+            <span class="t">22:30</span>
+            <span class="l">NIGHT</span>
+            <span class="toggle off"></span>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary">Make fast → open board</button>
+            <button class="btn btn-ghost">Adjust later</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============== SUCCESS SCREEN ============== -->
+<div style="max-width: 1400px; margin: 80px auto 0;">
+  <div class="step-meta" style="padding: 0;">
+    <span class="step-num" style="color: #F5E6CD;">→</span>
+    <span class="step-name">ANCHORS AWEIGH · SUCCESS</span>
+  </div>
+  <p class="step-desc" style="padding: 0; margin-top: 16px; max-width: 520px;">Onboarding complete. The Sailor lands on their first board, with the affirmation pre-loaded. Practice begins.</p>
+
+  <div style="margin-top: 24px; max-width: 320px;">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="statusbar"><span>9:42</span><span>···</span></div>
+      <div class="inner">
+        <div class="screen" style="text-align: center; justify-content: center;">
+          <div class="success-icon">
+            <img src="../assets/decorations/sb-star-flourish.png" alt="" />
+          </div>
+          <h2 class="h-screen" style="text-align: center; margin-bottom: 14px;">Anchors aweigh, Sailor.</h2>
+          <p class="body-text" style="text-align: center; max-width: 240px; margin: 0 auto 12px;">
+            Your first board is ready. The next morning watch is tomorrow at 7:30.
+          </p>
+          <p class="body-text" style="text-align: center; font-style: italic; color: rgba(245,230,205,0.55);">
+            Fair winds.
+          </p>
+          <div class="actions">
+            <button class="btn btn-primary">Open my first board →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 18px 22px; width: 700px; height: 380px; gap: 12px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; flex: 1; }
+  .card {
+    background: var(--card-bg-glass);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 24px 18px;
+    display: flex; flex-direction: column;
+    text-align: center;
+  }
+  .card.hi { border-color: var(--card-border-highlighted); background: rgba(163,230,53,0.04); }
+  .tier {
+    font-family: var(--font-family-chivo);
+    font-size: 13px; color: var(--text-color);
+    margin-bottom: 6px; letter-spacing: 0.04em;
+  }
+  .price {
+    font-family: var(--font-family-secondary);
+    font-style: italic; font-weight: 400;
+    color: var(--text-color);
+    font-size: 38px; line-height: 1; letter-spacing: 0.01em;
+  }
+  .per { font-family: var(--font-family-chivo); font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+  ul { list-style: none; margin: 14px 0; padding: 0; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+  ul li {
+    font-family: var(--font-family-chivo);
+    font-size: 11.5px; color: var(--text-subtle);
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .tick {
+    display: inline-block; width: 12px; height: 12px;
+    flex-shrink: 0; margin-top: 2px;
+    color: var(--accent-color);
+  }
+  .cta {
+    font-family: var(--font-family-chivo);
+    font-size: 12px; font-weight: 600;
+    padding: 11px 16px;
+    background: var(--button-bg); color: var(--button-text);
+    border-radius: 8px; border: 0; cursor: pointer; margin-top: auto;
+  }
+</style>
+</head>
+<body>
+  <span class="label">Pricing cards · free · annual (highlighted) · lifetime</span>
+  <div class="row">
+    <div class="card">
+      <div class="tier">Free</div>
+      <div class="price">Free</div>
+      <div class="per">forever</div>
+      <ul>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>3 boards</li>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>50 images</li>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Phone widgets</li>
+      </ul>
+      <button class="cta">Get Started</button>
+    </div>
+    <div class="card hi">
+      <div class="tier">Annual</div>
+      <div class="price">£23</div>
+      <div class="per">per year</div>
+      <ul>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>13 boards · 250 images</li>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom music</li>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Public sharing</li>
+      </ul>
+      <button class="cta">Get Started</button>
+    </div>
+    <div class="card">
+      <div class="tier">Lifetime</div>
+      <div class="price">£72</div>
+      <div class="per">one time</div>
+      <ul>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Annual</li>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>No recurring</li>
+        <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>All future updates</li>
+      </ul>
+      <button class="cta">Get Started</button>
+    </div>
+  </div>
+</body>
+</html>

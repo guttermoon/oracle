@@ -1,0 +1,25 @@
+<!-- @dsCard group="Spacing" -->
+<!doctype html>
+<html data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 22px 26px; width: 700px; height: 200px; gap: 12px; }
+  .table { display: grid; grid-template-columns: 100px 1fr 70px; align-items: center; row-gap: 8px; }
+  .tag { font-family: var(--font-family-chivo); font-size: 11px; color: var(--text-color); letter-spacing: 0.04em; }
+  .bar-track { height: 14px; background: rgba(255,255,255,0.04); border-radius: 2px; }
+  .bar { height: 14px; background: var(--accent-color); border-radius: 2px; }
+  .px { font-family: ui-monospace, Menlo, monospace; font-size: 10px; color: var(--text-muted); text-align: right; }
+</style>
+</head>
+<body>
+  <span class="label">Section padding scale · vertical (py-12 → py-32)</span>
+  <div class="table">
+    <div class="tag">section · sm</div><div class="bar-track"><div class="bar" style="width:24%"></div></div><div class="px">48px</div>
+    <div class="tag">section · md</div><div class="bar-track"><div class="bar" style="width:32%"></div></div><div class="px">64px</div>
+    <div class="tag">section · lg</div><div class="bar-track"><div class="bar" style="width:40%"></div></div><div class="px">80px</div>
+    <div class="tag">section · xl</div><div class="bar-track"><div class="bar" style="width:64%"></div></div><div class="px">128px</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+/* Shared styles for Design System preview cards.
+   Each card is targeted at 700×~150–400px. Keep them visually tight. */
+@import url("../colors_and_type.css");
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  width: 700px;
+  font-family: var(--font-family-primary);
+  color: var(--text-color);
+  background: var(--bg-color);
+  -webkit-font-smoothing: antialiased;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-family: var(--font-family-chivo);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.row { display: flex; align-items: center; gap: 12px; }
+.col { display: flex; flex-direction: column; gap: 4px; }
+
+.mono {
+  font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  letter-spacing: -0.01em;
+}
