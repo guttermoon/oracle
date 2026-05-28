@@ -246,11 +246,11 @@
     .price-list li svg { width: 12px; height: 12px; flex-shrink: 0; margin-top: 1px; color: var(--accent-color); stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
     /* ── Logo grid ─────────────────────────────────────────────────────── */
-    .logo-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 12px; align-items: end; }
+    .logo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
     .logo-slot { display: flex; flex-direction: column; align-items: center; gap: 8px; }
     .logo-slot img { max-width: 100%; max-height: 80px; object-fit: contain; }
     .logo-cap { font-family: var(--font-family-chivo); font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
-    .logo-bg { background: var(--bg-color); border: 1px solid var(--border-muted); border-radius: 10px; padding: 16px 12px; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 80px; }
+    .logo-bg { border: 1px solid var(--border-muted); border-radius: 10px; padding: 16px 12px; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 80px; }
 
     /* ── Elements grid ─────────────────────────────────────────────────── */
     .elements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px,1fr)); gap: 12px; margin: 12px 0; }
@@ -491,31 +491,42 @@
     <div class="sec-head">
       <div class="eyebrow">Brand</div>
       <h2 class="sec">Logo system</h2>
-      <p class="note">Six-pointed compass-rose star with ornamental border + "STARBOARD" beneath. Available in dark bg, light bg, warm, and green palette. Horizontal for nav/banners, vertical for splash moments, logomark for small contexts.</p>
+      <p class="note">Six-pointed compass-rose star with ornamental border. Three themed palettes — each with five variants. Use the green version wherever the background could be either light or dark (email, HTML embeds).</p>
     </div>
 
-    <p class="eyebrow" style="margin-bottom:10px">Dark palette</p>
-    <div class="logo-grid" style="margin-bottom:24px">
-      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-lockup-horizontal.webp" alt="horizontal lockup"></div><div class="logo-cap">Horizontal</div></div>
-      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-lockup-vertical.webp" alt="vertical lockup"></div><div class="logo-cap">Vertical</div></div>
-      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-logomark.webp" alt="logomark"></div><div class="logo-cap">Logomark</div></div>
-      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-logomark-fancy.webp" alt="fancy logomark"></div><div class="logo-cap">Fancy</div></div>
-      <div class="logo-slot"><div class="logo-bg"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt="pattern tile"></div><div class="logo-cap">Pattern tile</div></div>
+    <p class="eyebrow" style="margin-bottom:10px">Dark — cream on navy</p>
+    <div class="logo-grid" style="margin-bottom:28px">
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-lockup-horizontal.svg" alt="horizontal lockup"></div><div class="logo-cap">Horizontal</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-lockup-vertical.svg" alt="vertical lockup"></div><div class="logo-cap">Vertical</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-logomark.svg" alt="logomark"></div><div class="logo-cap">Logomark</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-logomark-fancy.svg" alt="fancy logomark"></div><div class="logo-cap">Fancy</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-logomark-pattern.svg" alt="pattern tile"></div><div class="logo-cap">Pattern tile</div></div>
     </div>
 
-    <p class="eyebrow" style="margin-bottom:10px">Light palette</p>
-    <div class="logo-grid" style="margin-bottom:24px">
-      <div class="logo-slot"><div class="logo-bg" style="background:#FEFDF6"><img src="starboard-design-system/assets/logos/sb-light-lockup-horizontal.webp" alt="light horizontal"></div><div class="logo-cap">Horizontal</div></div>
-      <div class="logo-slot"><div class="logo-bg" style="background:#FEFDF6"><img src="starboard-design-system/assets/logos/sb-light-logomark.webp" alt="light logomark"></div><div class="logo-cap">Logomark</div></div>
-      <div class="logo-slot"><div class="logo-bg" style="background:#FEFDF6"><img src="starboard-design-system/assets/logos/sb-light-logomark-fancy.webp" alt="light fancy"></div><div class="logo-cap">Fancy</div></div>
-      <div class="logo-slot"><div class="logo-bg" style="background:#A4E636"><img src="starboard-design-system/assets/logos/sb-green-lockup-horizontal.svg" alt="green lockup"></div><div class="logo-cap">Green</div></div>
-      <div class="logo-slot"><div class="logo-bg" style="background:#A4E636"><img src="starboard-design-system/assets/logos/sb-icon-dark.svg" alt="icon dark"></div><div class="logo-cap">App icon</div></div>
+    <p class="eyebrow" style="margin-bottom:10px">Light — black on white</p>
+    <div class="logo-grid" style="margin-bottom:28px">
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-lockup-horizontal.svg" alt="light horizontal lockup"></div><div class="logo-cap">Horizontal</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-lockup-vertical.svg" alt="light vertical lockup"></div><div class="logo-cap">Vertical</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-logomark.svg" alt="light logomark"></div><div class="logo-cap">Logomark</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-logomark-fancy.svg" alt="light fancy logomark"></div><div class="logo-cap">Fancy</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-logomark-pattern.svg" alt="light pattern tile"></div><div class="logo-cap">Pattern tile</div></div>
     </div>
 
-    <p class="eyebrow" style="margin-bottom:10px">Warm palette</p>
-    <div class="row" style="flex-wrap:wrap">
-      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="starboard-design-system/assets/logos/sb-warm-lockup-horizontal.webp" alt="warm horizontal"></div><div class="logo-cap">Horizontal</div></div>
-      <div class="logo-slot" style="width:120px"><div class="logo-bg" style="background:#F7F0DB"><img src="starboard-design-system/assets/logos/sb-warm-logomark.webp" alt="warm logomark"></div><div class="logo-cap">Logomark</div></div>
+    <p class="eyebrow" style="margin-bottom:10px">Warm — brown on cream</p>
+    <div class="logo-grid" style="margin-bottom:28px">
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-lockup-horizontal.svg" alt="warm horizontal lockup"></div><div class="logo-cap">Horizontal</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-lockup-vertical.svg" alt="warm vertical lockup"></div><div class="logo-cap">Vertical</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-logomark.svg" alt="warm logomark"></div><div class="logo-cap">Logomark</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-logomark-fancy.svg" alt="warm fancy logomark"></div><div class="logo-cap">Fancy</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-logomark-pattern.svg" alt="warm pattern tile"></div><div class="logo-cap">Pattern tile</div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:10px">Green — for email &amp; dual-mode contexts</p>
+    <p class="note" style="margin-bottom:12px">Use when the background could be either light or dark — email HTML, embedded iframes, App Store screenshots. Reads on both.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="logo-slot" style="width:280px"><div class="logo-bg" style="background:#A4E636"><img src="brand/logos/green-lockup-horizontal.svg" alt="green lockup horizontal"></div><div class="logo-cap">Horizontal on lime</div></div>
+      <div class="logo-slot" style="width:120px"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/icon-dark.svg" alt="icon dark"></div><div class="logo-cap">Icon · dark</div></div>
+      <div class="logo-slot" style="width:120px"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/icon-white.svg" alt="icon white"></div><div class="logo-cap">Icon · light</div></div>
     </div>
   </section>
 
