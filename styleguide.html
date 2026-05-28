@@ -262,6 +262,16 @@
     .oracle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px,1fr)); gap: 12px; margin: 12px 0; }
     .oracle-slot { display: flex; flex-direction: column; align-items: center; gap: 6px; }
     .oracle-slot img { width: 72px; height: 72px; object-fit: contain; }
+
+    /* Decorations */
+    .deco-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0 24px; align-items: flex-start; }
+    .deco-card { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .deco-preview { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .deco-preview img, .deco-preview svg { display: block; max-width: 100%; height: auto; }
+    .deco-cap { font-family: var(--font-family-chivo); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+    .deco-pattern-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0 24px; }
+    .deco-pattern { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .deco-pattern img { width: 120px; height: 120px; object-fit: cover; border-radius: var(--radius-md); border: 1px solid var(--card-border); }
     .oracle-cap { font-family: var(--font-family-chivo); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
 
     /* ── Radii + shadows ───────────────────────────────────────────────── */
@@ -978,6 +988,110 @@
       <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/pig-and-rooster.png" alt="pig and rooster"><div class="oracle-cap">Pig &amp; rooster</div></div>
     </div>
   </section>
+
+  <!-- ── Decorations ──────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand · Visual Foundations</div>
+      <h2 class="sec">Decorations</h2>
+      <p class="note">Frames, dividers, corner ornaments, and repeating star patterns. All live in <code>assets/decorations/</code>. Use frames as layout containers or art direction devices. Use dividers between content sections. Use star patterns as background texture at low opacity or cropped as surface fills.</p>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Frames</p>
+    <div class="deco-row">
+      <div class="deco-card">
+        <div class="deco-preview" style="width:280px;padding:16px">
+          <img src="starboard-design-system/assets/decorations/sb-frame-banner.png" alt="sb frame banner" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-frame-banner · ornamental square</div>
+      </div>
+      <div class="deco-card">
+        <div class="deco-preview" style="width:280px;padding:16px">
+          <img src="starboard-design-system/assets/decorations/sb-frame-half.png" alt="sb frame half" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-frame-half · top-open banner</div>
+      </div>
+      <div class="deco-card">
+        <div class="deco-preview" style="width:160px;padding:12px">
+          <img src="starboard-design-system/assets/decorations/sb-frame-corner.svg" alt="sb corner" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-frame-corner · SVG corner ornament</div>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Moon frames</p>
+    <p class="note" style="margin-bottom:12px">SVG bracket shapes. Flank a centered element (moon orb, quote, heading) on left and right. Intrinsically sized, scale via <code>width</code>.</p>
+    <div class="deco-row">
+      <div class="deco-card">
+        <div class="deco-preview" style="width:280px;padding:20px">
+          <img src="starboard-design-system/assets/decorations/moon-frame.svg" alt="moon frame square" style="width:100%">
+        </div>
+        <div class="deco-cap">moon-frame · square bracket (1000×1000)</div>
+      </div>
+      <div class="deco-card">
+        <div class="deco-preview" style="width:280px;padding:20px">
+          <img src="starboard-design-system/assets/decorations/moon-frame-2.svg" alt="moon frame wide" style="width:100%">
+        </div>
+        <div class="deco-cap">moon-frame-2 · wide bracket (1000×500)</div>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Dividers</p>
+    <div class="deco-row" style="flex-direction:column">
+      <div class="deco-card" style="width:100%">
+        <div class="deco-preview" style="width:100%;padding:16px">
+          <img src="starboard-design-system/assets/decorations/sb-divider.svg" alt="sb divider" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-divider · horizontal rule with star</div>
+      </div>
+      <div class="deco-card" style="width:100%">
+        <div class="deco-preview" style="width:100%;padding:16px">
+          <img src="starboard-design-system/assets/decorations/sb-divider-2.svg" alt="sb divider 2" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-divider-2 · tapered rule with arrow points and star</div>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Star patterns &amp; flourishes</p>
+    <p class="note" style="margin-bottom:12px">Repeating tile patterns for background fills. Use at low opacity on dark surfaces, or full opacity as bordered insets.</p>
+    <div class="deco-pattern-row">
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sb-star-pattern-1.png" alt="star pattern 1">
+        <div class="deco-cap">star-pattern-1</div>
+      </div>
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sb-star-pattern-2.png" alt="star pattern 2">
+        <div class="deco-cap">star-pattern-2</div>
+      </div>
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sb-star-pattern-5.png" alt="star pattern 5">
+        <div class="deco-cap">star-pattern-5</div>
+      </div>
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sb-star-flourish.png" alt="star flourish">
+        <div class="deco-cap">star-flourish</div>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Sparkles</p>
+    <p class="note" style="margin-bottom:12px">Animated webp sparkle stars for hover effects on headings (<code>SparkleEffect</code> component). Three theme variants.</p>
+    <div class="deco-pattern-row">
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sparkle-dark.webp" alt="sparkle dark" style="background:#1B1F3B">
+        <div class="deco-cap">sparkle-dark</div>
+      </div>
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sparkle-light.webp" alt="sparkle light" style="background:#FEFDF6">
+        <div class="deco-cap">sparkle-light</div>
+      </div>
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sparkle-warm.webp" alt="sparkle warm" style="background:#F7F0DB">
+        <div class="deco-cap">sparkle-warm</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
 
   <!-- ── UI icons — Lucide ─────────────────────────────────────────────── -->
   <section>
