@@ -315,9 +315,116 @@
 
     /* ── Reality Stone specimen ────────────────────────────────────────── */
     .reality-specimen { font-family: var(--font-family-reality); font-size: 48px; letter-spacing: .08em; line-height: 1.1; color: var(--text-color); margin: 8px 0; }
+
+    /* ── Parchment texture ─────────────────────────────────────────────── */
+    body { position: relative; }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .05;
+    }
+    [data-theme="dark"] body::before { opacity: .07; mix-blend-mode: overlay; }
+    [data-theme="warm"] body::before { opacity: .08; }
+    .wrap { position: relative; z-index: 1; max-width: 1024px; }
+
+    /* ── Sticky header ─────────────────────────────────────────────────── */
+    .sg-header {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 56px;
+      background: color-mix(in srgb, var(--bg-color) 92%, transparent);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-muted);
+      transition: background .3s ease;
+    }
+    .sg-logo { height: 22px; width: auto; display: block; }
+    .sg-logo-light, .sg-logo-warm { display: none; }
+    [data-theme="light"] .sg-logo-dark, [data-theme="warm"] .sg-logo-dark { display: none; }
+    [data-theme="light"] .sg-logo-light { display: block; }
+    [data-theme="warm"] .sg-logo-warm { display: block; }
+
+    /* ── Moon Ritual palette ───────────────────────────────────────────── */
+    .moon-palette { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 12px; margin: 12px 0 20px; }
+    .moon-swatch { border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); }
+    .moon-chip { height: 56px; }
+    .moon-meta { padding: 7px 9px; background: #1a1025; }
+    .moon-nm { font-size: 12px; font-weight: 700; color: #e8d5ff; }
+    .moon-hx { font-family: ui-monospace, monospace; font-size: 10px; color: rgba(232,213,255,.6); text-transform: uppercase; }
+
+    /* ── Color philosophy notes ────────────────────────────────────────── */
+    .philosophy-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+    @media (max-width: 600px) { .philosophy-row { grid-template-columns: 1fr; } }
+    .philo-card { padding: 14px 16px; background: var(--card-bg-tint); border-radius: var(--radius-md); border: 1px solid var(--border-muted); }
+    .philo-title { font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 6px; }
+    .philo-body { font-size: 13px; color: var(--text-subtle); line-height: 1.55; }
+    .philo-body code { font-size: 11px; }
+
+    /* ── Layout & spacing section ──────────────────────────────────────── */
+    .layout-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+    .layout-table th { text-align: left; font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); padding: 8px 12px; border-bottom: 1px solid var(--border-muted); }
+    .layout-table td { padding: 8px 12px; border-bottom: 1px solid var(--border-muted); vertical-align: top; line-height: 1.5; }
+    .layout-table tr:last-child td { border-bottom: none; }
+    .layout-table code { background: var(--card-bg-tint); padding: 2px 5px; border-radius: 3px; }
+
+    /* ── Background / texture demo ─────────────────────────────────────── */
+    .texture-demo { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-muted); }
+    .texture-strip { height: 80px; position: relative; display: flex; align-items: center; justify-content: center; }
+    .texture-strip::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .08;
+    }
+    .texture-strip span { position: relative; z-index: 1; font-size: 12px; font-family: var(--font-family-chivo); letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
+
+    /* ── Surface cards (app / email / social) ──────────────────────────── */
+    .surface-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; margin: 12px 0; }
+    .surface-card { display: flex; flex-direction: column; text-decoration: none; background: var(--card-bg-glass); border: 1px solid var(--card-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--card-shadow); transition: transform .2s var(--ease-out-expo), box-shadow .2s var(--ease-out-expo); }
+    .surface-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
+    .surface-preview { height: 110px; background: var(--overlay-bg); display: flex; align-items: center; justify-content: center; font-size: 28px; border-bottom: 1px solid var(--border-muted); overflow: hidden; }
+    .surface-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .surface-meta { padding: 12px 14px; }
+    .surface-title { font-family: var(--font-family-secondary); font-style: italic; font-size: 15px; margin: 0 0 3px; color: var(--text-color); }
+    .surface-desc { font-size: 11.5px; color: var(--text-muted); margin: 0; line-height: 1.45; }
+
+    /* ── Lucide icon list ──────────────────────────────────────────────── */
+    .lucide-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); gap: 8px; margin: 12px 0; }
+    .lucide-item { display: flex; align-items: center; gap: 8px; padding: 7px 10px; background: var(--card-bg-tint); border-radius: 6px; border: 1px solid var(--border-muted); }
+    .lucide-item svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; color: var(--accent-text); }
+    .lucide-item span { font-size: 11px; font-family: ui-monospace, monospace; color: var(--text-subtle); }
+
+    /* ── Motion easing table ───────────────────────────────────────────── */
+    .easing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 12px; margin: 12px 0 24px; }
+    .easing-card { padding: 12px 14px; background: var(--card-bg-tint); border-radius: var(--radius-md); border: 1px solid var(--border-muted); }
+    .easing-name { font-family: var(--font-family-chivo); font-size: 11px; font-weight: 700; color: var(--accent-text); margin-bottom: 4px; }
+    .easing-val { font-family: ui-monospace, monospace; font-size: 10px; color: var(--text-muted); margin-bottom: 4px; }
+    .easing-use { font-size: 11.5px; color: var(--text-subtle); line-height: 1.45; }
+
+    /* ── Lore blocks ───────────────────────────────────────────────────── */
+    .lore-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 14px; margin: 12px 0; }
+    .lore-card { padding: 14px 16px; background: var(--card-bg-tint); border-radius: var(--radius-md); border: 1px solid var(--border-muted); }
+    .lore-title { font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 6px; }
+    .lore-body { font-size: 13px; color: var(--text-subtle); line-height: 1.6; }
+    .bedrock-list { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+    .bedrock-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; background: var(--card-bg-tint); border-radius: var(--radius-md); border-left: 3px solid var(--accent-text); }
+    .bedrock-item strong { font-size: 13px; color: var(--text-color); display: block; margin-bottom: 3px; }
+    .bedrock-item p { margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
   </style>
 </head>
 <body>
+
+<header class="sg-header">
+  <a href="index.html">
+    <img class="sg-logo sg-logo-dark" src="brand/logos/dark-lockup-horizontal.png" alt="Starboard">
+    <img class="sg-logo sg-logo-light" src="brand/logos/light-lockup-horizontal.png" alt="Starboard">
+    <img class="sg-logo sg-logo-warm" src="brand/logos/warm-lockup-horizontal.png" alt="Starboard">
+  </a>
+  <div class="theme-switch" id="themeToggle">
+    <button class="ts-btn" data-mode="dark" aria-pressed="true">Dark</button>
+    <button class="ts-btn" data-mode="light" aria-pressed="false">Light</button>
+    <button class="ts-btn" data-mode="warm" aria-pressed="false">Warm</button>
+  </div>
+</header>
+
 <div class="wrap">
 
   <!-- ── Hero ──────────────────────────────────────────────────────────── -->
@@ -325,16 +432,7 @@
     <div class="eyebrow">Style Guide</div>
     <h1>Starboard</h1>
     <p class="sub">"Mythic intelligence. Victorian navigational. Older than wellness."</p>
-    <p>Three swappable themes — dark, light, warm — share one set of semantic tokens. Playfair Display italic for headings. Chivo for body and UI. Reality Stone for the wordmark. One bright accent per theme, generous whitespace, soft elevation. <a href="https://www.starboardmanifest.com/" target="_blank">starboardmanifest.com</a></p>
-
-    <div class="theme-row">
-      <span class="eyebrow" style="margin:0">Theme</span>
-      <div class="theme-switch" id="themeToggle">
-        <button class="ts-btn" data-mode="dark" aria-pressed="true">Dark</button>
-        <button class="ts-btn" data-mode="light" aria-pressed="false">Light</button>
-        <button class="ts-btn" data-mode="warm" aria-pressed="false">Warm</button>
-      </div>
-    </div>
+    <p>Three swappable themes — dark, light, warm — share one set of semantic tokens. Playfair Display italic, always italic, for headings. Chivo for body and UI. Reality Stone for the wordmark only. One bright accent per theme, generous whitespace, soft elevation. <a href="https://www.starboardmanifest.com/" target="_blank">starboardmanifest.com</a></p>
   </div>
 
   <!-- ── Color ─────────────────────────────────────────────────────────── -->
@@ -401,6 +499,39 @@
       <div class="token-row"><div class="token-chip" style="background:var(--tertiary-1)"></div><div><div class="token-name">tertiary-1</div><div class="token-var">--tertiary-1</div></div></div>
       <div class="token-row"><div class="token-chip" style="background:var(--tertiary-2)"></div><div><div class="token-name">tertiary-2</div><div class="token-var">--tertiary-2</div></div></div>
     </div>
+
+    <p class="eyebrow" style="margin-bottom:8px;margin-top:28px">Color philosophy</p>
+    <div class="philosophy-row">
+      <div class="philo-card">
+        <div class="philo-title">Borders are theme-tinted, not solid</div>
+        <p class="philo-body">A flat <code>#04041C</code> border on cream reads as too heavy. Tint instead: <code>--card-border</code> = 10–25% of text-color, <code>--card-border-highlighted</code> = 18–50%. Always 1px width.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Shadows are tinted, not pure black</div>
+        <p class="philo-body">Card shadows tint toward <code>--text-color</code>, never pure black. Modal is always <code>0 25px 50px -12px rgba(0,0,0,.5)</code> regardless of theme.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Glass &amp; blur — nav only</div>
+        <p class="philo-body">Blur (<code>backdrop-filter: blur(10px)</code>) is for nav and overlays only. Cards are opaque — <code>--card-bg-glass</code> is a solid color despite the legacy name. Modal backdrop is solid <code>rgba(0,0,0,.8)</code>, never blurred.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">No gradient anything</div>
+        <p class="philo-body">No gradient buttons. No bluish-purple gradient backgrounds. No generic vibe gradients. Buttons use flat solid accent fills only.</p>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px;margin-top:24px">Moon Ritual — Celestial Grimoire palette</p>
+    <p class="note" style="margin-bottom:12px">A fourth color register used exclusively on the Moon page. Amethyst + gold, independent of the three main themes. Do not mix with dark/light/warm.</p>
+    <div class="moon-palette">
+      <div class="moon-swatch"><div class="moon-chip" style="background:#1a1025"></div><div class="moon-meta"><div class="moon-nm">void</div><div class="moon-hx">#1a1025</div></div></div>
+      <div class="moon-swatch"><div class="moon-chip" style="background:#2d1b4e"></div><div class="moon-meta"><div class="moon-nm">amethyst-deep</div><div class="moon-hx">#2d1b4e</div></div></div>
+      <div class="moon-swatch"><div class="moon-chip" style="background:#4a2d7a"></div><div class="moon-meta"><div class="moon-nm">amethyst</div><div class="moon-hx">#4a2d7a</div></div></div>
+      <div class="moon-swatch"><div class="moon-chip" style="background:#7c5cc4"></div><div class="moon-meta"><div class="moon-nm">amethyst-mid</div><div class="moon-hx">#7c5cc4</div></div></div>
+      <div class="moon-swatch"><div class="moon-chip" style="background:#e8d5ff"></div><div class="moon-meta"><div class="moon-nm">amethyst-light</div><div class="moon-hx">#e8d5ff</div></div></div>
+      <div class="moon-swatch"><div class="moon-chip" style="background:#c9a84c"></div><div class="moon-meta"><div class="moon-nm">gold</div><div class="moon-hx">#c9a84c</div></div></div>
+      <div class="moon-swatch"><div class="moon-chip" style="background:#f5d76e"></div><div class="moon-meta"><div class="moon-nm">gold-bright</div><div class="moon-hx">#f5d76e</div></div></div>
+      <div class="moon-swatch"><div class="moon-chip" style="background:#fffbe6"></div><div class="moon-meta"><div class="moon-nm">moonlight</div><div class="moon-hx">#fffbe6</div></div></div>
+    </div>
   </section>
 
   <hr class="divider">
@@ -410,7 +541,7 @@
     <div class="sec-head">
       <div class="eyebrow">Foundation</div>
       <h2 class="sec">Typography</h2>
-      <p class="note">Playfair Display italic for all headings and display. Chivo for body, labels, UI. Reality Stone for the wordmark lockup only. Weights: 400 regular · 500 medium · 700 bold.</p>
+      <p class="note">Three brand fonts only. <strong>Playfair Display italic — always italic</strong>, never upright — for all headings and display. Letter-spacing 0.01–0.05em. Chivo for body and UI, weight 400 body / 600 eyebrows / 700 bold labels. Reality Stone for the wordmark lockup only. No Google Fonts dependency — all loaded from local TTF files.</p>
     </div>
 
     <div style="margin-bottom:28px">
@@ -483,8 +614,19 @@
 
     <div style="margin-top:28px">
       <p class="eyebrow" style="margin-bottom:4px">Reality Stone · wordmark</p>
-      <p class="note" style="margin-bottom:8px">Logo wordmark font only. Use <code>var(--font-family-reality)</code> for typographic STARBOARD lockups, deck titles, badge text.</p>
+      <p class="note" style="margin-bottom:8px">Logo wordmark font only. Use <code>var(--font-family-reality)</code> for typographic lockups, deck titles, badge text. Not available via Google Fonts — loaded from <code>starboard-design-system/fonts/Reality_Stone.ttf</code>.</p>
       <div class="reality-specimen">Starboard</div>
+    </div>
+
+    <div style="margin-top:28px">
+      <p class="eyebrow" style="margin-bottom:6px">User-choice fonts — vision board surfaces only</p>
+      <p class="note" style="margin-bottom:10px">These are fonts Sailors pick to style their own board copy. They are <strong>not brand fonts</strong> and must not appear on any Starboard-authored surface (marketing, onboarding, emails, slides).</p>
+      <div class="row" style="flex-wrap:wrap;gap:12px">
+        <div style="padding:8px 14px;background:var(--card-bg-tint);border:1px solid var(--border-muted);border-radius:6px"><span style="font-family:serif;font-variant:small-caps;font-size:14px">Amita</span> <code>user</code></div>
+        <div style="padding:8px 14px;background:var(--card-bg-tint);border:1px solid var(--border-muted);border-radius:6px"><span style="font-family:'Segoe UI',system-ui,sans-serif;letter-spacing:.04em;font-size:14px">Space Grotesk</span> <code>user</code></div>
+        <div style="padding:8px 14px;background:var(--card-bg-tint);border:1px solid var(--border-muted);border-radius:6px"><span style="font-family:Georgia,serif;font-variant:small-caps;font-size:14px">Cinzel</span> <code>user</code></div>
+        <div style="padding:8px 14px;background:var(--card-bg-tint);border:1px solid var(--border-muted);border-radius:6px"><span style="font-family:Georgia,serif;font-style:italic;font-size:14px">Cormorant Garamond</span> <code>user</code></div>
+      </div>
     </div>
   </section>
 
@@ -522,6 +664,7 @@
       <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-lockup-vertical.png" alt="warm vertical lockup"></div><div class="logo-cap">Vertical</div></div>
       <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-logomark.png" alt="warm logomark"></div><div class="logo-cap">Logomark</div></div>
       <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-logomark-fancy.png" alt="warm fancy logomark"></div><div class="logo-cap">Fancy</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-logomark-pattern.png" alt="warm pattern tile"></div><div class="logo-cap">Pattern tile</div></div>
     </div>
 
     <p class="eyebrow" style="margin-bottom:10px">Green — for email &amp; dual-mode contexts</p>
@@ -784,12 +927,39 @@
     </div>
   </section>
 
+  <!-- ── Decorative elements: usage ───────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand</div>
+      <h2 class="sec">Decorative element usage</h2>
+      <p class="note">Dark-bg WebP variants are intentional — they work universally on all three themes. Don't hunt for light/warm variants unless you need them for isolated white surfaces.</p>
+    </div>
+    <div class="philosophy-row">
+      <div class="philo-card">
+        <div class="philo-title">Hero parallax</div>
+        <p class="philo-body">4 large + 2 bg elements placed absolutely. Mouse-parallaxed ±20–40px. Featured triad: <strong>Heart · Lighthouse · Sun</strong>.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Feature card icons</div>
+        <p class="philo-body">Render at 100×100, <code>opacity-80</code>, <code>object-contain</code>. Heart, Lighthouse, Sun are the canonical feature triad icons.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Footer background</div>
+        <p class="philo-body">Single <strong>Ship</strong> element, centered, <code>opacity: 0.10</code>, behind footer content.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Ornamental corners</div>
+        <p class="philo-body"><code>OrnamentalFrame</code> wraps content in two large art-nouveau corner SVGs at 0.25 opacity. Scoped to cards that need editorial weight.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Oracle illustrations ───────────────────────────────────────────── -->
   <section>
     <div class="sec-head">
       <div class="eyebrow">Brand</div>
       <h2 class="sec">Oracle illustrations</h2>
-      <p class="note">Muted sailor-jerry tattoo flash — navy on cream, muted red #9B4A4A / orange #D98A5F. Used in blog posts, newsletter, oracle-deck features. One GIF / MP4 animated flash.</p>
+      <p class="note">Muted sailor-jerry tattoo flash — navy on cream, muted red #9B4A4A / orange #D98A5F. For blog posts, newsletter, oracle-deck features. Playful where dark-bg elements are reverent — don't mix the two styles in one composition.</p>
     </div>
     <div class="oracle-grid">
       <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/anchor.png" alt="anchor"><div class="oracle-cap">Anchor</div></div>
@@ -808,6 +978,31 @@
       <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/tiger.png" alt="tiger"><div class="oracle-cap">Tiger</div></div>
       <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/golden-dragon.png" alt="dragon"><div class="oracle-cap">Dragon</div></div>
       <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/pig-and-rooster.png" alt="pig and rooster"><div class="oracle-cap">Pig &amp; rooster</div></div>
+    </div>
+  </section>
+
+  <!-- ── Lucide iconography ────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand</div>
+      <h2 class="sec">UI icons — Lucide</h2>
+      <p class="note">Lucide React at <code>stroke-width: 2</code> (1.5px in compact toolbars). Loaded from CDN: <code>unpkg.com/lucide@0.563.0</code>. No emoji in customer-facing UI. Use Unicode <code>→</code> for inline link affordances.</p>
+    </div>
+    <div class="lucide-grid">
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Image · Boards nav</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Library · Library nav</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>Bell · Notifications</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/><path d="M20 3v4M22 5h-4"/></svg><span>MoonStar · Moon nav</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>User · Account</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg><span>Menu · Hamburger</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><span>Sun · Light theme</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span>Moon · Dark theme</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg><span>Coffee · Warm theme</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span>Plus · Add</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><span>Pencil · Edit</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg><span>Trash2 · Delete</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg><span>Settings · Config</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Play · Montage</span></div>
     </div>
   </section>
 
@@ -843,13 +1038,98 @@
 
   <hr class="divider">
 
+  <!-- ── Layout & Spacing ──────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Layout &amp; spacing</h2>
+      <p class="note">Container, gutters, and safe-area rules. All responsive — values shown are md+ (≥ 768px). Safe-area variables are published as CSS custom properties for component consumption.</p>
+    </div>
+
+    <table class="layout-table">
+      <thead><tr><th>Token / rule</th><th>Value</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td>Container (marketing)</td><td><code>max-width: 64rem</code> (1024px)</td><td>Hero, features, pricing, footer</td></tr>
+        <tr><td>Container (hero copy)</td><td><code>max-width: 56rem</code> (896px)</td><td>Hero headline + subhead block</td></tr>
+        <tr><td>Section padding — vertical</td><td><code>py-12 → py-16 → py-20</code></td><td>sm → md → lg breakpoints (48 / 64 / 80px)</td></tr>
+        <tr><td>Section padding — horizontal</td><td><code>px-4 → px-6 → px-8</code></td><td>sm → md → lg (16 / 24 / 32px)</td></tr>
+        <tr><td>Card grid gutter</td><td><code>gap-6 → gap-8</code></td><td>24px default, 32px at md+</td></tr>
+        <tr><td>Header height</td><td>56px + safe-area-inset-top</td><td>Fixed top, <code>--safe-top</code></td></tr>
+        <tr><td>Bottom nav height</td><td>64px + safe-area-inset-bottom</td><td>Fixed bottom, mobile only, hidden at md+</td></tr>
+        <tr><td><code>--safe-top</code></td><td><code>env(safe-area-inset-top, 0px)</code></td><td>Components consuming header clearance</td></tr>
+        <tr><td><code>--safe-bottom</code></td><td><code>env(safe-area-inset-bottom, 0px)</code></td><td>Components consuming bottom nav clearance</td></tr>
+        <tr><td><code>--bottom-nav-height</code></td><td>calc(64px + var(--safe-bottom))</td><td>Content padding to avoid bottom nav overlap</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Background & Texture ──────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Background &amp; texture</h2>
+      <p class="note">The aged-parchment texture is the default page background in every theme — a fixed SVG fractal-noise layer overlaid on the theme bg-color. Atmospheric overlays (stars, ink, amethyst gradients) are Moon page only. No flat color replacements.</p>
+    </div>
+
+    <div class="texture-demo">
+      <div class="texture-strip" style="background:#1B1F3B"><span style="color:rgba(245,230,205,.5)">Dark — fractal noise on #1B1F3B</span></div>
+      <div class="texture-strip" style="background:#FEFDF6"><span style="color:rgba(4,4,28,.35)">Light — fractal noise on #FEFDF6</span></div>
+      <div class="texture-strip" style="background:#F7F0DB"><span style="color:rgba(106,77,68,.4)">Warm — fractal noise on #F7F0DB</span></div>
+    </div>
+
+    <div class="philosophy-row" style="margin-top:14px">
+      <div class="philo-card">
+        <div class="philo-title">Parchment texture</div>
+        <p class="philo-body"><code>.bg-parchment-texture</code> — SVG <code>feTurbulence</code> fractal noise, <code>position: fixed; attachment: fixed</code>. Opacity 4–8%. Covers the whole viewport so textures are consistent when scrolling.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Decorative element opacity</div>
+        <p class="philo-body">Brand SVG/WebP elements always render at <strong>opacity 0.25–0.40</strong> and float behind content. Never use as primary content. Dark-bg WebP variants work universally across all three themes.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Hero parallax</div>
+        <p class="philo-body">4 large elements + 2 background elements placed absolutely around the hero, shifted by mouse position (±20–40px). CSS only for reduced-motion fallback — elements simply sit statically.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">No photography on brand surfaces</div>
+        <p class="philo-body">Marketing, onboarding, emails, and slides contain no photography. User-uploaded vision board photos are user data, not brand assets — treat them as warm, sun-flared lifestyle imagery.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
   <!-- ── Motion ─────────────────────────────────────────────────────────── -->
   <section>
     <div class="sec-head">
       <div class="eyebrow">Foundation</div>
       <h2 class="sec">Motion</h2>
-      <p class="note">Primary easing: <code>cubic-bezier(0.16, 1, 0.3, 1)</code> (expo-out). Duration 600–1400ms. Entry: fade-in-up translateY(30px → 0). Float loop: 6–8s. Ticker: 30s linear. All respect prefers-reduced-motion.</p>
+      <p class="note">Full system: three easing curves, four animation families, stagger-on-entry. All transitions respect <code>prefers-reduced-motion: reduce</code> — kill when set.</p>
     </div>
+
+    <div class="easing-grid">
+      <div class="easing-card">
+        <div class="easing-name">Expo out — default</div>
+        <div class="easing-val">cubic-bezier(0.16, 1, 0.3, 1)</div>
+        <div class="easing-use">UI transitions: buttons, cards, modals. Duration 600–1400ms. <code>--ease-out-expo</code></div>
+      </div>
+      <div class="easing-card">
+        <div class="easing-name">Relume — marketing reveals</div>
+        <div class="easing-val">cubic-bezier(0.21, 0.47, 0.32, 0.98)</div>
+        <div class="easing-use">Section entry animations, 800ms with 150ms staggers per element.</div>
+      </div>
+      <div class="easing-card">
+        <div class="easing-name">Sine in-out — atmospheric</div>
+        <div class="easing-val">cubic-bezier(0.37, 0, 0.63, 1)</div>
+        <div class="easing-use">Float loops, twinkle, pulse. 6–10s, infinite. <code>--ease-in-out-sine</code></div>
+      </div>
+      <div class="easing-card">
+        <div class="easing-name">Sparkle — hover only</div>
+        <div class="easing-val">ease-in-out</div>
+        <div class="easing-use">Text-hover sparkle drops. 2s, on hover only. Random positions inside element.</div>
+      </div>
+    </div>
+
     <div class="motion-grid">
       <div class="motion"><div class="dot m-float"></div><div class="lab">float · 6s</div></div>
       <div class="motion"><div class="dot m-fadeup"></div><div class="lab">fadeUp · expo</div></div>
@@ -859,6 +1139,90 @@
       <div class="motion"><div class="dot m-rotate"></div><div class="lab">slow-rotate · 6s</div></div>
       <div class="motion"><div class="dot m-sparkle"></div><div class="lab">sparkle · 2s</div></div>
       <div class="motion"><div class="dot m-shimmer"></div><div class="lab">shimmer · 1.5s</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── App surfaces ──────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Surfaces</div>
+      <h2 class="sec">App screens</h2>
+      <p class="note">Six authenticated PWA / Capacitor screens. Bottom nav switches between them. Theme toggle in the header cycles dark → light → warm. Click any card to open the live demo.</p>
+    </div>
+    <div class="surface-grid">
+      <a class="surface-card" href="starboard-design-system/ui_kits/app/index.html" target="_blank">
+        <div class="surface-preview" style="background:#1B1F3B">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A4E636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Vision Boards</p><p class="surface-desc">Board grid with cover art, name, image count. Tap to enter Board Detail.</p></div>
+      </a>
+      <a class="surface-card" href="starboard-design-system/ui_kits/app/index.html" target="_blank">
+        <div class="surface-preview" style="background:#21264B">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A4E636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Board Detail</p><p class="surface-desc">Image grid, affirmation text, play-montage button.</p></div>
+      </a>
+      <a class="surface-card" href="starboard-design-system/ui_kits/app/index.html" target="_blank">
+        <div class="surface-preview" style="background:#1B1F3B">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A4E636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Library</p><p class="surface-desc">Image grid with filter tags. Board-agnostic view of all uploads.</p></div>
+      </a>
+      <a class="surface-card" href="starboard-design-system/ui_kits/app/index.html" target="_blank">
+        <div class="surface-preview" style="background:#21264B">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A4E636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Notifications</p><p class="surface-desc">Scheduled reminders with time and affirmation text.</p></div>
+      </a>
+      <a class="surface-card" href="starboard-design-system/ui_kits/app/index.html" target="_blank">
+        <div class="surface-preview" style="background:#1a1025">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/><path d="M20 3v4M22 5h-4"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Moon Ritual</p><p class="surface-desc">Celestial Grimoire — amethyst + gold palette. Phase orb, affirmation, ritual bento tiles.</p></div>
+      </a>
+      <a class="surface-card" href="starboard-design-system/ui_kits/app/index.html" target="_blank">
+        <div class="surface-preview" style="background:#1B1F3B">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A4E636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Account</p><p class="surface-desc">Settings list: profile, subscription tier, theme toggle.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Marketing, email & social surfaces ────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Surfaces</div>
+      <h2 class="sec">Marketing, email &amp; social</h2>
+      <p class="note">Interactive demos for every brand surface. Each opens in a new tab.</p>
+    </div>
+    <div class="surface-grid">
+      <a class="surface-card" href="starboard-design-system/ui_kits/marketing/index.html" target="_blank">
+        <div class="surface-preview" style="background:#1B1F3B">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A4E636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Marketing site</p><p class="surface-desc">Hero, ticker, value prop, feature triad, pricing, newsletter, footer.</p></div>
+      </a>
+      <a class="surface-card" href="starboard-design-system/onboarding/index.html" target="_blank">
+        <div class="surface-preview" style="background:#1B1F3B">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A4E636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Onboarding</p><p class="surface-desc">Cast off → Get underway → Set bearings → Make fast. Multi-step flow.</p></div>
+      </a>
+      <a class="surface-card" href="starboard-design-system/email/letters-from-the-helm.html" target="_blank">
+        <div class="surface-preview" style="background:#1B1F3B">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A4E636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Letters from the Helm</p><p class="surface-desc">Newsletter email template. Full HTML, brand-aligned layout.</p></div>
+      </a>
+      <a class="surface-card" href="starboard-design-system/social/index.html" target="_blank">
+        <div class="surface-preview" style="background:#1B1F3B">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A4E636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="surface-meta"><p class="surface-title">Social templates</p><p class="surface-desc">22 templates — Instagram + Pinterest. Feed posts, stories, pin formats.</p></div>
+      </a>
     </div>
   </section>
 
@@ -998,9 +1362,45 @@
         <tr><td>Email sign-off (product)</td><td><em>Fair winds. — The Captain</em></td></tr>
       </tbody>
     </table>
+
+    <p class="eyebrow" style="margin:28px 0 8px">Bedrock references</p>
+    <p class="note" style="margin-bottom:12px">These influences live in the background. Don't quote them directly — recognize them when they surface in copy direction.</p>
+    <div class="bedrock-list">
+      <div class="bedrock-item"><div><strong>Nick Cave — <em>Come Sail Your Ships</em></strong><p>The lyric Megan is tattooed with. The source of the maritime metaphor running through the entire brand.</p></div></div>
+      <div class="bedrock-item"><div><strong>David Bowie's <em>Blackstar</em></strong><p>Iconographic source for the SB star mark.</p></div></div>
+      <div class="bedrock-item"><div><strong>The crow</strong><p>A personal guardian motif. Appears throughout the decorative element set. The Morrigan as crow — a figure of transformation.</p></div></div>
+      <div class="bedrock-item"><div><strong>Lanthorn (16th-century ship's lantern)</strong><p>The central metaphor for the practice: a flame that needs tending. Made of translucent animal horn, taboo to let go out at night. Use in long-form, never in chrome.</p></div></div>
+      <div class="bedrock-item"><div><strong>Lunar cycle</strong><p>Starboard pays attention to moon phases as a calendar marker for editorial timing. New moon = intentions, full moon = release, waxing = momentum, waning = letting go.</p></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin:28px 0 8px">Steeped in lore — long-form writing</p>
+    <p class="note" style="margin-bottom:12px">Blog, newsletter, social, and Instagram are <strong>edutainment</strong>. Every piece leaves the Sailor feeling enriched — a single surprising fact, told plainly, that opens into a wider story. <em>No Such Thing as a Fish</em> cadence: here is something interesting, and here is why it matters.</p>
+    <div class="lore-grid">
+      <div class="lore-card">
+        <div class="lore-title">Maritime history &amp; lore</div>
+        <p class="lore-body">Etymology of <em>lanthorn</em>. Why ships are called <em>she</em>. The origin of <em>starboard</em>, <em>port</em>, <em>posh</em>, <em>the bitter end</em>. Naval superstitions: no whistling on deck, never sail on a Friday.</p>
+      </div>
+      <div class="lore-card">
+        <div class="lore-title">Mythology</div>
+        <p class="lore-body">Sea gods — Poseidon, Manannán mac Lir, the kelpie. Constellations and navigation (Cassiopeia, Orion's belt). Norse navigational mythology. Selkies. The Morrigan as crow.</p>
+      </div>
+      <div class="lore-card">
+        <div class="lore-title">Science</div>
+        <p class="lore-body">Reticular activating system and why repetition rewires attention. Lunar tidal physics. Neuroplasticity and behaviour change. Celestial navigation — sextant geometry, why the North Star sits where it does.</p>
+      </div>
+      <div class="lore-card">
+        <div class="lore-title">Botanical &amp; seasonal lore</div>
+        <p class="lore-body">Why the Strawberry Moon is named for a narrow harvest window. Full moon folklore. Solstices, equinoxes, cross-quarter days as markers for practice.</p>
+      </div>
+      <div class="lore-card">
+        <div class="lore-title">Folk practice</div>
+        <p class="lore-body">Tarot iconography. Oracle decks. Sailor-jerry tattoo meanings: swallows = home safely, anchor = grounded, <em>hold fast</em> = endurance. Victorian navigational charts, monk illumination.</p>
+      </div>
+    </div>
   </section>
 
   <footer>
+    <img src="brand/logos/dark-lockup-horizontal.png" style="height:20px;opacity:.5;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto" alt="">
     <a href="index.html">The Sailor's Oracle</a> · <a href="https://www.starboardmanifest.com/" target="_blank">Starboard</a> · captain@starboardmanifest.com
   </footer>
 </div>
