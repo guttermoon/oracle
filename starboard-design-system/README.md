@@ -10,7 +10,13 @@
 - **Contact:** `captain@starboardmanifest.com`
 - **Site:** [starboardmanifest.com](https://starboardmanifest.com)
 
-This is the canonical design system for Starboard — everything needed to build brand-aligned interfaces, slides, and prototypes.
+This project is a faithful design-system extraction of the Starboard product, intended to drive **brand-aligned mocks, slides, and prototypes**. Everything here was lifted from the production codebase.
+
+## Sources used
+
+- **Codebase:** `guttermoon/sb` branch `1.27` (private) — Next.js + Tailwind + Capacitor. The README inside that repo dates the brand and design tokens; this design system is a derivative.
+- Specifically read: `app/globals.css` (the 97 KB single-source-of-truth for tokens & components), `app/layout.tsx` (font loading), `components/(common)/**`, `components/(features)/**`, `app/(marketing)/**`, `public/llms-full.txt`.
+- The reader can explore further at <https://github.com/guttermoon/sb> (access permitting) to build deeper mocks that mirror live behavior — especially `app/globals.css`, the `(features)/boards/` directory, and the `(features)/moon/` "Celestial Grimoire" surface, which has its own typography and atmosphere.
 
 ---
 
@@ -30,6 +36,7 @@ Both share one design token system, three swappable themes (**dark · light · w
 ```
 .
 ├── README.md                ← you are here
+├── SKILL.md                 ← Claude-Code-compatible skill manifest
 ├── colors_and_type.css      ← canonical CSS variables + type system
 ├── fonts/                   ← 3 brand TTF files (Playfair Display, Chivo, Reality Stone)
 ├── assets/
@@ -41,12 +48,13 @@ Both share one design token system, three swappable themes (**dark · light · w
 │   └── imagery/             ← banner, og-image, icon backgrounds, animation
 ├── reference/
 │   ├── nautical-vocabulary.md  ← phrases, idioms, ship anatomy, weather terms
+│   ├── founder-story.md     ← internal founder context
 │   └── llms-full.txt        ← Starboard's public llms.txt manifest
 ├── preview/                 ← Design System tab cards (30+ cards, registered)
 ├── ui_kits/
 │   ├── marketing/           ← homepage, hero, ticker, pricing, newsletter, footer
 │   └── app/                 ← vision boards, library, notifications, moon, account
-├── slides/                  ← brand deck slides
+├── slides/                  ← 7-slide brand deck
 ├── social/                  ← 22 social media templates (IG + Pinterest)
 ├── email/                   ← Letters from the Helm newsletter template
 └── app_store/               ← 6 App Store screenshot frames
@@ -203,8 +211,9 @@ That's the full brand type set. Three families, no more.
 ### Backgrounds
 
 - **Aged-parchment texture** (`.bg-parchment-texture`) — vignette + corner foxing + SVG fractal noise, fixed-attached. This is the *default page background* in every theme. Don't replace it with a flat color.
+- **Nebula** (`assets/imagery/icon-bg-nebula.png`) — photographic deep-space ground. Reach for it when a surface needs a literal night sky: slide title pages, deep-marketing heroes, generic dark backgrounds, anywhere the brand wants the *night* feel without parchment grain. Tint with a navy overlay (`rgba(4,4,28,0.15–0.85)`) to keep type legible — the higher the tint, the more the nebula becomes texture rather than subject.
 - **Atmospheric overlays** on the Moon page: star tile patterns, particles, ink texture. Stay within the existing theme palette — do not introduce jewel tones, amethyst, or gold accents.
-- **Hero decorative imagery** — branded webp elements (anchor, compass rose, key, shell, crow, eye) placed absolutely around the hero with `opacity: 0.25–0.40`, scaled by mouse-position parallax.
+- **Hero decorative imagery** — branded webp elements (anchor, compass rose, key, shell, crow, eye) placed absolutely around the hero. Render at full opacity when the illustration carries the moment, or at `opacity: 0.20–0.40` when layered behind copy for parallax. Mouse-position parallax is the default motion.
 - **No** gradient buttons. **No** bluish-purple gradient backgrounds. **No** generic "vibe" gradients.
 
 ### Animation
@@ -276,7 +285,7 @@ Starboard runs **three distinct illustration registers**. They are not interchan
 
 | Register | Lives in | Use for | Treatment |
 |---|---|---|---|
-| **01 · Detailed inked** | `assets/elements/dark/` (22 WebPs) | App chrome, marketing decoration, parallax hero ornaments | Cream on navy, hand-drawn line/fill. Always partial opacity (0.20–0.40), layered *behind* content. Never the focal point. |
+| **01 · Detailed inked** | `assets/elements/dark/` (22 WebPs) | App chrome, marketing decoration, parallax hero ornaments, feature illustrations | Cream on navy, hand-drawn line/fill. Use at **full opacity as a focal illustration** or **partial opacity (0.20–0.40) as a layered decoration** — both are valid. Pick by role on the surface. |
 | **02 · Pared-back board art** | `assets/board-art/` (18 PNGs) | **Vision boards** and **high-impact marketing** (App Store hero, Pinterest pins, hero billboards, print) | Bold black-and-cream silhouettes inside **art-nouveau frames**. Stand alone as the focal point. Standalone illustrations — do not layer behind text. |
 | **03 · Oracle muted** | `assets/oracle/` (16 PNGs + animated flash) | Blog post headers, newsletter heroes, editorial moments | Muted sailor-jerry tattoo flash, navy + faded red/orange accents. Diamond frames. Playful where the inked set is reverent. |
 
@@ -320,9 +329,8 @@ Use them as:
 - **Hero parallax decorations** — 4 large elements + 2 background elements, mouse-parallaxed (see `HeroSection` original).
 - **Feature-card iconography** — render at 100×100, `opacity-80`, `object-contain`. `Heart`, `Lighthouse`, `Sun` are the codebase's three feature triad icons.
 - **Footer background** — a single `Ship` at `opacity: 0.10`, centered, behind the footer content.
-- **Card ornamental corners** — the `OrnamentalFrame` component wraps content in two large art-nouveau corner SVGs at 0.25 opacity.
 
-> **A note on the dark variants only:** This kit only imported the dark-bg WebP versions to keep the bundle small. The light and warm WebP/SVG variants exist in the source repo at `public/elements/{light background, warm}/` — pull them in via `github_import_files` if you need them.
+> **Picking a variant:** Each element ships in dark, light, and warm bg colorways. The matching colorway reads best when you know the surface theme; **if you're unsure, default to the dark-bg version** — its cream-on-navy line work holds up across every theme. Only the dark-bg WebPs are imported into `assets/elements/dark/` to keep this kit small; pull in light/warm via `github_import_files` from `public/elements/{light background, warm}/` when a brand-locked surface needs them.
 
 ### Emoji & unicode
 
@@ -342,6 +350,29 @@ The Starboard logomark — a six-pointed compass-rose star inside an ornamental 
 
 Three palettes: **dark bg** (cream on navy), **light bg** (navy on white), **warm** (navy on parchment), and **green** — a cross-theme variant that reads on both light and dark surfaces. **Use the green lockup wherever you don't know the user's appearance mode** (HTML emails, App Store screenshots, social previews, third-party embeds, system splashes). Treat it as the *adaptive* lockup; pick a theme-specific lockup only when you know the surface.
 
+### Brand decorations — the star multiplied
+
+Separate from the three illustration registers and from the logo, the brand carries a **decoration kit**: the primary mark (the star) and its art-nouveau curls, played in many forms. Lives in `assets/decorations/`.
+
+| File | What it is | Use for |
+|---|---|---|
+| `sb-star-flourish.png` | Single star with two curls. The seed motif. | Ornament between blocks of copy. Title-slide ornament. Bullet replacement. |
+| `sb-banner-frame.svg` | A horizontal banner frame opened to hold a wordmark or headline. | Section titles. Eyebrows that want weight. |
+| `sb-frame-banner.png` | Star centered in a U-curl ornament. | Decorative section divider. |
+| `sb-frame-half.png` | Square ornament: star centered, curls in four corners. | Card decoration. Avatar surrounds. |
+| `sb-frame-corner.svg` | Single corner of an art-nouveau frame. | Build custom frames around content. Tile to 4 corners. |
+| `sb-divider.svg` / `.png` | Horizontal rule with star + crescents + arrows. | Between paragraphs in long-form. Section breaks. |
+| `sb-star-pattern-1.png` | Tileable diagonal star grid. | Repeating background pattern on deep grounds. Low opacity. |
+| `sb-star-pattern-2.png` | Tileable banded pattern: stars + paisley + waves. | Newsletter borders. Header strips. Edition-mark patterns. |
+| `sb-star-pattern-5.png` | Tileable diamond pattern: stars in interlocking diamonds. | Footer strips. Print collateral. Tickets. |
+| `moon-frame.svg` / `moon-frame-2.svg` | Circular moon-shaped ornamental frame. | Phase-of-the-moon moments. Lunar editorial. Round avatar surround. |
+
+**Rules:**
+- Decorations are **ornament**, not subject. They surround, divide, and frame content. They do not stand alone as a focal image (board art does that).
+- Render in any brand color: navy (default), cream (on dark), lime (accent moments), forest (warm).
+- Tileable patterns live at **3–8% opacity** as a page background, **40–80%** when the pattern itself is the feature (strips, borders).
+- **Don't use a decoration as a logomark.** The star inside the flourish is a brand motif, not a brand mark. The brand mark is the lockup.
+
 ### 3. Pared-back board art — Register 02
 
 For **vision boards** and **high-impact marketing**, Starboard uses a separate, bolder illustration register. Lives in `assets/board-art/`.
@@ -355,11 +386,11 @@ Use board art when:
 - The surface needs a single image that can carry it alone.
 - The Sailor's own vision-board template is shown (default board covers).
 
-Don't layer board art behind text. Don't reduce its opacity. It is meant to be **looked at**, not slipped past.
+Don't layer board art behind text. Don't reduce its opacity. Don't sit two pieces next to each other in different colorways without intention. It is meant to be **looked at**, not slipped past.
 
 ### 4. Oracle illustrations — Register 03 (muted blog & newsletter)
 
-A separate, muted illustration register for **blog posts, newsletter content, and Oracle-deck-style features** lives in [`assets/oracle/`](assets/oracle/). These are diamond-framed sailor-jerry-style tattoo flash illustrations — navy on cream, with muted red and orange accents (`#9B4A4A`, `#D98A5F`).
+A separate, muted illustration register for **blog posts, newsletter content, and Oracle-deck-style features** lives in `assets/oracle/`. These are diamond-framed sailor-jerry-style tattoo flash illustrations — navy on cream, with muted red and orange accents (`#9B4A4A`, `#D98A5F`).
 
 Use the Oracle set when:
 - The surface is a **blog post header**, **newsletter hero**, or a **deck slide that wants editorial weight**.
@@ -378,5 +409,5 @@ The Oracle inventory includes: anchor, cannons, dagger, golden-dragon, hearts, h
 - **Reality Stone** is the **logo wordmark font** — it draws the letters of "STARBOARD" inside every lockup file. Exposed as `var(--font-family-reality)` so you can render the wordmark typographically (deck title slides, badge text).
 - **Amita, Space Grotesk, Cinzel, Cinzel Decorative, Cormorant Garamond** are **vision-board user fonts**, not brand fonts. The app offers them as optional faces the Sailor can pick to style their own board copy. Do not reach for them in brand surfaces.
 - **Lucide React icons** are linked via npm CDN at the same version the source uses (`0.563.0`). ✅
-- **Decorative element variants:** only the **dark-bg WebP set** is imported here, and that's intentional — the dark-bg variants are designed to **work universally across all three themes**. Don't go hunting for light- or warm-bg variants; use the dark-bg files everywhere.
+- **Decorative element variants:** elements ship in dark, light, and warm bg colorways. Match the surface theme when you know it. **If you're unsure, default to the dark-bg version** — cream-on-navy line work holds up across every theme. Only the dark-bg WebPs are imported into this kit; the others live in the source repo at `public/elements/{light background, warm}/`.
 - This kit does **not** include the moon-rendering canvas script (the live product computes phase + illumination via SunCalc). For static mocks, use a CSS-painted moon (see `ui_kits/app/Screens.jsx → MoonScreen`) or the `moon-frame.svg` decoration as a placeholder.

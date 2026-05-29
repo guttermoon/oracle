@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5 {
 /* ====== Moon page atmosphere ====== */
 .moon-atmosphere {
   position: relative;
-  background: var(--card-bg);
+  background: var(--bg-color);
   color: var(--text-color);
   border-radius: 14px;
   overflow: hidden;
@@ -111,9 +111,10 @@ h1, h2, h3, h4, h5 {
 }
 .moon-atmosphere::before {
   content: ""; position: absolute; inset: 0;
-  background-image: url("../../assets/decorations/sb-star-pattern-1.png");
-  background-size: 120px 120px;
-  opacity: 0.05;
+  background-image: url('../../assets/decorations/sb-star-pattern-1.png');
+  background-size: 180px auto;
+  background-repeat: repeat;
+  opacity: 0.06;
   pointer-events: none;
 }
 .moon-atmosphere > * { position: relative; z-index: 1; }

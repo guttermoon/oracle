@@ -1,0 +1,68 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 0; width: 700px; height: 280px; background: var(--bg-color); flex-direction: row; gap: 0; }
+  .col {
+    flex: 1;
+    display: flex; flex-direction: column;
+    padding: 22px 18px;
+    gap: 10px;
+    border-right: 1px solid rgba(245,230,205,0.08);
+    background-color: #04041C;
+    background-image: url('../assets/imagery/icon-bg-nebula.png');
+    background-size: cover; background-position: center;
+    position: relative;
+  }
+  .col:last-child { border-right: 0; }
+  .col::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(4,4,28,0.15) 0%, rgba(4,4,28,0.65) 100%);
+    pointer-events: none;
+  }
+  .col.muted::before {
+    background: linear-gradient(180deg, rgba(4,4,28,0.55) 0%, rgba(4,4,28,0.88) 100%);
+  }
+  .col.heavy::before {
+    background: rgba(4,4,28,0.82);
+  }
+  .col > * { position: relative; z-index: 1; }
+  .head {
+    font-family: var(--font-family-chivo);
+    font-size: 9px; letter-spacing: 0.30em;
+    text-transform: uppercase; color: rgba(245,230,205,0.55);
+  }
+  .name {
+    font-family: var(--font-family-secondary);
+    font-style: italic; font-size: 24px;
+    color: #F5E6CD; line-height: 1;
+    margin-top: auto;
+  }
+  .note {
+    font-family: var(--font-family-chivo);
+    font-size: 10px; color: rgba(245,230,205,0.65);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+  <div class="col">
+    <span class="head">FULL BLEED · 0% TINT</span>
+    <div class="name">Hero ground.</div>
+    <p class="note">Slide title pages, marketing heroes when imagery carries.</p>
+  </div>
+  <div class="col muted">
+    <span class="head">MUTED · 70% TINT</span>
+    <div class="name">Body ground.</div>
+    <p class="note">Slide body, generic dark backgrounds. Type stays legible.</p>
+  </div>
+  <div class="col heavy">
+    <span class="head">HEAVY · 85% TINT</span>
+    <div class="name">Text ground.</div>
+    <p class="note">When the nebula is texture, not subject. Long-form copy.</p>
+  </div>
+</body>
+</html>

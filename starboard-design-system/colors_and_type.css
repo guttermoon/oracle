@@ -1,7 +1,7 @@
 /* ============================================================================
    STARBOARD — Color & Type Foundations
    ============================================================================
-   Source-of-truth CSS variables for the Starboard design system.
+   Source-of-truth tokens lifted directly from app/globals.css in guttermoon/sb.
    The product ships THREE themes: dark (default), light, and warm. Switch by
    setting [data-theme="dark|light|warm"] on a root element.
 

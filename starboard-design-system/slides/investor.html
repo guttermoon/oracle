@@ -1,0 +1,726 @@
+<!doctype html>
+<html data-theme="dark" lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Starboard — Investor Pitch</title>
+<link rel="icon" href="../assets/logos/favicon.svg" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { background: #0d0a14; }
+
+  /* Slide base */
+  section {
+    background-color: #04041C;
+    color: #F5E6CD;
+    position: relative;
+    overflow: hidden;
+  }
+  section.cream { background-color: #FEFDF6; color: #04041C; }
+  section.warm { background-color: #F7F0DB; color: #6A4D44; }
+  section.sage { background-color: #4A5D45; color: #F7F0DB; }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-family-secondary);
+    font-style: italic; font-weight: 400;
+    letter-spacing: 0.01em; margin: 0;
+    text-wrap: balance; line-height: 1.0;
+  }
+  .eyebrow {
+    font-family: var(--font-family-chivo);
+    font-weight: 600; font-size: 20px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    opacity: 0.55;
+  }
+  .accent { color: #A4E636; }
+  section.cream .accent, section.warm .accent { color: #5C7000; }
+  section.sage .accent { color: #FAF9D4; }
+
+  .corner-lockup {
+    position: absolute; top: 64px; left: 80px;
+    height: 48px; opacity: 0.75; z-index: 2;
+  }
+  section.cream .corner-lockup { content: url(../assets/logos/sb-light-lockup-horizontal.webp); }
+  section.warm  .corner-lockup { content: url(../assets/logos/sb-warm-lockup-horizontal.webp); }
+  .corner-page {
+    position: absolute; bottom: 64px; right: 80px;
+    font-family: var(--font-family-chivo);
+    font-size: 18px; letter-spacing: 0.30em; text-transform: uppercase;
+    opacity: 0.45; z-index: 2;
+  }
+
+  /* ============ SLIDE 1: TITLE ============ */
+  .s-title {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 100px 140px;
+    text-align: center;
+  }
+  .s-title .lockup { width: 220px; margin-bottom: 80px; }
+  .s-title .ornament { width: 84px; margin-bottom: 28px; filter: brightness(0) invert(1) opacity(0.85); }
+  .s-title .stamp {
+    font-family: var(--font-family-chivo); font-size: 15px;
+    letter-spacing: 0.42em; text-transform: uppercase;
+    color: rgba(245,230,205,0.55);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .s-title .stamp .rule { width: 36px; height: 1px; background: rgba(245,230,205,0.30); }
+  .s-title h1 { font-size: 132px; max-width: 1500px; margin: 0 0 32px; }
+  .s-title .tag {
+    font-family: var(--font-family-chivo); font-size: 22px;
+    line-height: 1.55; color: rgba(245,230,205,0.65);
+    margin-bottom: 80px; letter-spacing: 0.04em;
+    max-width: 820px;
+  }
+  .s-title .signature {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 22px; color: rgba(245,230,205,0.55);
+  }
+
+  /* ============ SLIDE 2: PROBLEM ============ */
+  .s-problem {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 0 160px;
+  }
+  .s-problem .eyebrow { margin-bottom: 48px; }
+  .s-problem h2 {
+    font-size: 112px;
+    color: #F5E6CD;
+    margin-bottom: 56px;
+    max-width: 1500px;
+  }
+  .s-problem .quiet { color: rgba(245,230,205,0.50); display: block; margin-top: 14px; font-size: 80px; }
+  .s-problem .lede {
+    font-family: var(--font-family-chivo);
+    font-size: 28px; line-height: 1.55;
+    color: rgba(245,230,205,0.75);
+    max-width: 1200px;
+  }
+  .s-problem .pull {
+    display: flex; gap: 80px;
+    margin-top: 64px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(245,230,205,0.15);
+  }
+  .s-problem .pull .col { flex: 1; }
+  .s-problem .pull .num {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 80px; color: #A4E636; line-height: 1;
+    margin-bottom: 12px;
+  }
+  .s-problem .pull .ltxt {
+    font-family: var(--font-family-chivo); font-size: 18px;
+    line-height: 1.5; color: rgba(245,230,205,0.70);
+  }
+
+  /* ============ SLIDE 3: MARKET ============ */
+  .s-market {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 0 160px;
+  }
+  .s-market .eyebrow { margin-bottom: 56px; color: rgba(4,4,28,0.55); }
+  .s-market h2 { font-size: 88px; max-width: 1100px; margin-bottom: 56px; }
+  .s-market .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 56px; margin-top: 28px;
+  }
+  .s-market .stat .num {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 144px; line-height: 0.9;
+    color: #04041C; margin-bottom: 12px;
+  }
+  .s-market .stat .lab {
+    font-family: var(--font-family-chivo); font-size: 18px;
+    color: rgba(4,4,28,0.65); line-height: 1.55;
+    border-top: 1px solid rgba(4,4,28,0.15);
+    padding-top: 16px;
+  }
+  .s-market .source {
+    font-family: var(--font-family-chivo); font-size: 14px;
+    color: rgba(4,4,28,0.40); margin-top: 36px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ SLIDE 4: SOLUTION (warm + ornament) ============ */
+  .s-solution {
+    display: grid; grid-template-columns: 0.9fr 1fr;
+    align-items: center; gap: 80px;
+    padding: 0 140px;
+  }
+  .s-solution .stack {
+    position: relative; display: flex; justify-content: center;
+  }
+  .s-solution .star {
+    width: 460px; opacity: 0.95;
+  }
+  .s-solution .glow {
+    position: absolute; inset: -50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,93,69,0.25) 0%, transparent 65%);
+  }
+  .s-solution .copy { position: relative; z-index: 1; }
+  .s-solution .eyebrow { color: rgba(106,77,68,0.55); margin-bottom: 48px; }
+  .s-solution h2 { font-size: 96px; max-width: 900px; }
+  .s-solution p {
+    font-family: var(--font-family-chivo); font-size: 26px;
+    line-height: 1.6; color: rgba(106,77,68,0.75);
+    margin-top: 48px; max-width: 760px;
+  }
+
+  /* ============ SLIDE 5: HOW IT WORKS (three pillars) ============ */
+  .s-mechanism {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 0 120px;
+  }
+  .s-mechanism header { margin-bottom: 72px; max-width: 1300px; }
+  .s-mechanism .eyebrow { margin-bottom: 24px; }
+  .s-mechanism h2 { font-size: 88px; }
+  .s-mechanism .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+  }
+  .s-mechanism .col {
+    display: flex; flex-direction: column;
+    padding: 44px 36px;
+    background: rgba(245,230,205,0.04);
+    border: 1px solid rgba(245,230,205,0.10);
+    border-radius: 24px;
+    gap: 24px;
+  }
+  .s-mechanism .col img { width: 120px; height: 120px; object-fit: contain; opacity: 0.88; }
+  .s-mechanism .num {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 32px; color: #A4E636;
+  }
+  .s-mechanism h3 { font-size: 44px; color: #F5E6CD; }
+  .s-mechanism .col p {
+    font-family: var(--font-family-chivo); font-size: 20px;
+    line-height: 1.55; color: rgba(245,230,205,0.65);
+  }
+
+  /* ============ SLIDE 6: WHY US ============ */
+  .s-why {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 160px;
+  }
+  .s-why .eyebrow { margin-bottom: 36px; }
+  .s-why h2 { font-size: 96px; margin-bottom: 64px; max-width: 1400px; }
+  .s-why .points {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 40px 80px;
+  }
+  .s-why .point {
+    border-top: 1px solid rgba(245,230,205,0.20);
+    padding-top: 24px;
+  }
+  .s-why .point h4 {
+    font-size: 36px; color: #F5E6CD; margin-bottom: 12px;
+  }
+  .s-why .point p {
+    font-family: var(--font-family-chivo); font-size: 18px;
+    line-height: 1.55; color: rgba(245,230,205,0.65);
+  }
+
+  /* ============ SLIDE 7: TRACTION ============ */
+  .s-traction {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 160px;
+  }
+  .s-traction .eyebrow { margin-bottom: 24px; }
+  .s-traction h2 { font-size: 88px; margin-bottom: 56px; }
+  .s-traction .grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .s-traction .metric {
+    display: flex; flex-direction: column;
+    gap: 8px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(245,230,205,0.20);
+  }
+  .s-traction .metric .num {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 108px; color: #F5E6CD; line-height: 0.95;
+  }
+  .s-traction .metric .lab {
+    font-family: var(--font-family-chivo); font-size: 16px;
+    color: rgba(245,230,205,0.65); line-height: 1.5;
+  }
+  .s-traction .note {
+    margin-top: 40px;
+    font-family: var(--font-family-chivo); font-size: 14px;
+    color: rgba(245,230,205,0.45);
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ SLIDE 8: BUSINESS MODEL ============ */
+  .s-model {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 120px;
+  }
+  .s-model header { margin-bottom: 56px; }
+  .s-model .eyebrow { margin-bottom: 24px; }
+  .s-model h2 { font-size: 88px; }
+  .s-model .tiers {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  }
+  .s-model .tier {
+    padding: 48px 40px;
+    background: rgba(245,230,205,0.04);
+    border: 1px solid rgba(245,230,205,0.12);
+    border-radius: 24px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .s-model .tier.hi { border-color: rgba(163,230,53,0.40); background: rgba(163,230,53,0.05); }
+  .s-model .tier .name {
+    font-family: var(--font-family-chivo); font-size: 22px;
+    letter-spacing: 0.04em; color: #F5E6CD;
+  }
+  .s-model .tier .price {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 108px; line-height: 1; color: #F5E6CD;
+  }
+  .s-model .tier .per {
+    font-family: var(--font-family-chivo); font-size: 18px;
+    color: rgba(245,230,205,0.55); margin-bottom: 18px;
+  }
+  .s-model .tier .arpu {
+    margin-top: auto; padding-top: 18px;
+    border-top: 1px solid rgba(245,230,205,0.15);
+    font-family: var(--font-family-chivo); font-size: 14px;
+    color: rgba(245,230,205,0.50); letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .s-model .ltv-note {
+    margin-top: 48px;
+    font-family: var(--font-family-chivo); font-size: 18px;
+    color: rgba(245,230,205,0.55); line-height: 1.6;
+    max-width: 1100px;
+  }
+  .s-model .ltv-note strong { color: #A4E636; font-weight: 600; }
+
+  /* ============ SLIDE 9: ROADMAP ============ */
+  .s-roadmap {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 120px;
+  }
+  .s-roadmap header { margin-bottom: 56px; }
+  .s-roadmap .eyebrow { margin-bottom: 24px; }
+  .s-roadmap h2 { font-size: 88px; }
+  .s-roadmap .timeline {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .s-roadmap .col {
+    padding: 32px 28px 0;
+    border-left: 1px solid rgba(245,230,205,0.20);
+  }
+  .s-roadmap .col:first-child { padding-left: 0; border-left: 0; }
+  .s-roadmap .col .dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #A4E636;
+    margin-bottom: 24px;
+  }
+  .s-roadmap .col.future .dot { background: rgba(245,230,205,0.25); }
+  .s-roadmap .col .when {
+    font-family: var(--font-family-chivo); font-size: 14px;
+    letter-spacing: 0.30em; text-transform: uppercase;
+    color: rgba(245,230,205,0.55); margin-bottom: 12px;
+  }
+  .s-roadmap .col h4 { font-size: 32px; color: #F5E6CD; margin-bottom: 16px; }
+  .s-roadmap .col p {
+    font-family: var(--font-family-chivo); font-size: 16px;
+    line-height: 1.55; color: rgba(245,230,205,0.65);
+  }
+
+  /* ============ SLIDE 10: TEAM ============ */
+  .s-team {
+    display: grid; grid-template-columns: 0.85fr 1fr;
+    align-items: center; gap: 100px;
+    padding: 0 140px;
+  }
+  .s-team .portrait {
+    aspect-ratio: 1;
+    background: radial-gradient(circle at 50% 40%, #2D3268 0%, #04041C 80%);
+    border: 1px solid rgba(245,230,205,0.20);
+    border-radius: 24px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 48px;
+    position: relative;
+  }
+  .s-team .portrait img {
+    width: 60%; height: 60%; object-fit: contain;
+    opacity: 0.85;
+  }
+  .s-team .portrait .stamp {
+    position: absolute; bottom: 24px; left: 32px;
+    font-family: var(--font-family-chivo); font-size: 13px;
+    letter-spacing: 0.30em; text-transform: uppercase;
+    color: rgba(245,230,205,0.55);
+  }
+  .s-team .copy .eyebrow { margin-bottom: 28px; }
+  .s-team h2 { font-size: 88px; margin-bottom: 28px; }
+  .s-team .role {
+    font-family: var(--font-family-chivo); font-size: 22px;
+    color: rgba(245,230,205,0.65); margin-bottom: 32px;
+    letter-spacing: 0.04em;
+  }
+  .s-team p {
+    font-family: var(--font-family-chivo); font-size: 20px;
+    line-height: 1.6; color: rgba(245,230,205,0.75);
+  }
+
+  /* ============ SLIDE 11: ASK ============ */
+  .s-ask {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 160px;
+  }
+  .s-ask .eyebrow { margin-bottom: 36px; color: #A4E636; opacity: 0.85; }
+  .s-ask h2 {
+    font-size: 168px; color: #F5E6CD; margin-bottom: 60px;
+  }
+  .s-ask .raise {
+    display: flex; gap: 80px; margin-bottom: 48px;
+  }
+  .s-ask .raise > div {
+    flex: 1; border-top: 1px solid rgba(245,230,205,0.20);
+    padding-top: 24px;
+  }
+  .s-ask .raise .num {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 84px; color: #F5E6CD; line-height: 0.95; margin-bottom: 8px;
+  }
+  .s-ask .raise .lab {
+    font-family: var(--font-family-chivo); font-size: 16px;
+    color: rgba(245,230,205,0.65); line-height: 1.5;
+  }
+  .s-ask .uses {
+    font-family: var(--font-family-chivo); font-size: 22px;
+    line-height: 1.7; color: rgba(245,230,205,0.75);
+    max-width: 1100px;
+  }
+  .s-ask .uses strong { color: #F5E6CD; font-weight: 600; }
+
+  /* ============ SLIDE 12: CLOSING ============ */
+  .s-closing {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 0 120px;
+  }
+  .s-closing .star { width: 220px; opacity: 0.85; filter: brightness(0) invert(1); margin-bottom: 56px; }
+  .s-closing h2 {
+    font-size: 200px; line-height: 0.9; margin-bottom: 32px;
+  }
+  .s-closing .url {
+    font-family: var(--font-family-chivo); font-size: 28px;
+    letter-spacing: 0.10em; color: rgba(245,230,205,0.55); margin-bottom: 56px;
+  }
+  .s-closing .sig {
+    display: flex; align-items: center; gap: 20px;
+  }
+  .s-closing .sig img { width: 56px; opacity: 0.65; }
+  .s-closing .sig span {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 36px; color: rgba(245,230,205,0.85);
+  }
+</style>
+</head>
+<body>
+<deck-stage>
+
+  <!-- ========== 01 TITLE ========== -->
+  <section data-screen-label="01 Title" class="s-title">
+    <img class="lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+    <img class="ornament" src="../assets/decorations/sb-star-flourish.png" alt="" />
+    <div class="stamp"><span class="rule"></span>INVESTOR PITCH · MAY 2026<span class="rule"></span></div>
+    <h1>The lanthorn<br/><span class="accent">you carry.</span></h1>
+    <p class="tag">A manifestation tool for the daily return. Older than wellness. Built for the people who don't want to be sold the divine feminine.</p>
+    <div class="signature">Megan Williams · Founder & CEO · London</div>
+  </section>
+
+  <!-- ========== 02 PROBLEM ========== -->
+  <section data-screen-label="02 Problem" class="s-problem">
+    <img class="corner-lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">02 / 12</span>
+    <p class="eyebrow">THE PROBLEM</p>
+    <h2>
+      Manifestation is a $12B category.<br/>
+      <span class="quiet">It's also embarrassing to be seen using.</span>
+    </h2>
+    <p class="lede">
+      Every vision board app on the market is either stuck in 2015 styling, coded to one demographic with goddess language, or sends notifications about finding love whether you asked or not. Smart people use the practice in secret because the tools they're handed are cringeworthy.
+    </p>
+    <div class="pull">
+      <div class="col">
+        <div class="num">1 of 1</div>
+        <p class="ltxt">Number of premium manifestation apps with brand design that wouldn't embarrass a 32-year-old creative director.</p>
+      </div>
+      <div class="col">
+        <div class="num">96%</div>
+        <p class="ltxt">Of vision board app users abandon their board within 30 days. The mechanism never gets to do its work.</p>
+      </div>
+      <div class="col">
+        <div class="num">£0</div>
+        <p class="ltxt">Spent on the segment by serious brands. The category was left to bedroom hustlers and one Pinterest deck from 2017.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 03 MARKET ========== -->
+  <section data-screen-label="03 Market" class="s-market cream">
+    <img class="corner-lockup" src="../assets/logos/sb-light-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">03 / 12</span>
+    <p class="eyebrow">THE MARKET</p>
+    <h2>A category in the middle of a brand renaissance.</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="num">$12B</div>
+        <p class="lab">Global manifestation & self-development market, growing 12% YoY.</p>
+      </div>
+      <div class="stat">
+        <div class="num">126M</div>
+        <p class="lab">Active monthly searches for "vision board" globally. Pinterest data, 2025.</p>
+      </div>
+      <div class="stat">
+        <div class="num">68%</div>
+        <p class="lab">Of millennial women have used a manifestation tool. Most won't admit it.</p>
+      </div>
+    </div>
+    <p class="source">Sources: Statista 2025 · Pinterest Predicts 2025 · Internal survey n=1,200</p>
+  </section>
+
+  <!-- ========== 04 SOLUTION ========== -->
+  <section data-screen-label="04 Solution" class="s-solution warm">
+    <img class="corner-lockup" src="../assets/logos/sb-warm-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">04 / 12</span>
+    <div class="stack">
+      <div class="glow"></div>
+      <img class="star" src="../assets/decorations/sb-star-flourish.png" alt="" />
+    </div>
+    <div class="copy">
+      <p class="eyebrow">THE SOLUTION</p>
+      <h2>Starboard is the<br/><span class="accent">lanthorn.</span></h2>
+      <p>
+        A 16th-century ship's lantern that had to be tended. Letting it go out was a harbinger of doom. Starboard is the same idea, digital. The vision kept visible because you chose to keep it alight, every day, on purpose.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== 05 HOW IT WORKS ========== -->
+  <section data-screen-label="05 Mechanism" class="s-mechanism">
+    <img class="corner-lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">05 / 12</span>
+    <header>
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2>Three tools, <span class="accent">one practice.</span></h2>
+    </header>
+    <div class="grid">
+      <div class="col">
+        <img src="../assets/elements/dark/heart.webp" alt="" />
+        <div class="num">01</div>
+        <h3>Gather</h3>
+        <p>Upload images in bulk. Crop fast. Build a library of what guides you.</p>
+      </div>
+      <div class="col">
+        <img src="../assets/elements/dark/lighthouse.webp" alt="" />
+        <div class="num">02</div>
+        <h3>Build</h3>
+        <p>Compose boards by life chapter. Healing-frequency audio, custom music, looping montage.</p>
+      </div>
+      <div class="col">
+        <img src="../assets/elements/dark/sun.webp" alt="" />
+        <div class="num">03</div>
+        <h3>Return</h3>
+        <p>Affirmations on a schedule. The board comes back to you, every day, at the right moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 06 WHY US ========== -->
+  <section data-screen-label="06 Why us" class="s-why">
+    <img class="corner-lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">06 / 12</span>
+    <p class="eyebrow">WHY STARBOARD WINS</p>
+    <h2>The category is wide open<br/><span class="accent">for premium positioning.</span></h2>
+    <div class="points">
+      <div class="point">
+        <h4>Brand-first design.</h4>
+        <p>Victorian navigational, mythic, universal. No goddess language, no rainbow gradients, no Comic Sans serif. Smart people aren't embarrassed to be seen using it.</p>
+      </div>
+      <div class="point">
+        <h4>Daily-return mechanism.</h4>
+        <p>Every competitor focuses on the build. We focus on the return. Reminders, montages, healing-frequency audio. The product is built for retention, not virality.</p>
+      </div>
+      <div class="point">
+        <h4>Cross-platform from day one.</h4>
+        <p>iOS, Android, web PWA. Next.js + Capacitor. One codebase, three platforms. The competition is single-platform.</p>
+      </div>
+      <div class="point">
+        <h4>A founder who is the customer.</h4>
+        <p>Built by someone who tried every alternative and refused to use any of them. The taste filter is the moat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 07 TRACTION ========== -->
+  <section data-screen-label="07 Traction" class="s-traction">
+    <img class="corner-lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">07 / 12</span>
+    <p class="eyebrow">TRACTION · MONTH 1 SINCE LAUNCH</p>
+    <h2>Maiden voyage.</h2>
+    <div class="grid">
+      <div class="metric">
+        <div class="num">2,400</div>
+        <div class="lab">Signups in launch week. No paid acquisition.</div>
+      </div>
+      <div class="metric">
+        <div class="num">42%</div>
+        <div class="lab">Free → paid conversion at 14 days. Industry median: 4%.</div>
+      </div>
+      <div class="metric">
+        <div class="num">68%</div>
+        <div class="lab">Day-7 retention. The board returns to them.</div>
+      </div>
+      <div class="metric">
+        <div class="num">£18k</div>
+        <div class="lab">Revenue, month one. Mostly Lifetime sales (£72 once).</div>
+      </div>
+    </div>
+    <p class="note">All metrics May 2026. Pre-paid-marketing. Pre-press.</p>
+  </section>
+
+  <!-- ========== 08 BUSINESS MODEL ========== -->
+  <section data-screen-label="08 Business model" class="s-model">
+    <img class="corner-lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">08 / 12</span>
+    <header>
+      <p class="eyebrow">BUSINESS MODEL</p>
+      <h2>Free, annual, <span class="accent">lifetime.</span></h2>
+    </header>
+    <div class="tiers">
+      <div class="tier">
+        <div class="name">FREE</div>
+        <div class="price">Free</div>
+        <div class="per">forever</div>
+        <div class="arpu">£0 ARPU · top of funnel</div>
+      </div>
+      <div class="tier hi">
+        <div class="name">ANNUAL</div>
+        <div class="price">£23</div>
+        <div class="per">per year</div>
+        <div class="arpu">£23 ARPU · 6.2x LTV</div>
+      </div>
+      <div class="tier">
+        <div class="name">LIFETIME</div>
+        <div class="price">£72</div>
+        <div class="per">one time</div>
+        <div class="arpu">£72 ARPU · whales</div>
+      </div>
+    </div>
+    <p class="ltv-note">
+      Annual subscribers self-select for retention. Lifetime buyers are <strong>category whales</strong>, the people who've tried every other tool and want this one to stick. <strong>Star Chart Editions</strong> (limited-run themed boards, gifting, merch) ship in 2027 as a high-margin retention layer.
+    </p>
+  </section>
+
+  <!-- ========== 09 ROADMAP ========== -->
+  <section data-screen-label="09 Roadmap" class="s-roadmap">
+    <img class="corner-lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">09 / 12</span>
+    <header>
+      <p class="eyebrow">ROADMAP</p>
+      <h2>The voyage <span class="accent">ahead.</span></h2>
+    </header>
+    <div class="timeline">
+      <div class="col">
+        <div class="dot"></div>
+        <div class="when">Q2 2026 · NOW</div>
+        <h4>Maiden voyage.</h4>
+        <p>iOS, Android, web. Three platforms, one codebase. Free, annual, lifetime tiers live.</p>
+      </div>
+      <div class="col">
+        <div class="dot"></div>
+        <div class="when">Q3 2026</div>
+        <h4>Following seas.</h4>
+        <p>Paid acquisition, press push, creator partnerships. Star Chart Edition 01 limited drop.</p>
+      </div>
+      <div class="col future">
+        <div class="dot"></div>
+        <div class="when">Q4 2026</div>
+        <h4>Crossing.</h4>
+        <p>Public board sharing, group boards for partners. Apple Watch & widget surfaces.</p>
+      </div>
+      <div class="col future">
+        <div class="dot"></div>
+        <div class="when">2027</div>
+        <h4>Landfall.</h4>
+        <p>Print-on-demand board exports. Merch. Branded gifting. Star Chart Editions as a category.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 10 TEAM ========== -->
+  <section data-screen-label="10 Team" class="s-team">
+    <img class="corner-lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">10 / 12</span>
+    <div class="portrait">
+      <img src="../assets/decorations/sb-star-flourish.png" alt="" style="filter: brightness(0) invert(1)" />
+      <div class="stamp">CAPTAIN'S PORTRAIT</div>
+    </div>
+    <div class="copy">
+      <p class="eyebrow">THE CAPTAIN</p>
+      <h2>Megan Williams.</h2>
+      <p class="role">Founder, CEO, designer, the writer behind every word.</p>
+      <p>
+        15 years in product and brand design across London startups and agencies. Built Starboard because nothing else would hold the flame the way she needed it held. The customer and the founder are the same person, which is the only moat that matters.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== 11 ASK ========== -->
+  <section data-screen-label="11 The ask" class="s-ask">
+    <img class="corner-lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+    <span class="corner-page">11 / 12</span>
+    <p class="eyebrow">THE ASK</p>
+    <h2>£500k seed.</h2>
+    <div class="raise">
+      <div>
+        <div class="num">£500k</div>
+        <p class="lab">SAFE · 18-month runway.</p>
+      </div>
+      <div>
+        <div class="num">£4M</div>
+        <p class="lab">Valuation cap.</p>
+      </div>
+      <div>
+        <div class="num">18mo</div>
+        <p class="lab">Runway to £80k MRR and Series A.</p>
+      </div>
+    </div>
+    <p class="uses">
+      <strong>40% paid acquisition.</strong> The category responds to social and creator content. Funnels and audience are validated; we need to spend.<br/><br/>
+      <strong>35% engineering.</strong> Two senior hires. Widget surfaces, sharing, Star Chart Editions infrastructure.<br/><br/>
+      <strong>25% content + brand.</strong> Editorial cadence on blog, newsletter, social. A second illustrator. Print-on-demand fulfillment.
+    </p>
+  </section>
+
+  <!-- ========== 12 CLOSING ========== -->
+  <section data-screen-label="12 Closing" class="s-closing">
+    <img class="corner-lockup" src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" style="opacity: 0.7;" />
+    <span class="corner-page">12 / 12</span>
+    <img class="star" src="../assets/decorations/sb-star-flourish.png" alt="" />
+    <h2>Set your course,<br/><span class="accent">Sailor.</span></h2>
+    <p class="url">megan@starboardmanifest.com</p>
+    <div class="sig">
+      <img src="../assets/elements/dark/anchor.webp" alt="" />
+      <span>— Megan, Captain</span>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>
