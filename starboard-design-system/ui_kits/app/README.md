@@ -1,22 +1,22 @@
 # App UI kit · Starboard
 
-The authenticated Starboard app, recreated as a click-thru React mock. This is the PWA / Capacitor surface — *not* the marketing site.
+The authenticated Starboard app, recreated as a click-thru React mock. This is the PWA / Capacitor surface, not the marketing site.
 
 ## What's in here
 
-- **`index.html`** — interactive app demo. Bottom nav switches screens; theme toggle in the nav cycles dark → light → warm.
-- **`AppShell.jsx`** — the chrome (header + bottom nav + screen routing).
-- **`Screens.jsx`** — all screens: Vision Boards, Board Detail, Library, Notifications, Moon Ritual, Account.
-- **`Components.jsx`** — small reusable cards & rows (BoardCard, LibraryTile, AffirmationRow, ToggleRow).
+- **`index.html`:** interactive app demo. Bottom nav switches screens; theme toggle in the nav cycles dark → light → warm.
+- **`AppShell.jsx`:** the chrome (header + bottom nav + screen routing).
+- **`Screens.jsx`:** all screens: Vision Boards, Board Detail, Library, Notifications, Moon Ritual, and Account.
+- **`Components.jsx`:** small reusable cards & rows (BoardCard, LibraryTile, AffirmationRow, ToggleRow).
 
 ## Screens demonstrated
 
-1. **Vision Boards** — grid of board cards with cover art, name, and image count. *Click any to enter Board Detail.*
-2. **Board Detail** — single board with image grid, affirmation, play-montage button.
-3. **Library** — image library grid with filter tags.
-4. **Notifications** — list of scheduled reminders with time + affirmation text.
-5. **Moon Phases** — lunar phase, illumination, daily affirmation tuned to the cycle. Uses the brand theme palette (no jewel tones).
-6. **Account** — settings list (profile, subscription, theme).
+1. **Vision Boards:** grid of board cards with cover art, name, and image count. *Click any to enter Board Detail.*
+2. **Board Detail:** single board with image grid, affirmation, and play-montage button.
+3. **Library:** image library grid with filter tags.
+4. **Notifications:** list of scheduled reminders with time + affirmation text.
+5. **Moon Phases:** lunar phase, illumination, and daily affirmation tuned to the cycle. Uses the brand theme palette (no jewel tones).
+6. **Account:** settings list (profile, subscription, theme).
 
 ## Notes & departures from production
 

@@ -6,7 +6,7 @@
 - **Tagline (homepage):** *Your vision, on board. Your course, in sight.*
 - **CTA headline:** *Set Your Course*
 - **Categories:** Productivity · Wellness · Manifestation
-- **Platforms:** iOS, Android, Web (PWA) — built on Next.js 16 + Capacitor
+- **Platforms:** iOS, Android, and Web (PWA), built on Next.js 16 + Capacitor
 - **Contact:** `captain@starboardmanifest.com`
 - **Site:** [starboardmanifest.com](https://starboardmanifest.com)
 
@@ -14,9 +14,9 @@ This project is a faithful design-system extraction of the Starboard product, in
 
 ## Sources used
 
-- **Codebase:** `guttermoon/sb` branch `1.27` (private) — Next.js + Tailwind + Capacitor. The README inside that repo dates the brand and design tokens; this design system is a derivative.
+- **Codebase:** `guttermoon/sb` branch `1.27` (private): Next.js + Tailwind + Capacitor. The README inside that repo dates the brand and design tokens; this design system is a derivative.
 - Specifically read: `app/globals.css` (the 97 KB single-source-of-truth for tokens & components), `app/layout.tsx` (font loading), `components/(common)/**`, `components/(features)/**`, `app/(marketing)/**`, `public/llms-full.txt`.
-- The reader can explore further at <https://github.com/guttermoon/sb> (access permitting) to build deeper mocks that mirror live behavior — especially `app/globals.css`, the `(features)/boards/` directory, and the `(features)/moon/` "Celestial Grimoire" surface, which has its own typography and atmosphere.
+- The reader can explore further at <https://github.com/guttermoon/sb> to build deeper mocks that mirror live behavior, especially `app/globals.css`, the `(features)/boards/` directory, and the `(features)/moon/` surface, which has its own typography and atmosphere.
 
 ---
 
@@ -24,8 +24,8 @@ This project is a faithful design-system extraction of the Starboard product, in
 
 | Surface | What it is | UI kit |
 |---|---|---|
-| **Marketing site** | starboardmanifest.com — hero, value prop, features, pricing, footer, ticker banner | [`ui_kits/marketing/`](ui_kits/marketing/) |
-| **App (PWA / Capacitor)** | Authenticated app — vision-boards grid, board editor, library, notifications, moon ritual page, account | [`ui_kits/app/`](ui_kits/app/) |
+| **Marketing site** | starboardmanifest.com: hero, value prop, features, pricing, footer, and ticker banner | [`ui_kits/marketing/`](ui_kits/marketing/) |
+| **App (PWA / Capacitor)** | Authenticated app: vision-boards grid, board editor, library, notifications, moon ritual page, and account | [`ui_kits/app/`](ui_kits/app/) |
 
 Both share one design token system, three swappable themes (**dark · light · warm**), and one brand voice.
 
@@ -48,7 +48,7 @@ Both share one design token system, three swappable themes (**dark · light · w
 │   └── imagery/             ← banner, og-image, icon backgrounds, animation
 ├── reference/
 │   ├── nautical-vocabulary.md  ← phrases, idioms, ship anatomy, weather terms
-│   ├── founder-story.md     ← internal founder context
+│   ├── founder-story.md     ← founder context and brand brief
 │   └── llms-full.txt        ← Starboard's public llms.txt manifest
 ├── preview/                 ← Design System tab cards (30+ cards, registered)
 ├── ui_kits/
@@ -66,11 +66,11 @@ Both share one design token system, three swappable themes (**dark · light · w
 
 ### Founder & voice
 
-Starboard is written by **Megan Williams** (London) — the founder, the captain. "Megan" and "the Captain" are interchangeable signatures. Use whichever fits the surface:
+Starboard is written by **Megan Williams** (London), the founder and the captain. "Megan" and "the Captain" are interchangeable signatures. Use whichever fits the surface:
 
-- **Megan** — personal, blog posts, founder letters in long-form, the writer behind the brand
-- **The Captain** — the helm-keeper, used for product-voice moments (welcome emails, app onboarding, push notifications, signature lines on marketing surfaces)
-- **`captain@starboardmanifest.com`** — the public-facing inbox, always
+- **Megan:** personal, blog posts, founder letters in long-form, the writer behind the brand
+- **The Captain:** the helm-keeper, used for product-voice moments (welcome emails, app onboarding, push notifications, and signature lines on marketing surfaces)
+- **`captain@starboardmanifest.com`:** the public-facing inbox, always
 
 They are the same person. The Captain is the role Megan plays when speaking through the product. Sign off as `— Megan` for blog and personal letters, `— The Captain` for product surfaces, or `— Megan, Captain` when both fit.
 
@@ -91,7 +91,7 @@ The audience is the **Sailor**. Capitalized when addressed directly: *Welcome ab
 
 ### Reach for nautical vocabulary
 
-The full vocabulary palette lives in [`reference/nautical-vocabulary.md`](reference/nautical-vocabulary.md) — phrases, idioms, ship anatomy, weather terms, commands. Use it as a resource pool, not a checklist. Reach for a nautical term whenever it lands naturally:
+The full vocabulary palette lives in [`reference/nautical-vocabulary.md`](reference/nautical-vocabulary.md): phrases, idioms, ship anatomy, weather terms, and commands. Use it as a resource pool, not a checklist. Reach for a nautical term whenever it lands naturally:
 
 - **Marketing headlines:** *Set your course.* *Steady as she goes.* *Even keel.*
 - **Error states:** *Dead in the water. Try again.*
@@ -102,19 +102,19 @@ The full vocabulary palette lives in [`reference/nautical-vocabulary.md`](refere
 - **Empty states:** *Your library is high and dry. Add an image to begin.*
 - **Slogans / merch:** *Hold fast.* *Steady on.* *Sea legs.* *Even keel.*
 
-**Restraint matters.** One nautical term per surface, not three. If a button just needs to say "Save," let it say "Save." The vocabulary is for moments where brand voice can breathe — not every UI label.
+**Restraint matters.** One nautical term per surface, not three. If a button just needs to say "Save," let it say "Save." The vocabulary is for moments where brand voice can breathe, not for every UI label.
 
 ### Steeped in lore
 
-Long-form Starboard writing — blog, newsletter, social posts, Instagram captions, Pinterest descriptions — is **edutainment**. Every piece should leave the Sailor feeling enriched, like they picked up something worth telling someone else at dinner. Think the cadence of *No Such Thing as a Fish* (the QI podcast): a single surprising fact, told plainly, that opens into a wider story.
+Long-form Starboard writing (blog, newsletter, social posts, Instagram captions, and Pinterest descriptions) is **edutainment**. Every piece should leave the Sailor feeling enriched, like they picked up something worth telling someone else at dinner. Think the cadence of *No Such Thing as a Fish* (the QI podcast): a single surprising fact, told plainly, that opens into a wider story.
 
 The well to draw from:
 
 - **Maritime history & lore.** The etymology of *lanthorn* (16th-century lanterns made of translucent animal horn, taboo to let go out at night, viewed as a harbinger of doom). Why ships are called *she*. The origin of *starboard*, *port*, *posh*, *the bitter end*. Naval superstitions: no whistling on deck, never sail on a Friday, why Royal Navy pipers played certain tunes.
 - **Mythology.** Sea gods (Poseidon, Manannán mac Lir, the kelpie), constellations and their stories (Cassiopeia, Orion's belt as a navigational tool), Norse navigational mythology, selkies, the Wild Hunt, the Morrigan as crow.
 - **Science.** Reticular activating system and why repetition rewires attention. Lunar cycles and tidal physics. Neuroplasticity, the slow build of behavioural change, why visualization actually does something. Stars used for celestial navigation, sextant geometry, why the North Star sits where it does.
-- **Botanical & seasonal lore.** Why the Strawberry Moon is so named (the brief window strawberries ripen — pay attention or miss it). The folklore of each full moon. Solstices, equinoxes, cross-quarter days.
-- **Folk practice.** Tarot iconography, oracle decks, sailor-jerry tattoo meanings (swallows = home safely, anchor = grounded, hold fast = endurance). Hand-drawn navigational charts, monk illumination, Victorian engraving traditions.
+- **Botanical & seasonal lore.** Why the Strawberry Moon is so named (the brief window strawberries ripen, so pay attention or miss it). The folklore of each full moon. Solstices, equinoxes, and cross-quarter days.
+- **Folk practice.** Tarot iconography, oracle decks, sailor-jerry tattoo meanings (swallows = home safely, anchor = grounded, hold fast = endurance). Hand-drawn navigational charts, monk illumination, and Victorian engraving traditions.
 
 The voice is the smart friend who knows the strange story behind the everyday thing. Never lecturing. Never *did you know* in a quiz-show way. Just: *here is something interesting, and here is why it matters.*
 
@@ -133,7 +133,7 @@ A single fact, then the connection back to the practice. That's the rhythm.
 ### Bedrock references
 
 The brand carries these influences in the background. Don't quote them, but recognize them when they surface in copy direction:
-- **Nick Cave — *Come Sail Your Ships*.** The lyric Megan is tattooed with. Source of the maritime metaphor.
+- **Nick Cave: *Come Sail Your Ships*.** The lyric Megan is tattooed with. Source of the maritime metaphor.
 - **David Bowie's *Blackstar*.** Iconographic source for the SB star mark.
 - **The crow.** A personal guardian motif; appears in the decorative element set.
 - **Lanthorn (16th-century ship's lantern).** The central metaphor for the practice: a flame that needs tending.
@@ -141,7 +141,7 @@ The brand carries these influences in the background. Don't quote them, but reco
 
 ### Vocabulary
 
-These are the brand-distinct terms Starboard owns. Use them in product UI, button copy, and marketing headlines so the experience feels coherent. They live alongside (not instead of) the broader category vocabulary the audience actually searches for — *mood board*, *dream board*, *manifestation*, *habit*, *meditation* — which belongs in supporting copy, metadata, SEO descriptions, and the `llms.txt` manifest. Brand voice first in the chrome, search-friendly vocabulary elsewhere.
+These are the brand-distinct terms Starboard owns. Use them in product UI, button copy, and marketing headlines so the experience feels coherent. They live alongside (not instead of) the broader category vocabulary the audience actually searches for: *mood board*, *dream board*, *manifestation*, *habit*, *meditation*. Brand voice first in the chrome, search-friendly vocabulary elsewhere.
 
 | Brand-distinct term | When to use |
 |---|---|
@@ -183,7 +183,7 @@ Sign-offs:
 
 ### Colors
 
-Three full themes, all swappable via `[data-theme="dark|light|warm"]`. See `colors_and_type.css` for the full role table — here's the headline:
+Three full themes, all swappable via `[data-theme="dark|light|warm"]`. See `colors_and_type.css` for the full role table; here's the headline:
 
 | Role | Dark | Light | Warm |
 |---|---|---|---|
@@ -200,20 +200,20 @@ Three full themes, all swappable via `[data-theme="dark|light|warm"]`. See `colo
 
 ### Typography
 
-- **Headings** — Playfair Display, **italic**, weight 400. *Always italic.* It's the single most identifiable type detail in the brand. Letter-spacing 0.01–0.05em.
-- **Body** — Chivo, regular (400). Line-height 1.5–1.6.
-- **Eyebrows / small labels** — Chivo, weight 600, ALL CAPS, letter-spacing 0.18–0.25em.
-- **Logo wordmark** — Reality Stone, draws the letters of "STARBOARD" inside every lockup.
+- **Headings:** Playfair Display, **italic**, weight 400. *Always italic.* It's the single most identifiable type detail in the brand. Letter-spacing 0.01–0.05em.
+- **Body:** Chivo, regular (400). Line-height 1.5–1.6.
+- **Eyebrows / small labels:** Chivo, weight 600, ALL CAPS, letter-spacing 0.18–0.25em.
+- **Logo wordmark:** Reality Stone, draws the letters of "STARBOARD" inside every lockup.
 - Display sizes are aggressive: hero H1 hits **72px** on desktop; H2 hits **52px**. Reserve.
 
 That's the full brand type set. Three families, no more.
 
 ### Backgrounds
 
-- **Aged-parchment texture** (`.bg-parchment-texture`) — vignette + corner foxing + SVG fractal noise, fixed-attached. This is the *default page background* in every theme. Don't replace it with a flat color.
-- **Nebula** (`assets/imagery/icon-bg-nebula.png`) — photographic deep-space ground. Reach for it when a surface needs a literal night sky: slide title pages, deep-marketing heroes, generic dark backgrounds, anywhere the brand wants the *night* feel without parchment grain. Tint with a navy overlay (`rgba(4,4,28,0.15–0.85)`) to keep type legible — the higher the tint, the more the nebula becomes texture rather than subject.
-- **Atmospheric overlays** on the Moon page: star tile patterns, particles, ink texture. Stay within the existing theme palette — do not introduce jewel tones, amethyst, or gold accents.
-- **Hero decorative imagery** — branded webp elements (anchor, compass rose, key, shell, crow, eye) placed absolutely around the hero. Render at full opacity when the illustration carries the moment, or at `opacity: 0.20–0.40` when layered behind copy for parallax. Mouse-position parallax is the default motion.
+- **Aged-parchment texture** (`.bg-parchment-texture`): vignette + corner foxing + SVG fractal noise, fixed-attached. This is the *default page background* in every theme. Don't replace it with a flat color.
+- **Nebula** (`assets/imagery/icon-bg-nebula.png`): photographic deep-space ground. Reach for it when a surface needs a literal night sky: slide title pages, deep-marketing heroes, and generic dark backgrounds anywhere the brand wants the *night* feel without parchment grain. Tint with a navy overlay (`rgba(4,4,28,0.15–0.85)`) to keep type legible. The higher the tint, the more the nebula becomes texture rather than subject.
+- **Atmospheric overlays** on the Moon page: star tile patterns, particles, and ink texture. Stay within the existing theme palette; do not introduce jewel tones, amethyst, or gold accents.
+- **Hero decorative imagery:** branded webp elements (anchor, compass rose, key, shell, crow, eye) placed absolutely around the hero. Render at full opacity when the illustration carries the moment, or at `opacity: 0.20–0.40` when layered behind copy for parallax. Mouse-position parallax is the default motion.
 - **No** gradient buttons. **No** bluish-purple gradient backgrounds. **No** generic "vibe" gradients.
 
 ### Animation
@@ -226,11 +226,11 @@ That's the full brand type set. Three families, no more.
 | Sparkle | ease-in-out | 2s, on hover only |
 
 - **Entry:** `animate-fade-in-up` (translateY 30px → 0, 0.8s). Hero copy uses 0ms / 200ms / 400ms staggers.
-- **Decorative elements:** `scale-float-in-{left,right,top}` — slight rotation, scale 0.5→1.1→1, lands with overshoot.
+- **Decorative elements:** `scale-float-in-{left,right,top}`: slight rotation, scale 0.5→1.1→1, lands with overshoot.
 - **Float loop:** subtle `translateY(-15–20px)` over 6–8s, infinite alternate.
 - **Ticker:** linear `transform: translateX(0 → -50%)` over 30s, infinite.
 - **Sparkle on text hover** (`SparkleEffect`): small webp sparkle stars drop in at random positions inside the hovered element.
-- Respect `prefers-reduced-motion: reduce` — kill transitions when set.
+- Respect `prefers-reduced-motion: reduce`; kill transitions when set.
 
 ### Hover & press states
 
@@ -238,11 +238,11 @@ That's the full brand type set. Three families, no more.
 - **Secondary / ghost links:** opacity 0.6 → 1.0 on hover. (The header nav links explicitly do this.)
 - **Cards:** subtle `transform: translateY(-2px)` plus shadow swap from `--card-shadow` → `--card-shadow-hover`.
 - **Press / active:** `active:scale-[0.96]` + `active:opacity-80` (used on bottom-nav buttons).
-- **Tap highlights are killed** (`-webkit-tap-highlight-color: transparent`) — components own their own feedback.
+- **Tap highlights are killed** (`-webkit-tap-highlight-color: transparent`). Components own their own feedback.
 
 ### Borders
 
-Borders are **theme-tinted**, not solid. The codebase explicitly notes that a flat `#04041C` outline on cream "reads as a heavy outline" and tints to `rgba(4, 4, 28, 0.10)` instead.
+Borders are **theme-tinted**, not solid. A flat `#04041C` outline on cream reads as a heavy outline, so borders tint to `rgba(4, 4, 28, 0.10)` instead.
 
 - Base card border: `--card-border` (10–25% of text color)
 - Highlighted card: `--card-border-highlighted` (18–50%)
@@ -250,7 +250,7 @@ Borders are **theme-tinted**, not solid. The codebase explicitly notes that a fl
 
 ### Shadows
 
-Tinted toward `--text-color`, not pure black. The codebase explicitly avoids harsh pure-black shadows on cream surfaces.
+Tinted toward `--text-color`, not pure black. Harsh pure-black shadows on cream surfaces are avoided throughout.
 
 - Resting: `--card-shadow` (small, ~3–8px blur)
 - Hover: `--card-shadow-hover` (40–48px blur, 20–24px y-offset)
@@ -258,16 +258,16 @@ Tinted toward `--text-color`, not pure black. The codebase explicitly avoids har
 
 ### Corner radii
 
-- `--radius-sm` 4px — checkbox / micro
-- `--radius-md` 8px — default for buttons, cards, modals
-- `--radius-lg` 12px — large cards, pricing tiers
-- `--radius-pill` 9999px — segmented toggles, dock pills (sparingly)
+- `--radius-sm` 4px: checkbox / micro
+- `--radius-md` 8px: default for buttons, cards, modals
+- `--radius-lg` 12px: large cards, pricing tiers
+- `--radius-pill` 9999px: segmented toggles, dock pills (sparingly)
 
 ### Glass / transparency / blur
 
 Used **sparingly** for nav and overlays, never for cards:
 - `pwa-nav`: `backdrop-filter: blur(10px)` over `rgba(26, 26, 26, 0.8)`.
-- Otherwise cards are opaque (`--card-bg-glass` is solid in every theme — the name is legacy).
+- Cards are opaque (`--card-bg-glass` is solid in every theme).
 - Modal backdrop is solid `rgba(0, 0, 0, 0.8)`, never blurred.
 
 ### Layout rules
@@ -277,7 +277,7 @@ Used **sparingly** for nav and overlays, never for cards:
 - **Grid gutters:** `gap-6 sm:gap-8` for card grids.
 - **Header:** fixed top, 56px tall + safe-area padding. Border-bottom uses `border-white/5`.
 - **Bottom nav (mobile only):** fixed bottom, 64px + safe-area. Hidden at `md:` breakpoint and up.
-- **Safe-area handling** is first-class — the codebase publishes `--safe-top`, `--safe-bottom`, `--bottom-nav-height` for components to consume.
+- **Safe-area handling** is first-class. The codebase publishes `--safe-top`, `--safe-bottom`, and `--bottom-nav-height` for components to consume.
 
 ### Imagery vibe
 
@@ -285,14 +285,14 @@ Starboard runs **three distinct illustration registers**. They are not interchan
 
 | Register | Lives in | Use for | Treatment |
 |---|---|---|---|
-| **01 · Detailed inked** | `assets/elements/dark/` (22 WebPs) | App chrome, marketing decoration, parallax hero ornaments, feature illustrations | Cream on navy, hand-drawn line/fill. Use at **full opacity as a focal illustration** or **partial opacity (0.20–0.40) as a layered decoration** — both are valid. Pick by role on the surface. |
-| **02 · Pared-back board art** | `assets/board-art/` (18 PNGs) | **Vision boards** and **high-impact marketing** (App Store hero, Pinterest pins, hero billboards, print) | Bold black-and-cream silhouettes inside **art-nouveau frames**. Stand alone as the focal point. Standalone illustrations — do not layer behind text. |
+| **01 · Detailed inked** | `assets/elements/dark/` (22 WebPs) | App chrome, marketing decoration, parallax hero ornaments, feature illustrations | Cream on navy, hand-drawn line/fill. Use at **full opacity as a focal illustration** or **partial opacity (0.20–0.40) as a layered decoration**. Both are valid; pick by role on the surface. |
+| **02 · Pared-back board art** | `assets/board-art/` (18 PNGs) | **Vision boards** and **high-impact marketing** (App Store hero, Pinterest pins, hero billboards, print) | Bold black-and-cream silhouettes inside **art-nouveau frames**. Stand alone as the focal point. Do not layer behind text. |
 | **03 · Oracle muted** | `assets/oracle/` (16 PNGs + animated flash) | Blog post headers, newsletter heroes, editorial moments | Muted sailor-jerry tattoo flash, navy + faded red/orange accents. Diamond frames. Playful where the inked set is reverent. |
 
 The **pared-back board art** is the register most often misclassified. It is the work the Sailor sees inside their app, the work that ships on App Store screenshots, the work that goes on a t-shirt. It is the high-impact face of the brand. Reach for it whenever a single illustration needs to carry an entire surface.
 
 - **No photography in marketing.** The user's own photos populate vision boards inside the app.
-- The user-content surface ("vision board") shows real photos — warm, sun-flared, lifestyle-y. Treat them as user data, not brand asset.
+- The user-content surface ("vision board") shows real photos: warm, sun-flared, lifestyle-y. Treat them as user data, not brand asset.
 
 ---
 
@@ -300,7 +300,7 @@ The **pared-back board art** is the register most often misclassified. It is the
 
 Starboard's iconography has **two parallel UI icon systems**, plus the **three illustration registers** documented in *Visual Foundations · Imagery vibe* above.
 
-### 1. UI icons — Lucide React
+### 1. UI icons: Lucide React
 
 For interface chrome (nav, buttons, status), the app uses **[lucide-react](https://lucide.dev/)** at default stroke weight (`stroke-width: 2`, `1.5px` in some compact toolbars). Icons used in nav and chrome:
 
@@ -317,40 +317,40 @@ For interface chrome (nav, buttons, status), the app uses **[lucide-react](https
 
 Load from CDN: `https://unpkg.com/lucide@latest` (vanilla) or `https://cdn.jsdelivr.net/npm/lucide-react@0.563.0/dist/umd/lucide-react.production.min.js`.
 
-### 2. Brand decorative SVGs — Register 01 (detailed inked)
+### 2. Brand decorative SVGs: Register 01 (detailed inked)
 
-The app's signature decoration set. Hand-drawn, ink-illustration nautical motifs. **Not interface icons** — they are decoration, hero ornamentation, metaphor.
+The app's signature decoration set. Hand-drawn, ink-illustration nautical motifs. Not interface icons: they are decoration, hero ornamentation, and metaphor.
 
 Each ships in 3 theme variants (dark / light / warm) and 2 formats (SVG / WebP). The dark-bg WebP variants are imported into `assets/elements/dark/`:
 
 `anchor`, `compass-rose`, `conch`, `crow`, `crow-sm`, `crow-on-branch`, `crow-on-shell`, `crown`, `eye-1`, `eye-2`, `fish`, `heart`, `hearts`, `key`, `lighthouse`, `shell`, `ship`, `snakes`, `sun`, `swallows`, `coins`
 
 Use them as:
-- **Hero parallax decorations** — 4 large elements + 2 background elements, mouse-parallaxed (see `HeroSection` original).
-- **Feature-card iconography** — render at 100×100, `opacity-80`, `object-contain`. `Heart`, `Lighthouse`, `Sun` are the codebase's three feature triad icons.
-- **Footer background** — a single `Ship` at `opacity: 0.10`, centered, behind the footer content.
+- **Hero parallax decorations:** 4 large elements + 2 background elements, mouse-parallaxed.
+- **Feature-card iconography:** render at 100×100, `opacity-80`, `object-contain`. `Heart`, `Lighthouse`, and `Sun` are the three feature triad icons.
+- **Footer background:** a single `Ship` at `opacity: 0.10`, centered, behind the footer content.
 
-> **Picking a variant:** Each element ships in dark, light, and warm bg colorways. The matching colorway reads best when you know the surface theme; **if you're unsure, default to the dark-bg version** — its cream-on-navy line work holds up across every theme. Only the dark-bg WebPs are imported into `assets/elements/dark/` to keep this kit small; pull in light/warm via `github_import_files` from `public/elements/{light background, warm}/` when a brand-locked surface needs them.
+> **Picking a variant:** Each element ships in dark, light, and warm bg colorways. The matching colorway reads best when you know the surface theme. If you're unsure, default to the dark-bg version; its cream-on-navy line work holds up across every theme. Only the dark-bg WebPs are imported into `assets/elements/dark/` to keep this kit small; pull in light/warm via `github_import_files` from `public/elements/{light background, warm}/` when a brand-locked surface needs them.
 
 ### Emoji & unicode
 
 - The product **does not** use emoji in customer-facing UI.
 - It **does** use a Unicode arrow (`→`) for inline link affordances and small CTAs: `<Button>{'→'}</Button>`.
-- It uses ASCII chevrons in selects (rendered as inline SVG) — never the literal `▼`.
+- It uses ASCII chevrons in selects (rendered as inline SVG), never the literal `▼`.
 
 ### Logos
 
-The Starboard logomark — a six-pointed compass-rose star inside an ornamental border with the word "STARBOARD" beneath — comes in:
+The Starboard logomark (a six-pointed compass-rose star inside an ornamental border with the word "STARBOARD" beneath) comes in:
 
-- **Horizontal lockup** (word + mark, side-by-side) — header/nav, banners.
-- **Vertical lockup** (mark above word) — splash, lockup-heavy moments.
-- **Logomark** (mark only) — small contexts, favicon.
-- **Logomark Fancy** — the same mark with extra serif flourishes.
-- **Logomark Pattern** — a tilable square containing 4 logomarks in opposite corners; used as the ticker-banner separator.
+- **Horizontal lockup** (word + mark, side-by-side): header/nav, banners.
+- **Vertical lockup** (mark above word): splash, lockup-heavy moments.
+- **Logomark** (mark only): small contexts, favicon.
+- **Logomark Fancy:** the same mark with extra serif flourishes.
+- **Logomark Pattern:** a tilable square containing 4 logomarks in opposite corners; used as the ticker-banner separator.
 
-Three palettes: **dark bg** (cream on navy), **light bg** (navy on white), **warm** (navy on parchment), and **green** — a cross-theme variant that reads on both light and dark surfaces. **Use the green lockup wherever you don't know the user's appearance mode** (HTML emails, App Store screenshots, social previews, third-party embeds, system splashes). Treat it as the *adaptive* lockup; pick a theme-specific lockup only when you know the surface.
+Three palettes: **dark bg** (cream on navy), **light bg** (navy on white), **warm** (navy on parchment), and **green**, a cross-theme variant that reads on both light and dark surfaces. **Use the green lockup wherever you don't know the user's appearance mode** (HTML emails, App Store screenshots, social previews, third-party embeds, system splashes). Treat it as the *adaptive* lockup; pick a theme-specific lockup only when you know the surface.
 
-### Brand decorations — the star multiplied
+### Brand decorations: the star multiplied
 
 Separate from the three illustration registers and from the logo, the brand carries a **decoration kit**: the primary mark (the star) and its art-nouveau curls, played in many forms. Lives in `assets/decorations/`.
 
@@ -373,7 +373,7 @@ Separate from the three illustration registers and from the logo, the brand carr
 - Tileable patterns live at **3–8% opacity** as a page background, **40–80%** when the pattern itself is the feature (strips, borders).
 - **Don't use a decoration as a logomark.** The star inside the flourish is a brand motif, not a brand mark. The brand mark is the lockup.
 
-### 3. Pared-back board art — Register 02
+### 3. Pared-back board art: Register 02
 
 For **vision boards** and **high-impact marketing**, Starboard uses a separate, bolder illustration register. Lives in `assets/board-art/`.
 
@@ -388,26 +388,26 @@ Use board art when:
 
 Don't layer board art behind text. Don't reduce its opacity. Don't sit two pieces next to each other in different colorways without intention. It is meant to be **looked at**, not slipped past.
 
-### 4. Oracle illustrations — Register 03 (muted blog & newsletter)
+### 4. Oracle illustrations: Register 03 (muted blog & newsletter)
 
-A separate, muted illustration register for **blog posts, newsletter content, and Oracle-deck-style features** lives in `assets/oracle/`. These are diamond-framed sailor-jerry-style tattoo flash illustrations — navy on cream, with muted red and orange accents (`#9B4A4A`, `#D98A5F`).
+A separate, muted illustration register for **blog posts, newsletter content, and Oracle-deck-style features** lives in `assets/oracle/`. These are diamond-framed sailor-jerry-style tattoo flash illustrations: navy on cream, with muted red and orange accents (`#9B4A4A`, `#D98A5F`).
 
 Use the Oracle set when:
 - The surface is a **blog post header**, **newsletter hero**, or a **deck slide that wants editorial weight**.
-- You need a focal illustration in a softer key than board art — oracle is the slow read, board art is the billboard.
-- The tone calls for a **slight smirk** — the Oracle illustrations have hula girls, sailor skulls, tigers, parrots, mermaids, daggers, *hold fast* knuckle tattoos. They're playful where the inked register is reverent.
+- You need a focal illustration in a softer key than board art. Oracle is the slow read; board art is the billboard.
+- The tone calls for a **slight smirk**. The Oracle illustrations have hula girls, sailor skulls, tigers, parrots, mermaids, daggers, and *hold fast* knuckle tattoos. They're playful where the inked register is reverent.
 
 **Don't mix registers in one composition.** Inked decoration with inked decoration. Board art with board art. Oracle with oracle. The whole system holds together because each register stays in its lane.
 
-The Oracle inventory includes: anchor, cannons, dagger, golden-dragon, hearts, hold-fast, hula-girl, mermaid, nautical-star, parrot, pig-and-rooster, shark, skull, swallows, tiger, turtle, plus an animated `oracle-flash` GIF/MP4 for prominent moments.
+The Oracle inventory includes: anchor, cannons, dagger, golden-dragon, hearts, hold-fast, hula-girl, mermaid, nautical-star, parrot, pig-and-rooster, shark, skull, swallows, tiger, and turtle, plus an animated `oracle-flash` GIF/MP4 for prominent moments.
 
 ---
 
 ## Substitutions & flags
 
-- **Three brand fonts** — Playfair Display, Chivo, Reality Stone. **All loaded locally from `fonts/`** (variable-weight masters). No Google Fonts dependency in the brand kit. ✅
-- **Reality Stone** is the **logo wordmark font** — it draws the letters of "STARBOARD" inside every lockup file. Exposed as `var(--font-family-reality)` so you can render the wordmark typographically (deck title slides, badge text).
+- **Three brand fonts:** Playfair Display, Chivo, and Reality Stone. **All loaded locally from `fonts/`** (variable-weight masters). No Google Fonts dependency in the brand kit. ✅
+- **Reality Stone** is the **logo wordmark font**. It draws the letters of "STARBOARD" inside every lockup file. Exposed as `var(--font-family-reality)` so you can render the wordmark typographically (deck title slides, badge text).
 - **Amita, Space Grotesk, Cinzel, Cinzel Decorative, Cormorant Garamond** are **vision-board user fonts**, not brand fonts. The app offers them as optional faces the Sailor can pick to style their own board copy. Do not reach for them in brand surfaces.
 - **Lucide React icons** are linked via npm CDN at the same version the source uses (`0.563.0`). ✅
-- **Decorative element variants:** elements ship in dark, light, and warm bg colorways. Match the surface theme when you know it. **If you're unsure, default to the dark-bg version** — cream-on-navy line work holds up across every theme. Only the dark-bg WebPs are imported into this kit; the others live in the source repo at `public/elements/{light background, warm}/`.
-- This kit does **not** include the moon-rendering canvas script (the live product computes phase + illumination via SunCalc). For static mocks, use a CSS-painted moon (see `ui_kits/app/Screens.jsx → MoonScreen`) or the `moon-frame.svg` decoration as a placeholder.
+- **Decorative element variants:** elements ship in dark, light, and warm bg colorways. Match the surface theme when you know it. If you're unsure, default to the dark-bg version; cream-on-navy line work holds up across every theme. Only the dark-bg WebPs are imported into this kit; the others live in the source repo at `public/elements/{light background, warm}/`.
+- This kit does **not** include the moon-rendering canvas script (the live product computes phase + illumination via SunCalc). For static mocks, use a CSS-painted moon (see `ui_kits/app/Screens.jsx`) or the `moon-frame.svg` decoration as a placeholder.
