@@ -36,10 +36,6 @@ python3 scripts/optimize_images.py   # rebuild img/cards, img/thumbs, img/back.p
 python3 scripts/make_cards_md.py     # rebuild design/CARDS.md from cards.json
 ```
 
-## Deploy
-
-GitHub Pages serves the `main` branch from the repository root. A `.nojekyll` file publishes the files as is, with no Jekyll processing. The custom domain lives in `CNAME` (oracle.starboardmanifest.com).
-
 ## Add it to the newsletter
 
 See [`email/mailerlite-recipe.md`](email/mailerlite-recipe.md).
