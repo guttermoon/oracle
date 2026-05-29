@@ -411,3 +411,4 @@ The Oracle inventory includes: anchor, cannons, dagger, golden-dragon, hearts, h
 - **Lucide React icons** are linked via npm CDN at the same version the source uses (`0.563.0`). ✅
 - **Decorative element variants:** elements ship in dark, light, and warm bg colorways. Match the surface theme when you know it. If you're unsure, default to the dark-bg version; cream-on-navy line work holds up across every theme. Only the dark-bg WebPs are imported into this kit; the others live in the source repo at `public/elements/{light background, warm}/`.
 - This kit does **not** include the moon-rendering canvas script (the live product computes phase + illumination via SunCalc). For static mocks, use a CSS-painted moon (see `ui_kits/app/Screens.jsx`) or the `moon-frame.svg` decoration as a placeholder.
+
