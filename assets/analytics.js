@@ -9,3 +9,17 @@ posthog.init('phc_pHEHcRK3XwXOe4IYtlLLvIOwzUoWY2iNo2yCgt35UE1', {
   capture_pageleave: true,
   autocapture: true
 });
+
+// Google Analytics 4 (gtag.js)
+(function () {
+  var GA4_ID = 'G-8KQ5XFVT8R';
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA4_ID);
+})();
