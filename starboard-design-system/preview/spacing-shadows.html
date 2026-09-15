@@ -1,0 +1,33 @@
+<!-- @dsCard group="Spacing" -->
+<!doctype html>
+<html data-theme="light">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 22px 26px; width: 700px; height: 220px; gap: 14px; background: var(--bg-color); }
+  .row-r { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; flex: 1; align-items: center; }
+  .demo {
+    background: var(--card-bg-glass);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    height: 110px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 4px;
+  }
+  .demo.s1 { box-shadow: 0 1px 3px 0 rgba(4,4,28,0.08), 0 1px 2px -1px rgba(4,4,28,0.05); }
+  .demo.s2 { box-shadow: 0 20px 40px -12px rgba(4,4,28,0.20), 0 4px 10px -2px rgba(4,4,28,0.08); }
+  .demo.s3 { box-shadow: 0 25px 50px -12px rgba(4,4,28,0.5); }
+  .nm { font-family: var(--font-family-chivo); font-size: 11px; color: var(--text-color); font-weight: 500; }
+  .px { font-family: ui-monospace, Menlo, monospace; font-size: 9.5px; color: var(--text-muted); text-align: center; }
+</style>
+</head>
+<body>
+  <span class="label">Elevation · shadow system (light theme shown)</span>
+  <div class="row-r">
+    <div class="demo s1"><div class="nm">Card · resting</div><div class="px">--card-shadow</div></div>
+    <div class="demo s2"><div class="nm">Card · hover</div><div class="px">--card-shadow-hover</div></div>
+    <div class="demo s3"><div class="nm">Modal</div><div class="px">0 25px 50px −12px / 0.5</div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html data-theme="light">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 22px 26px; width: 700px; height: 130px; gap: 14px; background: var(--bg-color); align-items: flex-start; justify-content: center; }
+  .group {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(4,4,28,0.05);
+    border-radius: 9999px; padding: 5px;
+  }
+  .seg {
+    font-family: var(--font-family-chivo);
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    border: 0; cursor: pointer;
+    background: transparent;
+    color: var(--text-color);
+  }
+  .seg.on {
+    background: var(--button-bg);
+    color: var(--button-text);
+  }
+</style>
+</head>
+<body>
+  <span class="label">Theme switcher · segmented pill · footer placement</span>
+  <div class="group">
+    <button class="seg">Dark</button>
+    <button class="seg on">Light</button>
+    <button class="seg">Warm</button>
+  </div>
+</body>
+</html>

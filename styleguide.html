@@ -1,0 +1,1852 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style Guide · Starboard</title>
+  <meta name="description" content="The Starboard design system: color, type, logos, illustration registers, decorations, and social media templates.">
+  <link rel="icon" type="image/svg+xml" href="brand/starboard-official-icon-dark.svg">
+  <script src="assets/analytics.js"></script>
+  <style>
+    /* ── Brand fonts (local) ───────────────────────────────────────────── */
+    @font-face {
+      font-family: "Playfair Display";
+      src: url("starboard-design-system/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: 400 900; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Playfair Display";
+      src: url("starboard-design-system/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: 400 900; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: "Chivo";
+      src: url("starboard-design-system/fonts/Chivo-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: 100 900; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Chivo";
+      src: url("starboard-design-system/fonts/Chivo-Italic-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: 100 900; font-style: italic; font-display: swap;
+    }
+
+    /* ── Raw palette ───────────────────────────────────────────────────── */
+    :root {
+      --navy-950: #04041C; --navy-900: #1B1F3B; --navy-800: #21264B;
+      --navy-700: #2D3268; --navy-600: #4D5198; --navy-500: #8285B6;
+      --cream-500: #F5E6CD; --cream-200: #FAF9D4;
+      --paper-50: #FEFDF6; --warm-50: #F7F0DB; --warm-100: #FFF9EB;
+      --lime-bright: #A4E636; --lime-olive: #A3C132; --olive-deep: #5C7000;
+      --forest: #4A5D45; --sage: #8F9E7A; --sage-deep: #445535;
+      --umber: #6A4D44; --terra: #D98A5F;
+      --color-danger: #DC2626; --color-warning: #F59E0B; --color-success: #22C55E;
+
+      --font-family-primary:   "Chivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --font-family-secondary: "Playfair Display", Georgia, serif;
+      --font-family-chivo:     "Chivo", system-ui, sans-serif;
+      --font-family-playfair:  "Playfair Display", Georgia, serif;
+      --font-family-reality:   "Playfair Display", Georgia, serif;
+
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-pill: 9999px;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
+    }
+
+    /* ── Theme tokens ──────────────────────────────────────────────────── */
+    [data-theme="dark"] {
+      --bg-color: #1B1F3B; --text-color: #F5E6CD;
+      --text-muted: rgba(245,230,205,.6); --text-subtle: rgba(245,230,205,.8);
+      --border-muted: rgba(245,230,205,.15); --border-subtle: rgba(245,230,205,.25); --border-medium: rgba(245,230,205,.40);
+      --button-bg: #A4E636; --button-text: #1B1F3B;
+      --button-surface: #2D2D3A; --button-surface-hover: #8285B6;
+      --footer-bg: #04041C; --footer-text: #F5E6CD;
+      --ticker-bg: #4D5198; --ticker-text: #FAF9D4;
+      --card-bg-glass: #2D3268; --card-bg-tint: rgba(245,230,205,.08);
+      --card-border: rgba(245,230,205,.25); --card-border-highlighted: rgba(163,230,53,.50);
+      --modal-bg: #2D3268; --overlay-bg: #21264B;
+      --tertiary-1: #4D5198; --tertiary-2: #04041C; --tertiary-3: #3B3341;
+      --accent-color: #A4E636; --accent-text: #A4E636;
+      --input-bg: rgba(0,0,0,.20); --input-bg-hover: rgba(0,0,0,.25); --input-bg-focus: rgba(0,0,0,.30);
+      --card-shadow: 0 2px 8px -2px rgba(0,0,0,.4), 0 1px 2px -1px rgba(0,0,0,.3);
+      --card-shadow-hover: 0 24px 48px -12px rgba(0,0,0,.55), 0 4px 12px -2px rgba(0,0,0,.4);
+      --glow-rgb: 163,230,53;
+    }
+    [data-theme="light"] {
+      --bg-color: #FEFDF6; --text-color: #04041C;
+      --text-muted: rgba(4,4,28,.6); --text-subtle: rgba(4,4,28,.8);
+      --border-muted: rgba(4,4,28,.10); --border-subtle: rgba(4,4,28,.20); --border-medium: rgba(4,4,28,.30);
+      --button-bg: #A3C132; --button-text: #04041C;
+      --button-surface: #F5F4ED; --button-surface-hover: #EBE9DE;
+      --footer-bg: #4D5198; --footer-text: #FEFDF6;
+      --ticker-bg: #4D5198; --ticker-text: #FAF9D4;
+      --card-bg-glass: #FFFFFF; --card-bg-tint: rgba(4,4,28,.04);
+      --card-border: rgba(4,4,28,.10); --card-border-highlighted: rgba(4,4,28,.18);
+      --modal-bg: #FFFFFF; --overlay-bg: #FFFFFF;
+      --tertiary-1: #FAF9D4; --tertiary-2: #4D5198;
+      --accent-color: #A3C132; --accent-text: #5C7000;
+      --input-bg: rgba(163,193,50,.08); --input-bg-hover: rgba(163,193,50,.12); --input-bg-focus: rgba(163,193,50,.15);
+      --card-shadow: 0 1px 3px 0 rgba(4,4,28,.08), 0 1px 2px -1px rgba(4,4,28,.05);
+      --card-shadow-hover: 0 20px 40px -12px rgba(4,4,28,.2), 0 4px 10px -2px rgba(4,4,28,.08);
+      --glow-rgb: 163,193,50;
+    }
+    [data-theme="warm"] {
+      --bg-color: #F7F0DB; --text-color: #6A4D44;
+      --text-muted: rgba(106,77,68,.6); --text-subtle: rgba(106,77,68,.8);
+      --border-muted: rgba(106,77,68,.10); --border-subtle: rgba(106,77,68,.20); --border-medium: rgba(106,77,68,.30);
+      --button-bg: #4A5D45; --button-text: #F7F0DB;
+      --button-surface: #E9E0C5; --button-surface-hover: #D8CBA8;
+      --footer-bg: #4A5D45; --footer-text: #F7F0DB;
+      --ticker-bg: #8F9E7A; --ticker-text: #FAF9D4;
+      --card-bg-glass: #FFF9EB; --card-bg-tint: rgba(106,77,68,.10);
+      --card-border: rgba(106,77,68,.15); --card-border-highlighted: rgba(106,77,68,.25);
+      --modal-bg: #FFF9EB; --overlay-bg: #FFF9EB;
+      --tertiary-1: #8F9E7A; --tertiary-2: #D98A5F; --tertiary-3: #7B5E4F;
+      --accent-color: #8F9E7A; --accent-text: #445535;
+      --input-bg: rgba(106,77,68,.10); --input-bg-hover: rgba(106,77,68,.14); --input-bg-focus: rgba(106,77,68,.18);
+      --card-shadow: 0 1px 3px 0 rgba(106,77,68,.10), 0 1px 2px -1px rgba(106,77,68,.06);
+      --card-shadow-hover: 0 20px 40px -12px rgba(106,77,68,.25), 0 4px 10px -2px rgba(106,77,68,.10);
+      --glow-rgb: 143,158,122;
+    }
+
+    /* ── Base ──────────────────────────────────────────────────────────── */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background .3s ease, color .3s ease;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 120px; }
+    a { color: var(--accent-text); }
+    h1,h2,h3,h4 { font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; line-height: 1.2; margin: 0; }
+    code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .8em; color: var(--text-muted); }
+
+    /* ── Layout helpers ────────────────────────────────────────────────── */
+    section { margin-bottom: 64px; }
+    .sec-head { margin-bottom: 20px; }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-family-chivo);
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--accent-text); margin-bottom: 4px;
+    }
+    h2.sec { font-size: 28px; margin: 0 0 4px; }
+    .note { color: var(--text-muted); font-size: 13.5px; margin: 0; }
+    .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .stack { display: flex; flex-direction: column; gap: 14px; }
+    .divider { border: none; border-top: 1px solid var(--border-muted); margin: 0 0 48px; }
+
+    /* ── Hero head ─────────────────────────────────────────────────────── */
+    .hero { margin-bottom: 56px; }
+    .hero h1 { font-size: clamp(40px, 8vw, 68px); margin: 0 0 6px; }
+    .hero .sub { font-family: var(--font-family-secondary); font-style: italic; color: var(--text-muted); font-size: 18px; margin: 0 0 12px; }
+    .hero p { color: var(--text-subtle); max-width: 68ch; margin: 0; }
+
+    /* ── Theme toggle ──────────────────────────────────────────────────── */
+    .theme-row { display: flex; align-items: center; gap: 14px; margin: 28px 0 0; flex-wrap: wrap; }
+    .theme-switch { display: inline-flex; align-items: center; gap: 4px; padding: 4px; border-radius: 9999px; background: color-mix(in srgb, var(--text-color) 8%, transparent); }
+    .ts-btn { border: none; cursor: pointer; border-radius: 9999px; padding: .5rem 1.2rem; font-family: var(--font-family-primary); font-size: 13px; font-weight: 700; transition: all .2s ease; }
+    .ts-btn[aria-pressed="true"] { background: var(--button-bg); color: var(--button-text); }
+    .ts-btn[aria-pressed="false"] { background: transparent; color: var(--text-subtle); }
+
+    /* ── Color swatches ────────────────────────────────────────────────── */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 12px; margin: 12px 0 28px; }
+    .sw { border: 1px solid var(--border-muted); border-radius: 10px; overflow: hidden; background: var(--card-bg-glass); }
+    .sw .chip { height: 56px; }
+    .sw .meta { padding: 7px 9px; }
+    .sw .nm { font-size: 12px; font-weight: 700; }
+    .sw .hx { font-family: ui-monospace, monospace; font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+
+    /* ── Token table ───────────────────────────────────────────────────── */
+    .token-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 12px 0; }
+    .token-row { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 8px; background: var(--card-bg-tint); border: 1px solid var(--border-muted); }
+    .token-chip { width: 28px; height: 28px; border-radius: 5px; flex-shrink: 0; border: 1px solid var(--border-muted); }
+    .token-name { font-size: 11px; font-weight: 600; line-height: 1.3; }
+    .token-var { font-family: ui-monospace, monospace; font-size: 9.5px; color: var(--text-muted); }
+
+    /* ── Type ──────────────────────────────────────────────────────────── */
+    .type-row { padding: 10px 0; border-bottom: 1px solid var(--border-muted); display: grid; grid-template-columns: 100px 1fr 100px; align-items: baseline; gap: 12px; }
+    .type-row:last-child { border-bottom: none; }
+    .type-tag { font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: var(--text-muted); font-family: var(--font-family-chivo); }
+    .type-px { font-family: ui-monospace, monospace; font-size: 10px; color: var(--text-muted); text-align: right; }
+
+    /* ── Buttons ───────────────────────────────────────────────────────── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-family-primary); font-weight: 600; border-radius: var(--radius-md); gap: 8px; cursor: pointer; border: 1px solid transparent; white-space: nowrap; transition: all .2s var(--ease-out-expo); letter-spacing: .01em; font-size: .875rem; padding: .7rem 1.4rem; }
+    .btn-primary { background: var(--button-bg); color: var(--button-text); }
+    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+    .btn-secondary { background: transparent; color: var(--text-color); border-color: var(--border-medium); }
+    .btn-secondary:hover { background: var(--card-bg-tint); transform: translateY(-2px); }
+    .btn-tertiary { background: var(--card-bg-glass); color: var(--text-color); border-color: var(--card-border); }
+    .btn-tertiary:hover { border-color: var(--border-medium); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; border: none; color: var(--text-subtle); opacity: .8; }
+    .btn-ghost:hover { opacity: 1; background: var(--button-surface); }
+    .btn-danger { background: var(--color-danger); color: #fff; border-color: var(--color-danger); }
+    .btn-danger:hover { background: #b91c1c; transform: translateY(-2px); }
+    .btn-sm { font-size: .75rem; padding: .45rem .9rem; }
+    .btn-lg { font-size: 1rem; padding: .9rem 1.8rem; }
+    .btn-pill { border-radius: 9999px; }
+    .btn-icon { border-radius: 50%; width: 2.5rem; height: 2.5rem; padding: 0; flex-shrink: 0; }
+
+    /* ── Cards ─────────────────────────────────────────────────────────── */
+    .card { position: relative; background: var(--card-bg-glass); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--card-shadow); border: 1px solid var(--card-border); transition: transform .3s ease, box-shadow .3s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
+    .card.hi { border-color: var(--card-border-highlighted); }
+    .card-title { font-family: var(--font-family-secondary); font-style: italic; font-size: 1.3rem; margin: 0 0 .3rem; }
+    .card-desc { color: var(--text-muted); font-size: .9rem; margin: 0 0 .75rem; }
+    .badge { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-family-chivo); font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-text); padding: 3px 8px; border-radius: 4px; background: color-mix(in srgb, var(--accent-color) 12%, transparent); border: 1px solid color-mix(in srgb, var(--accent-color) 30%, transparent); }
+
+    /* ── Inputs ────────────────────────────────────────────────────────── */
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field-lab { font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); }
+    .input { font-family: var(--font-family-primary); font-size: .875rem; padding: .75rem 1rem; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-muted); border-radius: var(--radius-md); outline: none; transition: all .25s ease; width: 100%; }
+    .input::placeholder { color: var(--text-muted); opacity: .5; }
+    .input:focus, .input.focused { border-color: var(--accent-color); background: var(--input-bg-focus); box-shadow: 0 0 0 3px rgba(var(--glow-rgb),.15); }
+    .otp { display: flex; gap: 8px; }
+    .otp-d { width: 38px; height: 46px; background: var(--input-bg); border: 2px solid var(--border-muted); color: var(--text-color); border-radius: 6px; font-family: var(--font-family-chivo); font-weight: 700; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+    .otp-d.active { border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(var(--glow-rgb),.15); }
+
+    /* ── Segmented control ─────────────────────────────────────────────── */
+    .seg { display: flex; background: var(--overlay-bg); border: 1px solid var(--border-muted); border-radius: 9999px; padding: .35rem; box-shadow: var(--card-shadow); width: fit-content; }
+    .seg button { border-radius: 9999px; flex: 1 1 0%; min-width: 0; height: 2.4rem; padding: 0 1.3rem; font-family: var(--font-family-primary); font-weight: 600; font-size: 13.5px; color: var(--text-subtle); background: none; border: 0; cursor: pointer; transition: all .2s ease; }
+    .seg button[aria-pressed="true"] { background: var(--button-bg); color: var(--button-text); }
+
+    /* ── Ticker ────────────────────────────────────────────────────────── */
+    .ticker-wrap { background: var(--ticker-bg); color: var(--ticker-text); overflow: hidden; border-radius: 0; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 3rem, #000 calc(100% - 3rem), transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 3rem, #000 calc(100% - 3rem), transparent 100%); }
+    .ticker-track { display: flex; align-items: center; padding: 11px 0; animation: ticker 28s linear infinite; width: max-content; }
+    .ticker-item { font-family: var(--font-family-chivo); font-weight: 700; font-size: 13px; letter-spacing: .04em; padding: 0 22px; white-space: nowrap; }
+    .ticker-sep { width: 32px; height: 32px; flex-shrink: 0; margin: 0 10px; opacity: .9; display: inline-flex; align-items: center; }
+    .ticker-sep img { max-width: 100%; max-height: 100%; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── Bottom nav demo ───────────────────────────────────────────────── */
+    .nav-frame { width: 420px; max-width: 100%; border-radius: 20px; border: 1px solid var(--border-muted); overflow: hidden; background: var(--bg-color); }
+    .bottom-nav { background: var(--bg-color); border-top: 1px solid var(--border-muted); display: flex; align-items: stretch; height: 68px; padding: 4px 6px 6px; }
+    .nav-it { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: var(--text-muted); border-radius: 10px; cursor: pointer; min-width: 44px; }
+    .nav-it.active { color: var(--accent-color); background: color-mix(in srgb, var(--accent-color) 12%, transparent); }
+    .nav-it svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-it span { font-family: var(--font-family-chivo); font-size: 9.5px; font-weight: 500; }
+
+    /* ── Pricing ───────────────────────────────────────────────────────── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 16px; margin: 12px 0; }
+    .price-card { background: var(--card-bg-glass); border: 1px solid var(--card-border); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); padding: 24px 20px; display: flex; flex-direction: column; text-align: center; }
+    .price-card.hi { border-color: var(--card-border-highlighted); }
+    .price-tier { font-family: var(--font-family-chivo); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .price-amt { font-family: var(--font-family-secondary); font-style: italic; font-size: 40px; line-height: 1; }
+    .price-per { font-size: 11px; color: var(--text-muted); margin: 4px 0 14px; }
+    .price-list { list-style: none; padding: 0; margin: 0 0 16px; text-align: left; display: flex; flex-direction: column; gap: 7px; }
+    .price-list li { font-size: 12px; color: var(--text-subtle); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+    .price-list li svg { width: 12px; height: 12px; flex-shrink: 0; margin-top: 1px; color: var(--accent-color); stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Logo grid ─────────────────────────────────────────────────────── */
+    .logo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .logo-slot { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .logo-slot img { max-width: 100%; max-height: 80px; object-fit: contain; }
+    .logo-cap { font-family: var(--font-family-chivo); font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+    .logo-bg { border: 1px solid var(--border-muted); border-radius: 10px; padding: 16px 12px; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 80px; }
+
+    /* ── Elements grid ─────────────────────────────────────────────────── */
+    .elements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px,1fr)); gap: 12px; margin: 12px 0; }
+    .el-slot { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .el-slot img { width: 64px; height: 64px; object-fit: contain; opacity: .85; }
+    .el-cap { font-family: var(--font-family-chivo); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+
+    /* ── Oracle illustrations ──────────────────────────────────────────── */
+    .oracle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px,1fr)); gap: 12px; margin: 12px 0; }
+    .oracle-slot { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .oracle-slot img { width: 72px; height: 72px; object-fit: contain; }
+
+    /* Decorations */
+    .deco-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0 24px; align-items: flex-start; }
+    .deco-card { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .deco-preview { background: #fff; border: 1px solid #e0ddd8; border-radius: var(--radius-md); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .deco-preview img, .deco-preview svg { display: block; max-width: 100%; height: auto; }
+    .deco-cap { font-family: var(--font-family-chivo); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+    .deco-pattern-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0 24px; }
+    .deco-pattern { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .deco-pattern img { width: 120px; height: 120px; object-fit: cover; border-radius: var(--radius-md); border: 1px solid var(--card-border); }
+    .oracle-cap { font-family: var(--font-family-chivo); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); text-align: center; }
+
+    /* ── Radii + shadows ───────────────────────────────────────────────── */
+    .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 14px; margin: 12px 0; }
+    .radius-demo { background: var(--card-bg-glass); border: 1px solid var(--card-border); height: 88px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+    .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 18px; margin: 12px 0; }
+    .shadow-demo { background: var(--card-bg-glass); border: 1px solid var(--card-border); border-radius: 12px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+    .demo-label { font-family: var(--font-family-chivo); font-size: 11px; font-weight: 600; }
+    .demo-var { font-family: ui-monospace, monospace; font-size: 9.5px; color: var(--text-muted); }
+
+    /* ── Motion ────────────────────────────────────────────────────────── */
+    .motion-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 12px; }
+    .motion { border: 1px solid var(--border-muted); border-radius: 12px; padding: 18px 10px; text-align: center; background: var(--card-bg-glass); overflow: hidden; }
+    .motion .dot { width: 32px; height: 32px; border-radius: 8px; background: var(--button-bg); margin: 6px auto 10px; }
+    .motion .lab { font-size: 10px; color: var(--text-muted); font-family: ui-monospace, monospace; }
+    .m-float { animation: float 6s ease-in-out infinite; }
+    .m-fadeup { animation: fadeUp 1.6s var(--ease-out-expo) infinite alternate; }
+    .m-pulse { animation: pulse 2s ease-in-out infinite; }
+    .m-scalein { animation: scaleIn 1.8s ease-out infinite; }
+    .m-zoom { animation: zoomIn 1.6s ease-out infinite alternate; }
+    .m-rotate { animation: slowRotate 6s linear infinite; border-radius: 50%; }
+    .m-sparkle { animation: sparkle 2s ease-in-out infinite; }
+    .m-shimmer { background: linear-gradient(90deg, var(--button-surface) 25%, var(--button-surface-hover) 50%, var(--button-surface) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite linear; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    @keyframes fadeUp { 0%{opacity:0;transform:translateY(12px)} 100%{opacity:1;transform:translateY(0)} }
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.15);opacity:.7} }
+    @keyframes scaleIn { 0%{opacity:0;transform:scale(.6) translateY(-24px)} 60%{transform:scale(1.08) translateY(4px)} 100%{opacity:1;transform:scale(1) translateY(0)} }
+    @keyframes zoomIn { from{opacity:.4;transform:scale(1.1)} to{opacity:1;transform:scale(1)} }
+    @keyframes slowRotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+    @keyframes sparkle { 0%{opacity:0;transform:scale(0) rotate(0)} 50%{opacity:.6;transform:scale(.8) rotate(90deg)} 100%{opacity:0;transform:scale(0) rotate(180deg)} }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    @media (prefers-reduced-motion: reduce) { .motion .dot { animation: none !important; } }
+
+    /* ── Voice section ─────────────────────────────────────────────────── */
+    .voice-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 12px 0; }
+    .voice-table th { text-align: left; font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); padding: 8px 12px; border-bottom: 1px solid var(--border-muted); }
+    .voice-table td { padding: 8px 12px; border-bottom: 1px solid var(--border-muted); vertical-align: top; line-height: 1.5; }
+    .voice-table tr:last-child td { border-bottom: none; }
+    .voice-yes { color: var(--accent-text); font-style: italic; }
+    .voice-no { color: var(--text-muted); text-decoration: line-through; }
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 8px; margin: 12px 0; }
+    .vocab-chip { padding: 6px 10px; border-radius: 6px; font-size: 12.5px; font-style: italic; font-family: var(--font-family-secondary); color: var(--text-color); background: var(--card-bg-tint); border: 1px solid var(--border-muted); }
+    .sample-lines { display: flex; flex-direction: column; gap: 14px; margin: 12px 0; }
+    .sample-block { padding: 12px 16px; background: var(--card-bg-tint); border-radius: var(--radius-md); border-left: 3px solid var(--accent-text); }
+    .sample-block .sample-label { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 6px; }
+    .sample-block blockquote { margin: 0; font-family: var(--font-family-secondary); font-style: italic; font-size: 14px; line-height: 1.6; color: var(--text-color); }
+
+    /* ── Footer ────────────────────────────────────────────────────────── */
+    footer { text-align: center; border-top: 1px solid var(--border-muted); padding-top: 32px; color: var(--text-muted); font-size: 13px; }
+    footer a { color: var(--accent-text); text-decoration: none; }
+
+    /* ── Wordmark specimen ────────────────────────────────────────── */
+    .reality-specimen { font-family: var(--font-family-reality); font-size: 48px; letter-spacing: .08em; line-height: 1.1; color: var(--text-color); margin: 8px 0; }
+
+    /* ── Parchment texture ─────────────────────────────────────────────── */
+    body { position: relative; }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .05;
+    }
+    [data-theme="dark"] body::before { opacity: .07; mix-blend-mode: overlay; }
+    [data-theme="warm"] body::before { opacity: .08; }
+    .wrap { position: relative; z-index: 1; max-width: 1024px; }
+
+    /* ── Sticky header ─────────────────────────────────────────────────── */
+    .sg-header {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 56px;
+      background: color-mix(in srgb, var(--bg-color) 92%, transparent);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-muted);
+      transition: background .3s ease;
+    }
+    .sg-logo { height: 22px; width: auto; display: block; }
+    .sg-logo-light, .sg-logo-warm { display: none; }
+    [data-theme="light"] .sg-logo-dark, [data-theme="warm"] .sg-logo-dark { display: none; }
+    [data-theme="light"] .sg-logo-light { display: block; }
+    [data-theme="warm"] .sg-logo-warm { display: block; }
+
+    /* ── Moon Ritual palette ───────────────────────────────────────────── */
+    .moon-palette { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 12px; margin: 12px 0 20px; }
+    .moon-swatch { border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); }
+    .moon-chip { height: 56px; }
+    .moon-meta { padding: 7px 9px; background: #1a1025; }
+    .moon-nm { font-size: 12px; font-weight: 700; color: #e8d5ff; }
+    .moon-hx { font-family: ui-monospace, monospace; font-size: 10px; color: rgba(232,213,255,.6); text-transform: uppercase; }
+
+    /* ── Color philosophy notes ────────────────────────────────────────── */
+    .philosophy-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+    @media (max-width: 600px) { .philosophy-row { grid-template-columns: 1fr; } }
+    .philo-card { padding: 14px 16px; background: var(--card-bg-tint); border-radius: var(--radius-md); border: 1px solid var(--border-muted); }
+    .philo-title { font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 6px; }
+    .philo-body { font-size: 13px; color: var(--text-subtle); line-height: 1.55; }
+    .philo-body code { font-size: 11px; }
+
+    /* ── Layout & spacing section ──────────────────────────────────────── */
+    .layout-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+    .layout-table th { text-align: left; font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); padding: 8px 12px; border-bottom: 1px solid var(--border-muted); }
+    .layout-table td { padding: 8px 12px; border-bottom: 1px solid var(--border-muted); vertical-align: top; line-height: 1.5; }
+    .layout-table tr:last-child td { border-bottom: none; }
+    .layout-table code { background: var(--card-bg-tint); padding: 2px 5px; border-radius: 3px; }
+
+    /* ── Background / texture demo ─────────────────────────────────────── */
+    .texture-demo { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-muted); }
+    .texture-strip { height: 80px; position: relative; display: flex; align-items: center; justify-content: center; }
+    .texture-strip::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .08;
+    }
+    .texture-strip span { position: relative; z-index: 1; font-size: 12px; font-family: var(--font-family-chivo); letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
+
+    /* ── Surface cards (app / email / social) ──────────────────────────── */
+    .surface-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; margin: 12px 0; }
+    .surface-card { display: flex; flex-direction: column; text-decoration: none; background: var(--card-bg-glass); border: 1px solid var(--card-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--card-shadow); transition: transform .2s var(--ease-out-expo), box-shadow .2s var(--ease-out-expo); }
+    .surface-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
+    .surface-preview { height: 110px; background: var(--overlay-bg); display: flex; align-items: center; justify-content: center; font-size: 28px; border-bottom: 1px solid var(--border-muted); overflow: hidden; }
+    .surface-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .surface-meta { padding: 12px 14px; }
+    .surface-title { font-family: var(--font-family-secondary); font-style: italic; font-size: 15px; margin: 0 0 3px; color: var(--text-color); }
+    .surface-desc { font-size: 11.5px; color: var(--text-muted); margin: 0; line-height: 1.45; }
+
+    /* ── Lucide icon list ──────────────────────────────────────────────── */
+    .lucide-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); gap: 8px; margin: 12px 0; }
+    .lucide-item { display: flex; align-items: center; gap: 8px; padding: 7px 10px; background: var(--card-bg-tint); border-radius: 6px; border: 1px solid var(--border-muted); }
+    .lucide-item svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; color: var(--accent-text); }
+    .lucide-item span { font-size: 11px; font-family: ui-monospace, monospace; color: var(--text-subtle); }
+
+    /* ── Motion easing table ───────────────────────────────────────────── */
+    .easing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 12px; margin: 12px 0 24px; }
+    .easing-card { padding: 12px 14px; background: var(--card-bg-tint); border-radius: var(--radius-md); border: 1px solid var(--border-muted); }
+    .easing-name { font-family: var(--font-family-chivo); font-size: 11px; font-weight: 700; color: var(--accent-text); margin-bottom: 4px; }
+    .easing-val { font-family: ui-monospace, monospace; font-size: 10px; color: var(--text-muted); margin-bottom: 4px; }
+    .easing-use { font-size: 11.5px; color: var(--text-subtle); line-height: 1.45; }
+
+    /* ── Lore blocks ───────────────────────────────────────────────────── */
+    .lore-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 14px; margin: 12px 0; }
+    .lore-card { padding: 14px 16px; background: var(--card-bg-tint); border-radius: var(--radius-md); border: 1px solid var(--border-muted); }
+    .lore-title { font-family: var(--font-family-chivo); font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 6px; }
+    .lore-body { font-size: 13px; color: var(--text-subtle); line-height: 1.6; }
+    .bedrock-list { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+    .bedrock-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; background: var(--card-bg-tint); border-radius: var(--radius-md); border-left: 3px solid var(--accent-text); }
+    .bedrock-item strong { font-size: 13px; color: var(--text-color); display: block; margin-bottom: 3px; }
+    .bedrock-item p { margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── Social media templates ─────────────────────────────────────────── */
+    .social-templates .sm-section { max-width: 1280px; margin: 0 auto 64px; }
+    .social-templates .sm-section-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid var(--border-muted); }
+    .social-templates .sm-section-head h3 { font-size: 28px; color: var(--text-color); font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; margin: 0; line-height: 1.1; }
+    .social-templates .sm-ratio { font-family: var(--font-family-chivo); font-size: 12px; letter-spacing: 0.30em; text-transform: uppercase; color: var(--text-muted); }
+    .social-templates .sm-blurb { font-family: var(--font-family-chivo); font-size: 14px; color: var(--text-subtle); margin-left: auto; max-width: 380px; text-align: right; }
+    .social-templates .grid-sq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .social-templates .grid-portrait { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+    .social-templates .tile { position: relative; overflow: hidden; border-radius: 18px; box-shadow: 0 24px 60px -16px rgba(0,0,0,0.55), 0 4px 14px -2px rgba(0,0,0,0.35); }
+    .social-templates .tile.sq { aspect-ratio: 1 / 1; }
+    .social-templates .tile.portrait { aspect-ratio: 2 / 3; }
+    .social-templates .stage { position: absolute; inset: 0; padding: 60px 56px; display: flex; flex-direction: column; }
+    .social-templates .tile.portrait .stage { padding: 48px 36px; }
+    .social-templates .bg-deep  { background: #04041C; color: #F5E6CD; }
+    .social-templates .bg-navy  { background: #1B1F3B; color: #F5E6CD; }
+    .social-templates .bg-warm  { background: #F7F0DB; color: #6A4D44; }
+    .social-templates .bg-paper { background: #FEFDF6; color: #04041C; }
+    .social-templates .bg-sage  { background: #4A5D45; color: #F7F0DB; }
+    .social-templates .bg-terra { background: #D98A5F; color: #04041C; }
+    .social-templates .star-bg::before { content: ''; position: absolute; inset: 0; background-image: url('starboard-design-system/assets/decorations/sb-star-pattern-1.png'); background-size: 280px auto; background-repeat: repeat; opacity: 0.05; mix-blend-mode: screen; pointer-events: none; }
+    .social-templates .bg-warm.star-bg::before, .social-templates .bg-paper.star-bg::before { mix-blend-mode: multiply; opacity: 0.06; }
+    .social-templates .sm-eyebrow { font-family: var(--font-family-chivo); font-weight: 600; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; opacity: 0.6; }
+    .social-templates .signature { font-family: var(--font-family-secondary); font-style: italic; font-size: 18px; opacity: 0.65; }
+    .social-templates .lockup-sm { height: 26px; opacity: 0.85; }
+    .social-templates .star-mark { width: 40px; height: 40px; object-fit: contain; }
+    .social-templates .quote { font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; line-height: 1.1; letter-spacing: 0.01em; }
+    .social-templates .quote.xl { font-size: 92px; }
+    .social-templates .quote.lg { font-size: 64px; }
+    .social-templates .quote.md { font-size: 48px; }
+    .social-templates .quote.sm { font-size: 34px; }
+    .social-templates .quote.xs { font-size: 26px; line-height: 1.2; }
+    .social-templates .body-text { font-family: var(--font-family-chivo); line-height: 1.55; }
+    .social-templates .body-text.lg { font-size: 22px; }
+    .social-templates .body-text.md { font-size: 18px; }
+    .social-templates .body-text.sm { font-size: 15px; }
+    .social-templates .l-quote .stage { justify-content: space-between; }
+    .social-templates .l-quote .quote-mark { width: 64px; height: 64px; opacity: 0.45; }
+    .social-templates .l-quote .quote { color: inherit; }
+    .social-templates .l-quote .footer { display: flex; justify-content: space-between; align-items: flex-end; }
+    .social-templates .l-lore .stage { padding: 50px 46px; align-items: center; text-align: center; justify-content: space-between; }
+    .social-templates .l-lore .ornament-top { width: 88px; opacity: 0.85; }
+    .social-templates .l-lore .fact-head { font-family: var(--font-family-chivo); font-size: 11px; letter-spacing: 0.36em; text-transform: uppercase; opacity: 0.55; }
+    .social-templates .l-affirm .stage { padding: 60px 56px; align-items: center; text-align: center; justify-content: center; gap: 32px; }
+    .social-templates .l-affirm .quote { max-width: 100%; }
+    .social-templates .l-fact .stage { justify-content: space-between; }
+    .social-templates .l-fact .fact-head { font-family: var(--font-family-chivo); font-size: 10px; letter-spacing: 0.40em; text-transform: uppercase; opacity: 0.55; }
+    .social-templates .l-fact .number { font-family: var(--font-family-secondary); font-style: italic; font-size: 200px; line-height: 0.8; margin-top: -10px; }
+    .social-templates .l-fact .body-text { margin-top: 14px; }
+    .social-templates .l-board .stage { padding: 0; }
+    .social-templates .l-board .art { flex: 1 0 52%; display: flex; align-items: center; justify-content: center; background: #FAF6EC; padding: 20px; overflow: hidden; }
+    .social-templates .l-board .art img { max-width: 88%; max-height: 88%; object-fit: contain; }
+    .social-templates .l-board .caption { padding: 24px 32px 32px; background: #04041C; color: #F5E6CD; display: flex; flex-direction: column; gap: 6px; }
+    .social-templates .l-board .caption .moon { font-family: var(--font-family-chivo); font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; opacity: 0.5; }
+    .social-templates .l-board .caption .name { font-size: 30px; font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; }
+    .social-templates .l-board .caption .sub { font-family: var(--font-family-chivo); font-size: 12.5px; opacity: 0.65; line-height: 1.5; }
+    .social-templates .l-pin .stage { padding: 60px 44px; justify-content: space-between; }
+    .social-templates .l-pin .head { font-family: var(--font-family-chivo); font-size: 12px; letter-spacing: 0.36em; text-transform: uppercase; opacity: 0.55; }
+    .social-templates .l-pin .title { font-size: 56px; font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; line-height: 1.1; }
+    .social-templates .l-pin .footer-line { height: 1px; background: currentColor; opacity: 0.25; margin: 16px 0 14px; }
+    .social-templates .tile-caption { margin-top: 16px; padding: 12px 14px; background: var(--card-bg-tint); border: 1px solid var(--border-muted); border-radius: 8px; font-family: var(--font-family-chivo); font-size: 11.5px; line-height: 1.55; color: var(--text-subtle); white-space: pre-line; }
+    .social-templates .tile-wrap { display: flex; flex-direction: column; }
+  </style>
+</head>
+<body>
+
+<header class="sg-header">
+  <a href="index.html">
+    <img class="sg-logo sg-logo-dark" src="brand/logos/dark-lockup-horizontal.png" alt="Starboard">
+    <img class="sg-logo sg-logo-light" src="brand/logos/light-lockup-horizontal.png" alt="Starboard">
+    <img class="sg-logo sg-logo-warm" src="brand/logos/warm-lockup-horizontal.png" alt="Starboard">
+  </a>
+  <div class="theme-switch" id="themeToggle">
+    <button class="ts-btn" data-mode="dark" aria-pressed="true">Dark</button>
+    <button class="ts-btn" data-mode="light" aria-pressed="false">Light</button>
+    <button class="ts-btn" data-mode="warm" aria-pressed="false">Warm</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ── Hero ──────────────────────────────────────────────────────────── -->
+  <div class="hero">
+    <div class="eyebrow">Style Guide</div>
+    <h1>Starboard</h1>
+    <p class="sub">"Mythic intelligence. Victorian navigational. Older than wellness."</p>
+    <p>Three swappable themes (dark, light, warm) share one set of semantic tokens. Playfair Display italic, always italic, for headings. Chivo for body and UI. The wordmark is drawn into the logo lockups. One bright accent per theme, generous whitespace, soft elevation. <a href="https://www.starboardmanifest.com/" target="_blank">starboardmanifest.com</a></p>
+  </div>
+
+  <!-- ── Color ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Color</h2>
+      <p class="note">Raw palette below. In components, always use role tokens (--bg-color, --accent-color, etc.), which resolve correctly for every theme.</p>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Navy family</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#04041C"></div><div class="meta"><div class="nm">navy-950</div><div class="hx">#04041C</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1B1F3B"></div><div class="meta"><div class="nm">navy-900</div><div class="hx">#1B1F3B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#21264B"></div><div class="meta"><div class="nm">navy-800</div><div class="hx">#21264B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2D3268"></div><div class="meta"><div class="nm">navy-700</div><div class="hx">#2D3268</div></div></div>
+      <div class="sw"><div class="chip" style="background:#4D5198"></div><div class="meta"><div class="nm">navy-600</div><div class="hx">#4D5198</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8285B6"></div><div class="meta"><div class="nm">navy-500</div><div class="hx">#8285B6</div></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Cream &amp; parchment</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#F5E6CD;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">cream-500</div><div class="hx">#F5E6CD</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FAF9D4;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">cream-200</div><div class="hx">#FAF9D4</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FEFDF6;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">paper-50</div><div class="hx">#FEFDF6</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F7F0DB;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">warm-50</div><div class="hx">#F7F0DB</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFF9EB;border-bottom:1px solid #eee"></div><div class="meta"><div class="nm">warm-100</div><div class="hx">#FFF9EB</div></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Accent: lime / olive / sage</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#A4E636"></div><div class="meta"><div class="nm">lime-bright</div><div class="hx">#A4E636 · dark</div></div></div>
+      <div class="sw"><div class="chip" style="background:#A3C132"></div><div class="meta"><div class="nm">lime-olive</div><div class="hx">#A3C132 · light</div></div></div>
+      <div class="sw"><div class="chip" style="background:#5C7000"></div><div class="meta"><div class="nm">olive-deep</div><div class="hx">#5C7000 · light text</div></div></div>
+      <div class="sw"><div class="chip" style="background:#4A5D45"></div><div class="meta"><div class="nm">forest</div><div class="hx">#4A5D45 · warm btn</div></div></div>
+      <div class="sw"><div class="chip" style="background:#8F9E7A"></div><div class="meta"><div class="nm">sage</div><div class="hx">#8F9E7A · warm accent</div></div></div>
+      <div class="sw"><div class="chip" style="background:#445535"></div><div class="meta"><div class="nm">sage-deep</div><div class="hx">#445535 · warm text</div></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Earth &amp; terracotta</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#6A4D44"></div><div class="meta"><div class="nm">umber</div><div class="hx">#6A4D44 · warm fg</div></div></div>
+      <div class="sw"><div class="chip" style="background:#D98A5F"></div><div class="meta"><div class="nm">terra</div><div class="hx">#D98A5F · tertiary</div></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Semantic status · cross-theme</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#22C55E"></div><div class="meta"><div class="nm">success</div><div class="hx">#22C55E</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F59E0B"></div><div class="meta"><div class="nm">warning</div><div class="hx">#F59E0B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#DC2626"></div><div class="meta"><div class="nm">danger</div><div class="hx">#DC2626</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B91C1C"></div><div class="meta"><div class="nm">danger:hover</div><div class="hx">#B91C1C</div></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px;margin-top:20px">Current theme tokens</p>
+    <div class="token-grid">
+      <div class="token-row"><div class="token-chip" style="background:var(--bg-color)"></div><div><div class="token-name">bg-color</div><div class="token-var">--bg-color</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--text-color)"></div><div><div class="token-name">text-color</div><div class="token-var">--text-color</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--accent-color)"></div><div><div class="token-name">accent-color</div><div class="token-var">--accent-color</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--button-bg)"></div><div><div class="token-name">button-bg</div><div class="token-var">--button-bg</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--card-bg-glass)"></div><div><div class="token-name">card-bg-glass</div><div class="token-var">--card-bg-glass</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--overlay-bg)"></div><div><div class="token-name">overlay-bg</div><div class="token-var">--overlay-bg</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--ticker-bg)"></div><div><div class="token-name">ticker-bg</div><div class="token-var">--ticker-bg</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--footer-bg)"></div><div><div class="token-name">footer-bg</div><div class="token-var">--footer-bg</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--tertiary-1)"></div><div><div class="token-name">tertiary-1</div><div class="token-var">--tertiary-1</div></div></div>
+      <div class="token-row"><div class="token-chip" style="background:var(--tertiary-2)"></div><div><div class="token-name">tertiary-2</div><div class="token-var">--tertiary-2</div></div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px;margin-top:28px">Color philosophy</p>
+    <div class="philosophy-row">
+      <div class="philo-card">
+        <div class="philo-title">Borders are theme-tinted, not solid</div>
+        <p class="philo-body">A flat <code>#04041C</code> border on cream reads as too heavy. Tint instead: <code>--card-border</code> = 10–25% of text-color, <code>--card-border-highlighted</code> = 18–50%. Always 1px width.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Shadows are tinted, not pure black</div>
+        <p class="philo-body">Card shadows tint toward <code>--text-color</code>, never pure black. Modal is always <code>0 25px 50px -12px rgba(0,0,0,.5)</code> regardless of theme.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Glass &amp; blur: nav only</div>
+        <p class="philo-body">Blur (<code>backdrop-filter: blur(10px)</code>) is for nav and overlays only. Cards are opaque. <code>--card-bg-glass</code> is a solid color despite the legacy name. Modal backdrop is solid <code>rgba(0,0,0,.8)</code>, never blurred.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">No gradient anything</div>
+        <p class="philo-body">No gradient buttons. No bluish-purple gradient backgrounds. No generic vibe gradients. Buttons use flat solid accent fills only.</p>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px;margin-top:24px">Moon page</p>
+    <p class="note">The Moon (lunar phases) page uses atmospheric overlays (star tile patterns, particles, ink texture) but stays within the existing theme palette. Do not introduce jewel tones, amethyst, or gold accents. The moon orb itself is CSS-painted. No canvas script in the design system. Use a placeholder SVG for static mocks.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Typography ────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Typography</h2>
+      <p class="note">Two brand fonts. <strong>Playfair Display italic, always italic</strong>, never upright, for all headings and display. Letter-spacing 0.01–0.05em. Chivo for body and UI, weight 400 body / 600 eyebrows / 700 bold labels. The wordmark is drawn into the logo lockup files, not shipped as a font. No Google Fonts dependency; Playfair and Chivo load from local TTF files.</p>
+    </div>
+
+    <div style="margin-bottom:28px">
+      <p class="eyebrow" style="margin-bottom:8px">Display · Playfair Display Italic</p>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-weight:400;font-size:clamp(36px,6vw,60px);line-height:1.05;letter-spacing:.01em">Set your course.</div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:4px">Type scale (desktop ≥ 768px)</p>
+    <div class="type-row">
+      <div class="type-tag">h1</div>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-size:40px;line-height:1.1">Letters from the Helm</div>
+      <div class="type-px">72 / 1.2</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">h2</div>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-size:30px;line-height:1.1">Choose your path</div>
+      <div class="type-px">52 / 1.2</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">h3</div>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-size:22px">Make Vision Boards</div>
+      <div class="type-px">31 / 1.2</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">h4</div>
+      <div style="font-family:var(--font-family-secondary);font-style:italic;font-size:18px">Gather What Guides You</div>
+      <div class="type-px">25 / 1.3</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">large</div>
+      <div style="font-size:17px">Pick the plan that fits how you dream</div>
+      <div class="type-px">22 / 1.5</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">regular</div>
+      <div style="font-size:14px">We respect your inbox. Unsubscribe anytime.</div>
+      <div class="type-px">16 / 1.5</div>
+    </div>
+    <div class="type-row">
+      <div class="type-tag">small</div>
+      <div style="font-size:12px;color:var(--text-muted)">Privacy Policy · Terms of Service · DMCA</div>
+      <div class="type-px">14 / 1.5</div>
+    </div>
+
+    <div style="margin-top:28px">
+      <p class="eyebrow" style="margin-bottom:8px">Eyebrows &amp; labels · Chivo 700 uppercase</p>
+      <div class="row" style="flex-wrap:wrap;align-items:flex-end;gap:18px">
+        <div>
+          <div style="font-family:var(--font-family-chivo);font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:13px;color:var(--text-color)">PLANS</div>
+          <code>13px · lg eyebrow</code>
+        </div>
+        <div>
+          <div style="font-family:var(--font-family-chivo);font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:10px;color:var(--text-color)">VISION BOARDS</div>
+          <code>10px · section label</code>
+        </div>
+        <div>
+          <div style="font-family:var(--font-family-chivo);font-weight:700;text-transform:uppercase;letter-spacing:.4em;font-size:8.5px;color:var(--text-muted)">AFFIRMATION</div>
+          <code>8.5px · micro</code>
+        </div>
+        <div>
+          <span style="font-family:var(--font-family-chivo);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-text);padding:4px 9px;border-radius:4px;background:color-mix(in srgb,var(--accent-color) 12%,transparent);border:1px solid color-mix(in srgb,var(--accent-color) 30%,transparent)">NEW</span>
+          <code style="display:block;margin-top:4px">accent label</code>
+        </div>
+        <div>
+          <span style="font-family:var(--font-family-chivo);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-color);padding:4px 8px;border-radius:4px;border:1px solid var(--border-medium);background:var(--card-bg-glass)">Library</span>
+          <code style="display:block;margin-top:4px">tooltip</code>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px">
+      <p class="eyebrow" style="margin-bottom:4px">Wordmark</p>
+      <p class="note" style="margin-bottom:8px">The STARBOARD wordmark is drawn into the logo lockup files (see Logos). It is not shipped as a separate webfont; for typographic mockups, set Playfair Display italic as a stand-in via <code>var(--font-family-reality)</code>.</p>
+      <div class="reality-specimen" style="font-style:italic">Starboard</div>
+    </div>
+
+    <div style="margin-top:28px">
+      <p class="eyebrow" style="margin-bottom:6px">User-choice fonts: vision board surfaces only</p>
+      <p class="note" style="margin-bottom:10px">These are fonts Sailors pick to style their own board copy. They are <strong>not brand fonts</strong> and must not appear on any Starboard-authored surface (marketing, onboarding, emails, slides).</p>
+      <div class="row" style="flex-wrap:wrap;gap:12px">
+        <div style="padding:8px 14px;background:var(--card-bg-tint);border:1px solid var(--border-muted);border-radius:6px"><span style="font-family:serif;font-variant:small-caps;font-size:14px">Amita</span> <code>user</code></div>
+        <div style="padding:8px 14px;background:var(--card-bg-tint);border:1px solid var(--border-muted);border-radius:6px"><span style="font-family:'Segoe UI',system-ui,sans-serif;letter-spacing:.04em;font-size:14px">Space Grotesk</span> <code>user</code></div>
+        <div style="padding:8px 14px;background:var(--card-bg-tint);border:1px solid var(--border-muted);border-radius:6px"><span style="font-family:Georgia,serif;font-variant:small-caps;font-size:14px">Cinzel</span> <code>user</code></div>
+        <div style="padding:8px 14px;background:var(--card-bg-tint);border:1px solid var(--border-muted);border-radius:6px"><span style="font-family:Georgia,serif;font-style:italic;font-size:14px">Cormorant Garamond</span> <code>user</code></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Logos ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand</div>
+      <h2 class="sec">Logo system</h2>
+      <p class="note">Six-pointed compass-rose star with ornamental border. Three themed palettes, each with five variants. Use the green version wherever the background could be either light or dark (email, HTML embeds).</p>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:10px">Dark: cream on navy</p>
+    <div class="logo-grid" style="margin-bottom:28px">
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-lockup-horizontal.png" alt="horizontal lockup"></div><div class="logo-cap">Horizontal</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-lockup-vertical.png" alt="vertical lockup"></div><div class="logo-cap">Vertical</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-logomark.png" alt="logomark"></div><div class="logo-cap">Logomark</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-logomark-fancy.png" alt="fancy logomark"></div><div class="logo-cap">Fancy</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/dark-logomark-pattern.png" alt="pattern tile"></div><div class="logo-cap">Pattern tile</div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:10px">Light: black on white</p>
+    <div class="logo-grid" style="margin-bottom:28px">
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-lockup-horizontal.png" alt="light horizontal lockup"></div><div class="logo-cap">Horizontal</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-lockup-vertical.png" alt="light vertical lockup"></div><div class="logo-cap">Vertical</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-logomark.png" alt="light logomark"></div><div class="logo-cap">Logomark</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-logomark-fancy.png" alt="light fancy logomark"></div><div class="logo-cap">Fancy</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/light-logomark-pattern.png" alt="light pattern tile"></div><div class="logo-cap">Pattern tile</div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:10px">Warm: brown on cream</p>
+    <div class="logo-grid" style="margin-bottom:28px">
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-lockup-horizontal.png" alt="warm horizontal lockup"></div><div class="logo-cap">Horizontal</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-lockup-vertical.png" alt="warm vertical lockup"></div><div class="logo-cap">Vertical</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-logomark.png" alt="warm logomark"></div><div class="logo-cap">Logomark</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-logomark-fancy.png" alt="warm fancy logomark"></div><div class="logo-cap">Fancy</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/warm-logomark-pattern.png" alt="warm pattern tile"></div><div class="logo-cap">Pattern tile</div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:10px">Green: for email &amp; dual-mode contexts</p>
+    <p class="note" style="margin-bottom:12px">Use when the background could be either light or dark: email HTML, embedded iframes, App Store screenshots. Reads on all three themes.</p>
+    <div class="logo-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="logo-slot"><div class="logo-bg" style="background:#1B1F3B"><img src="brand/logos/green-lockup-horizontal.png" alt="green logo on dark"></div><div class="logo-cap">On dark</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#ffffff"><img src="brand/logos/green-lockup-horizontal.png" alt="green logo on light"></div><div class="logo-cap">On light</div></div>
+      <div class="logo-slot"><div class="logo-bg" style="background:#F7F0DB"><img src="brand/logos/green-lockup-horizontal.png" alt="green logo on warm"></div><div class="logo-cap">On warm</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Buttons ───────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Buttons</h2>
+      <p class="note">Variants: primary, secondary, tertiary, ghost, danger. Sizes: sm / default / lg. Modifiers: pill, icon. No gradient fills, solid accent bg only.</p>
+    </div>
+    <div class="stack">
+      <div class="row">
+        <button class="btn btn-primary">Start your journey</button>
+        <button class="btn btn-secondary">See how it works</button>
+        <button class="btn btn-tertiary">Tertiary</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-danger">Danger</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+        <button class="btn btn-primary btn-pill">Pill →</button>
+        <button class="btn btn-secondary btn-pill btn-sm">Pill ghost</button>
+        <button class="btn btn-primary btn-icon" aria-label="icon">→</button>
+        <button class="btn btn-secondary btn-icon" aria-label="icon sec">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Segmented control ──────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Segmented control (pill tabs)</h2>
+      <p class="note">Used for Templates / Catalog, Profile / Billing / Settings, and theme switching. Active fills with button-bg; container is a 9999px pill.</p>
+    </div>
+    <div class="stack">
+      <div class="seg">
+        <button aria-pressed="true">Templates</button>
+        <button aria-pressed="false">Catalog</button>
+      </div>
+      <div class="seg">
+        <button aria-pressed="false">Profile</button>
+        <button aria-pressed="true">Billing</button>
+        <button aria-pressed="false">Settings</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Cards ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Cards</h2>
+      <p class="note">Subtle resting shadow, lift on hover. Surface is --card-bg-glass per theme. Highlighted variant uses --card-border-highlighted.</p>
+    </div>
+    <div class="row" style="align-items:stretch">
+      <div class="card" style="max-width:260px;flex:1">
+        <p class="card-title">Career board</p>
+        <p class="card-desc">Roles, screenshots, and quotes that point toward the next chapter.</p>
+        <span class="badge">12 images</span>
+      </div>
+      <div class="card hi" style="max-width:260px;flex:1">
+        <p class="card-title">Health &amp; rest</p>
+        <p class="card-desc">A daily reminder lives here. Soft, consistent, the inner compass.</p>
+        <span class="badge">Highlighted</span>
+      </div>
+      <div class="card" style="max-width:260px;flex:1">
+        <p class="card-title">My Sovereignty</p>
+        <p class="card-desc">A living altar to self-sovereignty and wealth.</p>
+        <span class="badge">7 images</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Inputs ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Inputs</h2>
+      <p class="note">Accent ring on focus. Consistent 8px radius. OTP style for passcode entry.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:600px">
+      <div class="field">
+        <div class="field-lab">Email</div>
+        <input class="input" placeholder="captain@starboardmanifest.com">
+      </div>
+      <div class="field">
+        <div class="field-lab">Affirmation · focused</div>
+        <div class="input focused">My direction stays steady.</div>
+      </div>
+    </div>
+    <div class="field" style="margin-top:16px;max-width:300px">
+      <div class="field-lab">One-time passcode</div>
+      <div class="otp">
+        <div class="otp-d">7</div><div class="otp-d">3</div><div class="otp-d">2</div>
+        <div class="otp-d active">9</div><div class="otp-d"></div><div class="otp-d"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Ticker ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Ticker banner</h2>
+      <p class="note">Linear marquee at 28s. Edge-fade mask. Logomark pattern as separator. Background is --ticker-bg, text is --ticker-text.</p>
+    </div>
+    <div class="ticker-wrap" style="border-radius:10px;overflow:hidden">
+      <div class="ticker-track">
+        <span class="ticker-item">Chart your vision</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Map new habits</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Image library</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Anchor your goals</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Video montages</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Daily affirmations</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <!-- duplicate for seamless loop -->
+        <span class="ticker-item">Chart your vision</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Map new habits</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Image library</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Anchor your goals</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Video montages</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+        <span class="ticker-item">Daily affirmations</span>
+        <span class="ticker-sep"><img src="starboard-design-system/assets/logos/sb-dark-logomark-pattern.webp" alt=""></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Bottom nav ─────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Mobile bottom navigation</h2>
+      <p class="note">Fixed 64px + safe-area in production. Hidden at md and up. Active tab fills with 12% accent tint. Lucide icons at stroke-width 2.</p>
+    </div>
+    <div class="nav-frame">
+      <div class="bottom-nav">
+        <div class="nav-it active">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          <span>Boards</span>
+        </div>
+        <div class="nav-it">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span>Library</span>
+        </div>
+        <div class="nav-it">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span>Alerts</span>
+        </div>
+        <div class="nav-it">
+          <svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg>
+          <span>Moon</span>
+        </div>
+        <div class="nav-it">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Sam</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Components</div>
+      <h2 class="sec">Pricing cards</h2>
+      <p class="note">Annual plan (highlighted) is the recommended tier. Price uses Playfair italic for character. £23/year positioned as "Keep your compass true."</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Free</div>
+        <div class="price-amt">Free</div>
+        <div class="price-per">forever</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>3 boards</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>50 images</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Phone widgets</li>
+        </ul>
+        <button class="btn btn-tertiary" style="margin-top:auto;width:100%;justify-content:center">Get started</button>
+      </div>
+      <div class="price-card hi">
+        <div class="price-tier">Annual</div>
+        <div class="price-amt">£23</div>
+        <div class="price-per">per year</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>13 boards · 250 images</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Custom music</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Public sharing</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Cross-device sync</li>
+        </ul>
+        <button class="btn btn-primary" style="margin-top:auto;width:100%;justify-content:center">Get started</button>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Lifetime</div>
+        <div class="price-amt">£72</div>
+        <div class="price-per">one time</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Everything in Annual</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>No recurring fees</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>All future updates</li>
+        </ul>
+        <button class="btn btn-tertiary" style="margin-top:auto;width:100%;justify-content:center">Get started</button>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Illustration registers ───────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand · Imagery</div>
+      <h2 class="sec">Three illustration registers</h2>
+      <p class="note">Starboard runs three distinct illustration registers. They are not interchangeable. Pick one per surface and stay there. <strong>Don't mix registers in one composition.</strong> Inked decoration with inked decoration. Board art with board art. Oracle with oracle.</p>
+    </div>
+
+    <table class="voice-table" style="margin-bottom:28px">
+      <thead><tr><th>#</th><th>Register</th><th>Lives in</th><th>Use for</th><th>Treatment</th></tr></thead>
+      <tbody>
+        <tr><td><strong>01</strong></td><td><strong>Detailed inked</strong></td><td><code>assets/elements/dark/</code></td><td>App chrome, marketing decoration, parallax hero ornaments</td><td>Cream on navy. Slightly transparent or full opacity depending on context. Can sit behind content or stand as decoration. Never the focal point.</td></tr>
+        <tr><td><strong>02</strong></td><td><strong>Pared-back board art</strong></td><td><code>assets/board-art/</code></td><td>Vision boards, App Store hero, Pinterest pins, print, billboards</td><td>Bold black-and-cream silhouettes in art-nouveau frames. Standalone. Full opacity, never behind text.</td></tr>
+        <tr><td><strong>03</strong></td><td><strong>Oracle muted</strong></td><td><code>assets/oracle/</code></td><td>Blog headers, newsletter heroes, editorial moments</td><td>Muted sailor-jerry flash. Navy + faded red/orange. Diamond frames. Playful where the inked set is reverent.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin-bottom:8px">Register 01: Detailed inked · <code>assets/elements/dark/</code></p>
+    <p class="note" style="margin-bottom:12px">22 cream-on-navy hand-drawn WebPs. Can be used at partial opacity or full opacity depending on context. Dark-bg variants work universally across all three themes. Canonical uses: hero parallax (4 large + 2 bg), feature triad icons (Heart · Lighthouse · Sun at 100×100 / opacity 80), footer Ship at opacity 10%, ornamental corner frames at 25%.</p>
+    <div class="elements-grid">
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/anchor.webp" alt="anchor"><div class="el-cap">Anchor</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/compass-rose.webp" alt="compass"><div class="el-cap">Compass</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/lighthouse.webp" alt="lighthouse"><div class="el-cap">Lighthouse</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/ship.webp" alt="ship"><div class="el-cap">Ship</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/shell.webp" alt="shell"><div class="el-cap">Shell</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/conch.webp" alt="conch"><div class="el-cap">Conch</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/fish.webp" alt="fish"><div class="el-cap">Fish</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crow.webp" alt="crow"><div class="el-cap">Crow</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crow-sm.webp" alt="crow sm"><div class="el-cap">Crow sm</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crow-on-branch.webp" alt="crow on branch"><div class="el-cap">Branch</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crow-on-shell.webp" alt="crow on shell"><div class="el-cap">Crow + shell</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/swallows.webp" alt="swallows"><div class="el-cap">Swallows</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/snakes.webp" alt="snakes"><div class="el-cap">Snakes</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/hearts.webp" alt="hearts"><div class="el-cap">Hearts</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/heart.webp" alt="heart"><div class="el-cap">Heart</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/eye-1.webp" alt="eye 1"><div class="el-cap">Eye 1</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/eye-2.webp" alt="eye 2"><div class="el-cap">Eye 2</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/sun.webp" alt="sun"><div class="el-cap">Sun</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/key.webp" alt="key"><div class="el-cap">Key</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/crown.webp" alt="crown"><div class="el-cap">Crown</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/elements/dark/coins.webp" alt="coins"><div class="el-cap">Coins</div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:32px;margin-bottom:8px">Register 02: Bold, billboard register (SB Card) · <code>assets/board-art/</code></p>
+    <p class="note" style="margin-bottom:12px">The art-nouveau illustration style that's the high-impact face of the brand: the art the Sailor sees inside their vision boards, and the art that ships on App Store screenshots, Pinterest pins, print, merch, and hero billboards. Heavy double keyline with botanical flourishes filling the four corners, or variants of the star-and-curl corner motif. Do not reduce opacity. Do not layer behind text. It is meant to be looked at.</p>
+    <div class="elements-grid" style="grid-template-columns:repeat(auto-fill,minmax(90px,1fr))">
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/crow.png" alt="crow" style="opacity:1;width:80px;height:80px"><div class="el-cap">Crow</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/crow-king.png" alt="crow king" style="opacity:1;width:80px;height:80px"><div class="el-cap">Crow king</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/crown.png" alt="crown" style="opacity:1;width:80px;height:80px"><div class="el-cap">Crown</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/cruise.png" alt="cruise" style="opacity:1;width:80px;height:80px"><div class="el-cap">Cruise</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/dollars.png" alt="dollars" style="opacity:1;width:80px;height:80px"><div class="el-cap">Dollars</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/horseshoe.png" alt="horseshoe" style="opacity:1;width:80px;height:80px"><div class="el-cap">Horseshoe</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/lighthouse.png" alt="lighthouse" style="opacity:1;width:80px;height:80px"><div class="el-cap">Lighthouse</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/love-letter.png" alt="love letter" style="opacity:1;width:80px;height:80px"><div class="el-cap">Love letter</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/lovebirds.png" alt="lovebirds" style="opacity:1;width:80px;height:80px"><div class="el-cap">Lovebirds</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/magpie.png" alt="magpie" style="opacity:1;width:80px;height:80px"><div class="el-cap">Magpie</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/orange-tree.png" alt="orange tree" style="opacity:1;width:80px;height:80px"><div class="el-cap">Orange tree</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/stag.png" alt="stag" style="opacity:1;width:80px;height:80px"><div class="el-cap">Stag</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/throne.png" alt="throne" style="opacity:1;width:80px;height:80px"><div class="el-cap">Throne</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/cornucopia.png" alt="cornucopia" style="opacity:1;width:80px;height:80px"><div class="el-cap">Cornucopia</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/frame-cream.png" alt="frame cream" style="opacity:1;width:80px;height:80px"><div class="el-cap">Frame cream</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/frame-sage.png" alt="frame sage" style="opacity:1;width:80px;height:80px"><div class="el-cap">Frame sage</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/frame-purple.png" alt="frame purple" style="opacity:1;width:80px;height:80px"><div class="el-cap">Frame purple</div></div>
+      <div class="el-slot"><img src="starboard-design-system/assets/board-art/frame-purple-alt.png" alt="frame purple alt" style="opacity:1;width:80px;height:80px"><div class="el-cap">Frame purple alt</div></div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:32px;margin-bottom:8px">Register 03: Editorial register (SB IG Fancy) · <code>assets/oracle/</code></p>
+    <p class="note" style="margin-bottom:12px">Starboard's editorial register. The softer, slow-read illustration set for blog post headers, newsletter and hero banners that want literary weight. If Register 02 is the billboard, Oracle is the page you linger on. Corners and flanks carry ornament: fanned palmettes, flowers, seashells, stars. Bold outlines, flat fills, traditional flash shading. Muted, dusky palette. No bright primaries; the color is dialed back so the whole thing reads quiet and aged.</p>
+    <div class="swatches" style="margin-bottom:20px;grid-template-columns:repeat(7,1fr)">
+      <div class="sw"><div class="chip" style="background:#EDE6D3;border-bottom:1px solid #d9d0bb"></div><div class="meta"><div class="nm">Parchment</div><div class="hx">#EDE6D3</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1A1B2A"></div><div class="meta"><div class="nm">Night ink</div><div class="hx">#1A1B2A</div></div></div>
+      <div class="sw"><div class="chip" style="background:#3D3E52"></div><div class="meta"><div class="nm">Slate</div><div class="hx">#3D3E52</div></div></div>
+      <div class="sw"><div class="chip" style="background:#A83A3A"></div><div class="meta"><div class="nm">Strawberry</div><div class="hx">#A83A3A</div></div></div>
+      <div class="sw"><div class="chip" style="background:#6E7A52"></div><div class="meta"><div class="nm">Leaf sage</div><div class="hx">#6E7A52</div></div></div>
+      <div class="sw"><div class="chip" style="background:#D9C9A3;border-bottom:1px solid #c5b48e"></div><div class="meta"><div class="nm">Bloom cream</div><div class="hx">#D9C9A3</div></div></div>
+      <div class="sw"><div class="chip" style="background:#C9A84C"></div><div class="meta"><div class="nm">Soft gold</div><div class="hx">#C9A84C</div></div></div>
+    </div>
+    <div class="oracle-grid">
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/anchor.png" alt="anchor"><div class="oracle-cap">Anchor</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/swallows.png" alt="swallows"><div class="oracle-cap">Swallows</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/nautical-star.png" alt="star"><div class="oracle-cap">Star</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/hold-fast.png" alt="hold fast"><div class="oracle-cap">Hold fast</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/hearts.png" alt="hearts"><div class="oracle-cap">Hearts</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/skull.png" alt="skull"><div class="oracle-cap">Skull</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/dagger.png" alt="dagger"><div class="oracle-cap">Dagger</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/cannons.png" alt="cannons"><div class="oracle-cap">Cannons</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/hula-girl.png" alt="hula girl"><div class="oracle-cap">Hula girl</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/mermaid.png" alt="mermaid"><div class="oracle-cap">Mermaid</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/parrot.png" alt="parrot"><div class="oracle-cap">Parrot</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/shark.png" alt="shark"><div class="oracle-cap">Shark</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/turtle.png" alt="turtle"><div class="oracle-cap">Turtle</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/tiger.png" alt="tiger"><div class="oracle-cap">Tiger</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/golden-dragon.png" alt="dragon"><div class="oracle-cap">Dragon</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/pig-and-rooster.png" alt="pig and rooster"><div class="oracle-cap">Pig &amp; rooster</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/strawberry-moon.png" alt="strawberry moon"><div class="oracle-cap">Strawberry moon</div></div>
+      <div class="oracle-slot"><img src="starboard-design-system/assets/oracle/starboard-banner-scene.png" alt="banner scene"><div class="oracle-cap">Banner scene</div></div>
+    </div>
+
+    <p class="note" style="margin-top:16px;margin-bottom:0">Oracle also includes <strong>oracle-flash.gif / .mp4</strong> (<code>assets/oracle/</code>): a looping animated reveal used on the oracle draw moment in the app. Play as a one-shot, not a screensaver.</p>
+
+  </section>
+
+  <!-- ── Decorations ──────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand · Visual Foundations</div>
+      <h2 class="sec">Decorations</h2>
+      <p class="note">Frames, dividers, corner ornaments, and repeating star patterns. All live in <code>assets/decorations/</code>. Use frames as layout containers or art direction devices. Use dividers between content sections. Use star patterns as background texture at low opacity or cropped as surface fills.</p>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Frames, brackets &amp; divider</p>
+    <div class="deco-row" style="flex-wrap:wrap">
+      <div class="deco-card">
+        <div class="deco-preview" style="width:200px;padding:16px">
+          <img src="starboard-design-system/assets/decorations/sb-frame-banner.png" alt="sb frame banner" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-frame-banner · ornamental square</div>
+      </div>
+      <div class="deco-card">
+        <div class="deco-preview" style="width:200px;padding:16px">
+          <img src="starboard-design-system/assets/decorations/sb-banner-frame.svg" alt="sb banner frame" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-banner-frame · horizontal banner frame</div>
+      </div>
+      <div class="deco-card">
+        <div class="deco-preview" style="width:120px;padding:12px">
+          <img src="starboard-design-system/assets/decorations/sb-frame-corner.svg" alt="sb corner" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-frame-corner · corner ornament</div>
+      </div>
+      <div class="deco-card">
+        <div class="deco-preview" style="width:200px;padding:20px">
+          <img src="starboard-design-system/assets/decorations/moon-frame.svg" alt="moon frame square" style="width:100%">
+        </div>
+        <div class="deco-cap">moon-frame · square bracket</div>
+      </div>
+      <div class="deco-card">
+        <div class="deco-preview" style="width:200px;padding:20px">
+          <img src="starboard-design-system/assets/decorations/moon-frame-2.svg" alt="moon frame wide" style="width:100%">
+        </div>
+        <div class="deco-cap">moon-frame-2 · wide bracket</div>
+      </div>
+      <div class="deco-card">
+        <div class="deco-preview" style="width:360px;padding:10px">
+          <img src="starboard-design-system/assets/decorations/sb-divider.svg" alt="sb divider" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-divider · horizontal rule with star</div>
+      </div>
+      <div class="deco-card">
+        <div class="deco-preview" style="width:120px;padding:12px">
+          <img src="starboard-design-system/assets/decorations/sb-star-flourish.png" alt="star flourish" style="width:100%">
+        </div>
+        <div class="deco-cap">sb-star-flourish · star motif</div>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-bottom:8px">Backgrounds &amp; star patterns</p>
+    <p class="note" style="margin-bottom:12px">Repeating tile patterns for background fills and photographic star backgrounds. Use patterns at low opacity on dark surfaces or full opacity as bordered insets. The nebula is the photographic night-sky ground for heroes and slide title pages.</p>
+    <div class="deco-pattern-row">
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/imagery/icon-bg-nebula.png" alt="nebula" style="background:#fff">
+        <div class="deco-cap">icon-bg-nebula</div>
+      </div>
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/imagery/icon-bg.png" alt="icon bg" style="background:#fff">
+        <div class="deco-cap">icon-bg</div>
+      </div>
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sb-star-pattern-1.png" alt="star pattern 1" style="background:#fff">
+        <div class="deco-cap">star-pattern-1</div>
+      </div>
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sb-star-pattern-2.png" alt="star pattern 2" style="background:#fff">
+        <div class="deco-cap">star-pattern-2</div>
+      </div>
+      <div class="deco-pattern">
+        <img src="starboard-design-system/assets/decorations/sb-star-pattern-5.png" alt="star pattern 5" style="background:#fff">
+        <div class="deco-cap">star-pattern-5</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── UI icons — Lucide ─────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand · Iconography</div>
+      <h2 class="sec">UI icons: Lucide</h2>
+      <p class="note">Interface chrome only: nav, buttons, status. Lucide React at <code>stroke-width: 2</code> (1.5px in compact toolbars). CDN: <code>unpkg.com/lucide@0.563.0</code>. No emoji in customer-facing UI. Unicode <code>→</code> for inline link affordances. ASCII chevrons in selects, never the literal <code>▼</code>.</p>
+    </div>
+    <div class="lucide-grid">
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Image · Boards nav</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Library · Library nav</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span>Bell · Notifications</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/><path d="M20 3v4M22 5h-4"/></svg><span>MoonStar · Moon nav</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>User · Account</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg><span>Menu · Hamburger</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><span>Sun · Light theme</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span>Moon · Dark theme</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg><span>Coffee · Warm theme</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span>Plus · Add</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><span>Pencil · Edit</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg><span>Trash2 · Delete</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg><span>Settings · Config</span></div>
+      <div class="lucide-item"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Play · Montage</span></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Spacing ────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Corner radii</h2>
+      <p class="note">Starboard is soft-cornered but not pill-heavy. Pill modifier reserved for segmented controls and dock.</p>
+    </div>
+    <div class="radius-grid">
+      <div class="radius-demo" style="border-radius:4px"><div class="demo-label">sm · 4px</div><div class="demo-var">chips, micro badges</div></div>
+      <div class="radius-demo" style="border-radius:8px"><div class="demo-label">md · 8px</div><div class="demo-var">buttons, inputs</div></div>
+      <div class="radius-demo" style="border-radius:12px"><div class="demo-label">lg · 12px</div><div class="demo-var">cards, modals</div></div>
+      <div class="radius-demo" style="border-radius:9999px"><div class="demo-label">pill</div><div class="demo-var">segmented, dock</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Elevation &amp; shadows</h2>
+      <p class="note">Shadow values are tinted with the theme's text-color, not pure black. Cards lift on hover. Never use pure drop-shadow.</p>
+    </div>
+    <div class="shadow-grid">
+      <div class="shadow-demo" style="box-shadow:var(--card-shadow)"><div class="demo-label">Card · resting</div><div class="demo-var">--card-shadow</div></div>
+      <div class="shadow-demo" style="box-shadow:var(--card-shadow-hover)"><div class="demo-label">Card · hover</div><div class="demo-var">--card-shadow-hover</div></div>
+      <div class="shadow-demo" style="box-shadow:0 25px 50px -12px rgba(0,0,0,.45)"><div class="demo-label">Modal</div><div class="demo-var">0 25px 50px −12px / .45</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Layout & Spacing ──────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Layout &amp; spacing</h2>
+      <p class="note">Container, gutters, and safe-area rules. All responsive. Values shown are md+ (≥ 768px). Safe-area variables are published as CSS custom properties for component consumption.</p>
+    </div>
+
+    <table class="layout-table">
+      <thead><tr><th>Token / rule</th><th>Value</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td>Container (marketing)</td><td><code>max-width: 64rem</code> (1024px)</td><td>Hero, features, pricing, footer</td></tr>
+        <tr><td>Container (hero copy)</td><td><code>max-width: 56rem</code> (896px)</td><td>Hero headline + subhead block</td></tr>
+        <tr><td>Section padding: vertical</td><td><code>py-12 → py-16 → py-20</code></td><td>sm → md → lg breakpoints (48 / 64 / 80px)</td></tr>
+        <tr><td>Section padding: horizontal</td><td><code>px-4 → px-6 → px-8</code></td><td>sm → md → lg (16 / 24 / 32px)</td></tr>
+        <tr><td>Card grid gutter</td><td><code>gap-6 → gap-8</code></td><td>24px default, 32px at md+</td></tr>
+        <tr><td>Header height</td><td>56px + safe-area-inset-top</td><td>Fixed top, <code>--safe-top</code></td></tr>
+        <tr><td>Bottom nav height</td><td>64px + safe-area-inset-bottom</td><td>Fixed bottom, mobile only, hidden at md+</td></tr>
+        <tr><td><code>--safe-top</code></td><td><code>env(safe-area-inset-top, 0px)</code></td><td>Components consuming header clearance</td></tr>
+        <tr><td><code>--safe-bottom</code></td><td><code>env(safe-area-inset-bottom, 0px)</code></td><td>Components consuming bottom nav clearance</td></tr>
+        <tr><td><code>--bottom-nav-height</code></td><td>calc(64px + var(--safe-bottom))</td><td>Content padding to avoid bottom nav overlap</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Background & Texture ──────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Background &amp; texture</h2>
+      <p class="note">The aged-parchment texture is the default page background in every theme. A fixed SVG fractal-noise layer overlaid on the theme bg-color. Atmospheric overlays (star tile patterns, particles, ink texture) are Moon page only, staying within the existing theme palette. No flat color replacements.</p>
+    </div>
+
+    <div class="texture-demo">
+      <div class="texture-strip" style="background:#1B1F3B"><span style="color:rgba(245,230,205,.5)">Dark: fractal noise on #1B1F3B</span></div>
+      <div class="texture-strip" style="background:#FEFDF6"><span style="color:rgba(4,4,28,.35)">Light: fractal noise on #FEFDF6</span></div>
+      <div class="texture-strip" style="background:#F7F0DB"><span style="color:rgba(106,77,68,.4)">Warm: fractal noise on #F7F0DB</span></div>
+    </div>
+
+    <div class="philosophy-row" style="margin-top:14px">
+      <div class="philo-card">
+        <div class="philo-title">Parchment texture</div>
+        <p class="philo-body"><code>.bg-parchment-texture</code>: SVG <code>feTurbulence</code> fractal noise, <code>position: fixed; attachment: fixed</code>. Opacity 4–8%. Covers the whole viewport so textures are consistent when scrolling.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Decorative element opacity</div>
+        <p class="philo-body">Brand SVG/WebP elements always render at <strong>opacity 0.25–0.40</strong> and float behind content. Never use as primary content. Dark-bg WebP variants work universally across all three themes.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">Hero parallax</div>
+        <p class="philo-body">4 large elements + 2 background elements placed absolutely around the hero, shifted by mouse position (±20–40px). CSS only for reduced-motion fallback, elements simply sit statically.</p>
+      </div>
+      <div class="philo-card">
+        <div class="philo-title">No photography on brand surfaces</div>
+        <p class="philo-body">Marketing, onboarding, emails, and slides contain no photography. User-uploaded vision board photos are user data, not brand assets. Treat them as warm, sun-flared lifestyle imagery.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Motion ─────────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Foundation</div>
+      <h2 class="sec">Motion</h2>
+      <p class="note">Full system: three easing curves, four animation families, stagger-on-entry. All transitions respect <code>prefers-reduced-motion: reduce</code>. Kill when set.</p>
+    </div>
+
+    <div class="easing-grid">
+      <div class="easing-card">
+        <div class="easing-name">Expo out: default</div>
+        <div class="easing-val">cubic-bezier(0.16, 1, 0.3, 1)</div>
+        <div class="easing-use">UI transitions: buttons, cards, modals. Duration 600–1400ms. <code>--ease-out-expo</code></div>
+      </div>
+      <div class="easing-card">
+        <div class="easing-name">Relume: marketing reveals</div>
+        <div class="easing-val">cubic-bezier(0.21, 0.47, 0.32, 0.98)</div>
+        <div class="easing-use">Section entry animations, 800ms with 150ms staggers per element.</div>
+      </div>
+      <div class="easing-card">
+        <div class="easing-name">Sine in-out: atmospheric</div>
+        <div class="easing-val">cubic-bezier(0.37, 0, 0.63, 1)</div>
+        <div class="easing-use">Float loops, twinkle, pulse. 6–10s, infinite. <code>--ease-in-out-sine</code></div>
+      </div>
+      <div class="easing-card">
+        <div class="easing-name">Sparkle: hover only</div>
+        <div class="easing-val">ease-in-out</div>
+        <div class="easing-use">Text-hover sparkle drops. 2s, on hover only. Random positions inside element.</div>
+      </div>
+    </div>
+
+    <div class="motion-grid">
+      <div class="motion"><div class="dot m-float"></div><div class="lab">float · 6s</div></div>
+      <div class="motion"><div class="dot m-fadeup"></div><div class="lab">fadeUp · expo</div></div>
+      <div class="motion"><div class="dot m-pulse"></div><div class="lab">pulse · 2s</div></div>
+      <div class="motion"><div class="dot m-scalein"></div><div class="lab">scaleIn · 1.8s</div></div>
+      <div class="motion"><div class="dot m-zoom"></div><div class="lab">zoom-in</div></div>
+      <div class="motion"><div class="dot m-rotate"></div><div class="lab">slow-rotate · 6s</div></div>
+      <div class="motion"><div class="dot m-sparkle"></div><div class="lab">sparkle · 2s</div></div>
+      <div class="motion"><div class="dot m-shimmer"></div><div class="lab">shimmer · 1.5s</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── Brand voice ────────────────────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Brand</div>
+      <h2 class="sec">Voice &amp; vocabulary</h2>
+      <p class="note">Starboard is written by Megan Williams, founder and captain. The audience is the Sailor. One nautical term per surface, not three. The blog at <a href="https://starboardmanifest.com/blog" target="_blank">starboardmanifest.com/blog</a> is the running tone-of-voice reference.</p>
+    </div>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Voice persona</p>
+    <table class="voice-table">
+      <thead><tr><th>Name</th><th>Role</th><th>Sign-off</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Megan</strong></td><td>Personal voice: blog posts, founder letters, long-form writing</td><td><em>— Megan</em></td></tr>
+        <tr><td><strong>The Captain</strong></td><td>Product voice: welcome emails, app onboarding, push notifications, marketing sign-offs</td><td><em>— The Captain</em></td></tr>
+        <tr><td><strong>Megan, Captain</strong></td><td>When personal and product voice both apply</td><td><em>— Megan, Captain</em></td></tr>
+        <tr><td><strong>Sailor</strong></td><td>The audience. Capitalized when addressed directly. Open or close of long-form. Drop in chrome and button labels. Never "the user".</td><td><em>Welcome aboard, Sailor.</em></td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin:20px 0 8px">We are · We are not</p>
+    <table class="voice-table">
+      <thead><tr><th>We are</th><th>We are not</th></tr></thead>
+      <tbody>
+        <tr><td class="voice-yes">Steady authority: we guide, we don't hype</td><td class="voice-no">Hyped, motivational-poster energy</td></tr>
+        <tr><td class="voice-yes">Long-range thinking: charting courses, not chasing trends</td><td class="voice-no">Trend-chasing, reactive</td></tr>
+        <tr><td class="voice-yes">Grounded confidence: precision over performance</td><td class="voice-no">Goddess, divine feminine, vibration</td></tr>
+        <tr><td class="voice-yes">Mythic intelligence: older than wellness, Victorian navigational</td><td class="voice-no">Abundance mindset, universe provides</td></tr>
+        <tr><td class="voice-yes">Explorer, not priestess: universal, inclusive, not gendered or goddess-coded</td><td class="voice-no">Wish-making, magic, manifesting</td></tr>
+        <tr><td class="voice-yes">Dry honesty: first person, willing to admit what is and isn't working</td><td class="voice-no">Spiritual bypassing, toxic positivity</td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Brand vocabulary</p>
+    <p class="note" style="margin-bottom:10px">Brand-distinct terms Starboard owns. Brand voice first in the chrome. Search-friendly vocabulary (<em>mood board, dream board, manifestation, meditation</em>) belongs in supporting copy, metadata, and SEO descriptions.</p>
+    <table class="voice-table">
+      <thead><tr><th>Term</th><th>When to use</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sailor</strong></td><td>The audience. Capitalized when addressed: <em>Welcome aboard, Sailor.</em></td></tr>
+        <tr><td><strong>the Captain</strong></td><td>The voice: sign-offs, push notifications, formal product speech</td></tr>
+        <tr><td><strong>Megan</strong></td><td>The personal voice: blog sign-offs and founder letters</td></tr>
+        <tr><td><strong>vision board</strong></td><td>Core noun, every surface</td></tr>
+        <tr><td><strong>board</strong></td><td>Shorthand inside the app once a vision board is open</td></tr>
+        <tr><td><strong>montage</strong></td><td>The looping video output</td></tr>
+        <tr><td><strong>affirmation</strong></td><td>The written intention attached to a reminder</td></tr>
+        <tr><td><strong>reminder</strong></td><td>Scheduled push or local notification</td></tr>
+        <tr><td><strong>lanthorn</strong></td><td>Central metaphor for the practice. Long-form only, not chrome.</td></tr>
+        <tr><td><strong>chart · course · bearings</strong></td><td>Navigation verbs for goals, intent, direction</td></tr>
+        <tr><td><strong>constellation · north star · horizon</strong></td><td>Celestial direction language</td></tr>
+        <tr><td><strong>anchor · helm · compass · sextant</strong></td><td>Grounding and instrument metaphors</td></tr>
+        <tr><td><strong>tide · current · voyage · landfall</strong></td><td>Passage metaphors for progress over time</td></tr>
+        <tr><td><strong>healing frequency</strong></td><td>The Solfeggio audio (396, 432, 528 Hz, etc.)</td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Nautical vocabulary palette</p>
+    <p class="note" style="margin-bottom:10px">A resource pool. Reach for a term whenever it lands naturally. Restraint matters: one nautical term per surface, not three.</p>
+    <div class="vocab-grid">
+      <div class="vocab-chip">bearings</div>
+      <div class="vocab-chip">chart</div>
+      <div class="vocab-chip">course</div>
+      <div class="vocab-chip">compass</div>
+      <div class="vocab-chip">constellation</div>
+      <div class="vocab-chip">voyage</div>
+      <div class="vocab-chip">tide · current</div>
+      <div class="vocab-chip">horizon</div>
+      <div class="vocab-chip">north star</div>
+      <div class="vocab-chip">lanthorn</div>
+      <div class="vocab-chip">sextant</div>
+      <div class="vocab-chip">helm</div>
+      <div class="vocab-chip">anchor</div>
+      <div class="vocab-chip">set your course</div>
+      <div class="vocab-chip">steady as she goes</div>
+      <div class="vocab-chip">fair winds</div>
+      <div class="vocab-chip">even keel</div>
+      <div class="vocab-chip">hold fast</div>
+      <div class="vocab-chip">dead in the water</div>
+      <div class="vocab-chip">high and dry</div>
+      <div class="vocab-chip">maiden voyage</div>
+      <div class="vocab-chip">doldrums</div>
+      <div class="vocab-chip">following seas</div>
+      <div class="vocab-chip">sea legs</div>
+    </div>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Punctuation &amp; style</p>
+    <table class="voice-table">
+      <thead><tr><th>Rule</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>No exclamation points</td><td></td></tr>
+        <tr><td>Commas and short sentences over em dashes. Em dashes feel editorial. Use commas, fragments, and the occasional colon-led tangent instead.</td><td><em>It had to be tended. That's Starboard.</em></td></tr>
+        <tr><td>Sentence case everywhere; Title Case for chrome page titles</td><td><em>Vision Boards · Library · Moon Phases</em></td></tr>
+        <tr><td>UPPERCASE wide-tracked for eyebrows, labels, badges</td><td><em>PLANS · ONBOARDING · 60%</em></td></tr>
+        <tr><td>Numbers in copy: numerals</td><td><em>3 vision boards · 13 daily reminders</em></td></tr>
+        <tr><td>Pricing: localized</td><td><em>£23/year · £72 one-time</em></td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin:20px 0 8px">Surface copy</p>
+    <table class="voice-table">
+      <thead><tr><th>Surface</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>Tagline</td><td><em>Your vision, on board. Your course, in sight.</em></td></tr>
+        <tr><td>CTA headline</td><td><em>Set Your Course</em></td></tr>
+        <tr><td>Marketing headlines</td><td><em>Set your course. · Steady as she goes. · Even keel.</em></td></tr>
+        <tr><td>Onboarding steps</td><td><em>Cast off · Get underway · Set bearings · Make fast</em></td></tr>
+        <tr><td>Success state</td><td><em>Anchors aweigh. Your board is saved.</em></td></tr>
+        <tr><td>Error state</td><td><em>Dead in the water. Try again.</em></td></tr>
+        <tr><td>Empty state</td><td><em>Your library is high and dry. Add an image to begin.</em></td></tr>
+        <tr><td>Push notification</td><td><em>Fair winds, Sailor. Time to revisit your board.</em></td></tr>
+        <tr><td>Email subject lines</td><td><em>Letters from the Helm · The doldrums are temporary · Following seas this week</em></td></tr>
+        <tr><td>Slogan / merch</td><td><em>Hold fast. · Steady on. · Sea legs. · Even keel.</em></td></tr>
+        <tr><td>Email sign-off (personal)</td><td><em>Welcome aboard, Sailor. — Megan</em></td></tr>
+        <tr><td>Email sign-off (product)</td><td><em>Fair winds. — The Captain</em></td></tr>
+      </tbody>
+    </table>
+
+    <p class="eyebrow" style="margin:28px 0 8px">Steeped in lore: long-form writing</p>
+    <p class="note" style="margin-bottom:12px">Blog, newsletter, social, and Instagram are <strong>edutainment</strong>. Every piece leaves the Sailor feeling enriched. A single surprising fact, told plainly, that opens into a wider story. <em>No Such Thing as a Fish</em> cadence: here is something interesting, and here is why it matters.</p>
+    <div class="lore-grid">
+      <div class="lore-card">
+        <div class="lore-title">Maritime history &amp; lore</div>
+        <p class="lore-body">Etymology of <em>lanthorn</em>. Why ships are called <em>she</em>. The origin of <em>starboard</em>, <em>port</em>, <em>posh</em>, <em>the bitter end</em>. Naval superstitions: no whistling on deck, never sail on a Friday.</p>
+      </div>
+      <div class="lore-card">
+        <div class="lore-title">Mythology</div>
+        <p class="lore-body">Sea gods: Poseidon, Manannán mac Lir, the kelpie. Constellations and navigation (Cassiopeia, Orion's belt). Norse navigational mythology. Selkies. The Morrigan as crow.</p>
+      </div>
+      <div class="lore-card">
+        <div class="lore-title">Science</div>
+        <p class="lore-body">Reticular activating system and why repetition rewires attention. Lunar tidal physics. Neuroplasticity and behaviour change. Celestial navigation: sextant geometry, why the North Star sits where it does.</p>
+      </div>
+      <div class="lore-card">
+        <div class="lore-title">Botanical &amp; seasonal lore</div>
+        <p class="lore-body">Why the Strawberry Moon is named for a narrow harvest window. Full moon folklore. Solstices, equinoxes, cross-quarter days as markers for practice.</p>
+      </div>
+      <div class="lore-card">
+        <div class="lore-title">Folk practice</div>
+        <p class="lore-body">Tarot iconography. Oracle decks. Sailor-jerry tattoo meanings: swallows = home safely, anchor = grounded, <em>hold fast</em> = endurance. Victorian navigational charts, monk illumination.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Social media templates ──────────────────────────────────────── -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Content</div>
+      <h2 class="sec">Social media templates</h2>
+      <p class="note">Six formats: Instagram square (quote, lore, affirmation, board of the month), Pinterest portrait, and Instagram story. All use brand backgrounds, Playfair italic headings, and Chivo UI text. Suggested copy sits below each tile.</p>
+    </div>
+    <div class="social-templates">
+
+      <!-- Quote cards -->
+      <div class="sm-section">
+        <div class="sm-section-head">
+          <h3>Quote cards</h3>
+          <span class="sm-ratio">1:1 · INSTAGRAM</span>
+          <p class="sm-blurb">Big Playfair italic quote on a textured ground. Captain or Megan signature in the corner. Use for affirmations, brand lines, and blog pull quotes.</p>
+        </div>
+        <div class="grid-sq">
+
+          <div class="tile-wrap">
+            <div class="tile sq l-quote bg-deep star-bg">
+              <div class="stage">
+                <img class="quote-mark" src="starboard-design-system/assets/decorations/sb-star-flourish.png" />
+                <h3 class="quote lg">Visions of who you want to be are a flame that needs tending.</h3>
+                <div class="footer">
+                  <span class="signature">— Megan, Captain</span>
+                  <img class="lockup-sm" src="starboard-design-system/assets/logos/sb-dark-lockup-horizontal.webp" />
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: The lanthorn was the only thing standing between a 16th-century ship and ghosts. Letting it go out at night was taboo. Same with the picture you carry of who you're becoming. Tend the flame, Sailor.
+
+#starboardmanifest #visionboard #manifestation</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile sq l-quote bg-warm star-bg">
+              <div class="stage">
+                <img class="quote-mark" src="starboard-design-system/assets/decorations/sb-star-flourish.png" />
+                <h3 class="quote lg">Steady as she goes.</h3>
+                <div class="footer">
+                  <span class="signature">— The Captain</span>
+                  <img class="lockup-sm" src="starboard-design-system/assets/logos/sb-warm-lockup-horizontal.webp" />
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: A command from helmsman to crew. Hold the current course. Don't change a thing.
+
+The hardest part of any practice is not changing it when it gets boring.</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile sq l-quote bg-navy star-bg">
+              <div class="stage">
+                <img class="quote-mark" src="starboard-design-system/assets/decorations/sb-star-flourish.png" style="filter: brightness(0) invert(1)" />
+                <h3 class="quote md">A board returned to is doing more work than one finished.</h3>
+                <div class="footer">
+                  <span class="signature">— Megan</span>
+                  <img class="lockup-sm" src="starboard-design-system/assets/logos/sb-dark-lockup-horizontal.webp" />
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: Repetition strengthens attention. Attention shapes behavior. The board you made three months ago is doing more for you than the one you finished yesterday — because the old one has been seen a hundred times.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Lore cards -->
+      <div class="sm-section">
+        <div class="sm-section-head">
+          <h3>Lore cards</h3>
+          <span class="sm-ratio">1:1 · INSTAGRAM</span>
+          <p class="sm-blurb">Single surprising fact. The <em>No Such Thing as a Fish</em> register. Edutainment, never a lecture. Maritime, mythology, science, botanical, and folk practice.</p>
+        </div>
+        <div class="grid-sq">
+
+          <div class="tile-wrap">
+            <div class="tile sq l-lore bg-paper">
+              <div class="stage">
+                <img class="ornament-top" src="starboard-design-system/assets/decorations/sb-star-flourish.png" />
+                <div>
+                  <p class="fact-head">DID YOU KNOW</p>
+                  <h3 class="quote sm" style="margin-top: 18px;">The word <em>lanthorn</em> comes from a 16th-century lantern made of translucent animal horn.</h3>
+                  <p class="body-text md" style="margin-top: 18px; color: rgba(4,4,28,0.6);">Sailors called them <em>lanthorns</em>. Letting one go out at night was a harbinger of doom.</p>
+                </div>
+                <span class="signature">— Maritime lore · vol. 01</span>
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: A vision board kept visible is a lanthorn kept lit. The flame that points your ship away from the rocks.
+
+#maritime #lore #starboardmanifest</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile sq l-lore bg-sage">
+              <div class="stage">
+                <img class="ornament-top" src="starboard-design-system/assets/decorations/sb-star-flourish.png" style="filter: brightness(0) invert(1)" />
+                <div>
+                  <p class="fact-head">DID YOU KNOW</p>
+                  <h3 class="quote sm" style="margin-top: 18px;">The first Strawberry Moon was named by the Algonquin in present-day Maine.</h3>
+                  <p class="body-text md" style="margin-top: 18px; opacity: 0.75;">The brief window when wild strawberries ripen. Pay attention or miss them entirely.</p>
+                </div>
+                <span class="signature">— Lunar lore · vol. 02</span>
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: The Strawberry Moon is the moon of sweetness arrived. Not anticipated. Here. A board for what is already shaping in your life, asking to be acknowledged.</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile sq l-lore bg-deep star-bg">
+              <div class="stage">
+                <img class="ornament-top" src="starboard-design-system/assets/decorations/sb-star-flourish.png" style="filter: brightness(0) invert(1)" />
+                <div>
+                  <p class="fact-head">DID YOU KNOW</p>
+                  <h3 class="quote sm" style="margin-top: 18px;">The reticular activating system filters 99% of what your eyes see.</h3>
+                  <p class="body-text md" style="margin-top: 18px; opacity: 0.65;">Tell it what to care about, and it will find that thing everywhere. This is what a vision board does.</p>
+                </div>
+                <span class="signature">— Science · vol. 03</span>
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: Not magic. Just attention, sharpened. Your brain runs a hidden filter on the world; a vision board is how you choose the filter.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Affirmation cards -->
+      <div class="sm-section">
+        <div class="sm-section-head">
+          <h3>Affirmation cards</h3>
+          <span class="sm-ratio">1:1 · INSTAGRAM</span>
+          <p class="sm-blurb">Short statements, big type, deep ground. Save-and-share content. Designed to be screenshotted and used as a phone wallpaper.</p>
+        </div>
+        <div class="grid-sq">
+
+          <div class="tile-wrap">
+            <div class="tile sq l-affirm bg-deep">
+              <div class="stage">
+                <img class="star-mark" src="starboard-design-system/assets/logos/sb-light-logomark.svg" style="filter: brightness(0) invert(1)" />
+                <h3 class="quote xl">I move steady, not fast.</h3>
+                <img class="lockup-sm" src="starboard-design-system/assets/logos/sb-dark-lockup-horizontal.webp" />
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: Save this. Set it as your lock screen. Steady on, Sailor.</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile sq l-affirm bg-terra">
+              <div class="stage">
+                <img class="star-mark" src="starboard-design-system/assets/logos/sb-light-logomark.svg" />
+                <h3 class="quote xl">The work I make today is the work I want to be making in five years.</h3>
+                <img class="lockup-sm" src="starboard-design-system/assets/logos/sb-light-lockup-horizontal.webp" style="height: 22px;" />
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: For the long-build people. The slow course is the only course worth keeping.</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile sq l-affirm bg-warm">
+              <div class="stage">
+                <img class="star-mark" src="starboard-design-system/assets/logos/sb-light-logomark.svg" />
+                <h3 class="quote xl">My direction stays steady. I trust the slow build.</h3>
+                <img class="lockup-sm" src="starboard-design-system/assets/logos/sb-warm-lockup-horizontal.webp" />
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: Save · share · steal. The lanthorn you carry. ⚓</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Board of the month -->
+      <div class="sm-section">
+        <div class="sm-section-head">
+          <h3>Board of the month</h3>
+          <span class="sm-ratio">1:1 · INSTAGRAM</span>
+          <p class="sm-blurb">Featured monthly board using a vision-board art illustration. Caption gives the lunar context and the prompt for the Sailor's own board.</p>
+        </div>
+        <div class="grid-sq">
+
+          <div class="tile-wrap">
+            <div class="tile sq l-board">
+              <div class="stage">
+                <div class="art"><img src="starboard-design-system/assets/board-art/orange-tree.png" /></div>
+                <div class="caption">
+                  <span class="moon">STRAWBERRY MOON · 31 MAY</span>
+                  <span class="name">Ripening.</span>
+                  <span class="sub">A board for what is already shaping in your life, asking to be acknowledged.</span>
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: This month's prompt: what's already ripening? The Strawberry Moon isn't asking what you'll plant. It's asking what's ready to be picked.
+
+Tap the link in bio to open this month's board.</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile sq l-board">
+              <div class="stage">
+                <div class="art"><img src="starboard-design-system/assets/board-art/lighthouse.png" /></div>
+                <div class="caption">
+                  <span class="moon">HUNTER'S MOON · 17 OCT</span>
+                  <span class="name">Steady on.</span>
+                  <span class="sub">The light kept lit through the long autumn nights. A board for endurance.</span>
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: The Hunter's Moon is the long-night moon. The moon for the work that doesn't end in a season. Hold fast.</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile sq l-board">
+              <div class="stage">
+                <div class="art"><img src="starboard-design-system/assets/board-art/throne.png" /></div>
+                <div class="caption">
+                  <span class="moon">WOLF MOON · 14 JAN</span>
+                  <span class="name">The chair you'll sit in.</span>
+                  <span class="sub">A board for the seat at the table you haven't claimed yet.</span>
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">CAPTION: Sit in it now, in your head. The body follows. The Wolf Moon is the moon of claiming.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Pinterest pins -->
+      <div class="sm-section">
+        <div class="sm-section-head">
+          <h3>Pinterest pins</h3>
+          <span class="sm-ratio">2:3 · PINTEREST</span>
+          <p class="sm-blurb">Tall format, scroll-stopping numerals, lore-led. The medium where edutainment travels furthest. Designed to be saved to boards, not just liked.</p>
+        </div>
+        <div class="grid-portrait">
+
+          <div class="tile-wrap">
+            <div class="tile portrait l-fact bg-deep star-bg">
+              <div class="stage">
+                <div>
+                  <span class="fact-head">A LUNAR FACT</span>
+                  <p class="body-text sm" style="margin-top: 8px; opacity: 0.6;">Number of full moons each year, in the Western system.</p>
+                </div>
+                <div>
+                  <div class="number">12.4</div>
+                  <p class="body-text md" style="opacity: 0.75;">Which is why a 13th, when it happens, gets a name of its own. <em>Blue moon.</em></p>
+                </div>
+                <img class="lockup-sm" src="starboard-design-system/assets/logos/sb-dark-lockup-horizontal.webp" />
+              </div>
+            </div>
+            <div class="tile-caption">PIN TITLE: The 12.4 moons of the year</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile portrait l-fact bg-terra">
+              <div class="stage">
+                <div>
+                  <span class="fact-head">A SWALLOW MEANS</span>
+                  <p class="body-text sm" style="margin-top: 8px; opacity: 0.65;">Sailor-jerry tattoo lore.</p>
+                </div>
+                <div>
+                  <h3 class="quote md" style="line-height: 1.05;">"Home<br/>safely."</h3>
+                  <p class="body-text md" style="opacity: 0.75; margin-top: 16px;">5,000 nautical miles earned a sailor their first swallow. Two birds meant 10,000 and a way back.</p>
+                </div>
+                <img class="lockup-sm" src="starboard-design-system/assets/logos/sb-light-lockup-horizontal.webp" />
+              </div>
+            </div>
+            <div class="tile-caption">PIN TITLE: What sailor tattoos actually meant</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile portrait l-pin bg-paper">
+              <div class="stage">
+                <div>
+                  <span class="head">CHART YOUR VISION</span>
+                  <h3 class="title">Six things to put on your spring board.</h3>
+                </div>
+                <div>
+                  <div class="footer-line"></div>
+                  <p class="body-text md" style="opacity: 0.65;">A practice list from the Captain. Read the full post.</p>
+                  <p class="body-text sm" style="margin-top: 12px; opacity: 0.5;">starboardmanifest.com/blog</p>
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">PIN TITLE: 6 prompts for your spring vision board</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile portrait l-pin bg-navy">
+              <div class="stage">
+                <div>
+                  <span class="head" style="color: #A4E636;">LANTHORN · A SERIES</span>
+                  <h3 class="title">The 16th-century word for a vision board.</h3>
+                </div>
+                <div>
+                  <div class="footer-line"></div>
+                  <p class="body-text md" style="opacity: 0.75;">Sailors carried a flame they were never allowed to let go out. We carry the same thing, just digital.</p>
+                  <p class="body-text sm" style="margin-top: 12px; opacity: 0.5;">starboardmanifest.com/blog</p>
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">PIN TITLE: The lanthorn, a 16th-century word for vision boards</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Story templates -->
+      <div class="sm-section">
+        <div class="sm-section-head">
+          <h3>Story templates</h3>
+          <span class="sm-ratio">9:16 · INSTAGRAM STORY</span>
+          <p class="sm-blurb">Vertical, scrollable. Three jobs: announce a new full-moon board, share an affirmation, and prompt a link tap to the blog.</p>
+        </div>
+        <div class="grid-portrait">
+
+          <div class="tile-wrap">
+            <div class="tile" style="aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden;">
+              <div class="stage bg-deep star-bg" style="padding: 80px 36px; display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center; gap: 32px; height: 100%;">
+                <img class="star-mark" style="width: 56px; height: 56px; filter: brightness(0) invert(1)" src="starboard-design-system/assets/logos/sb-light-logomark.svg" />
+                <span class="sm-eyebrow">NEW BOARD · STRAWBERRY MOON</span>
+                <h3 class="quote lg">Ripening.</h3>
+                <p class="body-text md" style="opacity: 0.65;">A board for what is already shaping in your life.</p>
+                <div style="margin-top: auto; padding-top: 32px; font-family: var(--font-family-chivo); font-size: 12px; letter-spacing: 0.30em; text-transform: uppercase; opacity: 0.55;">TAP TO OPEN</div>
+              </div>
+            </div>
+            <div class="tile-caption">Story 01 · New board drop</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile" style="aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden;">
+              <div class="stage bg-warm" style="padding: 80px 36px; display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center; gap: 24px; height: 100%;">
+                <img class="star-mark" style="width: 56px; height: 56px;" src="starboard-design-system/assets/logos/sb-light-logomark.svg" />
+                <span class="sm-eyebrow" style="color: rgba(106,77,68,0.55);">AFFIRMATION · WAXING GIBBOUS</span>
+                <h3 class="quote lg" style="color: #6A4D44;">What I tend grows into form.</h3>
+                <p class="body-text md" style="opacity: 0.6;">Save and set as your lock screen.</p>
+              </div>
+            </div>
+            <div class="tile-caption">Story 02 · Affirmation</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile" style="aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden;">
+              <div class="stage bg-sage" style="padding: 80px 36px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                <div>
+                  <span class="sm-eyebrow">A LUNAR FACT</span>
+                  <h3 class="quote md" style="margin-top: 24px;">The Hunter's Moon is the only full moon that rises at sunset for several nights running.</h3>
+                </div>
+                <div>
+                  <p class="body-text md" style="opacity: 0.8; margin-bottom: 24px;">Hence its name. Hence the harvest.</p>
+                  <div style="font-family: var(--font-family-chivo); font-size: 12px; letter-spacing: 0.30em; text-transform: uppercase; opacity: 0.7;">SWIPE UP · BLOG</div>
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">Story 03 · Blog link</div>
+          </div>
+
+          <div class="tile-wrap">
+            <div class="tile" style="aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden;">
+              <div class="stage bg-paper" style="padding: 0; display: flex; flex-direction: column; height: 100%;">
+                <div style="flex: 1; overflow: hidden;">
+                  <img src="starboard-design-system/assets/board-art/magpie.png" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" />
+                </div>
+                <div style="background: #04041C; color: #F5E6CD; padding: 28px 32px;">
+                  <span class="sm-eyebrow" style="opacity: 0.55;">VISION BOARD · 7</span>
+                  <h3 class="quote sm" style="margin-top: 14px;">A board for what to gather.</h3>
+                  <p class="body-text sm" style="opacity: 0.65; margin-top: 8px;">Magpies collect shiny things. So can you.</p>
+                </div>
+              </div>
+            </div>
+            <div class="tile-caption">Story 04 · Board art feature</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <img src="brand/logos/dark-lockup-horizontal.png" style="height:20px;opacity:.5;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto" alt="">
+    <a href="index.html">The Sailor's Oracle</a> · <a href="https://www.starboardmanifest.com/" target="_blank">Starboard</a> · captain@starboardmanifest.com
+  </footer>
+</div>
+
+<script>
+  var toggle = document.getElementById("themeToggle");
+  toggle.addEventListener("click", function(e) {
+    var btn = e.target.closest("button");
+    if (!btn) return;
+    var mode = btn.dataset.mode;
+    document.documentElement.setAttribute("data-theme", mode);
+    toggle.querySelectorAll("button").forEach(function(b) {
+      b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+    });
+  });
+
+  var segBtns = document.querySelectorAll(".seg button");
+  segBtns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      var parent = btn.closest(".seg");
+      parent.querySelectorAll("button").forEach(function(b) {
+        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+      });
+    });
+  });
+</script>
+</body>
+</html>

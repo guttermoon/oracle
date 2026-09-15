@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" -->
+<!doctype html>
+<html data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 18px 22px; width: 700px; height: 180px; gap: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; flex: 1; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { flex: 1; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); min-height: 76px; }
+  .nm { font-family: var(--font-family-chivo); font-size: 10px; color: var(--text-color); }
+  .hx { font-family: ui-monospace, Menlo, monospace; font-size: 9.5px; color: var(--text-muted); text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <span class="label">Semantic status · cross-theme</span>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:#22C55E"></div><div class="nm">success</div><div class="hx">#22C55E</div></div>
+    <div class="sw"><div class="chip" style="background:#F59E0B"></div><div class="nm">warning</div><div class="hx">#F59E0B</div></div>
+    <div class="sw"><div class="chip" style="background:#DC2626"></div><div class="nm">danger</div><div class="hx">#DC2626</div></div>
+    <div class="sw"><div class="chip" style="background:#B91C1C"></div><div class="nm">danger:hover</div><div class="hx">#B91C1C</div></div>
+    <div class="sw"><div class="chip" style="background:rgba(220,38,38,0.10);border:1px solid rgba(220,38,38,0.4);"></div><div class="nm">danger / subtle</div><div class="hx">10% α</div></div>
+  </div>
+</body>
+</html>

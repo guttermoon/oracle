@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<meta name="supported-color-schemes" content="light dark" />
+<title>Letters from the Helm — Issue 01 · Maiden Voyage</title>
+
+<!--
+  Letters from the Helm — newsletter email template.
+  Standalone HTML; works in Gmail, Outlook, Apple Mail, mobile.
+
+  Anatomy (top → bottom):
+    1. Pre-header (inbox preview text)
+    2. Brand bar — green lockup (appearance-mode-agnostic)
+    3. Hero banner — full-width Victorian frame illustration. PER-ISSUE artwork
+       goes here; this template ships with assets/imagery/banner.png (ship at sea).
+       Each new issue should swap it for topical artwork (full moon, season, etc.)
+    4. Issue label + headline + sub
+    5. Founder letter (first-person, Megan)
+    6. Featured article card (image + title + dek + CTA)
+    7. Three secondary articles
+    8. Big CTA
+    9. Dark footer — green lockup, tagline, email, legal
+
+  Why this is built the way it is:
+  - One 600-wide content table, nested tables for sections (Outlook).
+  - All styling inline; <style> only carries dark-mode + a couple of media queries.
+  - The Starboard GREEN lockup is used in the header because we cannot know the
+    recipient's appearance mode at send time. Green reads on both.
+  - Oracle illustrations are the editorial style — see assets/oracle/.
+  - Voice: Megan (founder), first person, addressed to Sailor.
+-->
+
+<style>
+  /* Dark-mode polish for clients that support it (Apple Mail, iOS Mail) */
+  @media (prefers-color-scheme: dark) {
+    .bg        { background-color: #1B1F3B !important; }
+    .surface   { background-color: #2D3268 !important; border-color: rgba(245,230,205,0.20) !important; }
+    .text      { color: #F5E6CD !important; }
+    .muted     { color: rgba(245,230,205,0.65) !important; }
+    .border    { border-color: rgba(245,230,205,0.15) !important; }
+    .footer-bg { background-color: #04041C !important; }
+  }
+  @media (max-width: 640px) {
+    .stack { display: block !important; width: 100% !important; padding: 0 0 24px !important; }
+    .pad   { padding: 28px 24px !important; }
+    .h1    { font-size: 32px !important; }
+    .banner-h1 { font-size: 28px !important; }
+  }
+  a:hover img { opacity: 0.92; }
+</style>
+</head>
+<body class="bg" style="margin:0; padding:0; background-color:#F7F0DB; font-family: 'Chivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #6A4D44;">
+
+<!-- Pre-header (preview text in inbox) -->
+<div style="display:none; max-height:0; overflow:hidden; opacity:0; color:transparent;">
+  The Strawberry Moon rises May 31. Notes from the maiden voyage, the lanthorn metaphor, and a board for what is already ripening.
+  &nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌
+</div>
+
+<!-- ===== Outer wrapper ===== -->
+<table role="presentation" class="bg" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#F7F0DB;">
+  <tr><td align="center" style="padding: 32px 20px;">
+
+    <!-- ===== 600px content table ===== -->
+    <table role="presentation" width="600" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; width: 100%;">
+
+      <!-- ===== BRAND BAR ===== -->
+      <tr>
+        <td align="center" style="padding: 8px 0 24px;">
+          <a href="https://starboardmanifest.com" style="text-decoration:none;">
+            <img src="../assets/logos/sb-green-lockup-horizontal.png" width="180" alt="Starboard" style="display:block; width: 180px; height: auto; border:0;" />
+          </a>
+        </td>
+      </tr>
+
+      <!-- ===== HERO BANNER — full-width artwork ===== -->
+      <tr>
+        <td style="padding: 0; border-radius: 18px; overflow: hidden; line-height: 0;">
+          <a href="https://starboardmanifest.com/blog/maiden-voyage-launching-starboard-manifest" style="text-decoration: none; display: block;">
+            <img
+              src="../assets/imagery/banner.png"
+              alt="A ship at sea under stars, in an ornate Victorian frame."
+              width="600"
+              style="display:block; width:100%; max-width: 600px; height:auto; border:0; border-radius: 18px;"
+            />
+          </a>
+        </td>
+      </tr>
+
+      <!-- spacer -->
+      <tr><td style="height: 28px; line-height: 28px;">&nbsp;</td></tr>
+
+      <!-- ===== ISSUE LABEL + HEADLINE ===== -->
+      <tr>
+        <td align="center" class="pad" style="padding: 0 40px 8px;">
+          <p class="muted" style="margin: 0 0 14px; font-family: 'Chivo', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.30em; text-transform: uppercase; color: rgba(106,77,68,0.55);">
+            ISSUE 01 · MAY 2026 · STRAWBERRY MOON
+          </p>
+          <h1 class="banner-h1 text" style="margin: 0 0 18px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 48px; line-height: 1.05; color: #6A4D44; letter-spacing: 0.01em; text-align: center;">
+            Maiden voyage.
+          </h1>
+          <p class="muted" style="margin: 0 auto; font-family: 'Chivo', sans-serif; font-size: 16px; line-height: 1.6; color: rgba(106,77,68,0.72); max-width: 460px; text-align: center;">
+            The Strawberry Moon rises 31 May. The first full moon of summer, and in Starboard's calendar, the first full moon after launch.
+          </p>
+        </td>
+      </tr>
+
+      <!-- spacer -->
+      <tr><td style="height: 40px; line-height: 40px;">&nbsp;</td></tr>
+
+      <!-- ===== LETTER ===== -->
+      <tr>
+        <td align="center" class="pad" style="padding: 0 40px;">
+
+          <p class="muted" style="margin: 0 0 6px; font-family: 'Chivo', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.30em; text-transform: uppercase; color: rgba(106,77,68,0.55); text-align: center;">
+            FROM THE CAPTAIN
+          </p>
+          <h2 class="text" style="margin: 0 0 28px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 28px; line-height: 1.2; color: #6A4D44; text-align: center;">
+            The lanthorn.
+          </h2>
+
+          <p class="text" style="margin: 0 auto 16px; font-family: 'Chivo', sans-serif; font-size: 16px; line-height: 1.7; color: #6A4D44; max-width: 480px; text-align: center;">
+            I tried every vision board app I could find. One sent me notifications about finding love. The app had decided, without asking, what I should want.
+          </p>
+          <p class="text" style="margin: 0 auto 16px; font-family: 'Chivo', sans-serif; font-size: 16px; line-height: 1.7; color: #6A4D44; max-width: 480px; text-align: center;">
+            Another had branding that looked stale from the 2010s. I did find one I liked, but when I switched phones I lost all my work. So I built my own.
+          </p>
+          <p class="text" style="margin: 0 auto 16px; font-family: 'Chivo', sans-serif; font-size: 16px; line-height: 1.7; color: #6A4D44; max-width: 480px; text-align: center;">
+            During the age of sail, a <em>lanthorn</em> was a vital tool. It had to be tended. Letting it go out at night was taboo, viewed as a harbinger of doom.
+          </p>
+          <p class="text" style="margin: 0 auto 28px; font-family: 'Chivo', sans-serif; font-size: 16px; line-height: 1.7; color: #6A4D44; max-width: 480px; text-align: center;">
+            That's Starboard. The lanthorn you carry. The vision kept visible because you chose to keep it alight, daily, on purpose.
+          </p>
+
+          <p class="text" style="margin: 0 0 4px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: #6A4D44; text-align: center;">
+            Welcome aboard, Sailor.
+          </p>
+          <p class="muted" style="margin: 0; font-family: 'Chivo', sans-serif; font-size: 14px; color: rgba(106,77,68,0.65); text-align: center;">
+            — Megan
+          </p>
+
+        </td>
+      </tr>
+
+      <!-- spacer -->
+      <tr><td style="height: 48px; line-height: 48px;">&nbsp;</td></tr>
+
+      <!-- ===== FEATURED ARTICLE BLOCK ===== -->
+      <tr>
+        <td class="surface border" style="background-color: #FFF9EB; border: 1px solid rgba(106,77,68,0.15); border-radius: 18px;">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="center" style="padding: 32px 32px 0;">
+                <img src="../assets/oracle/nautical-star.png" width="180" alt="Diamond-framed nautical star illustration." style="display:block; width: 180px; max-width: 100%; height: auto; border:0; border-radius: 12px; margin: 0 auto;" />
+              </td>
+            </tr>
+            <tr>
+              <td align="center" class="pad" style="padding: 24px 36px 32px;">
+                <p class="muted" style="margin: 0 0 6px; font-family: 'Chivo', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.30em; text-transform: uppercase; color: rgba(106,77,68,0.55); text-align: center;">
+                  VISION BOARD OF THE MONTH
+                </p>
+                <h3 class="text" style="margin: 0 0 12px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 400; font-size: 24px; line-height: 1.2; color: #6A4D44; text-align: center;">
+                  Ripening.
+                </h3>
+                <p class="muted" style="margin: 0 auto 18px; font-family: 'Chivo', sans-serif; font-size: 14px; line-height: 1.6; color: rgba(106,77,68,0.72); max-width: 380px; text-align: center;">
+                  The Strawberry Moon is the moon of sweetness arrived. Not anticipated. Here. A board for what is already shaping in your life, asking to be acknowledged.
+                </p>
+                <a href="#" style="display:inline-block; padding: 12px 22px; background-color: #4A5D45; color: #F7F0DB; font-family: 'Chivo', sans-serif; font-size: 13px; font-weight: 600; text-decoration: none; border-radius: 8px; letter-spacing: 0.02em;">
+                  Open this month's board →
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- spacer -->
+      <tr><td style="height: 36px; line-height: 36px;">&nbsp;</td></tr>
+
+      <!-- ===== THREE LINKS BLOCK ===== -->
+      <tr>
+        <td align="center" class="pad" style="padding: 0 36px 18px;">
+          <p class="muted" style="margin: 0; font-family: 'Chivo', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.30em; text-transform: uppercase; color: rgba(106,77,68,0.55); text-align: center;">
+            ALSO IN THE CARGO HOLD
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td class="pad" style="padding: 0 36px;">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="stack" width="33%" align="center" style="vertical-align: top; padding-right: 12px; text-align: center;">
+                <a href="#" style="text-decoration: none; color: inherit;">
+                  <img src="../assets/oracle/turtle.png" width="160" alt="" style="display: block; width: 100%; max-width: 160px; height: auto; border: 0; border-radius: 8px; margin: 0 auto 12px;" />
+                  <p class="text" style="margin: 0 0 4px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; color: #6A4D44; text-align: center;">Slow is steady.</p>
+                  <p class="muted" style="margin: 0; font-family: 'Chivo', sans-serif; font-size: 13px; line-height: 1.5; color: rgba(106,77,68,0.65); text-align: center;">On building practices that survive a bad week.</p>
+                </a>
+              </td>
+              <td class="stack" width="33%" align="center" style="vertical-align: top; padding: 0 6px; text-align: center;">
+                <a href="#" style="text-decoration: none; color: inherit;">
+                  <img src="../assets/oracle/swallows.png" width="160" alt="" style="display: block; width: 100%; max-width: 160px; height: auto; border: 0; border-radius: 8px; margin: 0 auto 12px;" />
+                  <p class="text" style="margin: 0 0 4px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; color: #6A4D44; text-align: center;">A return, not a build.</p>
+                  <p class="muted" style="margin: 0; font-family: 'Chivo', sans-serif; font-size: 13px; line-height: 1.5; color: rgba(106,77,68,0.65); text-align: center;">Why daily replay beats first-time creation.</p>
+                </a>
+              </td>
+              <td class="stack" width="33%" align="center" style="vertical-align: top; padding-left: 12px; text-align: center;">
+                <a href="#" style="text-decoration: none; color: inherit;">
+                  <img src="../assets/oracle/hearts.png" width="160" alt="" style="display: block; width: 100%; max-width: 160px; height: auto; border: 0; border-radius: 8px; margin: 0 auto 12px;" />
+                  <p class="text" style="margin: 0 0 4px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; color: #6A4D44; text-align: center;">Six affirmations.</p>
+                  <p class="muted" style="margin: 0; font-family: 'Chivo', sans-serif; font-size: 13px; line-height: 1.5; color: rgba(106,77,68,0.65); text-align: center;">Lines we keep coming back to. Steal one.</p>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- spacer -->
+      <tr><td style="height: 56px; line-height: 56px;">&nbsp;</td></tr>
+
+      <!-- ===== CTA ===== -->
+      <tr>
+        <td align="center" style="padding: 0 36px 24px;">
+          <p class="muted" style="margin: 0 0 18px; font-family: 'Chivo', sans-serif; font-size: 14px; line-height: 1.6; color: rgba(106,77,68,0.72); text-align: center;">
+            Haven't built your first board yet?
+          </p>
+          <a href="https://starboardmanifest.com/signup" style="display:inline-block; padding: 16px 28px; background-color: #4A5D45; color: #F7F0DB; font-family: 'Chivo', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 10px; letter-spacing: 0.02em;">
+            Set your course →
+          </a>
+        </td>
+      </tr>
+
+      <!-- spacer -->
+      <tr><td style="height: 24px; line-height: 24px;">&nbsp;</td></tr>
+
+      <!-- ===== FOOTER ===== -->
+      <tr>
+        <td class="footer-bg" align="center" style="padding: 48px 36px 36px; background-color: #04041C; border-radius: 18px;">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="center" style="padding-bottom: 24px;">
+                <img src="../assets/logos/sb-green-lockup-horizontal.png" width="140" alt="Starboard" style="display:block; width: 140px; height: auto; border:0;" />
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding-bottom: 12px;">
+                <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; color: rgba(245,230,205,0.85);">
+                  Your vision, on board. Your course, in sight.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding-bottom: 28px;">
+                <p style="margin: 0; font-family: 'Chivo', sans-serif; font-size: 13px; color: rgba(245,230,205,0.55);">
+                  <a href="mailto:captain@starboardmanifest.com" style="color: rgba(245,230,205,0.75); text-decoration: none;">captain@starboardmanifest.com</a>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding-bottom: 12px; border-top: 1px solid rgba(245,230,205,0.15); padding-top: 24px;">
+                <p style="margin: 0; font-family: 'Chivo', sans-serif; font-size: 11px; color: rgba(245,230,205,0.45); letter-spacing: 0.04em; line-height: 1.7;">
+                  You're receiving this because you signed up for <em>Letters from the Helm</em>.<br/>
+                  <a href="#" style="color: rgba(245,230,205,0.65); text-decoration: underline;">Unsubscribe</a>&nbsp;·&nbsp;
+                  <a href="#" style="color: rgba(245,230,205,0.65); text-decoration: underline;">Update preferences</a>&nbsp;·&nbsp;
+                  <a href="https://starboardmanifest.com/privacy" style="color: rgba(245,230,205,0.65); text-decoration: underline;">Privacy</a>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding-top: 18px;">
+                <p style="margin: 0; font-family: 'Chivo', sans-serif; font-size: 11px; color: rgba(245,230,205,0.40); letter-spacing: 0.18em; text-transform: uppercase;">
+                  London · ©2026 Starboard
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+    </table>
+
+  </td></tr>
+</table>
+
+</body>
+</html>

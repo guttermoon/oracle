@@ -1,0 +1,597 @@
+<!doctype html>
+<html data-theme="dark" lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Starboard — Social Media Templates</title>
+<link rel="icon" href="../assets/logos/favicon.svg" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #14112A; min-height: 100vh; }
+  body {
+    padding: 60px 32px 100px;
+    font-family: var(--font-family-primary);
+    color: #F5E6CD;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; margin: 0; line-height: 1.1; letter-spacing: 0.01em; }
+
+  .deck-header {
+    max-width: 1280px; margin: 0 auto 56px;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .deck-header img { height: 48px; }
+  .deck-header .meta {
+    font-family: var(--font-family-chivo); font-size: 13px;
+    letter-spacing: 0.30em; text-transform: uppercase; opacity: 0.55;
+  }
+
+  .section {
+    max-width: 1280px; margin: 0 auto 80px;
+  }
+  .section-head {
+    display: flex; align-items: baseline; gap: 18px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(245,230,205,0.10);
+  }
+  .section-head h2 {
+    font-size: 36px; color: #F5E6CD;
+  }
+  .section-head .ratio {
+    font-family: var(--font-family-chivo); font-size: 12px;
+    letter-spacing: 0.30em; text-transform: uppercase;
+    color: rgba(245,230,205,0.55);
+  }
+  .section-head .blurb {
+    font-family: var(--font-family-chivo); font-size: 14px;
+    color: rgba(245,230,205,0.65); margin-left: auto; max-width: 380px;
+    text-align: right;
+  }
+
+  /* ============== Tile grids ============== */
+  .grid-sq {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .grid-portrait {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+
+  /* ============== Tile shell ============== */
+  .tile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 24px 60px -16px rgba(0,0,0,0.55), 0 4px 14px -2px rgba(0,0,0,0.35);
+  }
+  .tile.sq { aspect-ratio: 1 / 1; }
+  .tile.portrait { aspect-ratio: 2 / 3; }
+
+  /* ============== Inner stage ============== */
+  .stage {
+    position: absolute; inset: 0;
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+  }
+  .tile.portrait .stage { padding: 48px 36px; }
+
+  /* ============== Backgrounds ============== */
+  .bg-deep   { background: #04041C; color: #F5E6CD; }
+  .bg-navy   { background: #1B1F3B; color: #F5E6CD; }
+  .bg-warm   { background: #F7F0DB; color: #6A4D44; }
+  .bg-paper  { background: #FEFDF6; color: #04041C; }
+  .bg-sage   { background: #4A5D45; color: #F7F0DB; }
+  .bg-terra  { background: #D98A5F; color: #04041C; }
+
+  /* Star pattern overlay (very faint) */
+  .star-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('../assets/decorations/sb-star-pattern-1.png');
+    background-size: 280px auto;
+    background-repeat: repeat;
+    opacity: 0.05;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  .bg-warm.star-bg::before, .bg-paper.star-bg::before { mix-blend-mode: multiply; opacity: 0.06; }
+
+  /* ============== Shared text utilities ============== */
+  .eyebrow {
+    font-family: var(--font-family-chivo); font-weight: 600;
+    font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .signature {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 18px; opacity: 0.65;
+  }
+  .lockup-sm { height: 26px; opacity: 0.85; }
+  .star-mark { width: 40px; height: 40px; object-fit: contain; }
+
+  /* ============== Type sizes ============== */
+  .quote { font-family: var(--font-family-secondary); font-style: italic; font-weight: 400; line-height: 1.1; letter-spacing: 0.01em; }
+  .quote.xl  { font-size: 92px; }
+  .quote.lg  { font-size: 64px; }
+  .quote.md  { font-size: 48px; }
+  .quote.sm  { font-size: 34px; }
+  .quote.xs  { font-size: 26px; line-height: 1.2; }
+
+  .body-text {
+    font-family: var(--font-family-chivo);
+    line-height: 1.55;
+  }
+  .body-text.lg { font-size: 22px; }
+  .body-text.md { font-size: 18px; }
+  .body-text.sm { font-size: 15px; }
+
+  /* ===================== Specific layouts ===================== */
+
+  /* 1. Quote card — big italic quote, signature bottom */
+  .l-quote .stage { justify-content: space-between; }
+  .l-quote .quote-mark { width: 64px; height: 64px; opacity: 0.45; }
+  .l-quote .quote { color: inherit; }
+  .l-quote .footer { display: flex; justify-content: space-between; align-items: flex-end; }
+
+  /* 2. Lore card — small fact framed by ornament */
+  .l-lore .stage { padding: 50px 46px; align-items: center; text-align: center; justify-content: space-between; }
+  .l-lore .ornament-top { width: 88px; opacity: 0.85; }
+  .l-lore .fact-head {
+    font-family: var(--font-family-chivo);
+    font-size: 11px; letter-spacing: 0.36em; text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  /* 3. Affirmation — centered statement on textured ground */
+  .l-affirm .stage { padding: 60px 56px; align-items: center; text-align: center; justify-content: center; gap: 32px; }
+  .l-affirm .quote { max-width: 100%; }
+
+  /* 4. Single-fact card — pinterest portrait, big fact */
+  .l-fact .stage { justify-content: space-between; }
+  .l-fact .fact-head {
+    font-family: var(--font-family-chivo);
+    font-size: 10px; letter-spacing: 0.40em; text-transform: uppercase;
+    opacity: 0.55;
+  }
+  .l-fact .number {
+    font-family: var(--font-family-secondary); font-style: italic;
+    font-size: 200px; line-height: 0.8;
+    margin-top: -10px;
+  }
+  .l-fact .body-text { margin-top: 14px; }
+
+  /* 5. Board-of-the-month — image + label */
+  .l-board .stage { padding: 0; }
+  .l-board .art {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    background: #FAF6EC; padding: 20px;
+    overflow: hidden;
+  }
+  .l-board .art img { max-width: 88%; max-height: 88%; object-fit: contain; }
+  .l-board .caption {
+    padding: 24px 32px 32px;
+    background: #04041C; color: #F5E6CD;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .l-board .caption .moon {
+    font-family: var(--font-family-chivo); font-size: 10px;
+    letter-spacing: 0.32em; text-transform: uppercase; opacity: 0.5;
+  }
+  .l-board .caption .name { font-size: 30px; }
+  .l-board .caption .sub { font-family: var(--font-family-chivo); font-size: 12.5px; opacity: 0.65; line-height: 1.5; }
+
+  /* 6. Pinterest carousel — title + 1-sentence pull */
+  .l-pin .stage { padding: 60px 44px; justify-content: space-between; }
+  .l-pin .head { font-family: var(--font-family-chivo); font-size: 12px; letter-spacing: 0.36em; text-transform: uppercase; opacity: 0.55; }
+  .l-pin .title { font-size: 56px; }
+  .l-pin .footer-line {
+    height: 1px; background: currentColor; opacity: 0.25;
+    margin: 16px 0 14px;
+  }
+
+  /* Caption (outside the tile, suggested IG/pin copy) */
+  .tile-caption {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: rgba(245,230,205,0.04);
+    border: 1px solid rgba(245,230,205,0.08);
+    border-radius: 8px;
+    font-family: var(--font-family-chivo);
+    font-size: 11.5px; line-height: 1.55;
+    color: rgba(245,230,205,0.65);
+    white-space: pre-line;
+  }
+  .tile-wrap { display: flex; flex-direction: column; }
+</style>
+</head>
+<body>
+<div class="deck-header">
+  <img src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="Starboard" />
+  <span class="meta">SOCIAL MEDIA TEMPLATES · INSTAGRAM 1080×1080 · PINTEREST 1000×1500</span>
+</div>
+
+<!-- =================================================================
+     SECTION 1 — INSTAGRAM SQUARE QUOTE CARDS
+     ================================================================= -->
+<div class="section">
+  <div class="section-head">
+    <h2>Quote cards</h2>
+    <span class="ratio">1:1 · INSTAGRAM</span>
+    <p class="blurb">Big Playfair italic quote on a textured ground. Captain or Megan signature in the corner. Use for affirmations, brand lines, blog pull quotes.</p>
+  </div>
+  <div class="grid-sq">
+
+    <div class="tile-wrap">
+      <div class="tile sq l-quote bg-deep star-bg">
+        <div class="stage">
+          <img class="quote-mark" src="../assets/decorations/sb-star-flourish.png" />
+          <h3 class="quote lg">Visions of who you want to be are a flame that needs tending.</h3>
+          <div class="footer">
+            <span class="signature">— Megan, Captain</span>
+            <img class="lockup-sm" src="../assets/logos/sb-dark-lockup-horizontal.webp" />
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: The lanthorn was the only thing standing between a 16th-century ship and ghosts. Letting it go out at night was taboo. Same with the picture you carry of who you're becoming. Tend the flame, Sailor.
+
+#starboardmanifest #visionboard #manifestation</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile sq l-quote bg-warm star-bg">
+        <div class="stage">
+          <img class="quote-mark" src="../assets/decorations/sb-star-flourish.png" />
+          <h3 class="quote lg">Steady as she goes.</h3>
+          <div class="footer">
+            <span class="signature">— The Captain</span>
+            <img class="lockup-sm" src="../assets/logos/sb-warm-lockup-horizontal.webp" />
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: A command from helmsman to crew. Hold the current course. Don't change a thing.
+
+The hardest part of any practice is not changing it when it gets boring.</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile sq l-quote bg-navy star-bg">
+        <div class="stage">
+          <img class="quote-mark" src="../assets/decorations/sb-star-flourish.png" style="filter: brightness(0) invert(1)" />
+          <h3 class="quote md">A board returned to is doing more work than one finished.</h3>
+          <div class="footer">
+            <span class="signature">— Megan</span>
+            <img class="lockup-sm" src="../assets/logos/sb-dark-lockup-horizontal.webp" />
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: Repetition strengthens attention. Attention shapes behavior. The board you made three months ago is doing more for you than the one you finished yesterday — because the old one has been seen a hundred times.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================================================================
+     SECTION 2 — INSTAGRAM SQUARE LORE CARDS
+     ================================================================= -->
+<div class="section">
+  <div class="section-head">
+    <h2>Lore cards</h2>
+    <span class="ratio">1:1 · INSTAGRAM</span>
+    <p class="blurb">Single surprising fact. The <em>No Such Thing as a Fish</em> register. Edutainment, never a lecture. Maritime, mythology, science, botanical, folk practice.</p>
+  </div>
+  <div class="grid-sq">
+
+    <div class="tile-wrap">
+      <div class="tile sq l-lore bg-paper">
+        <div class="stage">
+          <img class="ornament-top" src="../assets/decorations/sb-star-flourish.png" />
+          <div>
+            <p class="fact-head">DID YOU KNOW</p>
+            <h3 class="quote sm" style="margin-top: 18px;">The word <em>lanthorn</em> comes from a 16th-century lantern made of translucent animal horn.</h3>
+            <p class="body-text md" style="margin-top: 18px; color: rgba(4,4,28,0.6);">Sailors called them <em>lanthorns</em>. Letting one go out at night was a harbinger of doom.</p>
+          </div>
+          <span class="signature">— Maritime lore · vol. 01</span>
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: A vision board kept visible is a lanthorn kept lit. The flame that points your ship away from the rocks.
+
+#maritime #lore #starboardmanifest</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile sq l-lore bg-sage">
+        <div class="stage">
+          <img class="ornament-top" src="../assets/decorations/sb-star-flourish.png" style="filter: brightness(0) invert(1)" />
+          <div>
+            <p class="fact-head">DID YOU KNOW</p>
+            <h3 class="quote sm" style="margin-top: 18px;">The first Strawberry Moon was named by the Algonquin in present-day Maine.</h3>
+            <p class="body-text md" style="margin-top: 18px; opacity: 0.75;">The brief window when wild strawberries ripen. Pay attention or miss them entirely.</p>
+          </div>
+          <span class="signature">— Lunar lore · vol. 02</span>
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: The Strawberry Moon is the moon of sweetness arrived. Not anticipated. Here. A board for what is already shaping in your life, asking to be acknowledged.</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile sq l-lore bg-deep star-bg">
+        <div class="stage">
+          <img class="ornament-top" src="../assets/decorations/sb-star-flourish.png" style="filter: brightness(0) invert(1)" />
+          <div>
+            <p class="fact-head">DID YOU KNOW</p>
+            <h3 class="quote sm" style="margin-top: 18px;">The reticular activating system filters 99% of what your eyes see.</h3>
+            <p class="body-text md" style="margin-top: 18px; opacity: 0.65;">Tell it what to care about, and it will find that thing everywhere. This is what a vision board does.</p>
+          </div>
+          <span class="signature">— Science · vol. 03</span>
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: Not magic. Just attention, sharpened. Your brain runs a hidden filter on the world; a vision board is how you choose the filter.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================================================================
+     SECTION 3 — INSTAGRAM AFFIRMATIONS
+     ================================================================= -->
+<div class="section">
+  <div class="section-head">
+    <h2>Affirmation cards</h2>
+    <span class="ratio">1:1 · INSTAGRAM</span>
+    <p class="blurb">Short statements, big type, deep ground. Save-and-share content. Designed to be screenshotted and used as a phone wallpaper.</p>
+  </div>
+  <div class="grid-sq">
+
+    <div class="tile-wrap">
+      <div class="tile sq l-affirm bg-deep">
+        <div class="stage">
+          <img class="star-mark" src="../assets/logos/sb-light-logomark.svg" style="filter: brightness(0) invert(1)" />
+          <h3 class="quote xl">I move steady, not fast.</h3>
+          <img class="lockup-sm" src="../assets/logos/sb-dark-lockup-horizontal.webp" />
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: Save this. Set it as your lock screen. Steady on, Sailor.</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile sq l-affirm bg-terra">
+        <div class="stage">
+          <img class="star-mark" src="../assets/logos/sb-light-logomark.svg" />
+          <h3 class="quote xl">The work I make today is the work I want to be making in five years.</h3>
+          <img class="lockup-sm" src="../assets/logos/sb-light-lockup-horizontal.webp" style="height: 22px;" />
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: For the long-build people. The slow course is the only course worth keeping.</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile sq l-affirm bg-warm">
+        <div class="stage">
+          <img class="star-mark" src="../assets/logos/sb-light-logomark.svg" />
+          <h3 class="quote xl">My direction stays steady. I trust the slow build.</h3>
+          <img class="lockup-sm" src="../assets/logos/sb-warm-lockup-horizontal.webp" />
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: Save · share · steal. The lanthorn you carry. ⚓</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================================================================
+     SECTION 4 — INSTAGRAM BOARD OF THE MONTH
+     ================================================================= -->
+<div class="section">
+  <div class="section-head">
+    <h2>Board of the month</h2>
+    <span class="ratio">1:1 · INSTAGRAM</span>
+    <p class="blurb">Featured monthly board using a vision-board art illustration. Caption gives the lunar context and the prompt for the Sailor's own board.</p>
+  </div>
+  <div class="grid-sq">
+
+    <div class="tile-wrap">
+      <div class="tile sq l-board">
+        <div class="stage">
+          <div class="art"><img src="../assets/board-art/orange-tree.png" /></div>
+          <div class="caption">
+            <span class="moon">STRAWBERRY MOON · 31 MAY</span>
+            <span class="name">Ripening.</span>
+            <span class="sub">A board for what is already shaping in your life, asking to be acknowledged.</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: This month's prompt: what's already ripening? The Strawberry Moon isn't asking what you'll plant. It's asking what's ready to be picked.
+
+Tap the link in bio to open this month's board.</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile sq l-board">
+        <div class="stage">
+          <div class="art"><img src="../assets/board-art/lighthouse.png" /></div>
+          <div class="caption">
+            <span class="moon">HUNTER'S MOON · 17 OCT</span>
+            <span class="name">Steady on.</span>
+            <span class="sub">The light kept lit through the long autumn nights. A board for endurance.</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: The Hunter's Moon is the long-night moon. The moon for the work that doesn't end in a season. Hold fast.</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile sq l-board">
+        <div class="stage">
+          <div class="art"><img src="../assets/board-art/throne.png" /></div>
+          <div class="caption">
+            <span class="moon">WOLF MOON · 14 JAN</span>
+            <span class="name">The chair you'll sit in.</span>
+            <span class="sub">A board for the seat at the table you haven't claimed yet.</span>
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">CAPTION: Sit in it now, in your head. The body follows. The Wolf Moon is the moon of claiming.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================================================================
+     SECTION 5 — PINTEREST PORTRAIT (single-fact + lore series)
+     ================================================================= -->
+<div class="section">
+  <div class="section-head">
+    <h2>Pinterest pins</h2>
+    <span class="ratio">2:3 · PINTEREST</span>
+    <p class="blurb">Tall format, scroll-stopping numerals, lore-led. The medium where edutainment travels furthest. Designed to be saved to boards, not just liked.</p>
+  </div>
+  <div class="grid-portrait">
+
+    <div class="tile-wrap">
+      <div class="tile portrait l-fact bg-deep star-bg">
+        <div class="stage">
+          <div>
+            <span class="fact-head">A LUNAR FACT</span>
+            <p class="body-text sm" style="margin-top: 8px; opacity: 0.6;">Number of full moons each year, in the Western system.</p>
+          </div>
+          <div>
+            <div class="number">12.4</div>
+            <p class="body-text md" style="opacity: 0.75;">Which is why a 13th, when it happens, gets a name of its own. <em>Blue moon.</em></p>
+          </div>
+          <img class="lockup-sm" src="../assets/logos/sb-dark-lockup-horizontal.webp" />
+        </div>
+      </div>
+      <div class="tile-caption">PIN TITLE: The 12.4 moons of the year</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile portrait l-fact bg-terra">
+        <div class="stage">
+          <div>
+            <span class="fact-head">A SWALLOW MEANS</span>
+            <p class="body-text sm" style="margin-top: 8px; opacity: 0.65;">Sailor-jerry tattoo lore.</p>
+          </div>
+          <div>
+            <h3 class="quote md" style="line-height: 1.05;">"Home<br/>safely."</h3>
+            <p class="body-text md" style="opacity: 0.75; margin-top: 16px;">5,000 nautical miles earned a sailor their first swallow. Two birds meant 10,000 and a way back.</p>
+          </div>
+          <img class="lockup-sm" src="../assets/logos/sb-light-lockup-horizontal.webp" />
+        </div>
+      </div>
+      <div class="tile-caption">PIN TITLE: What sailor tattoos actually meant</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile portrait l-pin bg-paper">
+        <div class="stage">
+          <div>
+            <span class="head">CHART YOUR VISION</span>
+            <h3 class="title quote">Six things to put on your spring board.</h3>
+          </div>
+          <div>
+            <div class="footer-line"></div>
+            <p class="body-text md" style="opacity: 0.65;">A practice list from the Captain. Read the full post.</p>
+            <p class="body-text sm" style="margin-top: 12px; opacity: 0.5;">starboardmanifest.com/blog</p>
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">PIN TITLE: 6 prompts for your spring vision board</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile portrait l-pin bg-navy">
+        <div class="stage">
+          <div>
+            <span class="head" style="color: #A4E636;">LANTHORN · A SERIES</span>
+            <h3 class="title quote">The 16th-century word for a vision board.</h3>
+          </div>
+          <div>
+            <div class="footer-line"></div>
+            <p class="body-text md" style="opacity: 0.75;">Sailors carried a flame they were never allowed to let go out. We carry the same thing, just digital.</p>
+            <p class="body-text sm" style="margin-top: 12px; opacity: 0.5;">starboardmanifest.com/blog</p>
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">PIN TITLE: The lanthorn — a 16th-century word for vision boards</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================================================================
+     SECTION 6 — IG STORY (9:16) — RAILS, STICKERS, LINK PROMPTS
+     ================================================================= -->
+<div class="section">
+  <div class="section-head">
+    <h2>Story templates</h2>
+    <span class="ratio">9:16 · INSTAGRAM STORY</span>
+    <p class="blurb">Vertical, scrollable. Three jobs: announce a new full-moon board, share an affirmation, prompt a link tap to the blog.</p>
+  </div>
+  <div class="grid-portrait" style="grid-template-columns: repeat(4, 1fr);">
+
+    <div class="tile-wrap">
+      <div class="tile" style="aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden;">
+        <div class="stage bg-deep star-bg" style="padding: 80px 36px; display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center; gap: 32px; height: 100%;">
+          <img class="star-mark" style="width: 56px; height: 56px; filter: brightness(0) invert(1)" src="../assets/logos/sb-light-logomark.svg" />
+          <span class="eyebrow">NEW BOARD · STRAWBERRY MOON</span>
+          <h3 class="quote lg">Ripening.</h3>
+          <p class="body-text md" style="opacity: 0.65;">A board for what is already shaping in your life.</p>
+          <div style="margin-top: auto; padding-top: 32px; font-family: var(--font-family-chivo); font-size: 12px; letter-spacing: 0.30em; text-transform: uppercase; opacity: 0.55;">TAP TO OPEN</div>
+        </div>
+      </div>
+      <div class="tile-caption">Story 01 · New board drop</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile" style="aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden;">
+        <div class="stage bg-warm" style="padding: 80px 36px; display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center; gap: 24px; height: 100%;">
+          <img class="star-mark" style="width: 56px; height: 56px;" src="../assets/logos/sb-light-logomark.svg" />
+          <span class="eyebrow" style="color: rgba(106,77,68,0.55);">AFFIRMATION · WAXING GIBBOUS</span>
+          <h3 class="quote lg" style="color: #6A4D44;">What I tend grows into form.</h3>
+          <p class="body-text md" style="opacity: 0.6;">Save and set as your lock screen.</p>
+        </div>
+      </div>
+      <div class="tile-caption">Story 02 · Affirmation</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile" style="aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden;">
+        <div class="stage bg-sage" style="padding: 80px 36px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+          <div>
+            <span class="eyebrow">A LUNAR FACT</span>
+            <h3 class="quote md" style="margin-top: 24px;">The Hunter's Moon is the only full moon that rises at sunset for several nights running.</h3>
+          </div>
+          <div>
+            <p class="body-text md" style="opacity: 0.8; margin-bottom: 24px;">Hence its name. Hence the harvest.</p>
+            <div style="font-family: var(--font-family-chivo); font-size: 12px; letter-spacing: 0.30em; text-transform: uppercase; opacity: 0.7;">SWIPE UP · BLOG</div>
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">Story 03 · Blog link</div>
+    </div>
+
+    <div class="tile-wrap">
+      <div class="tile" style="aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden;">
+        <div class="stage bg-paper" style="padding: 0; display: flex; flex-direction: column; height: 100%;">
+          <div style="flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 24px;">
+            <img src="../assets/board-art/magpie.png" style="max-width: 80%; max-height: 80%;" />
+          </div>
+          <div style="background: #04041C; color: #F5E6CD; padding: 28px 32px;">
+            <span class="eyebrow" style="opacity: 0.55;">VISION BOARD · 7</span>
+            <h3 class="quote sm" style="margin-top: 14px;">A board for what to gather.</h3>
+            <p class="body-text sm" style="opacity: 0.65; margin-top: 8px;">Magpies collect shiny things. So can you.</p>
+          </div>
+        </div>
+      </div>
+      <div class="tile-caption">Story 04 · Board art feature</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!-- @dsCard group="Brand" -->
+<!doctype html>
+<html data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="_card.css" />
+<style>
+  body { padding: 22px; width: 700px; height: 280px; background: var(--bg-color); }
+  .grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr;
+    gap: 14px;
+    align-items: end;
+    height: 100%;
+  }
+  .slot {
+    display: flex; flex-direction: column;
+    gap: 8px; align-items: center; justify-content: flex-end;
+    height: 100%;
+  }
+  .mark {
+    width: 100%; flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 6px;
+  }
+  .mark img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .cap {
+    font-family: var(--font-family-chivo);
+    font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="slot">
+      <div class="mark"><img src="../assets/logos/sb-dark-lockup-horizontal.webp" alt="horizontal" /></div>
+      <div class="cap">Horizontal</div>
+    </div>
+    <div class="slot">
+      <div class="mark"><img src="../assets/logos/sb-dark-lockup-vertical.webp" alt="vertical" /></div>
+      <div class="cap">Vertical</div>
+    </div>
+    <div class="slot">
+      <div class="mark"><img src="../assets/logos/sb-dark-logomark.webp" alt="logomark" /></div>
+      <div class="cap">Logomark</div>
+    </div>
+    <div class="slot">
+      <div class="mark"><img src="../assets/logos/sb-dark-logomark-fancy.webp" alt="fancy" /></div>
+      <div class="cap">Fancy</div>
+    </div>
+    <div class="slot">
+      <div class="mark"><img src="../assets/logos/sb-dark-logomark-pattern.webp" alt="pattern" /></div>
+      <div class="cap">Pattern Tile</div>
+    </div>
+  </div>
+</body>
+</html>

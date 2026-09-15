@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Sailor's Oracle · Starboard</title>
+  <meta name="description" content="A 16-card nautical oracle deck. Draw a card or browse the full deck.">
+  <meta property="og:title" content="The Sailor's Oracle">
+  <meta property="og:description" content="Draw a card or browse the full deck.">
+  <meta property="og:image" content="img/back.png">
+  <link rel="icon" type="image/svg+xml" href="brand/starboard-official-icon-dark.svg">
+  <link rel="apple-touch-icon" href="brand/web-app-manifest-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/analytics.js"></script>
+</head>
+<body>
+  <header class="nav">
+    <a class="nav-logo" href="https://www.starboardmanifest.com/"><img src="brand/sb-dark-bg-logo-lockup-horizontal.webp" alt="Starboard"></a>
+  </header>
+
+  <main class="hero">
+    <div class="hero-inner">
+      <h1>The Sailor's Oracle</h1>
+      <p class="lede">Sixteen cards drawn from sailor tattoo lore. Pause, pick the one that
+        calls to you, and read what the sea has to say.</p>
+      <div class="btn-row">
+        <a class="btn" href="draw.html">Draw your card</a>
+      </div>
+    </div>
+  </main>
+
+  <section class="deck-section" id="deck">
+    <div class="grid" id="grid"></div>
+    <p class="load-error" id="error" style="display:none">Couldn't load the deck. Please refresh.</p>
+  </section>
+
+  <footer class="site-footer">
+    <img class="footer-mark" src="brand/sb-dark-bg-logomark.webp" alt="" aria-hidden="true">
+    <p class="footer-line"><a href="index.html">The Sailor's Oracle</a></p>
+    <p class="footer-fine"><a href="https://www.starboardmanifest.com/">Part of Starboard</a></p>
+  </footer>
+  <script src="assets/deck.js"></script>
+</body>
+</html>
+

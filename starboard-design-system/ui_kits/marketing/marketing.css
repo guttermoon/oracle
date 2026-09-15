@@ -1,0 +1,193 @@
+/* Marketing kit — shared styles
+   Imports the core token system, then layers marketing-specific structure. */
+@import url("../../colors_and_type.css");
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family-primary);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Parchment texture lives on body */
+body {
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.05) 100%),
+    radial-gradient(circle at 0%   0%,   rgba(0,0,0,0.04) 0%, transparent 35%),
+    radial-gradient(circle at 100% 0%,   rgba(0,0,0,0.04) 0%, transparent 35%),
+    radial-gradient(circle at 100% 100%, rgba(0,0,0,0.04) 0%, transparent 35%),
+    radial-gradient(circle at 0%   100%, rgba(0,0,0,0.04) 0%, transparent 35%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+button { font-family: inherit; cursor: pointer; }
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ======= Unified button system ======= */
+.button {
+  font-family: var(--font-family-chivo);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  padding: 14px 22px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  transition:
+    background-color 200ms cubic-bezier(0.16,1,0.3,1),
+    border-color 200ms cubic-bezier(0.16,1,0.3,1),
+    transform 200ms cubic-bezier(0.16,1,0.3,1),
+    box-shadow 300ms ease;
+}
+.button:hover { transform: translateY(-1px); }
+.button:active { transform: translateY(0); }
+.button--primary {
+  background: var(--button-bg);
+  color: var(--button-text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.button--primary:hover { box-shadow: 0 4px 14px rgba(var(--glow-rgb), 0.35); }
+.button--secondary {
+  background: transparent;
+  color: var(--text-color);
+  border-color: var(--border-medium);
+}
+.button--secondary:hover { background: var(--card-bg-tint); }
+.button--tertiary {
+  background: var(--card-bg-glass);
+  color: var(--text-color);
+  border-color: var(--card-border);
+}
+.button--ghost {
+  background: transparent;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+.button--ghost:hover { opacity: 1; }
+.button--pill { border-radius: 9999px; }
+.button--sm { font-size: 11px; padding: 8px 14px; min-height: 36px; }
+.button--lg { font-size: 15px; padding: 18px 30px; min-height: 52px; }
+.button--icon {
+  width: 40px; height: 40px;
+  min-height: 40px; padding: 0;
+  border-radius: 9999px;
+}
+
+/* ======= Card ======= */
+.card {
+  background: var(--card-bg-glass);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  padding: 24px;
+  transition:
+    transform 400ms cubic-bezier(0.16,1,0.3,1),
+    box-shadow 400ms ease,
+    border-color 200ms ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+.card--highlighted { border-color: var(--card-border-highlighted); }
+
+/* ======= Inputs ======= */
+.input-field {
+  font-family: var(--font-family-chivo);
+  font-size: 14px;
+  padding: 14px 16px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-muted);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 150ms, background 150ms, box-shadow 150ms;
+  width: 100%;
+}
+.input-field::placeholder { color: var(--text-muted); }
+.input-field:hover { background: var(--input-bg-hover); }
+.input-field:focus {
+  background: var(--input-bg-focus);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 22%, transparent);
+}
+
+/* ======= Entry animations ======= */
+/* Continuous float — ambient drift for hero decorations */
+@keyframes floatY {
+  from { transform: translateY(-8px); }
+  to   { transform: translateY(8px); }
+}
+
+/* Entry animation: only translateY, never opacity — opacity makes content
+   invisible when the iframe paused-timeline never ticks (html-to-image
+   capture, sandboxed previews, etc). The translate is just a nice flourish. */
+@keyframes fadeInUp {
+  from { transform: translateY(30px); }
+  to   { transform: translateY(0); }
+}
+@keyframes scaleFloatInLeft {
+  0%   { transform: scale(0.5) translateX(-30px) translateY(20px) rotate(-15deg); }
+  60%  { transform: scale(1.1) translateX(5px)   translateY(-5px) rotate(3deg);   }
+  100% { transform: scale(1)   translateX(0)    translateY(0)    rotate(0deg);   }
+}
+@keyframes scaleFloatInRight {
+  0%   { transform: scale(0.5) translateX(30px)  translateY(20px) rotate(15deg);  }
+  60%  { transform: scale(1.1) translateX(-5px)  translateY(-5px) rotate(-3deg); }
+  100% { transform: scale(1)   translateX(0)    translateY(0)    rotate(0deg);  }
+}
+@keyframes scaleFloatInTop {
+  0%   { transform: scale(0.6) translateY(-40px) rotate(10deg); }
+  60%  { transform: scale(1.1) translateY(5px)   rotate(-2deg); }
+  100% { transform: scale(1)   translateY(0)    rotate(0deg); }
+}
+@keyframes float6 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+.fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up { animation: none; opacity: 1; transform: none; }
+}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* ======= Section ======= */
+.section { padding: 80px 0; }
+@media (min-width: 768px) { .section { padding: 128px 0; } }
+
+.eyebrow {
+  font-family: var(--font-family-chivo);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-secondary);
+  font-style: italic;
+  font-weight: 400;
+  text-wrap: balance;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
